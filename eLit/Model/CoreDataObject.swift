@@ -11,8 +11,10 @@ import CoreData
 
 class CoreDataObject: NSManagedObject {
     
-    init() {
-        super.init(entity: CoreDataObject.entity(), insertInto: CoreDataObject.getContext())
+    convenience init () {
+        
+        self.init(context: CoreDataObject.getContext())
+        
     }
 
     public class func getContext() -> NSManagedObjectContext {

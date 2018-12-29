@@ -12,13 +12,13 @@ import CoreData
 class EntityManager: NSObject {
     
     
-    public func fetchAll <T : CoreDataObject> () -> [T]? {
+    public func fetchAll <T : CoreDataObject> (type : T.Type) -> [T]? {
                 
-        let request : NSFetchRequest = T.fetchRequest()
+        let request : NSFetchRequest = type.fetchRequest()
         
         do {
             
-            return try T.getContext().fetch(request) as? [T]
+            return try type.getContext().fetch(request) as? [T]
             
         }
         catch {

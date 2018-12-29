@@ -17,10 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        let em : EntityManager = EntityManager()
         
-        let em = EntityManager()
+        for drink in (em.fetchAll(type: Drink.self)!) {
+            
+            print(drink.degree)
+            
+        }
         
-        print((em.fetchAll() as! [Drink]).count)
+        
         
         return true
     }
@@ -51,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
