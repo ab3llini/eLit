@@ -15,6 +15,9 @@
 		BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */; };
 		BD37F4BE21CE4FE70080C0F7 /* eLitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4BD21CE4FE70080C0F7 /* eLitTests.swift */; };
 		BD37F4C921CE4FE70080C0F7 /* eLitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */; };
+		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
+		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
+		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		BD37F4C421CE4FE70080C0F7 /* eLitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eLitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eLitUITests.swift; sourceTree = "<group>"; };
 		BD37F4CA21CE4FE70080C0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
+		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				BD401C5621D77BCF007496F9 /* Model */,
 				BD37F4A521CE4FE70080C0F7 /* AppDelegate.swift */,
 				BD37F4A721CE4FE70080C0F7 /* ViewController.swift */,
 				BD37F4A921CE4FE70080C0F7 /* Main.storyboard */,
@@ -126,6 +133,16 @@
 				BD37F4CA21CE4FE70080C0F7 /* Info.plist */,
 			);
 			path = eLitUITests;
+			sourceTree = "<group>";
+		};
+		BD401C5621D77BCF007496F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD401C5721D77C1E007496F9 /* Drink.swift */,
+				BD401C5921D78ECF007496F9 /* CoreDataObject.swift */,
+				BD401C5B21D79261007496F9 /* EntityManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +278,10 @@
 			files = (
 				BD37F4A821CE4FE70080C0F7 /* ViewController.swift in Sources */,
 				BD37F4AE21CE4FE70080C0F7 /* eLit.xcdatamodeld in Sources */,
+				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
+				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
+				BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
