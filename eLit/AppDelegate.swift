@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let em : EntityManager = EntityManager()
         
         for drink in (em.fetchAll(type: Drink.self)!) {
-            
-            print(drink.degree)
-            
+            print(drink.objectID)
         }
         
         
