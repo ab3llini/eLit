@@ -10,5 +10,13 @@ import UIKit
 import CoreData
 
 class DrinkComponent: CoreDataObject {
+    
+    //MARK: Initializers
+    convenience init(ingredient: Ingredient, quantity: Int16, unit: Unit) {
+        self.init()
+        self.withIngredient = ingredient
+        self.qty = quantity
+        self.unit = unit.rawValue
+    }
 
 }

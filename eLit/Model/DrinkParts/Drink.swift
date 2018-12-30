@@ -11,9 +11,12 @@ import CoreData
 
 @objc(Drink)
 class Drink: CoreDataObject {
-
+    
+    //MARK: Initializers
+    convenience init(name: String, recipe: Recipe) {
+        self.init()
+        self.name = name
+        self.drinkRecipe = recipe
+    }
         
 }
-
-
-

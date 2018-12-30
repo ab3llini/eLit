@@ -10,5 +10,16 @@ import UIKit
 import CoreData
 
 class Ingredient: CoreDataObject {
+    
+    //MARK: Initializers
+    convenience init(grade: Int16, name: String) {
+        self.init()
+        self.grade = grade
+        self.name = name
+    }
+    
+    convenience init(name: String) {
+        self.init(grade: 0, name: name)
+    }
 
 }

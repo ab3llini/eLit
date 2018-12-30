@@ -10,5 +10,11 @@ import UIKit
 import CoreData
 
 class Recipe: CoreDataObject {
+    
+    //MARK: Initializers
+    convenience init(steps: [RecipeStep]){
+        self.init()
+        self.steps = NSOrderedSet(array: steps)
+    }
 
 }

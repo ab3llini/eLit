@@ -10,5 +10,21 @@ import UIKit
 import CoreData
 
 class RecipeStep: CoreDataObject {
-
+    
+    //MARK: Initializers
+    convenience init(description: String, drinkComponents: [DrinkComponent]){
+        self.init()
+        self.stepDescription = description
+        self.witComponents = NSOrderedSet(array: drinkComponents)
+    }
+    
+    convenience init(drinkComponents: [DrinkComponent]) {
+        self.init(description: "", drinkComponents: drinkComponents)
+    }
+    
+    
+    //MARK: getter & setter
+    func setDescription(description:String) {
+        self.stepDescription = description
+    }
 }

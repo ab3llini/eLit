@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Drink" representedClassName="Drink" syncable="YES" codeGenerationType="category">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="drinkRecipe" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="DrinkComponent" representedClassName="DrinkComponent" syncable="YES" codeGenerationType="category">
-        <attribute name="qty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inRecipeSteps" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="witComponents" inverseEntity="RecipeStep" syncable="YES"/>
-        <relationship name="withIngredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inComponents" inverseEntity="Ingredient" syncable="YES"/>
+        <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unit" attributeType="String" syncable="YES"/>
+        <relationship name="inRecipeSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="witComponents" inverseEntity="RecipeStep" syncable="YES"/>
+        <relationship name="withIngredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inComponents" inverseEntity="Ingredient" syncable="YES"/>
     </entity>
     <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="category">
-        <attribute name="grade" attributeType="Integer 32" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="grade" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ingredientDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="inComponents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrinkComponent" inverseName="withIngredient" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="category">
         <relationship name="ofDrink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="drinkRecipe" inverseEntity="Drink" syncable="YES"/>
-        <relationship name="steps" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeStep" inverseName="ofRecipe" inverseEntity="RecipeStep" syncable="YES"/>
+        <relationship name="steps" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeStep" inverseName="ofRecipe" inverseEntity="RecipeStep" syncable="YES"/>
     </entity>
     <entity name="RecipeStep" representedClassName="RecipeStep" syncable="YES" codeGenerationType="category">
         <attribute name="stepDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
-        <relationship name="witComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
+        <relationship name="witComponents" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="75"/>
+        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="73"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="103"/>
         <element name="Ingredient" positionX="-593.10546875" positionY="-1182.09765625" width="128" height="103"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="73"/>
-        <element name="RecipeStep" positionX="-878.60546875" positionY="-1024.17578125" width="128" height="90"/>
+        <element name="RecipeStep" positionX="-878.60546875" positionY="-1024.17578125" width="128" height="88"/>
     </elements>
 </model>

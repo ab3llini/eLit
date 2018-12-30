@@ -20,9 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let em : EntityManager = EntityManager()
         
-        for drink in (em.fetchAll(type: Drink.self)!) {
-            print(drink.objectID)
-        }
+        //var ingredient = Ingredient(name: "testIngredient")
+        //var component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
+        //var step = RecipeStep(drinkComponents: [component])
+        //var recipe = Recipe(steps: [step])
+        //var drink = Drink(name: "testDrink", recipe: recipe)
+        
+        //self.saveContext()
+        
         
         
         
