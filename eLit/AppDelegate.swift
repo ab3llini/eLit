@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let em : EntityManager = EntityManager()
         
-        //var ingredient = Ingredient(name: "testIngredient")
-        //var component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
-        //var step = RecipeStep(drinkComponents: [component])
-        //var recipe = Recipe(steps: [step])
-        //var drink = Drink(name: "testDrink", recipe: recipe)
+        let ingredient = Ingredient(name: "testIngredient")
+        let component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
+        let step = RecipeStep(drinkComponents: [component])
+        let recipe = Recipe(steps: [step])
+        let _ = Drink(name: "testDrink", recipe: recipe)
         
         //self.saveContext()
         
