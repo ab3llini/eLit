@@ -9,7 +9,12 @@
 import UIKit
 import CoreData
 
+@objc(DrinkComponent)
 class DrinkComponent: CoreDataObject {
+    //MARK: Attributes
+    public override var description: String {
+        return "\(self.qty) \(String(describing: ((self.unit) != nil) ? self.unit! : ""))"
+    }
     
     //MARK: Initializers
     convenience init(ingredient: Ingredient, quantity: Int16, unit: Unit) {

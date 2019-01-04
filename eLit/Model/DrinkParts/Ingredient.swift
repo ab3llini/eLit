@@ -9,7 +9,14 @@
 import UIKit
 import CoreData
 
+@objc(Ingredient)
 class Ingredient: CoreDataObject {
+    //MARK: Attributes
+    public override var description: String {
+        return "name: \(String(describing: self.name))\n" +
+        "grade: \(self.grade)" +
+        "description: \(self.description)"
+    }
     
     //MARK: Initializers
     convenience init(grade: Int16, name: String) {

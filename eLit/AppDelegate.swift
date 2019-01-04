@@ -18,13 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let em : EntityManager = EntityManager()
+        var drinks = Model.getInstance().getDrinks()
+        drinks.forEach { d in print(d) }
         
         let ingredient = Ingredient(name: "testIngredient")
         let component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
         let step = RecipeStep(drinkComponents: [component])
         let recipe = Recipe(steps: [step])
-        let _ = Drink(name: "testDrink", recipe: recipe)
+        let drink = Drink(name: "testDrink2", recipe: recipe)
+        drinks.append(drink)
+        Model.getInstance().addDrink(drink)
         
         //self.saveContext()
         

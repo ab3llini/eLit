@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
+		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
 		A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00221D82DC300469827 /* eLit.xcdatamodeld */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
 		A4D6D00921D8313500469827 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00821D8313500469827 /* Recipe.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A4D6D00321D82DC300469827 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A4D6D00721D82F4E00469827 /* DrinkParts */,
 				BD401C5921D78ECF007496F9 /* CoreDataObject.swift */,
 				BD401C5B21D79261007496F9 /* EntityManager.swift */,
+				A4BF368221DFF9D900768BB6 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD37F4A821CE4FE70080C0F7 /* ViewController.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
+				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,

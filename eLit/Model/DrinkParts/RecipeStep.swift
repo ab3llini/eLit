@@ -9,7 +9,14 @@
 import UIKit
 import CoreData
 
+@objc(RecipeStep)
 class RecipeStep: CoreDataObject {
+    //MARK: Attributes
+    public override var description: String {
+        let components = self.witComponents?.array as! [DrinkComponent]
+        return  components.map({$0.description}).reduce("STEP:\n") {str, component in "\(str)\t\(component)"} +
+            "\n" + ((self.stepDescription != nil) ? self.stepDescription! : "")
+    }
     
     //MARK: Initializers
     convenience init(description: String, drinkComponents: [DrinkComponent]){
