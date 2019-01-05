@@ -32,5 +32,10 @@ class Model: NSObject {
     public func addDrink(_ drink: Drink) {
         self.drinks.append(drink)
     }
+    
+    public func savePersistentModel() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.saveContext()
+    }
 
 }

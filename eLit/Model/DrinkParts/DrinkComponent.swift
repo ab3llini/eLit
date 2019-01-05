@@ -13,7 +13,8 @@ import CoreData
 class DrinkComponent: CoreDataObject {
     //MARK: Attributes
     public override var description: String {
-        return "\(self.qty) \(String(describing: ((self.unit) != nil) ? self.unit! : ""))"
+        return "\(self.qty) \(String(describing: ((self.unit) != nil) ? self.unit! : "")) " +
+            self.withIngredient!.name!
     }
     
     //MARK: Initializers

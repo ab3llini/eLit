@@ -22,14 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drinks.forEach { d in print(d) }
         
         let ingredient = Ingredient(name: "testIngredient")
+        let ingredient2 = Ingredient(name: "testIngredient2")
         let component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
+        let component2 = DrinkComponent(ingredient: ingredient2, quantity: 4, unit: .PART)
         let step = RecipeStep(drinkComponents: [component])
-        let recipe = Recipe(steps: [step])
+        let step2 = RecipeStep(drinkComponents: [component, component2])
+        let recipe = Recipe(steps: [step, step2])
         let drink = Drink(name: "testDrink2", recipe: recipe)
         drinks.append(drink)
         Model.getInstance().addDrink(drink)
-        
-        //self.saveContext()
+        //Model.getInstance().savePersistentModel()
         
         
         
