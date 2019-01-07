@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        /*
         var drinks = Model.getInstance().getDrinks()
         drinks.forEach { d in print(d) }
         
@@ -28,9 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let step = RecipeStep(drinkComponents: [component])
         let step2 = RecipeStep(drinkComponents: [component, component2])
         let recipe = Recipe(steps: [step, step2])
-        let drink = Drink(name: "testDrink2", recipe: recipe)
-        drinks.append(drink)
-        Model.getInstance().addDrink(drink)
+        */
+        
+        let drink1 = Drink(name: "Drink1", image: "Drink1", degree: 25)
+        let drink2 = Drink(name: "Drink2", image: "Drink2", degree: 35)
+        let drink3 = Drink(name: "Drink3", image: "Drink3", degree: 20)
+        let drink4 = Drink(name: "Drink4", image: "Drink4", degree: 40)
+
+        
+        Model.getInstance().addDrink(drink1)
+        Model.getInstance().addDrink(drink2)
+        Model.getInstance().addDrink(drink3)
+        Model.getInstance().addDrink(drink4)
+        
         //Model.getInstance().savePersistentModel()
         
         
@@ -64,7 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+    
+    //TODO: - MOVE THIS 2 METHODS IN THE MODEL IMPLEMENTATION!!!! 
     var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation

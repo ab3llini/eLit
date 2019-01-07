@@ -22,5 +22,14 @@ class Drink: CoreDataObject {
         self.name = name
         self.drinkRecipe = recipe
     }
+    
+    convenience init(name: String, image: String, degree: Int32) {
+        
+        self.init()
+        self.name = name
+        self.image = image
+        self.degree = degree
+        
+    }
         
 }

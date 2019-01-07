@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Drink" representedClassName="Drink" syncable="YES" codeGenerationType="category">
+        <attribute name="degree" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="drinkRecipe" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
@@ -26,7 +28,7 @@
         <relationship name="witComponents" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="73"/>
+        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="105"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="103"/>
         <element name="Ingredient" positionX="-593.10546875" positionY="-1182.09765625" width="128" height="103"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="73"/>
