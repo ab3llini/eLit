@@ -4,7 +4,7 @@
         <attribute name="degree" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="drinkRecipe" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="DrinkComponent" representedClassName="DrinkComponent" syncable="YES" codeGenerationType="category">
         <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
