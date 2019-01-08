@@ -11,6 +11,7 @@ import CoreData
 
 @objc(Drink)
 class Drink: CoreDataObject {
+        
     //MARK: Attributes
     public override var description: String {
         return self.name! + "\n\(String(describing: self.drinkRecipe))"

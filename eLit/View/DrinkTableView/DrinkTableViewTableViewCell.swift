@@ -22,7 +22,13 @@ import UIKit
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
+        self.backgroundImage.addBlurEffect()
+        
+        //Disable ugly selection effect
+        self.selectionStyle = .none;
+
                 
     }
 
@@ -32,11 +38,12 @@ import UIKit
         // Configure the view for the selected state
     }
     
-    private func setDrinkImage(image : UIImage) {
+    private func setDrinkImage(image : UIImage, bgcolor : UIColor) {
         
         self.drinkImageView.image = image
         self.backgroundImage.image = image
-        self.backgroundImage.addBlurEffect()
+        self.backgroundImage.backgroundColor = bgcolor.withAlphaComponent(0.3)
+
     }
     
     private func setAlcholicRibbon(degree: String, color : UIColor) {
@@ -46,10 +53,10 @@ import UIKit
         
     }
     
-    public func setDrink(drink : Drink, withImage image: UIImage) {
+    public func setDrink(drink : Drink, withRenderingData data: CellRenderingData) {
         
-        self.setDrinkImage(image: image)
-        self.setAlcholicRibbon(degree: String(drink.degree), color: image.getCenterPixelColor())
+        self.setDrinkImage(image: data.image, bgcolor: data.coreColor)
+        self.setAlcholicRibbon(degree: String(drink.degree), color: data.coreColor.withAlphaComponent(0.6))
         self.drinkNameLabel.text = drink.description
         
     }

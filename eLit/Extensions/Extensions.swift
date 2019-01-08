@@ -19,9 +19,7 @@ extension UIImageView
         blurEffectView.frame = self.bounds        
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
         self.addSubview(blurEffectView)
-    
-        self.backgroundColor = self.image?.getCenterPixelColor().withAlphaComponent(0.3)
-        
+            
     }
     
     

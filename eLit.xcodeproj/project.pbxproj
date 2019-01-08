@@ -24,6 +24,8 @@
 		BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */; };
 		BD37F4BE21CE4FE70080C0F7 /* eLitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4BD21CE4FE70080C0F7 /* eLitTests.swift */; };
 		BD37F4C921CE4FE70080C0F7 /* eLitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */; };
+		BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */; };
+		BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */; };
 		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
@@ -74,6 +76,8 @@
 		BD37F4C421CE4FE70080C0F7 /* eLitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eLitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eLitUITests.swift; sourceTree = "<group>"; };
 		BD37F4CA21CE4FE70080C0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				BD54F3F621E3923000FC528B /* RibbonView.xib */,
 				BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */,
 				BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */,
+				BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */,
+				BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */,
 				BD2C652021E24FEC00EC41C6 /* ContainerView.swift */,
 				BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */,
 			);
@@ -324,6 +330,7 @@
 				BD37F4B021CE4FE70080C0F7 /* Assets.xcassets in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */,
+				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
 				BD54F3F721E3923000FC528B /* RibbonView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +366,7 @@
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
+				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BD6BE5AE21E3593F002DCE2A /* DrinkTableView.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
