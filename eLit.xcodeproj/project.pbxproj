@@ -33,6 +33,14 @@
 		BD6BE5AE21E3593F002DCE2A /* DrinkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
+		BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */; };
+		BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F421E7A2A100503B59 /* FSPagerView.swift */; };
+		BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F521E7A2A100503B59 /* FSPageControl.swift */; };
+		BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F621E7A2A200503B59 /* FSPageViewLayout.swift */; };
+		BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F721E7A2A200503B59 /* FSPagerViewCell.swift */; };
+		BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F821E7A2A200503B59 /* FSPageViewTransformer.swift */; };
+		BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F921E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift */; };
+		BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +93,16 @@
 		BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableView.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
+		BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
+		BDED02F421E7A2A100503B59 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
+		BDED02F521E7A2A100503B59 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
+		BDED02F621E7A2A200503B59 /* FSPageViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewLayout.swift; sourceTree = "<group>"; };
+		BDED02F721E7A2A200503B59 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
+		BDED02F821E7A2A200503B59 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
+		BDED02F921E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		BDED030221E7A2D500503B59 /* eLit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eLit-Bridging-Header.h"; sourceTree = "<group>"; };
+		BDED030321E7A2D600503B59 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
+		BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +189,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				BDED02F021E7A22D00503B59 /* Libraries */,
 				BDC2F54E21E36B5800D5AB2E /* Extensions */,
 				BD2C651421E24C6D00EC41C6 /* View */,
 				BD401C5621D77BCF007496F9 /* Model */,
@@ -220,6 +239,31 @@
 				BDC2F54F21E36B6200D5AB2E /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BDED02F021E7A22D00503B59 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BDED030121E7A2AC00503B59 /* FSPagerView */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		BDED030121E7A2AC00503B59 /* FSPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				BDED030321E7A2D600503B59 /* FSPagerViewObjcCompat.h */,
+				BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */,
+				BDED02F521E7A2A100503B59 /* FSPageControl.swift */,
+				BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */,
+				BDED02F421E7A2A100503B59 /* FSPagerView.swift */,
+				BDED02F721E7A2A200503B59 /* FSPagerViewCell.swift */,
+				BDED02F921E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift */,
+				BDED02F621E7A2A200503B59 /* FSPageViewLayout.swift */,
+				BDED02F821E7A2A200503B59 /* FSPageViewTransformer.swift */,
+				BDED030221E7A2D500503B59 /* eLit-Bridging-Header.h */,
+			);
+			path = FSPagerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +334,7 @@
 				TargetAttributes = {
 					BD37F4A121CE4FE70080C0F7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					BD37F4B821CE4FE70080C0F7 = {
 						CreatedOnToolsVersion = 10.1;
@@ -363,17 +408,25 @@
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
+				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
+				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
+				BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */,
+				BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */,
+				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
+				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BD6BE5AE21E3593F002DCE2A /* DrinkTableView.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
+				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
 				BD2C651D21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift in Sources */,
 				BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */,
 				A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */,
 				A4D6D00921D8313500469827 /* Recipe.swift in Sources */,
+				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
@@ -557,6 +611,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dima.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -566,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
@@ -575,6 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dima.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
