@@ -15,6 +15,9 @@ class DBManager:
 
 
 if __name__ == '__main__':
+    a = Drink(name='test', degree=23)
+    print(a.objects)
+    exit()
     # dbm = DBManager('192.168.178.37', 27017)
     me.connect('eLit', host='192.168.178.37', port=27017)
     # _ = Test(title='Luca').save()
@@ -22,3 +25,4 @@ if __name__ == '__main__':
 
     for d in DBObject.objects:
         print(type(d))
+        print(d.id)

@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CoreDataObject" representedClassName="CoreDataObject" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Drink" representedClassName="Drink" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
         <attribute name="degree" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -33,9 +34,9 @@
     <elements>
         <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="105"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
-        <element name="Ingredient" positionX="-593.10546875" positionY="-1182.09765625" width="128" height="105"/>
+        <element name="Ingredient" positionX="-658.75" positionY="-1139.57421875" width="128" height="105"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
-        <element name="RecipeStep" positionX="-878.60546875" positionY="-1024.17578125" width="128" height="90"/>
-        <element name="CoreDataObject" positionX="-675" positionY="-1170" width="128" height="60"/>
+        <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
+        <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="75"/>
     </elements>
 </model>
