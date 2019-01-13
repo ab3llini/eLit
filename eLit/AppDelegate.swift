@@ -37,13 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let drink2 = Drink(name: "Drink2", image: "Drink2", degree: 35)
         let drink3 = Drink(name: "Drink3", image: "Drink3", degree: 20)
         let drink4 = Drink(name: "Drink4", image: "Drink4", degree: 40)
-
         
         model.addDrink(drink1)
         model.addDrink(drink2)
         model.addDrink(drink3)
         model.addDrink(drink4)
-        
         
         //model.savePersistentModel()
         
