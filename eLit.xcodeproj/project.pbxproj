@@ -10,7 +10,6 @@
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
-		A4C4D45021E60744009DCA47 /* test.py in Resources */ = {isa = PBXBuildFile; fileRef = A4C4D44F21E60744009DCA47 /* test.py */; };
 		A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00221D82DC300469827 /* eLit.xcdatamodeld */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
 		A4D6D00921D8313500469827 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00821D8313500469827 /* Recipe.swift */; };
@@ -57,7 +56,6 @@
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		A4C4D44F21E60744009DCA47 /* test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test.py; sourceTree = "<group>"; };
 		A4D6D00321D82DC300469827 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 		A4C4D44E21E606FA009DCA47 /* eLitServer */ = {
 			isa = PBXGroup;
 			children = (
-				A4C4D44F21E60744009DCA47 /* test.py */,
 			);
 			path = eLitServer;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
-				A4C4D45021E60744009DCA47 /* test.py in Resources */,
 				BD37F4B021CE4FE70080C0F7 /* Assets.xcassets in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */,
