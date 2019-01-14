@@ -53,10 +53,10 @@ import UIKit
         
     }
     
-    public func setDrink(drink : Drink, withRenderingData data: CellRenderingData) {
+    public func setDrink(drink : Drink, withImage image: UIImage, andColor color: UIColor) {
         
-        self.setDrinkImage(image: data.image, bgcolor: data.coreColor)
-        self.setAlcholicRibbon(degree: String(drink.degree), color: data.coreColor.withAlphaComponent(0.6))
+        self.setDrinkImage(image: image, bgcolor: color)
+        self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.6))
         self.drinkNameLabel.text = drink.description
         
     }
