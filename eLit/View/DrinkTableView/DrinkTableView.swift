@@ -55,7 +55,7 @@ class DrinkTableView: UITableView, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return drinks.count
+        return drinks.count + 1 //For header cell
     }
     
     
@@ -76,7 +76,7 @@ class DrinkTableView: UITableView, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewTableViewCell", for: indexPath) as! DrinkTableViewTableViewCell
             
             
-            let drink : Drink = drinks[indexPath.row]
+            let drink : Drink = drinks[indexPath.row - 1]
             let data : CellRenderingData = renderingData[drink.description]!
             cell.setDrink(drink: drink, withRenderingData: data)
             
