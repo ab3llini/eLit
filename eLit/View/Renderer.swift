@@ -21,10 +21,10 @@ class Renderer: NSObject {
         
         for drink in drinks {
             
-            if self.coreColors[drink.description] == nil {
+            if self.coreColors[drink.name!] == nil {
                 
                 let image = UIImage(named: drink.image!)
-                self.coreColors[drink.description] = image!.getCenterPixelColor()
+                self.coreColors[drink.name!] = image!.getCenterPixelColor()
                 
             }
             

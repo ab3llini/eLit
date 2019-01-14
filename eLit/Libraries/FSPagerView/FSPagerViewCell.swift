@@ -10,6 +10,11 @@ import UIKit
 
 open class FSPagerViewCell: UICollectionViewCell {
     
+    open override func awakeFromNib() {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 5
+    }
+    
     /// Returns the label used for the main textual content of the pager view cell.
     @objc
     open var textLabel: UILabel? {
@@ -46,7 +51,17 @@ open class FSPagerViewCell: UICollectionViewCell {
         // MARK - Addition
         imageView.contentMode = .scaleAspectFit
         
+        // MARK - Addition
+        // imageView.addBlurEffect()
+        
         return imageView
+    }
+    
+    // Addition
+    open func setBackgroundColor(color : UIColor) {
+        
+        self.imageView!.backgroundColor = color.withAlphaComponent(0.3)
+        
     }
     
     fileprivate weak var _textLabel: UILabel?
@@ -106,10 +121,10 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate func commonInit() {
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
+        /*self.contentView.layer.shadowColor = UIColor.black.cgColor
         self.contentView.layer.shadowRadius = 5
         self.contentView.layer.shadowOpacity = 0.75
-        self.contentView.layer.shadowOffset = .zero
+        self.contentView.layer.shadowOffset = .zero*/
         
         
         

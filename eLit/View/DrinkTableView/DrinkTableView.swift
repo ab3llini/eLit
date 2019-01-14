@@ -59,7 +59,7 @@ class DrinkTableView: UITableView, UITableViewDataSource {
             
             let drink : Drink = drinks[indexPath.row - 1]
             
-            let color = Renderer.shared.getCoreColors()[drink.description]!
+            let color = Renderer.shared.getCoreColors()[drink.name!]!
             let image = UIImage(named: drink.image!)!
             cell.setDrink(drink: drink, withImage: image, andColor: color)
             

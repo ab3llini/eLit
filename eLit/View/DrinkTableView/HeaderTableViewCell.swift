@@ -27,9 +27,14 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         cell.imageView?.image = UIImage(named: drinks[index].image!)
         cell.textLabel?.text = drinks[index].description
+        
+        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!
+        
+        cell.setBackgroundColor(color: bg)
+        
         return cell
     }
-    
+
 
     
     
@@ -41,7 +46,8 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         drinkPagerView.dataSource = self
         
         self.drinkPagerView.transformer = FSPagerViewTransformer(type: .cubic)
-
+    
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
