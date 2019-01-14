@@ -14,13 +14,13 @@
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
 		A4D6D00921D8313500469827 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00821D8313500469827 /* Recipe.swift */; };
 		A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00A21D8318900469827 /* RecipeStep.swift */; };
+		BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD23727F21E8D68C007FEFC3 /* Assets.xcassets */; };
 		BD2C651D21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */; };
 		BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */; };
 		BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C652021E24FEC00EC41C6 /* ContainerView.swift */; };
 		BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4A521CE4FE70080C0F7 /* AppDelegate.swift */; };
 		BD37F4A821CE4FE70080C0F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4A721CE4FE70080C0F7 /* ViewController.swift */; };
 		BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD37F4A921CE4FE70080C0F7 /* Main.storyboard */; };
-		BD37F4B021CE4FE70080C0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD37F4AF21CE4FE70080C0F7 /* Assets.xcassets */; };
 		BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */; };
 		BD37F4BE21CE4FE70080C0F7 /* eLitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4BD21CE4FE70080C0F7 /* eLitTests.swift */; };
 		BD37F4C921CE4FE70080C0F7 /* eLitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */; };
@@ -68,6 +68,7 @@
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A4D6D00A21D8318900469827 /* RecipeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStep.swift; sourceTree = "<group>"; };
+		BD23727F21E8D68C007FEFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTableViewTableViewCell.xib; sourceTree = "<group>"; };
 		BD2C652021E24FEC00EC41C6 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		BD37F4A521CE4FE70080C0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD37F4A721CE4FE70080C0F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BD37F4AA21CE4FE70080C0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BD37F4AF21CE4FE70080C0F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD37F4B221CE4FE70080C0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD37F4B421CE4FE70080C0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD37F4B921CE4FE70080C0F7 /* eLitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eLitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +169,7 @@
 		BD37F49921CE4FE70080C0F7 = {
 			isa = PBXGroup;
 			children = (
+				BD23727F21E8D68C007FEFC3 /* Assets.xcassets */,
 				BD37F4A421CE4FE70080C0F7 /* eLit */,
 				BD37F4BC21CE4FE70080C0F7 /* eLitTests */,
 				BD37F4C721CE4FE70080C0F7 /* eLitUITests */,
@@ -196,7 +197,6 @@
 				BD37F4A521CE4FE70080C0F7 /* AppDelegate.swift */,
 				BD37F4A721CE4FE70080C0F7 /* ViewController.swift */,
 				BD37F4A921CE4FE70080C0F7 /* Main.storyboard */,
-				BD37F4AF21CE4FE70080C0F7 /* Assets.xcassets */,
 				BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */,
 				A4D6D00221D82DC300469827 /* eLit.xcdatamodeld */,
 				BD37F4B421CE4FE70080C0F7 /* Info.plist */,
@@ -372,10 +372,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
-				BD37F4B021CE4FE70080C0F7 /* Assets.xcassets in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
+				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 				BD54F3F721E3923000FC528B /* RibbonView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
