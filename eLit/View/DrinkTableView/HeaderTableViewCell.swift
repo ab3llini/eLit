@@ -11,7 +11,7 @@ import UIKit
 class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewDataSource {
     
     
-    let drinks = Model.getInstance().getDrinks()
+    let drinks = Model.shared.getDrinks()
     
     @IBOutlet weak var drinkPagerView: FSPagerView! {
         didSet {
