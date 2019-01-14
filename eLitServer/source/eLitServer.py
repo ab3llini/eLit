@@ -1,6 +1,7 @@
 import sys
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import simplejson
+import json
 
 
 class Server(SimpleHTTPRequestHandler):
@@ -9,7 +10,7 @@ class Server(SimpleHTTPRequestHandler):
 
     def _set_headers(self):
         self.send_response(200)
-        self.send_header('Content-type', 'text/html')
+        self.send_header('Content-type', 'application/json')
         self.end_headers()
 
     def do_GET(self):
@@ -27,9 +28,9 @@ class Server(SimpleHTTPRequestHandler):
 
         self.send_response(200)
         self.end_headers()
-
         data_dict = simplejson.loads(data_string)
-        self.wfile.write(str.encode("<html><body><h1>POST!</h1></body></html>"))
+        print(data_dict)
+        self.wfile.write(json.dumps(data_dict).encode())
 
 
 def start_server(ip: str, port: int):

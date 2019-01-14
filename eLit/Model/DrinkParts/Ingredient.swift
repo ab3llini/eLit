@@ -28,5 +28,12 @@ class Ingredient: CoreDataObject {
     convenience init(name: String) {
         self.init(grade: 0, name: name)
     }
+    
+    convenience init(dict: [String: Any]) {
+        self.init()
+        self.grade = dict["grade"] as? Int16 ?? 0
+        self.name = dict["name"] as? String
+        self.ingredientDescription = dict["ingredient_description"] as? String
+    }
 
 }
