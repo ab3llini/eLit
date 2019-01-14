@@ -23,13 +23,13 @@ class Server(SimpleHTTPRequestHandler):
     def do_POST(self):
         # Doesn't do anything with posted
         self._set_headers()
-        print("in post method")
-        data_string = self.rfile.read(int(self.headers['Content-Length']))
 
-        self.send_response(200)
-        self.end_headers()
+        print(self.headers)
+
+        data_string = self.rfile.read(int(self.headers['Content-Length']))
+        print('Received:', data_string)
         data_dict = simplejson.loads(data_string)
-        print(data_dict)
+        print('Parsed:', data_dict)
         self.wfile.write(json.dumps(data_dict).encode())
 
 

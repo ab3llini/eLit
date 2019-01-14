@@ -42,6 +42,7 @@
 		BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F821E7A2A200503B59 /* FSPageViewTransformer.swift */; };
 		BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F921E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift */; };
 		BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */; };
+		BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF964D521ECF98300228EEB /* DataBaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		BDED030221E7A2D500503B59 /* eLit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eLit-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDED030321E7A2D600503B59 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
+		BDF964D521ECF98300228EEB /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				BDF964D421ECF98300228EEB /* Network */,
 				BDED02F021E7A22D00503B59 /* Libraries */,
 				BDC2F54E21E36B5800D5AB2E /* Extensions */,
 				BD2C651421E24C6D00EC41C6 /* View */,
@@ -268,6 +271,15 @@
 			);
 			path = FSPagerView;
 			sourceTree = "<group>";
+		};
+		BDF964D421ECF98300228EEB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BDF964D521ECF98300228EEB /* DataBaseManager.swift */,
+			);
+			name = Network;
+			path = eLit/Network;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -408,6 +420,7 @@
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				BD37F4A821CE4FE70080C0F7 /* ViewController.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
+				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,

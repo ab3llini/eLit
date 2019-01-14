@@ -25,6 +25,10 @@ class DataBaseManager: NSObject {
         request.httpMethod = "POST"
         request.httpBody = toJson(dataDict)!
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            let resp : HTTPURLResponse = response as! HTTPURLResponse
+            print("All headers....", resp.allHeaderFields)
+            
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 return
@@ -35,9 +39,9 @@ class DataBaseManager: NSObject {
                 print("response = \(String(describing: response))")
             }
             
-            let responseString = String(data: data, encoding: .utf8)
+            let responseString = String(data: data, encoding: .utf8)!
             let json = self.fromJson(data)
-//            print("responseString = \(String(describing: responseString))")
+            print("responseString = \(responseString)")
         }
         task.resume()
         return nil
