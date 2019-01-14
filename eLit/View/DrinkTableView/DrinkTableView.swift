@@ -20,7 +20,6 @@ class DrinkTableView: UITableView, UITableViewDataSource {
     
     //Load drinks
     let drinks = Model.shared.getDrinks()
-    var renderingData : [String : CellRenderingData] = [:]
     
     override func awakeFromNib() {
         
@@ -34,28 +33,10 @@ class DrinkTableView: UITableView, UITableViewDataSource {
             
         }
         
-        
-        //Preload images and compute core color - please keep img resolution low in order not to saturate ram
-        //This might slow down table load times with lots of images - beware!
-        
-        for drink in drinks {
-            
-            if renderingData[drink.description] == nil {
-                
-                let image = UIImage(named: drink.image!)
-                let color = image!.getCenterPixelColor()
-                let newData = CellRenderingData(image: image!, coreColor: color)
-                
-                renderingData[drink.description] = newData
-                
-            }
-            
-        }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return drinks.count
+        return drinks.count + 1 //For header cell
     }
     
     
@@ -76,9 +57,11 @@ class DrinkTableView: UITableView, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewTableViewCell", for: indexPath) as! DrinkTableViewTableViewCell
             
             
-            let drink : Drink = drinks[indexPath.row]
-            let data : CellRenderingData = renderingData[drink.description]!
-            cell.setDrink(drink: drink, withRenderingData: data)
+            let drink : Drink = drinks[indexPath.row - 1]
+            
+            let color = Renderer.shared.getCoreColors()[drink.description]!
+            let image = UIImage(named: drink.image!)!
+            cell.setDrink(drink: drink, withImage: image, andColor: color)
             
             return cell
         }

@@ -15,36 +15,34 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="262" id="KGk-i7-Jjw" customClass="HeaderTableViewCell" customModule="eLit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="332" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="332" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqW-1Z-gNh">
-                        <rect key="frame" x="16" y="11" width="300" height="228"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS &lt;3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90b-ER-r6Y">
-                                <rect key="frame" x="123.5" y="103.5" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.91628340132616681" green="1" blue="0.87626111397518069" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqW-1Z-gNh" customClass="FSPagerView" customModule="eLit" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5.5" width="322" height="240"/>
                         <constraints>
-                            <constraint firstItem="90b-ER-r6Y" firstAttribute="centerY" secondItem="NqW-1Z-gNh" secondAttribute="centerY" id="9Kr-TE-vmE"/>
-                            <constraint firstAttribute="height" constant="228" id="JwN-0u-vjh"/>
-                            <constraint firstItem="90b-ER-r6Y" firstAttribute="centerX" secondItem="NqW-1Z-gNh" secondAttribute="centerX" id="rHu-XS-nXT"/>
+                            <constraint firstAttribute="height" constant="240" id="b6K-ah-D2R"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="automaticSlidingInterval">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="NqW-1Z-gNh" secondAttribute="trailing" id="6b3-cN-qAr"/>
-                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Adj-eo-Ntg"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="NqW-1Z-gNh" secondAttribute="bottom" id="DzM-i2-rPt"/>
-                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="SC8-DX-Nvv"/>
+                    <constraint firstAttribute="bottom" secondItem="NqW-1Z-gNh" secondAttribute="bottom" constant="5" id="BbG-14-iIU"/>
+                    <constraint firstAttribute="trailing" secondItem="NqW-1Z-gNh" secondAttribute="trailing" constant="5" id="G8S-BF-jEC"/>
+                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="fuh-uJ-qyx"/>
+                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hYi-Q2-hke"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="drinkPagerView" destination="NqW-1Z-gNh" id="tqB-mm-fmX"/>
+            </connections>
             <point key="canvasLocation" x="62.399999999999999" y="126.83658170914543"/>
         </tableViewCell>
     </objects>
