@@ -19,7 +19,7 @@ class DrinkTableView: UITableView, UITableViewDataSource {
     let nibs = ["DrinkTableViewTableViewCell", "HeaderTableViewCell"]
     
     //Load drinks
-    let drinks = Model.getInstance().getDrinks()
+    let drinks = Model.shared.getDrinks()
     var renderingData : [String : CellRenderingData] = [:]
     
     override func awakeFromNib() {

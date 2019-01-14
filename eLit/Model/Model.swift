@@ -10,18 +10,15 @@ import UIKit
 
 class Model: NSObject {
     //MARK: attributes
-    private static let instance = Model()
+    public static let shared = Model()
     private var drinks: [Drink]
     
     //MARK: initializers
     private override init() {
         let em = EntityManager.getInstance()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        _ = appDelegate.persistentContainer.viewContext
         drinks = em.fetchAll(type: Drink.self) ?? []
-    }
-    
-    //MARK: Accessors
-    class func getInstance() -> Model {
-        return instance
     }
     
     //MARK: Public Methods

@@ -31,18 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let recipe = Recipe(steps: [step, step2])
         */
         
+        let model = Model.shared as Model
+        
         let drink1 = Drink(name: "Drink1", image: "Drink1", degree: 25)
         let drink2 = Drink(name: "Drink2", image: "Drink2", degree: 35)
         let drink3 = Drink(name: "Drink3", image: "Drink3", degree: 20)
         let drink4 = Drink(name: "Drink4", image: "Drink4", degree: 40)
-
         
-        Model.getInstance().addDrink(drink1)
-        Model.getInstance().addDrink(drink2)
-        Model.getInstance().addDrink(drink3)
-        Model.getInstance().addDrink(drink4)
+        model.addDrink(drink1)
+        model.addDrink(drink2)
+        model.addDrink(drink3)
+        model.addDrink(drink4)
         
-        //Model.getInstance().savePersistentModel()
+        //model.savePersistentModel()
         
         
         
@@ -77,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     //TODO: - MOVE THIS 2 METHODS IN THE MODEL IMPLEMENTATION!!!! 
-    var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the

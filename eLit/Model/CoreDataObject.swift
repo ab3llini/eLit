@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@objc(CoreDataObject)
 class CoreDataObject: NSManagedObject {
     
     convenience init () {
