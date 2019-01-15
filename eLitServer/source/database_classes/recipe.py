@@ -1,7 +1,7 @@
 import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.recipe_step import RecipeStep
-from typing import List
+from typing import List, Dict
 
 
 class Recipe(DBObject):
@@ -13,9 +13,16 @@ class Recipe(DBObject):
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
              _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
-
         self.steps = self.step_list
         return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
                             save_condition, signal_kwargs, **kwargs)
+
+    def add_step(self, step: RecipeStep):
+        self.step_list.append(step)
+
+    def to_dict(self) -> Dict:
+        data = super().to_dict()
+        data['steps'] = [x.to_dict() for x in self.steps]
+        return data
 
 

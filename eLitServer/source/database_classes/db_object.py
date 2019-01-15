@@ -1,6 +1,7 @@
 import mongoengine as me
 from hashlib import md5
 from pickle import dumps
+from typing import Dict
 
 
 class DBObject(me.Document):
@@ -10,3 +11,16 @@ class DBObject(me.Document):
     def __init__(self, *args, **values):
         super().__init__(*args, **values)
         self.fingerprint = md5(dumps(self)).hexdigest()
+
+    def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
+             _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
+        self.fingerprint = md5(dumps(self)).hexdigest()
+        return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
+                            save_condition, signal_kwargs, **kwargs)
+
+    def to_dict(self) -> Dict:
+        data = {
+            'id': self.id,
+            'fingerprint': self.fingerprint
+        }
+        return data

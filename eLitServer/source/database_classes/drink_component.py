@@ -1,3 +1,5 @@
+from typing import Dict
+
 import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.ingredient import Ingredient
@@ -15,3 +17,11 @@ class DrinkComponent(DBObject):
         self.ingredient = ingredient
         self.qty = qty
         self.unit = unit
+
+    def to_dict(self) -> Dict:
+        data = super().to_dict()
+        data['qty'] = self.qty
+        data['unit'] = self.unit
+        data['ingredient'] = self.ingredient.to_dict()
+        return data
+

@@ -1,7 +1,7 @@
 import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.drink_component import DrinkComponent
-from typing import List
+from typing import List, Dict
 
 
 class RecipeStep(DBObject):
@@ -22,3 +22,10 @@ class RecipeStep(DBObject):
 
     def add_component(self, component: DrinkComponent):
         self.components_list.append(component)
+
+    def to_dict(self) -> Dict:
+        data = super().to_dict()
+        data['step_description'] = self.step_description
+        data['components'] = [x.to_dict() for x in self.components]
+        return data
+

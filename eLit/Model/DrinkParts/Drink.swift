@@ -24,13 +24,21 @@ class Drink: CoreDataObject {
         self.drinkRecipe = recipe
     }
     
-    convenience init(name: String, image: String, degree: Int32) {
-        
+    convenience init(name: String, image: String, degree: Int16) {
         self.init()
         self.name = name
         self.image = image
         self.degree = degree
         
+    }
+    
+    convenience init(dict: [String: Any]) {
+        self.init()
+        self.name = dict["name"] as? String ?? ""
+        self.image = dict["image"] as? String ?? ""
+        self.degree = dict["degree"] as? Int16 ?? 0
+        self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
+        self.drinkDescription = dict["drink_description"] as? String ?? ""
     }
         
 }

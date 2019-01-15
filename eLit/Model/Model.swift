@@ -12,13 +12,13 @@ class Model: NSObject {
     //MARK: attributes
     public static let shared = Model()
     private var drinks: [Drink]
+    public let entityManager = EntityManager.shared
     
     //MARK: initializers
     private override init() {
-        let em = EntityManager.getInstance()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         _ = appDelegate.persistentContainer.viewContext
-        drinks = em.fetchAll(type: Drink.self) ?? []
+        drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
     }
     
     //MARK: Public Methods

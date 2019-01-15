@@ -18,9 +18,32 @@ class DataBaseManager: NSObject {
         self.defaultURL = URL(string: "http://127.0.0.1")!
     }
     
+    //MARK: Public methods
+    func fetchAllData(completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request = ["request": RequestType.FETCH_ALL.rawValue]
+        self.sendRequest(dataDict: request, completion: completion)
+    }
     
-    //MARK: Methods
-    func sendRequest(dataDict: Dictionary<String, Any>) -> String? {
+    func updateDB(completion: @escaping (_ data: [String: Any]) -> Void) {
+        let model = Model.shared
+        let objects: [CoreDataObject]? = model.entityManager.fetchAll(type: CoreDataObject.self)
+        guard let cdObjects = objects else {
+            completion(["status": "error"])
+            return
+        }
+        
+        var values: [String: String] = [:]
+        for o in cdObjects {
+            values[o.id ?? ""] = o.fingerprint ?? ""
+        }
+        
+        let dataDict = ["request": RequestType.FETCH_ALL.rawValue, "data": values] as [String : Any]
+        sendRequest(dataDict: dataDict, completion: completion)
+    }
+    
+    
+    //MARK: Private methods
+    private func sendRequest(dataDict: [String: Any], completion: @escaping ([String: Any]) -> Void) {
         var request = URLRequest(url: self.defaultURL)
         request.httpMethod = "POST"
         request.httpBody = toJson(dataDict)!
@@ -31,23 +54,26 @@ class DataBaseManager: NSObject {
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
+                completion(["status": "error"])
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
+                completion(["status": "error"])
             }
             
             let responseString = String(data: data, encoding: .utf8)!
-            let json = self.fromJson(data)
+            var dict = self.fromJson(data)
+            dict["status"] = "ok"
             print("responseString = \(responseString)")
+            completion(dict)
         }
         task.resume()
-        return nil
     }
     
-    func toJson(_ data: Dictionary<String, Any>) -> Data? {
+    private func toJson(_ data: [String: Any]) -> Data? {
         do {
             let json = try JSONSerialization.data(withJSONObject: data)
             return json
@@ -57,15 +83,9 @@ class DataBaseManager: NSObject {
         }
     }
     
-    func fromJson(_ data: Data) -> Dictionary<String, Any> {
+    private func fromJson(_ data: Data) -> [String: Any] {
         guard let stringData = String(data: data, encoding: .utf8) else { return [:] }
-        let jsonStringArray = stringData.split(separator: "{")[1...]
-        let jsonString = jsonStringArray.reduce("") { acc, step in
-            acc + "{" + step
-        }
-        print(jsonString)
-        
-        guard let jsonData = jsonString.data(using: .utf8) else { return [:] }
+        guard let jsonData = stringData.data(using: .utf8) else { return [:] }
         
         do {
             let json = try JSONSerialization.jsonObject(with: jsonData)

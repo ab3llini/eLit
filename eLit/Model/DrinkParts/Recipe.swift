@@ -22,5 +22,13 @@ class Recipe: CoreDataObject {
         self.init()
         self.steps = NSOrderedSet(array: steps)
     }
+    
+    convenience init(dict: [String: Any]) {
+        var steps: [RecipeStep] = []
+        for step in dict["steps"] as? [[String: Any]] ?? [] {
+            steps.append(RecipeStep(dict: step))
+        }
+        self.init(steps: steps)
+    }
 
 }
