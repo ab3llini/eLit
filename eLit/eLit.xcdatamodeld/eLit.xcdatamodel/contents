@@ -30,7 +30,7 @@
     <entity name="RecipeStep" representedClassName="RecipeStep" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
         <attribute name="stepDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
-        <relationship name="witComponents" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
+        <relationship name="witComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <elements>
         <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="75"/>

@@ -9,7 +9,7 @@ class Drink(DBObject):
     name = me.StringField(required=True, unique=True)
     degree = me.IntField(required=True)
     image = me.StringField()
-    recipe = me.ReferenceField(Recipe, required=False)
+    recipe = me.ReferenceField(Recipe, required=True)
     description = me.StringField(required=False)
 
     def __init__(self, name: str, degree: int, image: str = None, description: str = '', recipe: Recipe = None, *args, **values):
@@ -19,6 +19,12 @@ class Drink(DBObject):
         self.image = image
         self.recipe = recipe
         self.description = description
+
+    def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
+             _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
+        self.recipe.save()
+        return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
+                            save_condition, signal_kwargs, **kwargs)
 
     def to_dict(self) -> Dict:
         data = super().to_dict()

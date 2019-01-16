@@ -14,15 +14,29 @@ class DBManager:
         print(self.__db.last_status())
 
 
+def create_cocktail():
+    ing1 = Ingredient(name='ing1', grade=1, ingredient_description='Ingrediente 1')
+    ing2 = Ingredient(name='ing2', grade=2, ingredient_description='Ingrediente 2')
+    ing3 = Ingredient(name='ing3', grade=3, ingredient_description='Ingrediente 3')
+    component1 = DrinkComponent(ingredient=ing1, qty=2, unit=PART)
+    component2 = DrinkComponent(ingredient=ing2, qty=1, unit=PART)
+    component3 = DrinkComponent(ingredient=ing3, qty=5, unit=PART)
+    step1 = RecipeStep(description='Mix component1 with component2', components=[component1, component2])
+    step2 = RecipeStep(description='Add component3', components=[component3])
+    recipe = Recipe(steps=[step1, step2])
+    drink = Drink(name='Drink1', degree=20, image='http://test.me', description='Best drink ever', recipe=recipe)
+    drink.save()
+
+
 if __name__ == '__main__':
-    a = Drink(name='test', degree=23)
-    print(a.objects)
-    exit()
     # dbm = DBManager('192.168.178.37', 27017)
-    me.connect('eLit', host='192.168.178.37', port=27017)
+    me.connect('eLit', host='localhost', port=4321)
     # _ = Test(title='Luca').save()
     # _ = Test(title='Piero').save()
-
-    for d in DBObject.objects:
-        print(type(d))
-        print(d.id)
+    # create_cocktail()
+    obj = [*Drink.objects, *DrinkComponent.objects, *Ingredient.objects, *Recipe.objects, *RecipeStep.objects]
+    for o in obj:
+        print(o.to_json())
+    # for drink in drinks:
+        # drink.delete()
+        # print(str(drink.id))

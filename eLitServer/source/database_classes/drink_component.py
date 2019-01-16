@@ -8,15 +8,20 @@ from database_classes.unit import *
 
 class DrinkComponent(DBObject):
     qty = me.IntField()
-    unit = me.StringField(required=True, unique=True, choices=UNITS)
+    unit = me.StringField(required=True, unique=False, choices=UNITS)
     ingredient = me.ReferenceField(Ingredient, required=True)
 
-    def __init__(self, ingredient_name: str, qty: int = None, unit: str = None, *args, **values):
+    def __init__(self, ingredient: Ingredient, qty: int = None, unit: str = None, *args, **values):
         super().__init__(*args, **values)
-        ingredient = Ingredient.objects(name=ingredient_name)
         self.ingredient = ingredient
         self.qty = qty
         self.unit = unit
+
+    def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
+             _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
+        self.ingredient.save()
+        return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
+                            save_condition, signal_kwargs, **kwargs)
 
     def to_dict(self) -> Dict:
         data = super().to_dict()

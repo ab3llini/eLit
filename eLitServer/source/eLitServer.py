@@ -4,15 +4,14 @@ import simplejson
 import json
 from typing import Dict
 from database_classes import *
+from requests import *
 
 
 class Server(SimpleHTTPRequestHandler):
-    def __init__(self, request, client_address, server):
-        super().__init__(request, client_address, server)
-        self.request_map = {
-            'fetch_all': self.__on_fetch_all_request,
-            'update_db': self.__on_update_request
-        }
+    request_map = {
+        'fetch_all': on_fetch_all_request,
+        'update_db': on_update_request
+    }
 
     def _set_headers(self):
         self.send_response(200)
@@ -34,21 +33,9 @@ class Server(SimpleHTTPRequestHandler):
         print('Received:', data_string)
         data_dict = simplejson.loads(data_string)
         print('Parsed:', data_dict)
+        print(self.request_map)
         response = self.request_map[data_dict['request']](data_dict)
         self.wfile.write(json.dumps(response).encode())
-
-    # Utilities functions for handle the requests
-    @staticmethod
-    def __on_fetch_all_request(data: Dict) -> Dict:
-        drinks = Drink.objects
-        payload = {
-            'request': 'fetch_all',
-            'data': [x.to_dict() for x in drinks]
-        }
-        return payload
-
-    def __on_update_request(self, data: Dict) -> Dict:
-        pass
 
 
 def start_server(ip: str, port: int):

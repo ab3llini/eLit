@@ -5,22 +5,25 @@ from typing import Dict
 
 
 class DBObject(me.Document):
-    fingerprint = me.StringField(required=True)
-    meta = {'allow_inheritance': True}
+    fingerprint = me.StringField(required=True, unique=True)
+    meta = {
+        'allow_inheritance': True,
+        'abstract': True
+    }
 
     def __init__(self, *args, **values):
         super().__init__(*args, **values)
-        self.fingerprint = md5(dumps(self)).hexdigest()
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
              _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
+
         self.fingerprint = md5(dumps(self)).hexdigest()
         return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
                             save_condition, signal_kwargs, **kwargs)
 
     def to_dict(self) -> Dict:
         data = {
-            'id': self.id,
+            'id': str(self.id),
             'fingerprint': self.fingerprint
         }
         return data
