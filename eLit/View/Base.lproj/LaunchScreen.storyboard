@@ -17,7 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-aC-VPe">
+                                <rect key="frame" x="157" y="323" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-hW-Wkl">
+                                <rect key="frame" x="177.5" y="352" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5ZR-hW-Wkl" firstAttribute="top" secondItem="sW6-aC-VPe" secondAttribute="bottom" constant="8" id="LZ0-Rc-Tl2"/>
+                            <constraint firstItem="5ZR-hW-Wkl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="del-NY-kH2"/>
+                            <constraint firstItem="sW6-aC-VPe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fgG-z7-ZJf"/>
+                            <constraint firstItem="sW6-aC-VPe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hWB-gu-Ds6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
