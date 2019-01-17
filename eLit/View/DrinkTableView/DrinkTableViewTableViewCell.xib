@@ -84,7 +84,7 @@
                 <outlet property="drinkImageView" destination="i76-HZ-yaz" id="ZtY-sa-061"/>
                 <outlet property="drinkNameLabel" destination="Vuq-bd-8eO" id="MML-qV-y7x"/>
             </connections>
-            <point key="canvasLocation" x="-137.59999999999999" y="-7.389162561576355"/>
+            <point key="canvasLocation" x="-83" y="-25"/>
         </tableViewCell>
     </objects>
     <resources>

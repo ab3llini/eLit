@@ -197,11 +197,19 @@
 			path = Drink;
 			sourceTree = "<group>";
 		};
-		BD2C651421E24C6D00EC41C6 /* View */ = {
+		BD2600A821F0F5D30068D7F8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				BD37F4A921CE4FE70080C0F7 /* Main.storyboard */,
 				BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BD2C651421E24C6D00EC41C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD2600A821F0F5D30068D7F8 /* Storyboards */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
 				BD2C651F21E24FBD00EC41C6 /* DrinkTableView */,
 				BD903B9521ECBA2300F0D856 /* Renderer.swift */,

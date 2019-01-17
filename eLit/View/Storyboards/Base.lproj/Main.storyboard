@@ -25,6 +25,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bft-Le-QD4">
+                                <rect key="frame" x="59" y="107" width="246" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qdO-cH-bw3"/>
@@ -33,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHn-cp-aia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-267" y="299"/>
+            <point key="canvasLocation" x="-268" y="298.52216748768473"/>
         </scene>
         <!--You are gay-->
         <scene sceneID="5Yv-z5-jSr">
@@ -62,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wl-yb-4k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4623" y="607"/>
+            <point key="canvasLocation" x="-1052" y="970"/>
         </scene>
         <!--Fuck ya bitch-->
         <scene sceneID="pPT-I1-owS">
@@ -91,7 +96,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fV-UI-u0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4622" y="-316"/>
+            <point key="canvasLocation" x="-4210" y="969"/>
         </scene>
         <!--Settings-->
         <scene sceneID="C5E-Dq-X0h">
@@ -108,7 +113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4TO-lS-uDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3556" y="-316"/>
+            <point key="canvasLocation" x="-3143" y="969"/>
         </scene>
         <!--Play-->
         <scene sceneID="n2z-Ws-rj4">
@@ -125,7 +130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUj-ZO-BWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3556" y="607"/>
+            <point key="canvasLocation" x="-1882" y="970"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WRS-vg-YZI">
@@ -183,7 +188,6 @@
         <!--Home-->
         <scene sceneID="CaU-gx-OkA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IHc-yv-Ngm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OCu-PW-KpF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="cJN-oe-EHj"/>
                     <toolbarItems/>
@@ -196,6 +200,7 @@
                         <segue destination="gbq-HS-nPN" kind="relationship" relationship="rootViewController" id="fbA-zW-rvH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHc-yv-Ngm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="-443"/>
         </scene>
