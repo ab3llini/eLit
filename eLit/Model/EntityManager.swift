@@ -12,16 +12,11 @@ import CoreData
 class EntityManager: NSObject {
     
     //MARK: attributes
-    private static let instance = EntityManager()
+    public static let shared = EntityManager()
     
     //MARK: initializers
     private override init() {
         
-    }
-    
-    //MARK: Accessors
-    class func getInstance() -> EntityManager {
-        return instance
     }
 
     //MARK: public methods

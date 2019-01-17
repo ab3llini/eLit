@@ -2,11 +2,16 @@ import sys
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import simplejson
 import json
+from typing import Dict
+from database_classes import *
+from requests import *
 
 
 class Server(SimpleHTTPRequestHandler):
-    def __init__(self, request, client_address, server):
-        super().__init__(request, client_address, server)
+    request_map = {
+        'fetch_all': on_fetch_all_request,
+        'update_db': on_update_request
+    }
 
     def _set_headers(self):
         self.send_response(200)
@@ -23,14 +28,14 @@ class Server(SimpleHTTPRequestHandler):
     def do_POST(self):
         # Doesn't do anything with posted
         self._set_headers()
-
         print(self.headers)
-
         data_string = self.rfile.read(int(self.headers['Content-Length']))
         print('Received:', data_string)
         data_dict = simplejson.loads(data_string)
         print('Parsed:', data_dict)
-        self.wfile.write(json.dumps(data_dict).encode())
+        print(self.request_map)
+        response = self.request_map[data_dict['request']](data_dict)
+        self.wfile.write(json.dumps(response).encode())
 
 
 def start_server(ip: str, port: int):

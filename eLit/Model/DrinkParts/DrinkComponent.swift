@@ -24,5 +24,12 @@ class DrinkComponent: CoreDataObject {
         self.qty = quantity
         self.unit = unit.rawValue
     }
+    
+    convenience init(dict: [String: Any]){
+        self.init()
+        self.qty = dict["qty"] as? Int16 ?? 0
+        self.unit = dict["unit"] as? String
+        self.withIngredient = Ingredient(dict: dict["ingredient"] as? [String: Any] ?? [:])
+    }
 
 }

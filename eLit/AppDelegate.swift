@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.addDrink(drink4)
         
         let dbManager = DataBaseManager.shared
-        _ = dbManager.sendRequest(dataDict: ["key": "val", "key2": ["val", 1]])
+        _ = dbManager.fetchAllData() { print($0) }
         
         
         //model.savePersistentModel()

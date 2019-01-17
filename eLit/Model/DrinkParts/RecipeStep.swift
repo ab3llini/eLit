@@ -29,6 +29,15 @@ class RecipeStep: CoreDataObject {
         self.init(description: "", drinkComponents: drinkComponents)
     }
     
+    convenience init(dict: [String: Any]) {
+        var components: [DrinkComponent] = []
+        for c in dict["components"] as? [[String: Any]] ?? [] {
+            components.append(DrinkComponent(dict: c))
+        }
+        self.init(drinkComponents: components)
+        self.stepDescription = dict["step_description"] as? String ?? ""
+    }
+    
     
     //MARK: getter & setter
     func setDescription(description:String) {
