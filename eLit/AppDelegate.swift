@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let step = RecipeStep(drinkComponents: [component])
         let step2 = RecipeStep(drinkComponents: [component, component2])
         let recipe = Recipe(steps: [step, step2])
-        */
+ 
         
         let model = Model.shared as Model
         
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //model.savePersistentModel()
-        
+         */
         
         
         

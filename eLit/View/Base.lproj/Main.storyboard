@@ -152,38 +152,10 @@
             </objects>
             <point key="canvasLocation" x="-1881" y="81"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jYs-Pb-wvF" customClass="DrinkTableView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="jYs-Pb-wvF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="V1d-Sc-txs"/>
-                            <constraint firstItem="jYs-Pb-wvF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bBW-cx-X8a"/>
-                            <constraint firstItem="jYs-Pb-wvF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cGQ-M1-ZFv"/>
-                            <constraint firstItem="jYs-Pb-wvF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k0Q-BV-hRD"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="YvN-jk-3tA"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="894" y="-443"/>
-        </scene>
-        <!--View Controller-->
+        <!--Drink View Controller-->
         <scene sceneID="IdC-5p-fbs">
             <objects>
-                <viewController id="ce8-6x-qva" sceneMemberID="viewController">
+                <viewController id="ce8-6x-qva" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WGV-T0-Bjm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,6 +170,7 @@
         <!--Home-->
         <scene sceneID="CaU-gx-OkA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHc-yv-Ngm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OCu-PW-KpF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="cJN-oe-EHj"/>
                     <toolbarItems/>
@@ -207,12 +180,43 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wcY-Rt-KG6"/>
+                        <segue destination="gbq-HS-nPN" kind="relationship" relationship="rootViewController" id="fbA-zW-rvH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IHc-yv-Ngm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="-443"/>
+        </scene>
+        <!--Drink Table View Controller-->
+        <scene sceneID="vjF-gq-HhL">
+            <objects>
+                <tableViewController id="gbq-HS-nPN" customClass="DrinkTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="i83-7Z-Bl4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yWR-4X-TrN">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yWR-4X-TrN" id="Z2Q-Kg-ewf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gbq-HS-nPN" id="UFB-m1-9NF"/>
+                            <outlet property="delegate" destination="gbq-HS-nPN" id="6Kg-Uj-x8O"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="73d-Fc-QuN"/>
+                    <connections>
+                        <segue destination="ce8-6x-qva" kind="show" identifier="toDrinkVC" id="tWq-qu-URy"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOG-Se-86K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="-443"/>
         </scene>
     </scenes>
     <resources>

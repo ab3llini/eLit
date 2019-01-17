@@ -37,9 +37,14 @@ class DrinkTableView: UITableView, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return drinks.count + 1 //For header cell
+        
     }
     
-    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue" {
+            // Setup new view controller
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -70,6 +75,7 @@ class DrinkTableView: UITableView, UITableViewDataSource {
         
        
     }
+    
     
 
 }
