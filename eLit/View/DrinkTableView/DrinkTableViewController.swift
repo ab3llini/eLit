@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DrinkTableViewController: UITableViewController {
-    
-    
+class DrinkTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
+
+
     let nibs = ["DrinkTableViewTableViewCell", "HeaderTableViewCell"]
     
     //Load drinks
@@ -31,6 +31,33 @@ class DrinkTableViewController: UITableViewController {
             self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
             
         }
+        
+        //Register for 3D touch
+        registerForPreviewing(with: self, sourceView: self.tableView)
+        
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+        show(viewControllerToCommit, sender: self)
+        
+        //present(viewControllerToCommit, animated: true, completion: nil)
+        
+    }
+    
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            
+            //This will show the cell clearly and blur the rest of the screen for our peek.
+            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+            
+            let drinkVC = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
+
+            return drinkVC
+            
+        }
+        return nil
     }
 
     // MARK: - Table view data source
@@ -76,6 +103,23 @@ class DrinkTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: Navigation.toDrinkVC.rawValue, sender: self)
+        
+    }
+    
+
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -112,14 +156,6 @@ class DrinkTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

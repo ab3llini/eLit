@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let step = RecipeStep(drinkComponents: [component])
         let step2 = RecipeStep(drinkComponents: [component, component2])
         let recipe = Recipe(steps: [step, step2])
- 
-        
+ */
+        /*
         let model = Model.shared as Model
         
         let drink1 = Drink(name: "Drink1", image: "Drink1", degree: 25)
@@ -43,12 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.addDrink(drink3)
         model.addDrink(drink4)
         
+        //model.savePersistentModel()
+        
+        
         let dbManager = DataBaseManager.shared
         _ = dbManager.fetchAllData() { print($0) }
         
         
         //model.savePersistentModel()
-         */
+        */
         
         
         

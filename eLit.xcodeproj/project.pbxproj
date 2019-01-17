@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3910E7902DF3B7A3A2556E25 /* Pods_eLitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */; };
+		6358F8E9864C9BDF72FA5536 /* Pods_eLitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */; };
+		8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
@@ -17,6 +20,7 @@
 		A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00A21D8318900469827 /* RecipeStep.swift */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
 		BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */; };
+		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
 		BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD23727F21E8D68C007FEFC3 /* Assets.xcassets */; };
 		BD2C651D21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */; };
 		BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */; };
@@ -32,7 +36,6 @@
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
 		BD54F3F721E3923000FC528B /* RibbonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD54F3F621E3923000FC528B /* RibbonView.xib */; };
-		BD6BE5AE21E3593F002DCE2A /* DrinkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
@@ -65,6 +68,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BEE5B305EFB8394F805B5DB /* Pods-eLitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitUITests/Pods-eLitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		254302BE180571767677CAFB /* Pods-eLitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLitUITests/Pods-eLitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C40D95D7EA499D9DB458D5 /* Pods-eLit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLit/Pods-eLit.debug.xcconfig"; sourceTree = "<group>"; };
+		6ADD5D44653B179884CE66A5 /* Pods-eLitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLit.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLit/Pods-eLit.release.xcconfig"; sourceTree = "<group>"; };
+		90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.release.xcconfig"; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -73,8 +83,10 @@
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A4D6D00A21D8318900469827 /* RecipeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStep.swift; sourceTree = "<group>"; };
+		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewController.swift; sourceTree = "<group>"; };
+		BD0AA95F21F0B25600990A32 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		BD23727F21E8D68C007FEFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTableViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -96,7 +108,6 @@
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		BD54F3F621E3923000FC528B /* RibbonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RibbonView.xib; sourceTree = "<group>"; };
-		BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableView.swift; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
@@ -111,6 +122,7 @@
 		BDED030321E7A2D600503B59 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
 		BDF964D521ECF98300228EEB /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3910E7902DF3B7A3A2556E25 /* Pods_eLitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,12 +146,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6358F8E9864C9BDF72FA5536 /* Pods_eLitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BBD39D63FC4D1937505CA1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */,
+				C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */,
+				2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C51B584B78BCCD1FFFFF293 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47C40D95D7EA499D9DB458D5 /* Pods-eLit.debug.xcconfig */,
+				71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */,
+				6ADD5D44653B179884CE66A5 /* Pods-eLitTests.debug.xcconfig */,
+				90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */,
+				254302BE180571767677CAFB /* Pods-eLitUITests.debug.xcconfig */,
+				0BEE5B305EFB8394F805B5DB /* Pods-eLitUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A4D6D00721D82F4E00469827 /* DrinkParts */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +205,7 @@
 				BD0AA95A21F0A51500990A32 /* Drink */,
 				BD2C651F21E24FBD00EC41C6 /* DrinkTableView */,
 				BD903B9521ECBA2300F0D856 /* Renderer.swift */,
+				BD0AA95F21F0B25600990A32 /* Navigation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,7 +220,6 @@
 				BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */,
 				BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */,
 				BD2C652021E24FEC00EC41C6 /* ContainerView.swift */,
-				BD6BE5AD21E3593F002DCE2A /* DrinkTableView.swift */,
 				BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */,
 			);
 			path = DrinkTableView;
@@ -195,6 +233,8 @@
 				BD37F4BC21CE4FE70080C0F7 /* eLitTests */,
 				BD37F4C721CE4FE70080C0F7 /* eLitUITests */,
 				BD37F4A321CE4FE70080C0F7 /* Products */,
+				8C51B584B78BCCD1FFFFF293 /* Pods */,
+				5BBD39D63FC4D1937505CA1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,9 +342,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD37F4CD21CE4FE70080C0F7 /* Build configuration list for PBXNativeTarget "eLit" */;
 			buildPhases = (
+				535795797F07C17848669E35 /* [CP] Check Pods Manifest.lock */,
 				BD37F49E21CE4FE70080C0F7 /* Sources */,
 				BD37F49F21CE4FE70080C0F7 /* Frameworks */,
 				BD37F4A021CE4FE70080C0F7 /* Resources */,
+				B43675F0BB4E034C689C50CC /* [CP] Embed Pods Frameworks */,
+				67E926BC9BD21141E1FD108B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -319,6 +362,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD37F4D021CE4FE70080C0F7 /* Build configuration list for PBXNativeTarget "eLitTests" */;
 			buildPhases = (
+				B77DE5FA9BD3769D41FF52F6 /* [CP] Check Pods Manifest.lock */,
 				BD37F4B521CE4FE70080C0F7 /* Sources */,
 				BD37F4B621CE4FE70080C0F7 /* Frameworks */,
 				BD37F4B721CE4FE70080C0F7 /* Resources */,
@@ -337,6 +381,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD37F4D321CE4FE70080C0F7 /* Build configuration list for PBXNativeTarget "eLitUITests" */;
 			buildPhases = (
+				C24387DE969869AD2438698D /* [CP] Check Pods Manifest.lock */,
 				BD37F4C021CE4FE70080C0F7 /* Sources */,
 				BD37F4C121CE4FE70080C0F7 /* Frameworks */,
 				BD37F4C221CE4FE70080C0F7 /* Resources */,
@@ -425,6 +470,121 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		535795797F07C17848669E35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eLit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67E926BC9BD21141E1FD108B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B43675F0BB4E034C689C50CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B77DE5FA9BD3769D41FF52F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eLitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C24387DE969869AD2438698D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eLitUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BD37F49E21CE4FE70080C0F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -449,7 +609,6 @@
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
-				BD6BE5AE21E3593F002DCE2A /* DrinkTableView.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
@@ -458,6 +617,7 @@
 				A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */,
 				A4386C0221EE020F00275EEC /* RequestType.swift in Sources */,
 				A4D6D00921D8313500469827 /* Recipe.swift in Sources */,
+				BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */,
 				BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */,
 				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 			);
@@ -632,17 +792,18 @@
 		};
 		BD37F4CE21CE4FE70080C0F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C40D95D7EA499D9DB458D5 /* Pods-eLit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.elit.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -653,17 +814,18 @@
 		};
 		BD37F4CF21CE4FE70080C0F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.elit.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -673,6 +835,7 @@
 		};
 		BD37F4D121CE4FE70080C0F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADD5D44653B179884CE66A5 /* Pods-eLitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -694,6 +857,7 @@
 		};
 		BD37F4D221CE4FE70080C0F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -715,6 +879,7 @@
 		};
 		BD37F4D421CE4FE70080C0F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 254302BE180571767677CAFB /* Pods-eLitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -735,6 +900,7 @@
 		};
 		BD37F4D521CE4FE70080C0F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BEE5B305EFB8394F805B5DB /* Pods-eLitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
