@@ -35,6 +35,8 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         //Register for 3D touch
         registerForPreviewing(with: self, sourceView: self.tableView)
         
+        
+        
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
@@ -48,6 +50,8 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = tableView.indexPathForRow(at: location) {
+            
+            if (indexPath.row == 1) { return nil }
             
             //This will show the cell clearly and blur the rest of the screen for our peek.
             previewingContext.sourceRect = tableView.rectForRow(at: indexPath)

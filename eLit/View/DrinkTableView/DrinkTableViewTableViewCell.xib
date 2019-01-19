@@ -32,31 +32,41 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuq-bd-8eO">
-                                <rect key="frame" x="85" y="13" width="201" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="85" y="13" width="201" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eb-MS-4gP" customClass="RibbonView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="85" y="35" width="40" height="20"/>
+                                <rect key="frame" x="85" y="54" width="40" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ODu-RC-AvL"/>
                                     <constraint firstAttribute="width" constant="40" id="U08-r3-OIg"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rn9-cG-Hxk" customClass="RibbonView" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="135" y="54" width="60" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="XGM-EE-NUl"/>
+                                    <constraint firstAttribute="height" constant="20" id="dhU-yj-p1K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7eb-MS-4gP" firstAttribute="top" secondItem="Vuq-bd-8eO" secondAttribute="bottom" constant="5" id="CqR-HT-DVf"/>
                             <constraint firstAttribute="bottom" secondItem="HLO-Ti-RFF" secondAttribute="bottom" constant="-20" id="IQO-c1-PeM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vuq-bd-8eO" secondAttribute="trailing" id="PAC-jR-CyD"/>
                             <constraint firstItem="i76-HZ-yaz" firstAttribute="top" secondItem="PEw-0o-WYw" secondAttribute="topMargin" id="S4m-Xp-bd3"/>
                             <constraint firstAttribute="bottomMargin" secondItem="i76-HZ-yaz" secondAttribute="bottom" id="SpJ-sH-KJ7"/>
+                            <constraint firstItem="rn9-cG-Hxk" firstAttribute="top" secondItem="Vuq-bd-8eO" secondAttribute="bottom" constant="20" id="UrZ-WX-op9"/>
                             <constraint firstItem="7eb-MS-4gP" firstAttribute="leading" secondItem="i76-HZ-yaz" secondAttribute="trailing" constant="5" id="WJ3-Vn-2bX"/>
+                            <constraint firstItem="7eb-MS-4gP" firstAttribute="top" secondItem="Vuq-bd-8eO" secondAttribute="bottom" constant="20" id="bFz-BB-7Eu"/>
                             <constraint firstItem="Vuq-bd-8eO" firstAttribute="leading" secondItem="i76-HZ-yaz" secondAttribute="trailing" constant="5" id="bWx-j1-BPD"/>
                             <constraint firstAttribute="height" constant="96" id="duv-1M-efx"/>
                             <constraint firstItem="HLO-Ti-RFF" firstAttribute="top" secondItem="PEw-0o-WYw" secondAttribute="top" constant="-20" id="eCZ-PZ-ddp"/>
+                            <constraint firstItem="rn9-cG-Hxk" firstAttribute="leading" secondItem="7eb-MS-4gP" secondAttribute="trailing" constant="10" id="i4R-w2-OdE"/>
                             <constraint firstItem="HLO-Ti-RFF" firstAttribute="leading" secondItem="PEw-0o-WYw" secondAttribute="leading" constant="-100" id="luJ-6w-UuM"/>
                             <constraint firstItem="i76-HZ-yaz" firstAttribute="leading" secondItem="PEw-0o-WYw" secondAttribute="leadingMargin" id="mbS-K5-emU"/>
                             <constraint firstItem="Vuq-bd-8eO" firstAttribute="top" secondItem="PEw-0o-WYw" secondAttribute="topMargin" constant="5" id="nR6-Uo-JQX"/>
@@ -80,11 +90,12 @@
             <connections>
                 <outlet property="alcholicRibbonView" destination="7eb-MS-4gP" id="L9o-f9-Xac"/>
                 <outlet property="backgroundImage" destination="HLO-Ti-RFF" id="WkH-x8-nX9"/>
+                <outlet property="baseRIbbonView" destination="rn9-cG-Hxk" id="BKQ-yS-MPp"/>
                 <outlet property="containerView" destination="PEw-0o-WYw" id="329-op-COM"/>
                 <outlet property="drinkImageView" destination="i76-HZ-yaz" id="ZtY-sa-061"/>
                 <outlet property="drinkNameLabel" destination="Vuq-bd-8eO" id="MML-qV-y7x"/>
             </connections>
-            <point key="canvasLocation" x="-83" y="-25"/>
+            <point key="canvasLocation" x="-120" y="-27"/>
         </tableViewCell>
     </objects>
     <resources>

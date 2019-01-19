@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="-268" y="-443"/>
         </scene>
-        <!--Drink Table View Controller-->
+        <!--Home-->
         <scene sceneID="vjF-gq-HhL">
             <objects>
                 <tableViewController id="gbq-HS-nPN" customClass="DrinkTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
@@ -227,7 +227,7 @@
                             <outlet property="delegate" destination="gbq-HS-nPN" id="6Kg-Uj-x8O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="73d-Fc-QuN"/>
+                    <navigationItem key="navigationItem" title="Home" id="73d-Fc-QuN"/>
                     <connections>
                         <segue destination="ce8-6x-qva" kind="show" identifier="toDrinkVC" id="tWq-qu-URy"/>
                     </connections>

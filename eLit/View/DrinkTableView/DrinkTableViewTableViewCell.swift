@@ -16,6 +16,7 @@ import UIKit
     @IBOutlet public var backgroundImage : UIImageView!
     @IBOutlet weak var containerView: ContainerView!
     @IBOutlet weak var alcholicRibbonView: RibbonView!
+    @IBOutlet weak var baseRIbbonView: RibbonView!
     @IBOutlet weak var drinkNameLabel: UILabel!
     
     
@@ -53,10 +54,18 @@ import UIKit
         
     }
     
+    private func setBaseRibbon(base: String, color : UIColor) {
+        
+        self.baseRIbbonView.setText(value: base)
+        self.baseRIbbonView.setColor(color: color)
+        
+    }
+    
     public func setDrink(drink : Drink, withImage image: UIImage, andColor color: UIColor) {
         
         self.setDrinkImage(image: image, bgcolor: color)
         self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.6))
+        self.setBaseRibbon(base: "Base", color: UIColor.white.withAlphaComponent(0.6))
         self.drinkNameLabel.text = drink.description
         
     }
