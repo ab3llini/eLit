@@ -8,44 +8,38 @@
 
 import UIKit
 
+@IBDesignable
 class RibbonView: UIView {
     
+    var textField : UITextField!
     
-    @IBOutlet weak var textLabel: UILabel!
-    
-    let nibName = "RibbonView"
-    var contentView: UIView?
     
     override func awakeFromNib() {
+        
         self.layer.cornerRadius = 5
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
         
-        guard let view = loadViewFromNib() else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
-        contentView = view
-    }
-    
-    func loadViewFromNib() -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
-    }
-
-    func setText(value : String) {
+        self.backgroundColor = UIColor.clear
+                
+        textField = UITextField(frame: self.bounds)
+        textField.backgroundColor = UIColor.clear
+        textField.font = UIFont(name: "HelveticaNeue", size: 11)
+        textField.textColor = UIColor.black
+        textField.textAlignment = .center
         
-        self.textLabel.text = value
+        self.addSubview(textField)
         
     }
     
-    func setColor(color : UIColor) {
-        
-        self.contentView!.backgroundColor = color
-        
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+        let label = UILabel(frame: self.bounds)
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 8)
+        label.text = "Ribbon"
+        self.addSubview(label)
     }
     
     

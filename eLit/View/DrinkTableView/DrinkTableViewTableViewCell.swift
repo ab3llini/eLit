@@ -49,23 +49,25 @@ import UIKit
     
     private func setAlcholicRibbon(degree: String, color : UIColor) {
         
-        self.alcholicRibbonView.setText(value: degree + "%")
-        self.alcholicRibbonView.setColor(color: color)
+        self.alcholicRibbonView.textField.text = degree + "%"
+        self.alcholicRibbonView.backgroundColor = color
+        self.alcholicRibbonView.textField.textColor = UIColor.white
         
     }
     
     private func setBaseRibbon(base: String, color : UIColor) {
         
-        self.baseRIbbonView.setText(value: base)
-        self.baseRIbbonView.setColor(color: color)
-        
+        self.baseRIbbonView.textField.text = base
+        self.baseRIbbonView.backgroundColor = color
+        self.baseRIbbonView.textField.textColor = UIColor.black
+
     }
     
     public func setDrink(drink : Drink, withImage image: UIImage, andColor color: UIColor) {
         
         self.setDrinkImage(image: image, bgcolor: color)
-        self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.6))
-        self.setBaseRibbon(base: "Base", color: UIColor.white.withAlphaComponent(0.6))
+        self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.5))
+        self.setBaseRibbon(base: "Vodka", color: UIColor.white.withAlphaComponent(0.3))
         self.drinkNameLabel.text = drink.description
         
     }

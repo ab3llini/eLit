@@ -46,13 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //model.savePersistentModel()
         
         
-        let dbManager = DataBaseManager.shared
-        _ = dbManager.fetchAllData() { print($0) }
         
         
-        //model.savePersistentModel()
-        */
+        model.savePersistentModel()
         
+        
+         let dbManager = DataBaseManager.shared
+         _ = dbManager.fetchAllData() { print($0) }
+         */
         
         
         return true
