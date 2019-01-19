@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,15 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.addDrink(drink3)
         model.addDrink(drink4)
         
-        //model.savePersistentModel()
+        model.savePersistentModel()
         
-        
-        let dbManager = DataBaseManager.shared
-        _ = dbManager.fetchAllData() { print($0) }
-        
-        
-        //model.savePersistentModel()
         */
+//        let dbManager = DataBaseManager.shared
+//        _ = dbManager.fetchAllData() { print($0) }
+        
+        
+        //model.savePersistentModel()
+        
         
         
         
@@ -80,6 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    // MARK: Google Sign In
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
 
     // MARK: - Core Data stack

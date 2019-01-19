@@ -11,9 +11,15 @@
 		6358F8E9864C9BDF72FA5536 /* Pods_eLitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */; };
 		8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
+		A462A19821F117320041BCB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462A19721F117320041BCB4 /* LogInViewController.swift */; };
+		A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A462A19921F1E7B90041BCB4 /* credentials.plist */; };
+		A462A19D21F208C60041BCB4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462A19C21F208C60041BCB4 /* SettingsTableViewController.swift */; };
+		A462A1A021F211790041BCB4 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462A19E21F211790041BCB4 /* AccountTableViewCell.swift */; };
+		A462A1A121F211790041BCB4 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A462A19F21F211790041BCB4 /* AccountTableViewCell.xib */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
+		A4CD776621F1150A00B76861 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CD776521F1150A00B76861 /* LogIn.storyboard */; };
 		A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00221D82DC300469827 /* eLit.xcdatamodeld */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
 		A4D6D00921D8313500469827 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00821D8313500469827 /* Recipe.swift */; };
@@ -22,7 +28,7 @@
 		BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */; };
 		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
 		BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD23727F21E8D68C007FEFC3 /* Assets.xcassets */; };
-		BD2C651D21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */; };
+		BD2C651D21E24E7D00EC41C6 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */; };
 		BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */; };
 		BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C652021E24FEC00EC41C6 /* ContainerView.swift */; };
 		BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD37F4A521CE4FE70080C0F7 /* AppDelegate.swift */; };
@@ -76,9 +82,15 @@
 		71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLit.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLit/Pods-eLit.release.xcconfig"; sourceTree = "<group>"; };
 		90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.release.xcconfig"; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		A462A19721F117320041BCB4 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A462A19921F1E7B90041BCB4 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		A462A19C21F208C60041BCB4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A462A19E21F211790041BCB4 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		A462A19F21F211790041BCB4 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A4CD776521F1150A00B76861 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		A4D6D00321D82DC300469827 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -88,7 +100,7 @@
 		BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewController.swift; sourceTree = "<group>"; };
 		BD0AA95F21F0B25600990A32 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		BD23727F21E8D68C007FEFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewTableViewCell.swift; sourceTree = "<group>"; };
+		BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkTableViewTableViewCell.xib; sourceTree = "<group>"; };
 		BD2C652021E24FEC00EC41C6 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		BD37F4A221CE4FE70080C0F7 /* eLit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eLit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +188,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A462A19B21F2088C0041BCB4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A462A19C21F208C60041BCB4 /* SettingsTableViewController.swift */,
+				A462A19E21F211790041BCB4 /* AccountTableViewCell.swift */,
+				A462A19F21F211790041BCB4 /* AccountTableViewCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A4CD776721F1165200B76861 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD776521F1150A00B76861 /* LogIn.storyboard */,
+				A462A19721F117320041BCB4 /* LogInViewController.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 		A4D6D00721D82F4E00469827 /* DrinkParts */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +231,8 @@
 		BD2600A821F0F5D30068D7F8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A462A19B21F2088C0041BCB4 /* Settings */,
+				A4CD776721F1165200B76861 /* LogIn */,
 				BD37F4A921CE4FE70080C0F7 /* Main.storyboard */,
 				BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */,
 			);
@@ -223,7 +256,7 @@
 			children = (
 				BDD6A02321E2634800470D04 /* RibbonView.swift */,
 				BD54F3F621E3923000FC528B /* RibbonView.xib */,
-				BD2C651B21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift */,
+				BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */,
 				BD2C651C21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib */,
 				BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */,
 				BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */,
@@ -259,6 +292,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				A462A19921F1E7B90041BCB4 /* credentials.plist */,
 				BDF964D421ECF98300228EEB /* Network */,
 				BDED02F021E7A22D00503B59 /* Libraries */,
 				BDC2F54E21E36B5800D5AB2E /* Extensions */,
@@ -412,7 +446,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Alberto Mario Bellini";
+				ORGANIZATIONNAME = eLit.app;
 				TargetAttributes = {
 					BD37F4A121CE4FE70080C0F7 = {
 						CreatedOnToolsVersion = 10.1;
@@ -454,10 +488,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
+				A462A1A121F211790041BCB4 /* AccountTableViewCell.xib in Resources */,
+				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
+				A4CD776621F1150A00B76861 /* LogIn.storyboard in Resources */,
 				BD54F3F721E3923000FC528B /* RibbonView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +638,7 @@
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
+				A462A1A021F211790041BCB4 /* AccountTableViewCell.swift in Sources */,
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
@@ -609,7 +647,9 @@
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
+				A462A19821F117320041BCB4 /* LogInViewController.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
+				A462A19D21F208C60041BCB4 /* SettingsTableViewController.swift in Sources */,
 				BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */,
 				BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */,
 				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
@@ -620,7 +660,7 @@
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
-				BD2C651D21E24E7D00EC41C6 /* DrinkTableViewTableViewCell.swift in Sources */,
+				BD2C651D21E24E7D00EC41C6 /* DrinkTableViewCell.swift in Sources */,
 				BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */,
 				A4D6D00421D82DC300469827 /* eLit.xcdatamodeld in Sources */,
 				A4386C0221EE020F00275EEC /* RequestType.swift in Sources */,
@@ -804,15 +844,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.elit.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -826,15 +868,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.elit.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -88,7 +88,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         else {
             
             //Drinks
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewTableViewCell", for: indexPath) as! DrinkTableViewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewTableViewCell", for: indexPath) as! DrinkTableViewCell
             
             
             let drink : Drink = drinks[indexPath.row - 1]
