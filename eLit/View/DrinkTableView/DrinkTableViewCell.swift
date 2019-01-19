@@ -8,7 +8,7 @@
 
 import UIKit
 
- class DrinkTableViewTableViewCell: UITableViewCell {
+ class DrinkTableViewCell: UITableViewCell {
     
     
     // Outlets
