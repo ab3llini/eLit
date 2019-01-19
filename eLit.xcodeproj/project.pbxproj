@@ -16,6 +16,9 @@
 		A462A19D21F208C60041BCB4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462A19C21F208C60041BCB4 /* SettingsTableViewController.swift */; };
 		A462A1A021F211790041BCB4 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462A19E21F211790041BCB4 /* AccountTableViewCell.swift */; };
 		A462A1A121F211790041BCB4 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A462A19F21F211790041BCB4 /* AccountTableViewCell.xib */; };
+		A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347021F37F020061D0D2 /* SettingsTableViewController.swift */; };
+		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
+		A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467347221F37F020061D0D2 /* AccountTableViewCell.xib */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
@@ -87,6 +90,9 @@
 		A462A19C21F208C60041BCB4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A462A19E21F211790041BCB4 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		A462A19F21F211790041BCB4 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		A467347021F37F020061D0D2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		A467347221F37F020061D0D2 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -198,6 +204,16 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		A467346F21F37F020061D0D2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A467347021F37F020061D0D2 /* SettingsTableViewController.swift */,
+				A467347121F37F020061D0D2 /* AccountTableViewCell.swift */,
+				A467347221F37F020061D0D2 /* AccountTableViewCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A4CD776721F1165200B76861 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +258,7 @@
 		BD2C651421E24C6D00EC41C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A467346F21F37F020061D0D2 /* Settings */,
 				BD2600A821F0F5D30068D7F8 /* Storyboards */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
 				BD2C651F21E24FBD00EC41C6 /* DrinkTableView */,
@@ -488,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
+				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
 				A462A1A121F211790041BCB4 /* AccountTableViewCell.xib in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
@@ -641,6 +659,7 @@
 				A462A1A021F211790041BCB4 /* AccountTableViewCell.swift in Sources */,
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
+				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
@@ -652,6 +671,7 @@
 				A462A19D21F208C60041BCB4 /* SettingsTableViewController.swift in Sources */,
 				BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */,
 				BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */,
+				A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */,
 				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
 				BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */,
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
@@ -846,7 +866,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -870,7 +890,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
