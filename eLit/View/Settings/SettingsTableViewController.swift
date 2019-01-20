@@ -79,6 +79,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard (user != nil) else { return }
         print(user.profile.email)
         print(user.profile.name)
         print(user.profile.familyName)
@@ -87,7 +88,9 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            GIDSignIn.sharedInstance()?.signIn()
+            if (GIDSignIn.sharedInstance()?.hasAuthInKeychain() ?? false) == false {
+                performSegue(withIdentifier: Navigation.toLogInVC.rawValue, sender: self)
+            }
         }
     }
     

@@ -69,10 +69,66 @@
             </objects>
             <point key="canvasLocation" x="-1052" y="970"/>
         </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="a8w-SS-Klt">
+            <objects>
+                <viewController id="xMj-P9-QoY" customClass="LogInViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qEv-1E-S6m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bzk-9z-nZF">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k55-Ai-Ap5" customClass="LogInView" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="50" y="570" width="275" height="59"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="ufF-Dm-KvU">
+                                        <rect key="frame" x="10" y="10" width="39" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ufF-Dm-KvU" secondAttribute="height" multiplier="1:1" id="vEz-q4-Oft"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lS4-rJ-Vaf">
+                                        <rect key="frame" x="78.999999999999986" y="15" width="156.66666666666663" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.52156862745098043" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="k55-Ai-Ap5" secondAttribute="height" multiplier="42:9" id="B3w-rd-AjJ"/>
+                                    <constraint firstItem="ufF-Dm-KvU" firstAttribute="leading" secondItem="k55-Ai-Ap5" secondAttribute="leading" constant="10" id="Dm4-SR-gzg"/>
+                                    <constraint firstAttribute="bottom" secondItem="lS4-rJ-Vaf" secondAttribute="bottom" constant="15" id="Ryr-OO-uvc"/>
+                                    <constraint firstItem="lS4-rJ-Vaf" firstAttribute="leading" secondItem="ufF-Dm-KvU" secondAttribute="trailing" constant="30" id="Vw5-H2-1Vr"/>
+                                    <constraint firstItem="ufF-Dm-KvU" firstAttribute="top" secondItem="k55-Ai-Ap5" secondAttribute="top" constant="10" id="eHs-2Y-jAh"/>
+                                    <constraint firstItem="lS4-rJ-Vaf" firstAttribute="top" secondItem="k55-Ai-Ap5" secondAttribute="top" constant="15" id="os6-FK-JjC"/>
+                                    <constraint firstAttribute="bottom" secondItem="ufF-Dm-KvU" secondAttribute="bottom" constant="10" id="rR6-B2-d5N"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="trailing" secondItem="k55-Ai-Ap5" secondAttribute="trailing" constant="50" id="Sg9-hR-O8a"/>
+                            <constraint firstItem="k55-Ai-Ap5" firstAttribute="leading" secondItem="NPa-Yo-DWb" secondAttribute="leading" constant="50" id="USy-7j-Dy6"/>
+                            <constraint firstItem="bzk-9z-nZF" firstAttribute="top" secondItem="NPa-Yo-DWb" secondAttribute="top" id="Ul1-iB-JBp"/>
+                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="bottom" secondItem="k55-Ai-Ap5" secondAttribute="bottom" constant="100" id="YTs-Gu-EaH"/>
+                            <constraint firstItem="bzk-9z-nZF" firstAttribute="leading" secondItem="NPa-Yo-DWb" secondAttribute="leading" id="mOR-2g-1bX"/>
+                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="trailing" secondItem="bzk-9z-nZF" secondAttribute="trailing" id="s14-aY-gNZ"/>
+                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="bottom" secondItem="bzk-9z-nZF" secondAttribute="bottom" id="zn1-2e-tFo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NPa-Yo-DWb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uBz-2t-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5047" y="961"/>
+        </scene>
         <!--Fuck ya bitch-->
         <scene sceneID="pPT-I1-owS">
             <objects>
-                <tableViewController id="caA-p9-YWe" sceneMemberID="viewController">
+                <tableViewController id="caA-p9-YWe" customClass="SettingsTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a1c-SA-ZtA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,6 +141,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="xMj-P9-QoY" kind="show" identifier="toLogInVC" id="vat-MB-sUE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -226,5 +285,6 @@
         <image name="HomeIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
+        <image name="google" width="384" height="384"/>
     </resources>
 </document>
