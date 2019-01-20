@@ -136,6 +136,7 @@
         <scene sceneID="WRS-vg-YZI">
             <objects>
                 <tabBarController id="sZs-Fl-fxU" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JDM-HU-dwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,42 +158,14 @@
             </objects>
             <point key="canvasLocation" x="-1881" y="81"/>
         </scene>
-        <!--Drink View Controller-->
-        <scene sceneID="IdC-5p-fbs">
-            <objects>
-                <viewController storyboardIdentifier="drinkVC" id="ce8-6x-qva" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WGV-T0-Bjm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drink3" translatesAutoresizingMaskIntoConstraints="NO" id="dSK-hV-FpT">
-                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Bcs-W9-2eJ"/>
-                                    <constraint firstAttribute="height" constant="300" id="KDg-io-NvQ"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="dSK-hV-FpT" firstAttribute="centerY" secondItem="WGV-T0-Bjm" secondAttribute="centerY" id="eL6-56-pck"/>
-                            <constraint firstItem="dSK-hV-FpT" firstAttribute="centerX" secondItem="WGV-T0-Bjm" secondAttribute="centerX" id="v13-ar-bnO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ohL-Kh-Vyt"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wuM-YK-nTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2116" y="-443.3497536945813"/>
-        </scene>
         <!--Home-->
         <scene sceneID="CaU-gx-OkA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OCu-PW-KpF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OCu-PW-KpF" customClass="DrinkNavigationController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="cJN-oe-EHj"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xEa-bc-hoh">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xEa-bc-hoh">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -212,33 +185,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yWR-4X-TrN">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yWR-4X-TrN" id="Z2Q-Kg-ewf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="gbq-HS-nPN" id="UFB-m1-9NF"/>
                             <outlet property="delegate" destination="gbq-HS-nPN" id="6Kg-Uj-x8O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="73d-Fc-QuN"/>
+                    <navigationItem key="navigationItem" title="Home" id="73d-Fc-QuN">
+                        <barButtonItem key="backBarButtonItem" title="Drinks" id="7fg-Cv-brX"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="ce8-6x-qva" kind="show" identifier="toDrinkVC" id="tWq-qu-URy"/>
+                        <segue destination="gla-hd-7Bp" kind="show" identifier="toDrinkVC" id="QFk-sg-bR1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOG-Se-86K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="922" y="-443"/>
         </scene>
+        <!--Drink View Controller-->
+        <scene sceneID="lPH-BZ-zqr">
+            <objects>
+                <tableViewController storyboardIdentifier="drinkVC" id="gla-hd-7Bp" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dMe-Xo-Zie">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="gla-hd-7Bp" id="4eh-GE-qjN"/>
+                            <outlet property="delegate" destination="gla-hd-7Bp" id="ORt-gF-nP0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zCs-rY-ODc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="-443"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Drink3" width="780" height="974"/>
         <image name="GameIcon" width="30" height="30"/>
         <image name="HomeIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>

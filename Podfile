@@ -8,8 +8,8 @@ target 'eLit' do
   # Pods for eLit
 	
   pod 'GoogleSignIn'
-	
-  target 'eLitTests' do
+  pod "ViewAnimator"
+ target 'eLitTests' do
     inherit! :search_paths
     # Pods for testing
   end

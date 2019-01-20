@@ -11,8 +11,8 @@ import UIKit
 open class FSPagerViewCell: UICollectionViewCell {
     
     open override func awakeFromNib() {
-        self.clipsToBounds = true
         self.layer.cornerRadius = 5
+        
     }
     
     /// Returns the label used for the main textual content of the pager view cell.
@@ -23,13 +23,31 @@ open class FSPagerViewCell: UICollectionViewCell {
         }
         let view = UIView(frame: .zero)
         view.isUserInteractionEnabled = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
+        view.backgroundColor = .clear
         
         let textLabel = UILabel(frame: .zero)
         textLabel.textColor = .white
-        textLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        textLabel.font = UIFont(name: "HelveticaNeue", size: 18)
+
+        textLabel.backgroundColor = .clear
         self.contentView.addSubview(view)
+        
+        
+        // Create a gradient layer
+        let gradient = CAGradientLayer()
+        
+        // gradient colors in order which they will visually appear
+        gradient.colors = [UIColor.black.withAlphaComponent(0.4).cgColor, UIColor.clear.cgColor]
+        
+        // Gradient from left to right
+        gradient.startPoint = CGPoint(x: 0.0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 0)
+        gradient.locations = [0.0,0.4]
+        
+        // set the gradient layer to the same size as the view
+        gradient.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: textLabel.font.pointSize * 1.5)
+        // add the gradient layer to the views layer for rendering
+        view.layer.addSublayer(gradient)
         view.addSubview(textLabel)
         
         textLabel.addObserver(self, forKeyPath: "font", options: [.old,.new], context: kvoContext)
@@ -44,8 +62,14 @@ open class FSPagerViewCell: UICollectionViewCell {
         if let _ = _imageView {
             return _imageView
         }
+        
         let imageView = UIImageView(frame: .zero)
+        
+        imageView.backgroundColor = UIColor.clear
+        
+        
         self.contentView.addSubview(imageView)
+        
         _imageView = imageView
         
         // MARK - Addition
@@ -57,12 +81,27 @@ open class FSPagerViewCell: UICollectionViewCell {
         return imageView
     }
     
-    // Addition
-    open func setBackgroundColor(color : UIColor) {
+    var blurView : UIImageView!
+    
+    
+    open func setBlurredImage(to image : UIImage, withBackground color: UIColor) {
         
-        self.imageView!.backgroundColor = color.withAlphaComponent(0.3)
+        if blurView == nil {
+            
+            blurView = UIImageView(frame: self.contentView.bounds)
+            blurView.addBlurEffect()
+            self.contentView.insertSubview(blurView, at: 0
+            )
+            
+
+            
+        }
+        
+        blurView.image = image
+        blurView.backgroundColor = color
         
     }
+    
     
     fileprivate weak var _textLabel: UILabel?
     fileprivate weak var _imageView: UIImageView?
@@ -126,7 +165,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         self.contentView.layer.shadowOpacity = 0.75
         self.contentView.layer.shadowOffset = .zero*/
         
-        
+        print("B \(textLabel!.superview!.bounds)")
+
         
         // MARK - Addition by Alberto
         self.layer.cornerRadius = 5
@@ -150,6 +190,8 @@ open class FSPagerViewCell: UICollectionViewCell {
                 let height = textLabel.font.pointSize*1.5
                 rect.size.height = height
                 rect.origin.y = self.contentView.frame.height-height
+            
+                
                 return rect
             }()
             textLabel.frame = {

@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class RibbonView: UIView {
     
-    var textField : UITextField!
+    var label : UILabel!
     
     
     override func awakeFromNib() {
@@ -20,13 +20,15 @@ class RibbonView: UIView {
         
         self.backgroundColor = UIColor.clear
                 
-        textField = UITextField(frame: self.bounds)
-        textField.backgroundColor = UIColor.clear
-        textField.font = UIFont(name: "HelveticaNeue", size: 11)
-        textField.textColor = UIColor.black
-        textField.textAlignment = .center
+        label = UILabel(frame: self.bounds)
+        label.backgroundColor = UIColor.clear
+        label.font = UIFont(name: "HelveticaNeue", size: 11)
+        label.textColor = UIColor.black
+        label.textAlignment = .center
         
-        self.addSubview(textField)
+        self.addSubview(label)
+    
+        
         
     }
     

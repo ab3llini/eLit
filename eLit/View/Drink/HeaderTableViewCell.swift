@@ -25,12 +25,14 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.image = UIImage(named: drinks[index].image!)
+        let image = UIImage(named: drinks[index].image!)
+        cell.imageView?.image = image
         cell.textLabel?.text = drinks[index].description
         
-        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!
+        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.3)
         
-        cell.setBackgroundColor(color: bg)
+        
+        cell.setBlurredImage(to: image!, withBackground: bg)
         
         return cell
     }
@@ -45,7 +47,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         drinkPagerView.delegate = self
         drinkPagerView.dataSource = self
         
-        self.drinkPagerView.transformer = FSPagerViewTransformer(type: .cubic)
+        self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
     
         
     }

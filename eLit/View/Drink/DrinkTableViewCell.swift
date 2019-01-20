@@ -49,17 +49,17 @@ import UIKit
     
     private func setAlcholicRibbon(degree: String, color : UIColor) {
         
-        self.alcholicRibbonView.textField.text = degree + "%"
+        self.alcholicRibbonView.label.text = degree + "%"
         self.alcholicRibbonView.backgroundColor = color
-        self.alcholicRibbonView.textField.textColor = UIColor.white
+        self.alcholicRibbonView.label.textColor = UIColor.white
         
     }
     
     private func setBaseRibbon(base: String, color : UIColor) {
         
-        self.baseRIbbonView.textField.text = base
+        self.baseRIbbonView.label.text = base
         self.baseRIbbonView.backgroundColor = color
-        self.baseRIbbonView.textField.textColor = UIColor.black
+        self.baseRIbbonView.label.textColor = UIColor.black
 
     }
     

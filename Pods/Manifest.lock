@@ -12,21 +12,25 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GTMSessionFetcher/Core (1.2.1)
+  - ViewAnimator (2.2.2)
 
 DEPENDENCIES:
   - GoogleSignIn
+  - ViewAnimator
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - ViewAnimator
 
 SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  ViewAnimator: 6eaa112663b6a2d9e6b2573df65b416dd051cbe4
 
-PODFILE CHECKSUM: bc2550510256024bad6d5d80c1535bb2d6e16953
+PODFILE CHECKSUM: 1c11682f656472cfe7fbd740f654361434a235bf
 
 COCOAPODS: 1.5.3

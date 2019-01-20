@@ -20,9 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqW-1Z-gNh" customClass="FSPagerView" customModule="eLit" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5.5" width="322" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="332" height="250.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="240" id="b6K-ah-D2R"/>
+                            <constraint firstAttribute="height" constant="250" id="b6K-ah-D2R"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
@@ -33,10 +33,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="NqW-1Z-gNh" secondAttribute="bottom" constant="5" id="BbG-14-iIU"/>
-                    <constraint firstAttribute="trailing" secondItem="NqW-1Z-gNh" secondAttribute="trailing" constant="5" id="G8S-BF-jEC"/>
-                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="fuh-uJ-qyx"/>
-                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hYi-Q2-hke"/>
+                    <constraint firstAttribute="bottom" secondItem="NqW-1Z-gNh" secondAttribute="bottom" id="BbG-14-iIU"/>
+                    <constraint firstAttribute="trailing" secondItem="NqW-1Z-gNh" secondAttribute="trailing" id="G8S-BF-jEC"/>
+                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fuh-uJ-qyx"/>
+                    <constraint firstItem="NqW-1Z-gNh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hYi-Q2-hke"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

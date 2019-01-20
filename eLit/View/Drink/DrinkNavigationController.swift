@@ -1,19 +1,22 @@
 //
-//  DrinkViewController.swift
+//  DrinkNavigationController.swift
 //  eLit
 //
-//  Created by Alberto Mario Bellini on 17/01/2019.
-//  Copyright © 2019 Alberto Mario Bellini. All rights reserved.
+//  Created by Alberto Mario Bellini on 19/01/2019.
+//  Copyright © 2019 eLit.app. All rights reserved.
 //
 
 import UIKit
 
-class DrinkViewController: UITableViewController {
+class DrinkNavigationController: UINavigationController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+
+
     }
     
 
