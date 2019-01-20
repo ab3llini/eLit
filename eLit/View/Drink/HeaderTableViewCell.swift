@@ -29,7 +29,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         cell.imageView?.image = image
         cell.textLabel?.text = drinks[index].description
         
-        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.3)
+        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
         
         
         cell.setBlurredImage(to: image!, withBackground: bg)

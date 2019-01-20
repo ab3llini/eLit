@@ -165,8 +165,6 @@ open class FSPagerViewCell: UICollectionViewCell {
         self.contentView.layer.shadowOpacity = 0.75
         self.contentView.layer.shadowOffset = .zero*/
         
-        print("B \(textLabel!.superview!.bounds)")
-
         
         // MARK - Addition by Alberto
         self.layer.cornerRadius = 5

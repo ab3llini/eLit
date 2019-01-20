@@ -45,7 +45,12 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             //Header
             let cell = tableView.dequeueReusableCell(withIdentifier: accountNib, for: indexPath) as! AccountTableViewCell
             
-            guard let gid = GIDSignIn.sharedInstance() else { return cell }
+            guard let gid = GIDSignIn.sharedInstance() else {
+                print("CANT GET SHARED GID INSTANCE")
+                cell.nameLabel.text = "ERROR"
+                return cell
+                
+            }
             guard gid.hasAuthInKeychain() else {
                 cell.profileImageView.image = UIImage(named: "user")
                 cell.nameLabel.text = "Login with Google"
