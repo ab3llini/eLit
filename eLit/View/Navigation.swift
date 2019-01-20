@@ -10,4 +10,5 @@ import Foundation
 
 enum Navigation : String {
     case toDrinkVC = "toDrinkVC"
+    case toLogInVC = "toLogInVC"
 }
