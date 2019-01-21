@@ -19,7 +19,13 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     var needAlphaReset : [UIView] = []
     
     //Load drinks
-    let drinks = Model.shared.getDrinks()
+    var drinks : [Drink] = []
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.drinks = Model.shared.getDrinks()
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +50,6 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         
         //Register as dleegate for nav controller to handle animations
         self.navigationController!.delegate = self
-        
         
         
     }

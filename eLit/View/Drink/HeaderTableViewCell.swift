@@ -8,10 +8,13 @@
 
 import UIKit
 
+
 class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewDataSource {
     
     
-    let drinks = Model.shared.getDrinks()
+    //Load drinks
+    var drinks : [Drink] = []
+
     
     @IBOutlet weak var drinkPagerView: FSPagerView! {
         didSet {
@@ -27,18 +30,15 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         let image = UIImage(named: drinks[index].image!)
         cell.imageView?.image = image
-        cell.textLabel?.text = drinks[index].description
+        cell.textLabel?.text = drinks[index].name
         
         let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
-        
         
         cell.setBlurredImage(to: image!, withBackground: bg)
         
         return cell
     }
 
-
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +49,8 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         
         self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
     
+        self.drinks = Model.shared.getDrinks()
+
         
     }
 

@@ -27,8 +27,6 @@ class RibbonView: UIView {
         label.textAlignment = .center
         
         self.addSubview(label)
-    
-        
         
     }
     

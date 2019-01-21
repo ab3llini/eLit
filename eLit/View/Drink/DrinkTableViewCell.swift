@@ -68,7 +68,7 @@ import UIKit
         self.setDrinkImage(image: image, bgcolor: color)
         self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.5))
         self.setBaseRibbon(base: "Vodka", color: UIColor.white.withAlphaComponent(0.3))
-        self.drinkNameLabel.text = drink.description
+        self.drinkNameLabel.text = drink.name
         
     }
     
