@@ -12,6 +12,7 @@ class Model: NSObject {
     //MARK: attributes
     public static let shared = Model()
     private var drinks: [Drink]
+    public var user: User?
     public let entityManager = EntityManager.shared
     
     //MARK: initializers
@@ -19,6 +20,7 @@ class Model: NSObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         _ = appDelegate.persistentContainer.viewContext
         drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
+        user = self.entityManager.fetchAll(type: User.self)?.first
     }
     
     //MARK: Public Methods

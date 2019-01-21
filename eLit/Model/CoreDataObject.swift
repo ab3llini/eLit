@@ -9,12 +9,14 @@
 import UIKit
 import CoreData
 
-@objc(CoreDataObject)
+
 class CoreDataObject: NSManagedObject {
+    
     
     //MARK: Initializers
     convenience init () {
         self.init(context: CoreDataObject.getContext())
+        
     }
     
     convenience init(dict: [String: Any]) {

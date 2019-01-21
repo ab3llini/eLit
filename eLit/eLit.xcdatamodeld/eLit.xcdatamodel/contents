@@ -32,6 +32,17 @@
         <relationship name="ofRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
         <relationship name="witComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
+    <entity name="TestEntity" representedClassName="TestEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="familyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="75"/>
         <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="120"/>
@@ -39,5 +50,7 @@
         <element name="Ingredient" positionX="-658.75" positionY="-1139.57421875" width="128" height="105"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
         <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
+        <element name="User" positionX="-648" positionY="-1359" width="128" height="135"/>
+        <element name="TestEntity" positionX="-630" positionY="-1341" width="128" height="60"/>
     </elements>
 </model>

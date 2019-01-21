@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LogInViewController: UIViewController {
 
@@ -14,6 +15,14 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        guard let gid = GIDSignIn.sharedInstance() else { return }
+        let userIsLoggedIn = gid.hasAuthInKeychain()
+        if userIsLoggedIn {
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     /*

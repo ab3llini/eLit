@@ -7,14 +7,34 @@
 //
 
 import UIKit
+import GoogleSignIn
+import CoreData
 
-class User: NSObject {
-    var email: String?
-    var name: String?
-    public static let shared = User()
+@objc(User)
+class User: CoreDataObject {
     
-    private override init() {
-        super.init()
+    var image: UIImage?
+    
+    convenience init(data : GIDGoogleUser?) {
+        self.init()
+        //self.updateUserData(data: data)
     }
-
+    
+    func updateUserData(data: GIDGoogleUser) {
+        self.name = data.profile.givenName
+        self.familyName = data.profile.familyName
+        self.email = data.profile.email
+        self.id = data.userID
+        self.imageURLString = data.profile.imageURL(withDimension: 500)?.absoluteString
+        self.setImage()
+    }
+    
+    func setImage() {
+        guard let urlString = imageURLString else { return }
+        if let id: NSData = NSData(contentsOf: URL(string: urlString)!) {
+            self.imageData = id as Data
+        } else { return }
+        
+        self.image = UIImage(data: self.imageData!)
+    }
 }

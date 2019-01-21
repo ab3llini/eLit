@@ -31,22 +31,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let step2 = RecipeStep(drinkComponents: [component, component2])
         let recipe = Recipe(steps: [step, step2])
  */
-        /*
+        
         let model = Model.shared as Model
+        let em = EntityManager.shared
         
         let drink1 = Drink(name: "Drink1", image: "Drink1", degree: 25)
         let drink2 = Drink(name: "Drink2", image: "Drink2", degree: 35)
         let drink3 = Drink(name: "Drink3", image: "Drink3", degree: 20)
         let drink4 = Drink(name: "Drink4", image: "Drink4", degree: 40)
+        _ = Ingredient(grade: 3, name: "ing1")
         
         model.addDrink(drink1)
         model.addDrink(drink2)
         model.addDrink(drink3)
         model.addDrink(drink4)
-        
         model.savePersistentModel()
         
-        */
+        var drinks = em.fetchAll(type: Drink.self)
+        print(drinks?.count ?? "nil")
+        
+        let ingredient = em.fetchAll(type: Ingredient.self)?.first
+        
+        print()
+        
+        _ = Drink(name: "Drink5", image: "Drink3", degree: 20)
+        _ = Drink(name: "Drink6", image: "Drink4", degree: 40)
+        
+        model.savePersistentModel()
+        drinks = em.fetchAll(type: Drink.self)
+        print(drinks?.count ?? "nil")
+        
+        
 //        let dbManager = DataBaseManager.shared
 //        _ = dbManager.fetchAllData() { print($0) }
         

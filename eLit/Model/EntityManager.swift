@@ -21,13 +21,19 @@ class EntityManager: NSObject {
 
     //MARK: public methods
     public func fetchAll <T : CoreDataObject> (type : T.Type) -> [T]? {
-        let request : NSFetchRequest = type.fetchRequest()
+        let request : NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
         do {
             return try type.getContext().fetch(request) as? [T]
         }
         catch {
+            print("ERROR in fetch all")
             return nil
         }
+    }
+    
+    public func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
 
 }

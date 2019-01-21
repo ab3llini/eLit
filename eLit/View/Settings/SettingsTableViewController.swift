@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareForSignIn()
+//        GIDSignIn.sharedInstance()?.signOut()
         self.tableView.register(UINib.init(nibName: accountNib, bundle: nil), forCellReuseIdentifier: accountNib)
         
         // Uncomment the following line to preserve selection between presentations
@@ -54,22 +55,33 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             guard gid.hasAuthInKeychain() else {
                 cell.profileImageView.image = UIImage(named: "user")
                 cell.nameLabel.text = "Login with Google"
+                cell.emailLabel.text = ""
                 return cell
             }
             
-            let user = gid.currentUser
-            cell.profileImageView.image = UIImage(named: "user")
-            let name: String = user?.profile.name ?? ""
-            cell.nameLabel.text = name
+            guard let user = Model.shared.user else {
+                cell.nameLabel.text = "ERROR"
+                return cell
+            }
+            
+            cell.nameLabel.text = user.name ?? ""
+            cell.emailLabel.text = user.email ?? ""
+            if (user.image != nil) {
+                cell.profileImageView.image = user.image!
+            } else {
+                cell.profileImageView.image = UIImage(named: "user")
+            }
             return cell
         }
         
-
-        else {
-            
-            return UITableViewCell()
-            
-        }
+        // Other cells
+        return UITableViewCell()
+    }
+    
+    
+    // Changes the table raws if needed
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadRows(at: [IndexPath(indexes: [0, 0])], with: UITableView.RowAnimation.automatic)
     }
     
     // MARK: Google Sing in
@@ -85,9 +97,24 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         guard (user != nil) else { return }
-        print(user.profile.email)
-        print(user.profile.name)
-        print(user.profile.familyName)
+        
+        if let occuredError = error {
+            print("Error during signIn = \(occuredError.localizedDescription)")
+        }
+        
+        if let oldUser = Model.shared.user {
+            oldUser.updateUserData(data: user)
+        } else {
+            Model.shared.user = User(data : user)
+        }
+        
+        print(CoreDataObject.getContext().hasChanges)
+        Model.shared.savePersistentModel()
+        print(CoreDataObject.getContext().hasChanges)
+        
+        print("---------------------------")
+        print(Model.shared.entityManager.fetchAll(type: User.self) ?? "nil")
+        
         //TODO: Manage sigin in
     }
     
@@ -98,6 +125,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             }
         }
     }
+    
     
 
     /*

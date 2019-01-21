@@ -27,7 +27,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvl-W9-aMG">
-                        <rect key="frame" x="100" y="15.5" width="188" height="21"/>
+                        <rect key="frame" x="100" y="15.5" width="188" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-8J-JPC">
+                        <rect key="frame" x="100" y="52" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,11 +45,14 @@
                     <constraint firstItem="vP7-wr-jCF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FlY-kR-AWF"/>
                     <constraint firstAttribute="bottom" secondItem="vP7-wr-jCF" secondAttribute="bottom" constant="15" id="Fr8-Od-fa6"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Jvl-W9-aMG" secondAttribute="trailing" constant="5" id="Hu1-2M-4Da"/>
+                    <constraint firstItem="yFV-8J-JPC" firstAttribute="leading" secondItem="vP7-wr-jCF" secondAttribute="trailing" constant="15" id="WVr-L0-S1S"/>
                     <constraint firstItem="vP7-wr-jCF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="d6e-rR-YjV"/>
+                    <constraint firstItem="yFV-8J-JPC" firstAttribute="top" secondItem="Jvl-W9-aMG" secondAttribute="bottom" constant="7.5" id="zIH-hg-5wP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="emailLabel" destination="yFV-8J-JPC" id="Xg1-ng-6ZX"/>
                 <outlet property="nameLabel" destination="Jvl-W9-aMG" id="EyN-Fd-vmj"/>
                 <outlet property="profileImageView" destination="vP7-wr-jCF" id="9vm-ku-lAJ"/>
             </connections>
