@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(Ingredient)
-class Ingredient: CoreDataObject {
+class Ingredient: DrinkObject {
     //MARK: Attributes
     public override var description: String {
         return "name: \(String(describing: self.name))\n" +

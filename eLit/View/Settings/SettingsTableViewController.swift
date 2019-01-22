@@ -115,8 +115,13 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         }
         
         Model.shared.savePersistentModel()
-        
-        //TODO: Manage sigin in
+        DataBaseManager.shared.signInUser(user: Model.shared.user!, completion: { response in
+            if (response["status"] as? String ?? "error") == "error" {
+                // TODO: uncomment the following line in deployment
+                // GIDSignIn.sharedInstance()?.signOut()
+                print("ERROR saving the user in the remote DB")
+            }
+        })
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

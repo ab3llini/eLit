@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(Drink)
-class Drink: CoreDataObject {
+class Drink: DrinkObject {
         
     //MARK: Attributes
     public override var description: String {
@@ -39,6 +39,7 @@ class Drink: CoreDataObject {
         self.degree = dict["degree"] as? Int16 ?? 0
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
+        self.createdBy = dict["created_by"] as? String ?? ""
     }
     
     //MARK: Methods

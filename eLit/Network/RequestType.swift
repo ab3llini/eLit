@@ -11,4 +11,5 @@ import UIKit
 enum RequestType: String {
     case FETCH_ALL = "fetch_all"
     case UPDATE_DB = "update_db"
+    case USER_SIGN_IN = "user_sign_in"
 }

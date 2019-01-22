@@ -53,4 +53,15 @@ class User: CoreDataObject {
             self.image = UIImage(data: self.imageData!)
         } else { return }
     }
+    
+    func toDict() -> [String: Any] {
+        var dict: [String: String] = [:]
+        dict["name"] = self.name
+        dict["family_name"] = self.familyName
+        dict["email"] = self.email
+        dict["user_id"] = self.userID
+        dict["image_url"] = self.imageURLString
+        
+        return dict
+    }
 }

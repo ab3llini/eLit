@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(RecipeStep)
-class RecipeStep: CoreDataObject {
+class RecipeStep: DrinkObject {
     //MARK: Attributes
     public override var description: String {
         let components = self.withComponents?.array as! [DrinkComponent]

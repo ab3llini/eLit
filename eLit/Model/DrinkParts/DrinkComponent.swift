@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(DrinkComponent)
-class DrinkComponent: CoreDataObject {
+class DrinkComponent: DrinkObject {
     //MARK: Attributes
     public override var description: String {
         return "\(self.qty) \(String(describing: ((self.unit) != nil) ? self.unit! : "")) " +

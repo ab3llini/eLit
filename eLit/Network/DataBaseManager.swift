@@ -19,11 +19,23 @@ class DataBaseManager: NSObject {
     }
     
     //MARK: Public methods
+    
+/**
+ This method will create a request for getting all the drinks from the main db
+ 
+ - Parameter completion: the function that will be called after the response, it takes as input the data dictionary with all the informations about the drinks. It has also a key "status" that is "ok" if the request succeded and "error" if something went wrong
+ **/
     func fetchAllData(completion: @escaping (_ data: [String: Any]) -> Void) {
-        let request = ["request": RequestType.FETCH_ALL.rawValue]
-        self.sendRequest(dataDict: request, completion: completion)
+        let request = ["request": RequestType.FETCH_ALL.rawValue, "data": nil]
+        self.sendRequest(dataDict: request as [String : Any], completion: completion)
     }
     
+    
+/**
+ This method will create a dictionary with all ids and fingerprints of the objects in the db and will request an update of the drinks that have been changed in the main DB
+ 
+ - Parameter comletion: the function that will be called after the response, it takes as input the data dictionary with all the informations about the modified drinks. It has also a key "status" that is "ok" if the request succeded and "error" if something went wrong
+ **/
     func updateDB(completion: @escaping (_ data: [String: Any]) -> Void) {
         let model = Model.shared
         let objects: [DrinkObject]? = model.entityManager.fetchAll(type: DrinkObject.self)
@@ -42,14 +54,37 @@ class DataBaseManager: NSObject {
     }
     
     
+/**
+ This method will send a request to the main DB for register the user
+ 
+ - Parameter user: is the new user to register
+ - Parameter completion: function called after the response
+ **/
+    func signInUser(user: User, completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request = ["request": RequestType.USER_SIGN_IN.rawValue, "data": user.toDict()] as [String : Any]
+        self.sendRequest(dataDict: request, completion: completion)
+    }
+    
+    
     //MARK: Private methods
+    
+/**
+ This method will send a POST request to the main DB
+ 
+ - Parameter dataDict: is a dictionary that contains the request type as agument for the key "request" and all the necessary data with the key "data".
+ 
+ - Parameter completion: is the function that will be called after the request is completed. As input will be passed the data dictionary that comes from the server with a "status" key that will be "ok" if the request succeded otherwhise "error"
+ **/
     private func sendRequest(dataDict: [String: Any], completion: @escaping ([String: Any]) -> Void) {
         var request = URLRequest(url: self.defaultURL)
         request.httpMethod = "POST"
         request.httpBody = toJson(dataDict)!
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            let resp : HTTPURLResponse = response as! HTTPURLResponse
+            guard let resp : HTTPURLResponse = response as? HTTPURLResponse else {
+                completion(["status": "error"])
+                return
+            }
             print("All headers....", resp.allHeaderFields)
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
