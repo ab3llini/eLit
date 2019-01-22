@@ -19,8 +19,9 @@ class Model: NSObject {
     private override init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         _ = appDelegate.persistentContainer.viewContext
-        drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
-        user = self.entityManager.fetchAll(type: User.self)?.first
+        self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
+        self.user = self.entityManager.fetchAll(type: User.self)?.first
+        self.user?.setImage()
     }
     
     //MARK: Public Methods

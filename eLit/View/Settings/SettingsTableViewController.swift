@@ -16,7 +16,6 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareForSignIn()
-//        GIDSignIn.sharedInstance()?.signOut()
         self.tableView.register(UINib.init(nibName: accountNib, bundle: nil), forCellReuseIdentifier: accountNib)
         
         // Uncomment the following line to preserve selection between presentations
@@ -40,18 +39,20 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if (indexPath.row == 0) {
-            
-            //Header
+        switch indexPath.row {
+        case 0:
+            //Header Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: accountNib, for: indexPath) as! AccountTableViewCell
             
+            // Getting Google ID shared instance
             guard let gid = GIDSignIn.sharedInstance() else {
                 print("CANT GET SHARED GID INSTANCE")
                 cell.nameLabel.text = "ERROR"
                 return cell
                 
             }
+            
+            // Check if the user is logged in
             guard gid.hasAuthInKeychain() else {
                 cell.profileImageView.image = UIImage(named: "user")
                 cell.nameLabel.text = "Login with Google"
@@ -59,23 +60,28 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
                 return cell
             }
             
+            // If the user is logged in there will be a user saved in the db
+            // otherwise there is an error
             guard let user = Model.shared.user else {
                 cell.nameLabel.text = "ERROR"
                 return cell
             }
             
+            // Filling up the table cell with user information and getting the image
             cell.nameLabel.text = user.name ?? ""
             cell.emailLabel.text = user.email ?? ""
-            if (user.image != nil) {
-                cell.profileImageView.image = user.image!
-            } else {
-                cell.profileImageView.image = UIImage(named: "user")
-            }
+            user.setImage(completion: { image in
+                guard let im = image else {
+                    cell.profileImageView.image = UIImage(named: "user")
+                    return
+                }
+                cell.profileImageView.image = im
+            })
             return cell
-        }
         
-        // Other cells
-        return UITableViewCell()
+        default:
+            return UITableViewCell()
+        }
     }
     
     
@@ -108,12 +114,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             Model.shared.user = User(data : user)
         }
         
-        print(CoreDataObject.getContext().hasChanges)
         Model.shared.savePersistentModel()
-        print(CoreDataObject.getContext().hasChanges)
-        
-        print("---------------------------")
-        print(Model.shared.entityManager.fetchAll(type: User.self) ?? "nil")
         
         //TODO: Manage sigin in
     }

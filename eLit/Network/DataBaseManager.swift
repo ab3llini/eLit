@@ -26,7 +26,7 @@ class DataBaseManager: NSObject {
     
     func updateDB(completion: @escaping (_ data: [String: Any]) -> Void) {
         let model = Model.shared
-        let objects: [CoreDataObject]? = model.entityManager.fetchAll(type: CoreDataObject.self)
+        let objects: [DrinkObject]? = model.entityManager.fetchAll(type: DrinkObject.self)
         guard let cdObjects = objects else {
             completion(["status": "error"])
             return

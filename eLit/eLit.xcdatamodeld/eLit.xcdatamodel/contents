@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoreDataObject" representedClassName="CoreDataObject" isAbstract="YES" syncable="YES" codeGenerationType="category">
-        <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Drink" representedClassName="Drink" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+    <entity name="CoreDataObject" representedClassName="CoreDataObject" isAbstract="YES" syncable="YES" codeGenerationType="category"/>
+    <entity name="Drink" representedClassName="Drink" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
+        <attribute name="createdBy" optional="YES" attributeType="String" defaultValueString="eLit" syncable="YES"/>
         <attribute name="degree" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="drinkDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
-    <entity name="DrinkComponent" representedClassName="DrinkComponent" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+    <entity name="DrinkComponent" representedClassName="DrinkComponent" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unit" attributeType="String" syncable="YES"/>
-        <relationship name="inRecipeSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="witComponents" inverseEntity="RecipeStep" syncable="YES"/>
+        <relationship name="inRecipeSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="withComponents" inverseEntity="RecipeStep" syncable="YES"/>
         <relationship name="withIngredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inComponents" inverseEntity="Ingredient" syncable="YES"/>
     </entity>
-    <entity name="Ingredient" representedClassName="Ingredient" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+    <entity name="DrinkObject" representedClassName="DrinkObject" isAbstract="YES" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+        <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="grade" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ingredientDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="inComponents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrinkComponent" inverseName="withIngredient" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
-    <entity name="Recipe" representedClassName="Recipe" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+    <entity name="Recipe" representedClassName="Recipe" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <relationship name="ofDrink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="drinkRecipe" inverseEntity="Drink" syncable="YES"/>
         <relationship name="steps" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeStep" inverseName="ofRecipe" inverseEntity="RecipeStep" syncable="YES"/>
     </entity>
-    <entity name="RecipeStep" representedClassName="RecipeStep" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
+    <entity name="RecipeStep" representedClassName="RecipeStep" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="stepDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
-        <relationship name="witComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
-    </entity>
-    <entity name="TestEntity" representedClassName="TestEntity" syncable="YES" codeGenerationType="category">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="withComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,13 +44,13 @@
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="75"/>
-        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="120"/>
+        <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="45"/>
+        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="148"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
         <element name="Ingredient" positionX="-658.75" positionY="-1139.57421875" width="128" height="105"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
-        <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
-        <element name="User" positionX="-648" positionY="-1359" width="128" height="135"/>
-        <element name="TestEntity" positionX="-630" positionY="-1341" width="128" height="60"/>
+        <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="88"/>
+        <element name="User" positionX="-940" positionY="-1492" width="128" height="135"/>
+        <element name="DrinkObject" positionX="-333" positionY="-1389" width="128" height="75"/>
     </elements>
 </model>

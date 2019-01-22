@@ -23,7 +23,7 @@ class EntityManager: NSObject {
     public func fetchAll <T : CoreDataObject> (type : T.Type) -> [T]? {
         let request : NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
         do {
-            return try type.getContext().fetch(request) as? [T]
+            return try EntityManager.shared.getContext().fetch(request) as? [T]
         }
         catch {
             print("ERROR in fetch all")

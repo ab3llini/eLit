@@ -15,20 +15,8 @@ class CoreDataObject: NSManagedObject {
     
     //MARK: Initializers
     convenience init () {
-        self.init(context: CoreDataObject.getContext())
+        self.init(context: EntityManager.shared.getContext())
         
-    }
-    
-    convenience init(dict: [String: Any]) {
-        self.init(context: CoreDataObject.getContext())
-        self.id = dict["id"] as? String
-        self.fingerprint = dict["fingerprint"] as? String
-    }
-
-    public class func getContext() -> NSManagedObjectContext {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
     }
     
 }

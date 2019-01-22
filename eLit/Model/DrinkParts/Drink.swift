@@ -40,5 +40,18 @@ class Drink: CoreDataObject {
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
     }
+    
+    //MARK: Methods
+    public func ingredients() -> [Ingredient] {
+        guard let recipeSteps = self.drinkRecipe?.steps?.array as? [RecipeStep] else {
+            return []
+        }
+        
+       return recipeSteps.flatMap { step in
+            return (step.withComponents?.array as? [DrinkComponent] ?? []).compactMap { component in
+                return component.withIngredient
+            }
+        }
+    }
         
 }

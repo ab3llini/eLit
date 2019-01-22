@@ -13,7 +13,7 @@ import CoreData
 class RecipeStep: CoreDataObject {
     //MARK: Attributes
     public override var description: String {
-        let components = self.witComponents?.array as! [DrinkComponent]
+        let components = self.withComponents?.array as! [DrinkComponent]
         return  components.map({$0.description}).reduce("STEP:\n") {str, component in "\(str)\t\(component)"} +
             "\n" + ((self.stepDescription != nil) ? self.stepDescription! : "")
     }
@@ -22,7 +22,7 @@ class RecipeStep: CoreDataObject {
     convenience init(description: String, drinkComponents: [DrinkComponent]){
         self.init()
         self.stepDescription = description
-        self.witComponents = NSOrderedSet(array: drinkComponents)
+        self.withComponents = NSOrderedSet(array: drinkComponents)
     }
     
     convenience init(drinkComponents: [DrinkComponent]) {
