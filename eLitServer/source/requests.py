@@ -33,7 +33,7 @@ def on_update_request(data: Dict) -> Dict:
 
 def on_user_sign_in_request(data: Dict) -> Dict:
     connect()
-    user_data = data['data']
+    user_data = data
     user = User.objects(user_id=user_data['user_id'])
     if user is None:
         user = User(data_dict=user_data)

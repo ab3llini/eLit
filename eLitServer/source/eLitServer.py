@@ -35,7 +35,7 @@ class Server(SimpleHTTPRequestHandler):
         data_dict = simplejson.loads(data_string)
         print('Parsed:', data_dict)
         print(self.request_map)
-        response = self.request_map[data_dict['request']](data_dict)
+        response = self.request_map[data_dict['request']](data_dict['data'])
         self.wfile.write(json.dumps(response).encode())
 
 

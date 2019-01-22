@@ -7,7 +7,7 @@ import datetime
 
 class User(DBObject):
     email = me.StringField(required=True, unique=True)
-    name = me.IntField()
+    name = me.StringField()
     family_name = me.StringField()
     image_url = me.StringField()
     user_id = me.StringField(required=True, unique=True)
