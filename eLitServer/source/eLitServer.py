@@ -10,7 +10,8 @@ from requests import *
 class Server(SimpleHTTPRequestHandler):
     request_map = {
         'fetch_all': on_fetch_all_request,
-        'update_db': on_update_request
+        'update_db': on_update_request,
+        'user_sign_in': on_user_sign_in_request
     }
 
     def _set_headers(self):
