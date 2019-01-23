@@ -16,8 +16,13 @@
 		A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347021F37F020061D0D2 /* SettingsTableViewController.swift */; };
 		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
 		A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467347221F37F020061D0D2 /* AccountTableViewCell.xib */; };
+		A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */; };
+		A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
+		A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E992421F888E3004254E0 /* ProfileHeaderView.swift */; };
+		A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E992621F88923004254E0 /* ProfileHeaderView.xib */; };
+		A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */; };
 		A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BED32421F713EB00C1A31D /* DrinkObject.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
@@ -89,8 +94,13 @@
 		A467347021F37F020061D0D2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		A467347221F37F020061D0D2 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		A48E992421F888E3004254E0 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		A48E992621F88923004254E0 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A4BED32421F713EB00C1A31D /* DrinkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObject.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -198,12 +208,25 @@
 		A467346F21F37F020061D0D2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A47ADBCA21F76F7000B5BC83 /* Profile */,
 				A4E5A75121F3E15800E60FAF /* LogIn */,
 				A467347021F37F020061D0D2 /* SettingsTableViewController.swift */,
 				A467347121F37F020061D0D2 /* AccountTableViewCell.swift */,
 				A467347221F37F020061D0D2 /* AccountTableViewCell.xib */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A47ADBCA21F76F7000B5BC83 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */,
+				A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */,
+				A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */,
+				A48E992421F888E3004254E0 /* ProfileHeaderView.swift */,
+				A48E992621F88923004254E0 /* ProfileHeaderView.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		A4D6D00721D82F4E00469827 /* DrinkParts */ = {
@@ -504,7 +527,9 @@
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
+				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
+				A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,9 +679,12 @@
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
+				A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
+				A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
+				A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,

@@ -18,6 +18,10 @@ class AccountTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

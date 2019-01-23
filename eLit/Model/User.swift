@@ -30,6 +30,9 @@ class User: CoreDataObject {
     }
     
     func setImage() {
+        if self.image != nil {
+            return
+        }
         guard let id = self.imageData else {
             getImageData()
             return

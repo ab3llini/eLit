@@ -17,7 +17,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         super.viewDidLoad()
         self.prepareForSignIn()
         self.tableView.register(UINib.init(nibName: accountNib, bundle: nil), forCellReuseIdentifier: accountNib)
-        
+        // GIDSignIn.sharedInstance()?.signOut()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -128,6 +128,8 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         if indexPath.row == 0 {
             if (GIDSignIn.sharedInstance()?.hasAuthInKeychain() ?? false) == false {
                 performSegue(withIdentifier: Navigation.toLogInVC.rawValue, sender: self)
+            } else {
+                performSegue(withIdentifier: Navigation.toUserProfileVC.rawValue, sender: self)
             }
         }
     }
