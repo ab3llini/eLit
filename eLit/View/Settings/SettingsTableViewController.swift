@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 
+
 class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     let accountNib = "AccountTableViewCell"
@@ -77,6 +78,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
                 }
                 cell.profileImageView.image = im
             })
+
             return cell
         
         default:

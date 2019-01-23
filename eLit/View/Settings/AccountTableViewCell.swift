@@ -19,8 +19,7 @@ class AccountTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        profileImageView.clipsToBounds = true
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        self.profileImageView.roundImage(with: 1, ofColor: .darkGray)
         
     }
 

@@ -64,9 +64,12 @@ class ProfileTableViewController: UITableViewController {
             let user = Model.shared.user
             let name = user?.name ?? ""
             let fName = user?.name ?? ""
-            headerView.emailLabel.text = name + " " + fName
             
+            headerView.nameLabel.text = name + " " + fName
             headerView.emailLabel.text = user?.email ?? " "
+        
+            headerView.profileImageView.roundImage(with: 1, ofColor: .darkGray)
+            
             return headerView
             
         default:
