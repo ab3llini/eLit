@@ -10,38 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
-        <scene sceneID="40c-as-fWt">
-            <objects>
-                <viewController id="Qof-e6-d1G" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GvF-Xh-iWI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNQ-c1-bgq">
-                                <rect key="frame" x="176" y="409" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="tfdc:" destination="cN1-f6-hRj" eventType="editingDidEnd" id="FMp-BN-RJa"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="qdO-cH-bw3"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Discover" image="SearchIcon" id="G7l-bq-ZaI"/>
-                    <connections>
-                        <outlet property="textField" destination="qNQ-c1-bgq" id="Mg5-TI-dRX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHn-cp-aia" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="cN1-f6-hRj" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-268" y="298.52216748768473"/>
-        </scene>
         <!--You are gay-->
         <scene sceneID="5Yv-z5-jSr">
             <objects>
@@ -186,7 +154,7 @@
         <scene sceneID="pPT-I1-owS">
             <objects>
                 <tableViewController id="caA-p9-YWe" customClass="SettingsTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a1c-SA-ZtA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a1c-SA-ZtA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyK-4C-xaM" id="YY3-uY-a2k">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -266,7 +234,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="OCu-PW-KpF" kind="relationship" relationship="viewControllers" id="Niz-fs-bTk"/>
-                        <segue destination="Qof-e6-d1G" kind="relationship" relationship="viewControllers" id="I7W-Cm-IC0"/>
+                        <segue destination="vjC-Uw-Emz" kind="relationship" relationship="viewControllers" id="I7W-Cm-IC0"/>
                         <segue destination="tSU-i0-kSz" kind="relationship" relationship="viewControllers" id="vZ9-YL-ehJ"/>
                         <segue destination="MDl-Ea-nl5" kind="relationship" relationship="viewControllers" id="ZbB-K6-Oi8"/>
                     </connections>
@@ -318,10 +286,10 @@
             </objects>
             <point key="canvasLocation" x="922" y="-443"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Drink View Controller-->
         <scene sceneID="lPH-BZ-zqr">
             <objects>
-                <tableViewController storyboardIdentifier="drinkVC" id="gla-hd-7Bp" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="drinkVC" id="gla-hd-7Bp" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dMe-Xo-Zie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,6 +304,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCs-rY-ODc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1990" y="-443"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="OBH-uX-mCg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vjC-Uw-Emz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="SearchIcon" id="G7l-bq-ZaI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lve-8d-zMZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JYy-Zi-fA2" kind="relationship" relationship="rootViewController" id="Ze3-6h-WmF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTu-Qs-gJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268.1159420289855" y="297.99107142857139"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="1Et-Xa-3oW">
+            <objects>
+                <tableViewController id="JYy-Zi-fA2" customClass="SearchTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7T5-Ey-NVz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TQR-Gj-lr3">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TQR-Gj-lr3" id="kGH-VW-ks1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JYy-Zi-fA2" id="pcK-Pj-RhK"/>
+                            <outlet property="delegate" destination="JYy-Zi-fA2" id="oeB-Go-wAe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Discover" id="9I2-ps-0zM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5PA-c7-Ptk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="288"/>
         </scene>
     </scenes>
     <resources>

@@ -12,6 +12,7 @@
 		8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */; };
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
+		A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4548B7921F9D09800549099 /* SearchTableViewController.swift */; };
 		A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A462A19921F1E7B90041BCB4 /* credentials.plist */; };
 		A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347021F37F020061D0D2 /* SettingsTableViewController.swift */; };
 		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
@@ -90,6 +91,7 @@
 		90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.release.xcconfig"; sourceTree = "<group>"; };
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		A4548B7921F9D09800549099 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		A462A19921F1E7B90041BCB4 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A467347021F37F020061D0D2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A4548B7821F9CDBE00549099 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A4548B7921F9D09800549099 /* SearchTableViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		A467346F21F37F020061D0D2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +300,7 @@
 		BD2C651421E24C6D00EC41C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4548B7821F9CDBE00549099 /* Search */,
 				A467346F21F37F020061D0D2 /* Settings */,
 				BD2600A821F0F5D30068D7F8 /* Storyboards */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
@@ -689,6 +700,7 @@
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
+				A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */,
 				BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */,
 				BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */,
 				A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */,

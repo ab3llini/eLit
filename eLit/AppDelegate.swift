@@ -34,17 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let model = Model.shared as Model
         
-        let drink1 = Drink(name: "Drink1", image: "Drink1", degree: 25)
-        let drink2 = Drink(name: "Drink2", image: "Drink2", degree: 35)
-        let drink3 = Drink(name: "Drink3", image: "Drink3", degree: 20)
-        let drink4 = Drink(name: "Drink4", image: "Drink4", degree: 40)
-        _ = Ingredient(grade: 3, name: "ing1")
+        func randomString(length: Int) -> String {
+            let letters = "abcdefghijklmnopqrstuvwxyz"
+            return String((0...length-1).map{ _ in letters.randomElement()! })
+        }
         
-        model.addDrink(drink1)
-        model.addDrink(drink2)
-        model.addDrink(drink3)
-        model.addDrink(drink4)
-        model.savePersistentModel()
+        for i in 1...10 {
+            let drink = Drink(name: "Drink" + String(i%4 + 1) + randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10))
+            model.addDrink(drink)
+        }
+        
+        //model.savePersistentModel()
         
         
 //        let dbManager = DataBaseManager.shared
