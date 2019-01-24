@@ -65,7 +65,7 @@ class SearchTableViewController: DrinkTableViewController, UISearchResultsUpdati
         default:
             //Drinks
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
-            let drink : Drink = drinks[indexPath.row]
+            let drink : Drink = currentDrinks[indexPath.row]
             let color = Renderer.shared.getCoreColors()[drink.name!]!
             let image = UIImage(named: drink.image!)!
             
