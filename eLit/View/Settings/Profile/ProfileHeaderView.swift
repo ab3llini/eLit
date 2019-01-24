@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
+    
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -23,12 +25,5 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         // Drawing code
     }
     */
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //profileImageView.clipsToBounds = true
-        //profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-        
-    }
 
 }
