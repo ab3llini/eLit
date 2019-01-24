@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ProfileTableViewController: UITableViewController {
     
@@ -80,6 +81,20 @@ class ProfileTableViewController: UITableViewController {
             return 200.0
         default:
             return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ProfileTableViewCell else {
+            return
+        }
+        switch cell.profileLabel.text {
+        case "Log Out":
+            GIDSignIn.sharedInstance()?.signOut()
+            navigationController?.popViewController(animated: true)
+        //TODO: manage log out
+        default:
+            return
         }
     }
     
