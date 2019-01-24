@@ -8,14 +8,27 @@
 
 import UIKit
 
-class DrinkViewController: UITableViewController {
+class DrinkViewController: UIViewController, UITextFieldDelegate {
+    
 
+    @IBOutlet weak var textField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        textField.delegate = self
     }
     
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        print(textField.text)
+        
+        return true
+        
+    }
 
     /*
     // MARK: - Navigation
