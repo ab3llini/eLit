@@ -24,6 +24,8 @@
 		A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E992421F888E3004254E0 /* ProfileHeaderView.swift */; };
 		A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E992621F88923004254E0 /* ProfileHeaderView.xib */; };
 		A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */; };
+		A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */; };
+		A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */; };
 		A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BED32421F713EB00C1A31D /* DrinkObject.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
@@ -103,6 +105,8 @@
 		A48E992421F888E3004254E0 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		A48E992621F88923004254E0 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSearchTableViewCell.swift; sourceTree = "<group>"; };
+		A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkSearchTableViewCell.xib; sourceTree = "<group>"; };
 		A4BED32421F713EB00C1A31D /* DrinkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObject.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				A4548B7921F9D09800549099 /* SearchTableViewController.swift */,
+				A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */,
+				A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
+				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
@@ -723,6 +730,7 @@
 				BD19106321F3A67E00F1B213 /* DrinkNavigationController.swift in Sources */,
 				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 				A4E5A75021F3E00E00E60FAF /* User.swift in Sources */,
+				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,28 +26,26 @@ class User: CoreDataObject {
         self.email = data.profile.email
         self.userID = data.userID
         self.imageURLString = data.profile.imageURL(withDimension: 500)?.absoluteString
-        self.setImage()
+        self.setImage(forceReload: true)
     }
     
-    func setImage() {
-        if self.image != nil {
+    func setImage(forceReload: Bool = false) {
+        guard let id = self.imageData, !forceReload else {
+            getImageData(forceReload: true)
             return
         }
-        guard let id = self.imageData else {
-            getImageData()
-            return
-        }
+        
         self.image = UIImage(data: id)
     }
     
-    func setImage(completion: (_ image: UIImage?) -> Void) {
-        self.setImage()
+    func setImage(forceReload: Bool = false, completion: (_ image: UIImage?) -> Void) {
+        self.setImage(forceReload: forceReload)
         completion(self.image)
     }
     
     
-    private func getImageData() {
-        if self.imageData != nil {
+    private func getImageData(forceReload: Bool) {
+        if self.imageData != nil && (!forceReload) {
             return
         }
         

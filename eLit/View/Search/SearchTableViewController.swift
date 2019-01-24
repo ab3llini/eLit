@@ -8,24 +8,33 @@
 
 import UIKit
 
-class SearchTableViewController: DrinkTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
+    var drinks: [Drink] = []
+    var ingredients: [Ingredient] = []
     var currentDrinks: [Drink] = []
+    var currentIngredients: [Ingredient] = []
+        
+    let nib = "DrinkSearchTableViewCell"
 
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        currentDrinks.append(contentsOf: drinks)
+        self.currentIngredients = []
+        self.currentDrinks = []
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.delegate = self
-        super.viewDidLoad()
+        self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
+        self.drinks = Model.shared.getDrinks()
+        self.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,26 +44,17 @@ class SearchTableViewController: DrinkTableViewController, UISearchResultsUpdati
     }
 
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return currentDrinks.count
+            return currentDrinks.count + currentIngredients.count
         default:
             return 0
         }
@@ -63,36 +63,20 @@ class SearchTableViewController: DrinkTableViewController, UISearchResultsUpdati
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section) {
         default:
-            //Drinks
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
-            let drink : Drink = currentDrinks[indexPath.row]
-            let color = Renderer.shared.getCoreColors()[drink.name!]!
-            let image = UIImage(named: drink.image!)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: nib, for: indexPath) as! DrinkSearchTableViewCell
             
-            cell.setDrink(drink: drink, withImage: image, andColor: color)
-            
+            if indexPath.row < currentIngredients.count {
+                //Ingredients
+                let ingredient = currentIngredients[indexPath.row]
+                cell.setDrink(of: .ingredient, with: ingredient)
+            } else {
+                //Drinks
+                let drink: Drink = currentDrinks[indexPath.row - currentIngredients.count]
+                cell.setDrink(of: .drink, with: drink)
+            }
             return cell
         }
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return nil
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        default:
-            return drinkSectionHeight
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
-    }
-    
-    
-    
-    
     
     
     //MARK: Search result updating protocol
@@ -102,12 +86,23 @@ class SearchTableViewController: DrinkTableViewController, UISearchResultsUpdati
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            self.currentDrinks = self.drinks
+            self.currentDrinks = []
+            self.currentIngredients = []
         } else {
             self.currentDrinks = self.drinks.filter { drink in
                 return drink.name?.lowercased().contains(searchText.lowercased()) ?? false
             }
+            
+            self.currentIngredients = self.ingredients.filter { ingredient in
+                return ingredient.name?.lowercased().contains(searchText.lowercased()) ?? false
+            }
         }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.currentDrinks = []
+        self.currentIngredients = []
         self.tableView.reloadData()
     }
 

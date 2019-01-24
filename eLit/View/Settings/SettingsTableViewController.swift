@@ -71,7 +71,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             }
             
             // Filling up the table cell with user information and getting the image
-            cell.nameLabel.text = user.name ?? ""
+            cell.nameLabel.text = (user.name ?? "") + " " + (user.familyName ?? "")
             cell.emailLabel.text = user.email ?? ""
             cell.profileImageView.roundImage(with: 1, ofColor: .darkGray)
 
