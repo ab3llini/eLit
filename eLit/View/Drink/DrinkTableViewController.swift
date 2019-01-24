@@ -135,7 +135,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         let selected = tableView.cellForRow(at: indexPath)
         
         
-        var toAnimate = self.tableView.visibleCells(in: 1)
+        var toAnimate = self.tableView.visibleCells(in: indexPath.section)
         let idx = toAnimate.index(of: selected!)!
         
         toAnimate.remove(at: idx)

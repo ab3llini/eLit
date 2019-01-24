@@ -69,7 +69,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             }
             
             // Filling up the table cell with user information and getting the image
-            cell.nameLabel.text = user.name ?? ""
+            cell.nameLabel.text = (user.name ?? "") + " " + (user.familyName ?? "")
             cell.emailLabel.text = user.email ?? ""
             user.setImage(completion: { image in
                 guard let im = image else {

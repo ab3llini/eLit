@@ -37,7 +37,7 @@ class ProfileTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 100
     }
     
     
@@ -64,7 +64,7 @@ class ProfileTableViewController: UITableViewController {
             })
             let user = Model.shared.user
             let name = user?.name ?? ""
-            let fName = user?.name ?? ""
+            let fName = user?.familyName ?? ""
             
             headerView.nameLabel.text = name + " " + fName
             headerView.emailLabel.text = user?.email ?? " "
