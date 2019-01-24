@@ -30,17 +30,23 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 5
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
+        
+        switch indexPath.section {
         case 0:
             //Header Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: accountNib, for: indexPath) as! AccountTableViewCell
@@ -48,16 +54,12 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             // Getting Google ID shared instance
             guard let gid = GIDSignIn.sharedInstance() else {
                 print("CANT GET SHARED GID INSTANCE")
-                cell.nameLabel.text = "ERROR"
                 return cell
                 
             }
             
             // Check if the user is logged in
             guard gid.hasAuthInKeychain() else {
-                cell.profileImageView.image = UIImage(named: "user")
-                cell.nameLabel.text = "Login with Google"
-                cell.emailLabel.text = ""
                 return cell
             }
             
@@ -71,6 +73,8 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             // Filling up the table cell with user information and getting the image
             cell.nameLabel.text = user.name ?? ""
             cell.emailLabel.text = user.email ?? ""
+            cell.profileImageView.roundImage(with: 1, ofColor: .darkGray)
+
             user.setImage(completion: { image in
                 guard let im = image else {
                     cell.profileImageView.image = UIImage(named: "user")
@@ -136,6 +140,12 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        default:
+            return 30
+        }
+    }
     
 
     /*

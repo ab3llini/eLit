@@ -18,9 +18,7 @@ class AccountTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.profileImageView.roundImage(with: 1, ofColor: .darkGray)
-        
+            
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

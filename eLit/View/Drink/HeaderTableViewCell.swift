@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol HeaderViewProtocol {
+    
+    func imageDidChange(image : UIImage)
+    
+}
 
-class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewDataSource {
+
+class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
     
     //Load drinks
     var drinks : [Drink] = []
-
+    
     
     @IBOutlet weak var drinkPagerView: FSPagerView! {
         didSet {
@@ -32,9 +38,8 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         cell.imageView?.image = image
         cell.textLabel?.text = drinks[index].name
         
-        let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
-        
-        cell.setBlurredImage(to: image!, withBackground: bg)
+        //let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
+        //cell.setBlurredImage(to: image!, withBackground: bg)
         
         return cell
     }
@@ -44,7 +49,6 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         super.awakeFromNib()
         // Initialization code
         
-        drinkPagerView.delegate = self
         drinkPagerView.dataSource = self
         
         self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
@@ -58,6 +62,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDelegate, FSPagerViewData
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
     }
     
 }

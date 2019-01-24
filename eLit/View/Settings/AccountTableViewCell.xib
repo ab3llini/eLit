@@ -19,21 +19,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="309" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="vP7-wr-jCF">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="GoogleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vP7-wr-jCF">
                         <rect key="frame" x="15" y="15" width="69.5" height="69.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vP7-wr-jCF" secondAttribute="height" multiplier="1:1" id="X07-Vl-0hI"/>
                             <constraint firstAttribute="height" priority="999" constant="70" id="rKr-Ge-kaa"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvl-W9-aMG">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvl-W9-aMG">
                         <rect key="frame" x="99.5" y="25" width="188.5" height="24"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-8J-JPC">
-                        <rect key="frame" x="99.5" y="54" width="39" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-8J-JPC">
+                        <rect key="frame" x="99.5" y="54" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -59,4 +59,7 @@
             <point key="canvasLocation" x="-159" y="-37"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="GoogleIcon" width="409.60000610351562" height="409.60000610351562"/>
+    </resources>
 </document>

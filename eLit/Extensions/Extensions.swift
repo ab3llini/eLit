@@ -12,13 +12,15 @@ import UIKit
 
 extension UIImageView
 {
-    func addBlurEffect()
+    func addBlurEffect() -> UIVisualEffectView
     {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds        
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
         self.addSubview(blurEffectView)
+        
+        return blurEffectView
             
     }
     
@@ -36,13 +38,17 @@ extension UIImageView
 
 extension UIImage {
     
-    class func imageWithColor(color: UIColor, size: CGSize=CGSize(width: 1, height: 1)) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
         color.setFill()
-        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
+        UIRectFill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image!
+        
+        guard let cgImage = image?.cgImage else { return nil }
+        
+        self.init(cgImage: cgImage)
     }
     
     func blurImage()-> UIImage? {

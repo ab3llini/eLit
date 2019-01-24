@@ -42,7 +42,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         // Gradient from left to right
         gradient.startPoint = CGPoint(x: 0.0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 0)
-        gradient.locations = [0.0,0.4]
+        gradient.locations = [0.0,0.5]
         
         // set the gradient layer to the same size as the view
         gradient.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: textLabel.font.pointSize * 1.5)
@@ -160,6 +160,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate func commonInit() {
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
+        
         /*self.contentView.layer.shadowColor = UIColor.black.cgColor
         self.contentView.layer.shadowRadius = 5
         self.contentView.layer.shadowOpacity = 0.75

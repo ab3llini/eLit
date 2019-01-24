@@ -21,6 +21,7 @@
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqW-1Z-gNh" customClass="FSPagerView" customModule="eLit" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="332" height="250.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="b6K-ah-D2R"/>
                         </constraints>
@@ -32,6 +33,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="NqW-1Z-gNh" secondAttribute="bottom" id="BbG-14-iIU"/>
                     <constraint firstAttribute="trailing" secondItem="NqW-1Z-gNh" secondAttribute="trailing" id="G8S-BF-jEC"/>
@@ -39,6 +41,7 @@
                     <constraint firstItem="NqW-1Z-gNh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hYi-Q2-hke"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="drinkPagerView" destination="NqW-1Z-gNh" id="tqB-mm-fmX"/>

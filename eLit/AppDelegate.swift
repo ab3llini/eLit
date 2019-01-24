@@ -32,17 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let recipe = Recipe(steps: [step, step2])
  */
         
-        let model = Model.shared as Model
-        
-        func randomString(length: Int) -> String {
-            let letters = "abcdefghijklmnopqrstuvwxyz"
-            return String((0...length-1).map{ _ in letters.randomElement()! })
-        }
-        
-        for i in 1...10 {
-            let drink = Drink(name: "Drink" + String(i%4 + 1) + randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10))
-            model.addDrink(drink)
-        }
         
         //model.savePersistentModel()
         
@@ -52,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //model.savePersistentModel()
+        
+        // Removes status bar globally
+        // UIApplication.shared.isStatusBarHidden = true
         
         
         

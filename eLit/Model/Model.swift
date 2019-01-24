@@ -22,6 +22,17 @@ class Model: NSObject {
         self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
         self.user = self.entityManager.fetchAll(type: User.self)?.first
         self.user?.setImage()
+        
+        for i in 1...10 {
+            let drink = Drink(name: "Drink" + String(i%4 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10))
+            drinks.append(drink)
+        }
+        
+    }
+    
+    class func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyz"
+        return String((0...length-1).map{ _ in letters.randomElement()! })
     }
     
     //MARK: Public Methods

@@ -8,27 +8,21 @@
 
 import UIKit
 
-class DrinkViewController: UIViewController, UITextFieldDelegate {
+class DrinkViewController: UITableViewController {
     
 
-    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        textField.delegate = self
+
+        navigationController?.navigationBar.shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     }
     
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        print(textField.text)
-        
-        return true
-        
-    }
+
 
     /*
     // MARK: - Navigation

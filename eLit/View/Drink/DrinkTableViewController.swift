@@ -9,7 +9,7 @@
 import UIKit
 import ViewAnimator
 
-class DrinkTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, UINavigationControllerDelegate {
+class DrinkTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, UINavigationControllerDelegate, FSPagerViewDelegate {
 
 
     let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
@@ -21,11 +21,11 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     //Load drinks
     var drinks : [Drink] = []
     
+    var coreColors : [String : UIColor] = [:]
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.drinks = Model.shared.getDrinks()
+    // Background view
+    var backgroundImageView : UIImageView!
 
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +47,62 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         //Register for 3D touch
         registerForPreviewing(with: self, sourceView: self.tableView)
         
+        self.drinks = Model.shared.getDrinks()
+        self.coreColors = Renderer.shared.getCoreColors()
+        
+        
+        // Remove space between sections.
+        tableView.sectionHeaderHeight = 0
+        tableView.sectionFooterHeight = 0
+        
+        // Remove space at top and bottom of tableView.
+        tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
+        tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
+        
         
         //Register as dleegate for nav controller to handle animations
         self.navigationController!.delegate = self
         
+        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 400)) // 250 + 100
+    
+        
+        // Create a container view to avoid streatch
+        let containerView = UIImageView()
+        
+        // Add image view
+        containerView.addSubview(self.backgroundImageView)
+        
+        // Add ONCE ONLY blur
+        _ = containerView.addBlurEffect()
+        
+        // Set ONCE ONLY aspect fit
+        self.backgroundImageView.contentMode = .scaleAspectFit
+
+        // Assign ONCE ONLY bg image
+        tableView.backgroundView = containerView
+    
+        
+        // Assign bg
+        self.setBackgroundImage(UIImage(named: self.drinks[0].image!)!, withColor: self.coreColors[self.drinks[0].name!]!)
         
     }
+    
+    func setBackgroundImage(_ image : UIImage, withColor color : UIColor) {
+        
+        self.backgroundImageView.superview!.backgroundColor = color.withAlphaComponent(0.3)
+        self.backgroundImageView.image = image
+
+    }
+    
+    func pagerViewDidScroll(_ pagerView: FSPagerView) {
+        
+        let cell = pagerView.cellForItem(at: pagerView.currentIndex)
+        let color = self.coreColors[self.drinks[pagerView.currentIndex].name!]!
+        self.setBackgroundImage((cell!.imageView?.image!)!, withColor: color)
+        
+    }
+
+    
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         
@@ -111,6 +161,10 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
             
             //Header
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
+            
+            // Register self as header delegate
+            cell.drinkPagerView.delegate = self
+            
             return cell
             
             
@@ -155,23 +209,16 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         }
         
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return nil
-        default:
-            return "Cocktails we love"
-        }
-    }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         switch section {
         case 0:
-            return 0
+            return 100
         default:
             return drinkSectionHeight
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
@@ -179,9 +226,22 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         
         switch section {
         case 0:
-            return UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 100))
+            
+            view.backgroundColor = UIColor.clear
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: 100)
+            label.text = "Home"
+            label.textColor = UIColor.black
+            label.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+            
+            view.addSubview(label)
+            
+            return view
 
         default:
+            
             
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight))
 
@@ -219,6 +279,23 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
+        
+        switch segue.identifier {
+        case Navigation.toDrinkVC.rawValue:
+            
+            // Setup VC
+            let destination : DrinkViewController = segue.destination as! DrinkViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                
+                destination.title = self.drinks[indexPath.row].name!
+                
+            }
+            
+        default:
+            return
+        }
+        
      }
     
     
