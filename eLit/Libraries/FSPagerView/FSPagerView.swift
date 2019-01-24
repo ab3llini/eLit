@@ -278,6 +278,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.backgroundView?.frame = self.bounds
         self.contentView.frame = self.bounds
         self.collectionView.frame = self.contentView.bounds
+        
+        
+        
     }
     
     open override func willMove(toWindow newWindow: UIWindow?) {
@@ -568,7 +571,6 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.contentView.addSubview(collectionView)
         self.collectionView = collectionView
         self.collectionViewLayout = collectionViewLayout
-        
     }
     
     fileprivate func startTimer() {

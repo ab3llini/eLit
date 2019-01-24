@@ -26,28 +26,14 @@ open class FSPagerViewCell: UICollectionViewCell {
         view.backgroundColor = .clear
         
         let textLabel = UILabel(frame: .zero)
-        textLabel.textColor = .white
-        textLabel.font = UIFont(name: "HelveticaNeue", size: 18)
+        textLabel.textColor = .black
+        textLabel.textAlignment = .center
+        textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 18)
 
         textLabel.backgroundColor = .clear
         self.contentView.addSubview(view)
-        
-        
-        // Create a gradient layer
-        let gradient = CAGradientLayer()
-        
-        // gradient colors in order which they will visually appear
-        gradient.colors = [UIColor.black.withAlphaComponent(0.4).cgColor, UIColor.clear.cgColor]
-        
-        // Gradient from left to right
-        gradient.startPoint = CGPoint(x: 0.0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 0)
-        gradient.locations = [0.0,0.5]
-        
-        // set the gradient layer to the same size as the view
-        gradient.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: textLabel.font.pointSize * 1.5)
-        // add the gradient layer to the views layer for rendering
-        view.layer.addSublayer(gradient)
+    
+ 
         view.addSubview(textLabel)
         
         textLabel.addObserver(self, forKeyPath: "font", options: [.old,.new], context: kvoContext)
@@ -89,7 +75,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         if blurView == nil {
             
             blurView = UIImageView(frame: self.contentView.bounds)
-            blurView.addBlurEffect()
+            _ = blurView.addBlurEffect(effect: .extraLight)
             self.contentView.insertSubview(blurView, at: 0
             )
             
@@ -181,7 +167,11 @@ open class FSPagerViewCell: UICollectionViewCell {
     override open func layoutSubviews() {
         super.layoutSubviews()
         if let imageView = _imageView {
-            imageView.frame = self.contentView.bounds
+            
+            // ADDITION
+            let frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height - textLabel!.font.pointSize*1.8)
+            
+            imageView.frame = frame
         }
         if let textLabel = _textLabel {
             textLabel.superview!.frame = {

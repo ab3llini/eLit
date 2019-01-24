@@ -51,12 +51,16 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         
         drinkPagerView.dataSource = self
         
+        drinkPagerView.itemSize = CGSize(width: 220, height: 220)
+        
         self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
     
         self.drinks = Model.shared.getDrinks()
-
+    
         
     }
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

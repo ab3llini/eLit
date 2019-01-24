@@ -24,7 +24,7 @@ class Model: NSObject {
         self.user?.setImage()
         
         for i in 1...10 {
-            let drink = Drink(name: "Drink" + String(i%4 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10))
+            let drink = Drink(name: "Drink" + String(i%5 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%5 + 1), degree: Int16(i*10))
             drinks.append(drink)
         }
         

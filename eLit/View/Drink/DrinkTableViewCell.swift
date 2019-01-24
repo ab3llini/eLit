@@ -25,7 +25,7 @@ import UIKit
         super.awakeFromNib()
         
         // Initialization code
-        self.backgroundImage.addBlurEffect()
+        self.backgroundImage.addBlurEffect(effect: .light)
         
         //Disable ugly selection effect
         self.selectionStyle = .none;

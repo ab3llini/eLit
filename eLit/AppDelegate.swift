@@ -31,12 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let recipe = Recipe(steps: [step, step2])
  */
         
-        
+        /*
         for _ in 1...10 {
             _ = Ingredient(name: randomString(length: 20))
         }
         
         model.savePersistentModel()
+ 
+ */
         
         
 //        let dbManager = DataBaseManager.shared

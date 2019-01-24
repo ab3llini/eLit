@@ -73,7 +73,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         containerView.addSubview(self.backgroundImageView)
         
         // Add ONCE ONLY blur
-        _ = containerView.addBlurEffect()
+        _ = containerView.addBlurEffect(effect: .extraLight)
         
         // Set ONCE ONLY aspect fit
         self.backgroundImageView.contentMode = .scaleAspectFit
@@ -88,17 +88,30 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     }
     
     func setBackgroundImage(_ image : UIImage, withColor color : UIColor) {
+                
+        UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
+            
+            self.backgroundImageView.image = image
+
+        }, completion: nil)
         
-        self.backgroundImageView.superview!.backgroundColor = color.withAlphaComponent(0.3)
-        self.backgroundImageView.image = image
+        UIView.transition(with: self.backgroundImageView.superview!,  duration: 0.75, options: .transitionCrossDissolve, animations: {
+            
+            self.backgroundImageView.superview!.backgroundColor = color.withAlphaComponent(0.3)
+        
+        }, completion: nil)
+        
+        
+        
 
     }
     
-    func pagerViewDidScroll(_ pagerView: FSPagerView) {
+    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         
-        let cell = pagerView.cellForItem(at: pagerView.currentIndex)
-        let color = self.coreColors[self.drinks[pagerView.currentIndex].name!]!
-        self.setBackgroundImage((cell!.imageView?.image!)!, withColor: color)
+        let color = self.coreColors[self.drinks[targetIndex].name!]!
+        let image = UIImage(named: self.drinks[targetIndex].image!)
+        
+        self.setBackgroundImage(image!, withColor: color)
         
     }
 
@@ -214,7 +227,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         
         switch section {
         case 0:
-            return 100
+            return 75
         default:
             return drinkSectionHeight
         }
