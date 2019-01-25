@@ -28,11 +28,11 @@ class Model: NSObject {
             ingredients.append(Ingredient(name: Model.randomString(length: 20)))
         }
         
-        for i in 0...4 {
+        for i in 0...5 {
             let component = DrinkComponent(ingredient: ingredients[i%2], quantity: 1, unit: .PART)
             let step = RecipeStep(description: "", drinkComponents: [component])
             let recipe = Recipe(with: [step])
-            let drink = Drink(name: "Drink" + String(i%4 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10), recipe: recipe)
+            let drink = Drink(name: "Drink" + String(i%5 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%5 + 1), degree: Int16(i*10), recipe: recipe)
             drinks.append(drink)
         }
     }

@@ -61,28 +61,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
         
     }
-    
-    override func layoutSubviews() {
-        
-        guard gradient != nil else {
-            
-            // Add a gradient at the bottom of the image
-            gradient = CAGradientLayer()
-            
-            gradient.colors = [UIColor.white.cgColor, UIColor.white.withAlphaComponent(0).cgColor]
-            gradient.startPoint = CGPoint(x: 0, y: 1)
-            gradient.endPoint = CGPoint(x: 0, y: 0)
-            gradient.locations = [0, 1]
-            gradient.frame = CGRect(x: 0, y: self.bounds.size.height - 100, width: self.bounds.size.width, height: 100)
-            
-            self.layer.insertSublayer(gradient, at: 0)
-            
-            return
-        }
-        
-        
-        
-    }
+
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

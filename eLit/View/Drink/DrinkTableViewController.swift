@@ -73,6 +73,9 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         // Create a container view to avoid streatch
         let containerView = UIImageView()
         
+        // Setup background color
+        containerView.backgroundColor = UIColor.white
+        
         // Add image view
         containerView.addSubview(self.backgroundImageView)
         
@@ -96,13 +99,8 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
             
             self.backgroundImageView.image = image
+            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.3)
 
-        }, completion: nil)
-        
-        UIView.transition(with: self.backgroundImageView.superview!,  duration: 0.75, options: .transitionCrossDissolve, animations: {
-            
-            self.backgroundImageView.superview!.backgroundColor = color.withAlphaComponent(0.3)
-        
         }, completion: nil)
         
         
@@ -254,8 +252,6 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
             
             
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight))
-
-            view.backgroundColor = UIColor.white
             
             let label = UILabel()
             label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight)
