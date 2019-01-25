@@ -25,12 +25,13 @@ import UIKit
         super.awakeFromNib()
         
         // Initialization code
-        _ = self.backgroundImage.addBlurEffect(effect: .light)
+        // _ = self.backgroundImage.addBlurEffect(effect: .light)
         
         //Disable ugly selection effect
         self.selectionStyle = .none;
-
-                
+        
+        self.containerView.layer.borderWidth = 1
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,8 +43,9 @@ import UIKit
     private func setDrinkImage(image : UIImage, bgcolor : UIColor) {
         
         self.drinkImageView.image = image
-        self.backgroundImage.image = image
+        //self.backgroundImage.image = image
         self.backgroundImage.backgroundColor = bgcolor.withAlphaComponent(0.3)
+        self.containerView.layer.borderColor = bgcolor.withAlphaComponent(0.4).cgColor
 
     }
     

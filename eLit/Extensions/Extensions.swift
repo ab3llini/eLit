@@ -181,3 +181,21 @@ extension UIApplication {
         return controller
     }
 }
+
+extension UIView {
+    
+    func dropShadow(offset : CGSize = CGSize(width: -1, height: 1)) {
+        
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = 1
+        
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        
+        self.layer.rasterizationScale = UIScreen.main.scale
+        
+    }
+}
