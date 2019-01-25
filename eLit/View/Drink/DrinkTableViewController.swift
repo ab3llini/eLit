@@ -14,6 +14,8 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
 
     let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
     
+    let selection = UISelectionFeedbackGenerator()
+    
     let drinkSectionHeight : CGFloat = 40.0
     
     var needBgReset : DrinkTableViewCell?
@@ -114,6 +116,8 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         let image = UIImage(named: self.drinks[targetIndex].image!)
         
         self.setBackgroundImage(image!, withColor: color)
+        
+        self.selection.selectionChanged()
         
     }
 

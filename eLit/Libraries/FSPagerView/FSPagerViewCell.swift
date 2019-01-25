@@ -95,6 +95,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
     fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
     
+    /*
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
         guard _selectedForegroundView == nil else {
@@ -108,7 +109,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         _selectedForegroundView = view
         return view
     }
-    
+    */
+    /*
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
@@ -122,11 +124,13 @@ open class FSPagerViewCell: UICollectionViewCell {
             return super.isHighlighted
         }
     }
+ */
     
     open override var isSelected: Bool {
         set {
             super.isSelected = newValue
-            self.selectedForegroundView?.layer.backgroundColor = newValue ? self.selectionColor.cgColor : UIColor.clear.cgColor
+            /*
+            self.selectedForegroundView?.layer.backgroundColor = newValue ? self.selectionColor.cgColor : UIColor.clear.cgColor */
         }
         get {
             return super.isSelected
@@ -191,9 +195,11 @@ open class FSPagerViewCell: UICollectionViewCell {
                 return rect
             }()
         }
+        /*
         if let selectedForegroundView = _selectedForegroundView {
             selectedForegroundView.frame = self.contentView.bounds
         }
+ */
     }
 
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
