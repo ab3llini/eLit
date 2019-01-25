@@ -16,7 +16,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     let drinkSectionHeight : CGFloat = 40.0
     
-    var needAlphaReset : [UIView] = []
+    var needBgReset : DrinkTableViewCell?
     
     //Load drinks
     var drinks : [Drink] = []
@@ -64,7 +64,6 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         self.navigationController!.delegate = self
         
         self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 400)) // 250 + 100
-    
         
         // Create a container view to avoid streatch
         let containerView = UIImageView()
@@ -199,23 +198,14 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selected = tableView.cellForRow(at: indexPath)
-        
-        
-        var toAnimate = self.tableView.visibleCells(in: indexPath.section)
-        let idx = toAnimate.index(of: selected!)!
-        
-        toAnimate.remove(at: idx)
-        
-        needAlphaReset = toAnimate
+        let selected : DrinkTableViewCell = tableView.cellForRow(at: indexPath) as! DrinkTableViewCell
+    
         
         UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
         
-            for cell in toAnimate {
-                
-                cell.alpha = 0.2
-                
-            }
+            selected.backgroundImage.backgroundColor = selected.backgroundImage.backgroundColor!.withAlphaComponent(0.8)
+            
+            self.needBgReset = selected
             
         }) { (completition) in
             self.performSegue(withIdentifier: Navigation.toDrinkVC.rawValue, sender: self)
@@ -276,11 +266,15 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
-        for cell in needAlphaReset {
-            cell.alpha = 1
+        if let cell = needBgReset {
+            
+            cell.backgroundImage.backgroundColor = cell.backgroundImage.backgroundColor!.withAlphaComponent(0.3)
+
+            needBgReset = nil
+            
         }
         
-        needAlphaReset = []
+
         
     }
     

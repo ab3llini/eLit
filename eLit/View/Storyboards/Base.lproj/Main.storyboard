@@ -303,7 +303,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCs-rY-ODc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="-443"/>
+            <point key="canvasLocation" x="2283" y="-443"/>
         </scene>
         <!--Discover-->
         <scene sceneID="OBH-uX-mCg">
@@ -366,6 +366,6 @@
         <image name="SettingsIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mfK-pE-sFH"/>
+        <segue reference="QFk-sg-bR1"/>
     </inferredMetricsTieBreakers>
 </document>

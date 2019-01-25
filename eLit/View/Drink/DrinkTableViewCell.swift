@@ -25,7 +25,7 @@ import UIKit
         super.awakeFromNib()
         
         // Initialization code
-        self.backgroundImage.addBlurEffect(effect: .light)
+        _ = self.backgroundImage.addBlurEffect(effect: .light)
         
         //Disable ugly selection effect
         self.selectionStyle = .none;
@@ -50,9 +50,9 @@ import UIKit
     private func setAlcholicRibbon(degree: String, color : UIColor) {
         
         self.alcholicRibbonView.label.text = degree + "%"
-        self.alcholicRibbonView.backgroundColor = color
-        self.alcholicRibbonView.label.textColor = UIColor.white
-        
+        self.alcholicRibbonView.label.textColor = UIColor.black
+        self.alcholicRibbonView.backgroundColor = color.withAlphaComponent(0.2)
+
     }
     
     private func setBaseRibbon(base: String, color : UIColor) {
@@ -66,7 +66,7 @@ import UIKit
     public func setDrink(drink : Drink, withImage image: UIImage, andColor color: UIColor) {
         
         self.setDrinkImage(image: image, bgcolor: color)
-        self.setAlcholicRibbon(degree: String(drink.degree), color: color.withAlphaComponent(0.5))
+        self.setAlcholicRibbon(degree: String(drink.degree), color: color)
         self.setBaseRibbon(base: "Vodka", color: UIColor.white.withAlphaComponent(0.3))
         self.drinkNameLabel.text = drink.name
         
