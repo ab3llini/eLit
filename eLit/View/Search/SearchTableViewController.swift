@@ -15,13 +15,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     var ingredients: [Ingredient] = []
     var currentDrinks: [Drink] = []
     var currentIngredients: [Ingredient] = []
+    var selectedIngredient: Ingredient? = nil
         
     let nib = "DrinkSearchTableViewCell"
 
     
     override func viewWillAppear(_ animated: Bool) {
-        self.currentIngredients = []
-        self.currentDrinks = []
         self.tableView.reloadData()
     }
     
@@ -47,34 +46,53 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return currentDrinks.count + currentIngredients.count
+            return currentIngredients.count
+        case 1:
+            return currentDrinks.count
         default:
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.section) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: nib, for: indexPath) as! DrinkSearchTableViewCell
+        switch indexPath.section {
+        case 0:
+            // ingredients
+            let ingredient = currentIngredients[indexPath.row]
+            cell.setDrink(of: .ingredient, with: ingredient)
+        case 1:
+            // drinks
+            let drink: Drink = currentDrinks[indexPath.row]
+            cell.setDrink(of: .drink, with: drink)
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: nib, for: indexPath) as! DrinkSearchTableViewCell
-            
-            if indexPath.row < currentIngredients.count {
-                //Ingredients
-                let ingredient = currentIngredients[indexPath.row]
-                cell.setDrink(of: .ingredient, with: ingredient)
-            } else {
-                //Drinks
-                let drink: Drink = currentDrinks[indexPath.row - currentIngredients.count]
-                cell.setDrink(of: .drink, with: drink)
-            }
             return cell
+        }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            if currentIngredients.count > 0 {
+                return "Ingredients"
+            }
+            return nil
+            
+        case 1:
+            if currentDrinks.count > 0 {
+                return "Drinks"
+            }
+            fallthrough
+        default:
+            return nil
         }
     }
     
@@ -151,14 +169,34 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     */
 
-    /*
     // MARK: - Navigation
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            // An Ingredient has been selected
+            self.selectedIngredient = currentIngredients[indexPath.row]
+            self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
+        case 1:
+            self.performSegue(withIdentifier: Navigation.toDrink2VC.rawValue, sender: self)
+        default:
+            return
+        }
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Navigation.toDrinkForIngredientVC.rawValue:
+            let tableVC = segue.destination as! DrinkForIngredientTableViewController
+            let currentVC = sender as! SearchTableViewController
+            tableVC.withIngredient = currentVC.selectedIngredient!
+        
+        default:
+            return
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

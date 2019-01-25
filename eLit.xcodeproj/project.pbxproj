@@ -10,6 +10,7 @@
 		3910E7902DF3B7A3A2556E25 /* Pods_eLitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */; };
 		6358F8E9864C9BDF72FA5536 /* Pods_eLitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */; };
 		8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */; };
+		A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */; };
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
 		A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4548B7921F9D09800549099 /* SearchTableViewController.swift */; };
@@ -91,6 +92,7 @@
 		6ADD5D44653B179884CE66A5 /* Pods-eLitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLit.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLit/Pods-eLit.release.xcconfig"; sourceTree = "<group>"; };
 		90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.release.xcconfig"; sourceTree = "<group>"; };
+		A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkForIngredientTableViewController.swift; sourceTree = "<group>"; };
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		A4548B7921F9D09800549099 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				A4548B7921F9D09800549099 /* SearchTableViewController.swift */,
 				A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */,
 				A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */,
+				A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */,
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,
+				A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
@@ -910,13 +914,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.albi.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -934,13 +938,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.albi.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";

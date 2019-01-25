@@ -25,6 +25,9 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     // Background view
     var backgroundImageView : UIImageView!
+    
+    // Storyboard segue
+    var segue = Navigation.toDrinkVC
 
 
     override func viewDidLoad() {
@@ -218,7 +221,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
             }
             
         }) { (completition) in
-            self.performSegue(withIdentifier: Navigation.toDrinkVC.rawValue, sender: self)
+            self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
         }
         
     }
@@ -294,7 +297,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
      // Pass the selected object to the new view controller.
         
         switch segue.identifier {
-        case Navigation.toDrinkVC.rawValue:
+        case self.segue.rawValue:
             
             // Setup VC
             let destination : DrinkViewController = segue.destination as! DrinkViewController
