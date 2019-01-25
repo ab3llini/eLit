@@ -23,11 +23,18 @@ class Model: NSObject {
         self.user = self.entityManager.fetchAll(type: User.self)?.first
         self.user?.setImage()
         
-        for i in 1...10 {
-            let drink = Drink(name: "Drink" + String(i%5 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%5 + 1), degree: Int16(i*10))
-            drinks.append(drink)
+        var ingredients: [Ingredient] = []
+        for _ in 0...1 {
+            ingredients.append(Ingredient(name: Model.randomString(length: 20)))
         }
         
+        for i in 0...4 {
+            let component = DrinkComponent(ingredient: ingredients[i%2], quantity: 1, unit: .PART)
+            let step = RecipeStep(description: "", drinkComponents: [component])
+            let recipe = Recipe(with: [step])
+            let drink = Drink(name: "Drink" + String(i%4 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%4 + 1), degree: Int16(i*10), recipe: recipe)
+            drinks.append(drink)
+        }
     }
     
     class func randomString(length: Int) -> String {

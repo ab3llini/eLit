@@ -18,7 +18,7 @@ class Recipe: DrinkObject {
     }
     
     //MARK: Initializers
-    convenience init(steps: [RecipeStep]){
+    convenience init(with steps: [RecipeStep]){
         self.init()
         self.steps = NSOrderedSet(array: steps)
     }
@@ -28,7 +28,7 @@ class Recipe: DrinkObject {
         for step in dict["steps"] as? [[String: Any]] ?? [] {
             steps.append(RecipeStep(dict: step))
         }
-        self.init(steps: steps)
+        self.init(with: steps)
     }
 
 }

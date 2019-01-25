@@ -24,12 +24,12 @@ class Drink: DrinkObject {
         self.drinkRecipe = recipe
     }
     
-    convenience init(name: String, image: String, degree: Int16) {
+    convenience init(name: String, image: String, degree: Int16, recipe: Recipe? = nil) {
         self.init()
         self.name = name
         self.image = image
         self.degree = degree
-        
+        self.drinkRecipe = recipe
     }
     
     convenience init(dict: [String: Any]) {
