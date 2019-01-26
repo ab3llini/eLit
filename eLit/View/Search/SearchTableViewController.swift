@@ -16,16 +16,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     var currentDrinks: [Drink] = []
     var currentIngredients: [Ingredient] = []
     var selectedIngredient: Ingredient? = nil
+    var separatorStyle: UITableViewCell.SeparatorStyle?
         
     let nib = "DrinkSearchTableViewCell"
 
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        self.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.separatorStyle = self.tableView.separatorStyle
+        setupSearchBar()
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = true
@@ -96,6 +99,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         }
     }
     
+    func reloadData() {
+        if self.currentDrinks.count == 0 && self.currentIngredients.count == 0{
+            self.tableView.separatorStyle = .none
+        } else {
+            self.tableView.separatorStyle = self.separatorStyle ?? .none
+        }
+        self.tableView.reloadData()
+    }
+    
     
     //MARK: Search result updating protocol
     func updateSearchResults(for searchController: UISearchController) {
@@ -115,13 +127,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
                 return ingredient.name?.lowercased().contains(searchText.lowercased()) ?? false
             }
         }
-        self.tableView.reloadData()
+        self.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.currentDrinks = []
         self.currentIngredients = []
-        self.tableView.reloadData()
+        self.reloadData()
+    }
+    
+    func setupSearchBar() {
+        let searchBar = self.searchController.searchBar
+        searchBar.barTintColor = .white
+        searchBar.backgroundColor = UIColor.white.withAlphaComponent(1)
     }
 
     /*
