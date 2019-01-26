@@ -99,7 +99,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
             
             self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.3)
+            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)
 
         }, completion: nil)
         

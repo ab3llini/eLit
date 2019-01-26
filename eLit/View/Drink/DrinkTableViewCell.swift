@@ -44,8 +44,8 @@ import UIKit
         
         self.drinkImageView.image = image
         //self.backgroundImage.image = image
-        self.backgroundImage.backgroundColor = bgcolor.withAlphaComponent(0.3)
-        self.containerView.layer.borderColor = bgcolor.withAlphaComponent(0.4).cgColor
+        self.backgroundImage.backgroundColor = bgcolor.withAlphaComponent(0.1)
+        self.containerView.layer.borderColor = bgcolor.withAlphaComponent(0.2).cgColor
 
     }
     
