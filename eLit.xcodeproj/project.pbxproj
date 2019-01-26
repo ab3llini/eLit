@@ -53,6 +53,9 @@
 		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
+		BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */; };
+		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
+		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
@@ -145,6 +148,9 @@
 		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundTableViewController.swift; sourceTree = "<group>"; };
+		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
+		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
@@ -274,15 +280,10 @@
 		BD0AA95A21F0A51500990A32 /* Drink */ = {
 			isa = PBXGroup;
 			children = (
-				BDD6A02321E2634800470D04 /* RibbonView.swift */,
-				BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */,
-				BD2C651C21E24E7D00EC41C6 /* DrinkTableViewCell.xib */,
-				BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */,
-				BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */,
-				BD2C652021E24FEC00EC41C6 /* ContainerView.swift */,
-				BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */,
-				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
+				BD6EE94321FCBFB60034BAE9 /* Detail */,
+				BD6EE94221FCBF980034BAE9 /* Home */,
 				BD19106221F3A67E00F1B213 /* DrinkNavigationController.swift */,
+				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 			);
 			path = Drink;
 			sourceTree = "<group>";
@@ -387,6 +388,30 @@
 				A4E5A74F21F3E00E00E60FAF /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BD6EE94221FCBF980034BAE9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BDD6A02321E2634800470D04 /* RibbonView.swift */,
+				BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */,
+				BD2C651C21E24E7D00EC41C6 /* DrinkTableViewCell.xib */,
+				BD3A31FA21E520BC009A135F /* HeaderTableViewCell.swift */,
+				BD3A31FB21E520BC009A135F /* HeaderTableViewCell.xib */,
+				BD2C652021E24FEC00EC41C6 /* ContainerView.swift */,
+				BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BD6EE94321FCBFB60034BAE9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
+				BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */,
+				BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		BDC2F54E21E36B5800D5AB2E /* Extensions */ = {
@@ -543,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
+				BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */,
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
@@ -701,6 +727,7 @@
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
 				A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */,
+				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */,
@@ -734,6 +761,7 @@
 				BD19106321F3A67E00F1B213 /* DrinkNavigationController.swift in Sources */,
 				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 				A4E5A75021F3E00E00E60FAF /* User.swift in Sources */,
+				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,
 				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
 			);
@@ -914,13 +942,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -938,13 +966,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
