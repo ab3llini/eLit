@@ -187,10 +187,17 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+        
         case Navigation.toDrinkForIngredientVC.rawValue:
             let tableVC = segue.destination as! DrinkForIngredientTableViewController
             let currentVC = sender as! SearchTableViewController
             tableVC.withIngredient = currentVC.selectedIngredient!
+        
+        case Navigation.toDrink2VC.rawValue:
+            let v = segue.destination as! DrinkViewController
+            if let index = self.tableView.indexPathForSelectedRow {
+                v.setDrink(drink: drinks[index.row])
+            }
         
         default:
             return

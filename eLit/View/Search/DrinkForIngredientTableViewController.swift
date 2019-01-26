@@ -103,6 +103,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
             //This will show the cell clearly and blur the rest of the screen for our peek.
             previewingContext.sourceRect = tableView.rectForRow(at: path)
             let drinkVC = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
+            drinkVC.setDrink(drink: self.drinks[path.row])
             return drinkVC
         }
     }
@@ -153,14 +154,19 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let v = segue.destination as! DrinkViewController
+        if let index = self.tableView.indexPathForSelectedRow {
+            v.setDrink(drink: drinks[index.row])
+        }
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
