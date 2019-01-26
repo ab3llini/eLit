@@ -9,7 +9,7 @@
 import UIKit
 import ViewAnimator
 
-class DrinkTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, UINavigationControllerDelegate, FSPagerViewDelegate {
+class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewControllerPreviewingDelegate, UINavigationControllerDelegate, FSPagerViewDelegate {
 
 
     let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
@@ -25,23 +25,17 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     var coreColors : [String : UIColor] = [:]
     
-    // Background view
-    var backgroundImageView : UIImageView!
-    
     // Storyboard segue
     var segue = Navigation.toDrinkVC
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+    
         //Load nibs
         for nib in nibs {
             
@@ -68,44 +62,9 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         //Register as dleegate for nav controller to handle animations
         self.navigationController!.delegate = self
         
-        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 400)) // 250 + 100
-        
-        // Create a container view to avoid streatch
-        let containerView = UIImageView()
-        
-        // Setup background color
-        containerView.backgroundColor = UIColor.white
-        
-        // Add image view
-        containerView.addSubview(self.backgroundImageView)
-        
-        // Add ONCE ONLY blur
-        _ = containerView.addBlurEffect(effect: .extraLight)
-        
-        // Set ONCE ONLY aspect fit
-        self.backgroundImageView.contentMode = .scaleAspectFit
-
-        // Assign ONCE ONLY bg image
-        tableView.backgroundView = containerView
-    
-        
         // Assign bg
         self.setBackgroundImage(UIImage(named: self.drinks[0].image!)!, withColor: self.coreColors[self.drinks[0].name!]!)
         
-    }
-    
-    func setBackgroundImage(_ image : UIImage, withColor color : UIColor) {
-                
-        UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
-            
-            self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)
-
-        }, completion: nil)
-        
-        
-        
-
     }
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
@@ -203,18 +162,27 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selected : DrinkTableViewCell = tableView.cellForRow(at: indexPath) as! DrinkTableViewCell
-    
-        
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-        
-            selected.backgroundImage.backgroundColor = selected.backgroundImage.backgroundColor!.withAlphaComponent(0.8)
+        switch indexPath.section {
+        case 0:
+            return
+        case 1:
+            let selected : DrinkTableViewCell = tableView.cellForRow(at: indexPath) as! DrinkTableViewCell
             
-            self.needBgReset = selected
             
-        }) { (completition) in
-            self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                
+                selected.backgroundImage.backgroundColor = selected.backgroundImage.backgroundColor!.withAlphaComponent(0.4)
+                
+                self.needBgReset = selected
+                
+            }) { (completition) in
+                self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
+            }
+        default:
+            return
         }
+        
+        
         
     }
 
@@ -271,7 +239,7 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
         
         if let cell = needBgReset {
             
-            cell.backgroundImage.backgroundColor = cell.backgroundImage.backgroundColor!.withAlphaComponent(0.3)
+            cell.backgroundImage.backgroundColor = cell.backgroundImage.backgroundColor!.withAlphaComponent(0.1)
 
             needBgReset = nil
             
@@ -291,14 +259,29 @@ class DrinkTableViewController: UITableViewController, UIViewControllerPreviewin
      // Pass the selected object to the new view controller.
         
         switch segue.identifier {
+            
         case self.segue.rawValue:
             
-            // Setup VC
-            let destination : DrinkViewController = segue.destination as! DrinkViewController
-            
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let indexPath = tableView.indexPathForSelectedRow{
                 
-                destination.title = self.drinks[indexPath.row].name!
+                switch indexPath.section {
+                    
+                case 0:
+                        break;
+                case 1:
+                        
+                        // Get VC
+                        let destination : DrinkViewController = segue.destination as! DrinkViewController
+                    
+                        let selectedDrink = self.drinks[indexPath.row]
+                        
+                        destination.setDrink(drink: selectedDrink)
+                    
+                        break;
+                default:
+                    break;
+
+                }
                 
             }
             

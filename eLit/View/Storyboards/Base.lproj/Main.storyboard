@@ -249,8 +249,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="OCu-PW-KpF" customClass="DrinkNavigationController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="cJN-oe-EHj"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xEa-bc-hoh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xEa-bc-hoh">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -262,7 +261,7 @@
             </objects>
             <point key="canvasLocation" x="-268" y="-443"/>
         </scene>
-        <!--Home-->
+        <!--Drink Table View Controller-->
         <scene sceneID="vjF-gq-HhL">
             <objects>
                 <tableViewController id="gbq-HS-nPN" customClass="DrinkTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
@@ -275,9 +274,8 @@
                             <outlet property="delegate" destination="gbq-HS-nPN" id="6Kg-Uj-x8O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="73d-Fc-QuN">
-                        <barButtonItem key="backBarButtonItem" title="Drinks" id="7fg-Cv-brX"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="73d-Fc-QuN"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrinkVC" id="QFk-sg-bR1"/>
                     </connections>
@@ -286,24 +284,25 @@
             </objects>
             <point key="canvasLocation" x="922" y="-443"/>
         </scene>
-        <!--Drink name-->
+        <!--Drink View Controller-->
         <scene sceneID="lPH-BZ-zqr">
             <objects>
-                <tableViewController storyboardIdentifier="drinkVC" title="Drink name" id="gla-hd-7Bp" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dMe-Xo-Zie">
+                <tableViewController storyboardIdentifier="drinkVC" id="gla-hd-7Bp" customClass="DrinkViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="dMe-Xo-Zie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="gla-hd-7Bp" id="4eh-GE-qjN"/>
                             <outlet property="delegate" destination="gla-hd-7Bp" id="ORt-gF-nP0"/>
                         </connections>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCs-rY-ODc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2135" y="-443"/>
+            <point key="canvasLocation" x="2281" y="-443"/>
         </scene>
         <!--Discover-->
         <scene sceneID="OBH-uX-mCg">
@@ -398,6 +397,6 @@
         <image name="SettingsIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mfK-pE-sFH"/>
+        <segue reference="QFk-sg-bR1"/>
     </inferredMetricsTieBreakers>
 </document>
