@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class SearchTableViewController: BlurredBackgroundTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
     var drinks: [Drink] = []
@@ -21,19 +21,26 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     let nib = "DrinkSearchTableViewCell"
 
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.reloadData()
-    }
-    
     override func viewDidLoad() {
+    
+        
         super.viewDidLoad()
+        
+        // Setup bg
+        self.setBackgroundImage(UIImage(named: "Drink4")!, withColor: UIColor.red.withAlphaComponent(0.8))
+        
         self.separatorStyle = self.tableView.separatorStyle
-        setupSearchBar()
+        
+        self.setupSearchBar()
+        
+        
+        
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.delegate = self
+        
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
         self.drinks = Model.shared.getDrinks()
         self.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
@@ -80,6 +87,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         }
         return cell
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
@@ -137,55 +146,26 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     func setupSearchBar() {
+        
         let searchBar = self.searchController.searchBar
-        searchBar.barTintColor = .white
-        searchBar.backgroundColor = UIColor.white.withAlphaComponent(1)
+        
+        searchBar.searchBarStyle = .minimal
+        
+        let textField : UITextField = searchBar.getViewElement(type: UITextField.self)!
+        
+        //textField.backgroundColor = .darkGray
+        let blurView = textField.addBlurEffect(effect: .dark)
+        
+        blurView.clipsToBounds = true
+        blurView.layer.cornerRadius = 5
+
+        
+        /*searchBar.barStyle = .black
+        */
+        
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
 
     // MARK: - Navigation
     

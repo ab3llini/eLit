@@ -38,7 +38,7 @@
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
 		BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */; };
 		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
-		BD19106321F3A67E00F1B213 /* DrinkNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19106221F3A67E00F1B213 /* DrinkNavigationController.swift */; };
+		BD19106321F3A67E00F1B213 /* LargeVbrantNavigatonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19106221F3A67E00F1B213 /* LargeVbrantNavigatonController.swift */; };
 		BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD23727F21E8D68C007FEFC3 /* Assets.xcassets */; };
 		BD2C651D21E24E7D00EC41C6 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2C651B21E24E7D00EC41C6 /* DrinkTableViewCell.swift */; };
 		BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2C651C21E24E7D00EC41C6 /* DrinkTableViewCell.xib */; };
@@ -57,6 +57,7 @@
 		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
+		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
 		BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */; };
@@ -124,7 +125,7 @@
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewController.swift; sourceTree = "<group>"; };
 		BD0AA95F21F0B25600990A32 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		BD19106221F3A67E00F1B213 /* DrinkNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkNavigationController.swift; sourceTree = "<group>"; };
+		BD19106221F3A67E00F1B213 /* LargeVbrantNavigatonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeVbrantNavigatonController.swift; sourceTree = "<group>"; };
 		BD23727F21E8D68C007FEFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD255A2E21F3CBDD00EB461F /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		BD255A2F21F3CBDD00EB461F /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
 		BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
@@ -282,8 +284,6 @@
 			children = (
 				BD6EE94321FCBFB60034BAE9 /* Detail */,
 				BD6EE94221FCBF980034BAE9 /* Home */,
-				BD19106221F3A67E00F1B213 /* DrinkNavigationController.swift */,
-				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 			);
 			path = Drink;
 			sourceTree = "<group>";
@@ -310,12 +310,15 @@
 		BD2C651421E24C6D00EC41C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD19106221F3A67E00F1B213 /* LargeVbrantNavigatonController.swift */,
+				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
+				BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */,
+				BD903B9521ECBA2300F0D856 /* Renderer.swift */,
+				BD0AA95F21F0B25600990A32 /* Navigation.swift */,
 				A4548B7821F9CDBE00549099 /* Search */,
 				A467346F21F37F020061D0D2 /* Settings */,
 				BD2600A821F0F5D30068D7F8 /* Storyboards */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
-				BD903B9521ECBA2300F0D856 /* Renderer.swift */,
-				BD0AA95F21F0B25600990A32 /* Navigation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
 				A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */,
+				BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */,
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
@@ -758,7 +762,7 @@
 				A4D6D00921D8313500469827 /* Recipe.swift in Sources */,
 				BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */,
 				BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */,
-				BD19106321F3A67E00F1B213 /* DrinkNavigationController.swift in Sources */,
+				BD19106321F3A67E00F1B213 /* LargeVbrantNavigatonController.swift in Sources */,
 				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 				A4E5A75021F3E00E00E60FAF /* User.swift in Sources */,
 				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,

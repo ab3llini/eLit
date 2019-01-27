@@ -32,17 +32,6 @@ extension UIColor {
 
 extension UIImageView
 {
-    func addBlurEffect(effect : UIBlurEffect.Style) -> UIVisualEffectView
-    {
-        let blurEffect = UIBlurEffect(style: effect)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds        
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
-        
-        return blurEffectView
-            
-    }
     
     func roundImage(with border: CGFloat, ofColor color : UIColor) {
         
@@ -184,6 +173,20 @@ extension UIApplication {
 
 extension UIView {
     
+    func getViewElement<T>(type: T.Type) -> T? {
+        
+        let svs = subviews.flatMap { $0.subviews }
+        guard let element = (svs.filter { $0 is T }).first as? T else { return nil }
+        return element
+    }
+    
+    func getAllViewElement<T>(type: T.Type) -> [T]? {
+        
+        let svs = subviews.flatMap { $0.subviews }
+        guard let elements = (svs.filter { $0 is T }) as? [T] else { return nil }
+        return elements
+    }
+    
     func dropShadow(offset : CGSize = CGSize(width: -1, height: 1)) {
         
         self.layer.masksToBounds = false
@@ -197,5 +200,46 @@ extension UIView {
         
         self.layer.rasterizationScale = UIScreen.main.scale
         
+    }
+    
+    func addBlurEffect(effect : UIBlurEffect.Style) -> UIVisualEffectView
+    {
+        let blurEffect = UIBlurEffect(style: effect)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        
+        self.addSubview(blurEffectView)
+        
+        return blurEffectView
+
+    }
+    
+    func insertBlurEffect(at index : Int, with effect : UIBlurEffect.Style) {
+        
+        let blurEffect = UIBlurEffect(style: effect)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        
+        self.insertSubview(blurEffectView, at: index)
+        
+    }
+}
+
+extension UISearchBar {
+    
+    func setTextFieldColor(color: UIColor) {
+        
+        if let textField = getViewElement(type: UITextField.self) {
+            switch searchBarStyle {
+            case .minimal:
+                textField.layer.backgroundColor = color.cgColor
+                textField.layer.cornerRadius = 6
+                
+            case .prominent, .default:
+                textField.backgroundColor = color
+            }
+        }
     }
 }

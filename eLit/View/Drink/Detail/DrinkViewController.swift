@@ -19,13 +19,9 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         // Register nibs
         self.tableView.register(UINib(nibName: "DrinkImageTableViewCell", bundle: nil), forCellReuseIdentifier: "DrinkImageTableViewCell")
         
-        // Transparent navigation bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         // Add negative inset to account for nav bar
         self.tableView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
-        
 
     }
     
@@ -42,7 +38,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         //Layout content
         self.layoutContent()
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     private func layoutContent() {

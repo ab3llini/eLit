@@ -10,6 +10,14 @@ import UIKit
 
 class BlurredBackgroundTableViewController: UITableViewController {
     
+    // Height of the blurred background image view
+    @IBInspectable
+    var backgroundImageViewHeight : CGFloat = 400
+    
+    // Speed ratio at which images slides away while scolling
+    @IBInspectable
+    var backgroundImageSpeedRatio : CGFloat = 0.8
+    
     // Background view
     var backgroundImageView : UIImageView!
 
@@ -17,9 +25,9 @@ class BlurredBackgroundTableViewController: UITableViewController {
         super.viewDidLoad()
 
         //Adding blurred background
-        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 400)) // 250 + 100
+        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: self.backgroundImageViewHeight))
         
-        // Create a container view to avoid streatch
+        // Create a container view to attach image on top
         let containerView = UIImageView()
         
         // Setup background color
@@ -28,16 +36,18 @@ class BlurredBackgroundTableViewController: UITableViewController {
         // Add image view
         containerView.addSubview(self.backgroundImageView)
         
-        // Add ONCE ONLY blur
+        // Add blur
         _ = containerView.addBlurEffect(effect: .extraLight)
         
-        // Set ONCE ONLY aspect fit
+        // Set aspect fit
         self.backgroundImageView.contentMode = .scaleAspectFit
         
-        // Assign ONCE ONLY bg image
+        // Assign the container view as background view
         tableView.backgroundView = containerView
+        
     }
-
+    
+    // Changes the background image and color
     public func setBackgroundImage(_ image : UIImage, withColor color : UIColor) {
         
         UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
@@ -48,5 +58,18 @@ class BlurredBackgroundTableViewController: UITableViewController {
         }, completion: nil)
         
     }
-
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offset = self.tableView.contentOffset.y + self.tableView.adjustedContentInset.top
+        let origin = self.backgroundImageView.frame.size.height/2
+        
+        guard offset >= 0 else {
+            return
+        }
+        
+        self.backgroundImageView.center.y = origin - (offset * self.backgroundImageSpeedRatio)
+        
+    }
+    
 }

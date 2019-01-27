@@ -9,8 +9,8 @@
 import UIKit
 import ViewAnimator
 
-class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewControllerPreviewingDelegate, UINavigationControllerDelegate, FSPagerViewDelegate {
-
+class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate, FSPagerViewDelegate {
+    
 
     let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
     
@@ -28,9 +28,6 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
     // Storyboard segue
     var segue = Navigation.toDrinkVC
 
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
 
     override func viewDidLoad() {
         
@@ -58,9 +55,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
         tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
         tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
         
-        
-        //Register as dleegate for nav controller to handle animations
-        self.navigationController!.delegate = self
+        self.navigationController?.delegate = self
         
         // Assign bg
         self.setBackgroundImage(UIImage(named: self.drinks[0].image!)!, withColor: self.coreColors[self.drinks[0].name!]!)
@@ -83,18 +78,15 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         
         show(viewControllerToCommit, sender: self)
-        
-        //present(viewControllerToCommit, animated: true, completion: nil)
-        
     }
     
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
         
-        let path = tableView.indexPathForRow(at: location)!
+        let indexPath = tableView.indexPathForRow(at: location)!
         
-        switch path.section {
+        switch indexPath.section {
             
             case 0:
                 // Disable 3D touch for PagerView
@@ -102,10 +94,15 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
             default:
                 
                 //This will show the cell clearly and blur the rest of the screen for our peek.
-                previewingContext.sourceRect = tableView.rectForRow(at: path)
-                let drinkVC = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
+                previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
                 
-                return drinkVC
+                let destination = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
+                
+                let selectedDrink = self.drinks[indexPath.row]
+                
+                destination.setDrink(drink: selectedDrink)
+                
+                return destination
         }
     }
 
@@ -190,7 +187,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
         
         switch section {
         case 0:
-            return 75
+            return 0
         default:
             return drinkSectionHeight
         }
@@ -202,6 +199,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
         
         switch section {
         case 0:
+            /*
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 100))
             
             view.backgroundColor = UIColor.clear
@@ -215,6 +213,8 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UIViewCont
             view.addSubview(label)
             
             return view
+             */
+            return nil
 
         default:
             
