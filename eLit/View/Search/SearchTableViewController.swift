@@ -17,6 +17,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var currentIngredients: [Ingredient] = []
     var selectedIngredient: Ingredient? = nil
     var separatorStyle: UITableViewCell.SeparatorStyle?
+    
+    var searchText: String?
         
     let nib = "DrinkSearchTableViewCell"
 
@@ -27,7 +29,11 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         super.viewDidLoad()
         
         // Setup bg
-        self.setBackgroundImage(UIImage(named: "Drink4")!, withColor: UIColor.red.withAlphaComponent(0.8))
+        let image = UIImage(named: "Drink3")!
+        self.setBackgroundImage(image, withColor: UIColor.blue.withAlphaComponent(0.6))
+        
+        self.backgroundImageSpeedRatio = 0.2
+        self.backgroundImageViewHeight = 800
         
         self.separatorStyle = self.tableView.separatorStyle
         
@@ -127,6 +133,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         if searchText == "" {
             self.currentDrinks = []
             self.currentIngredients = []
+            self.searchText = nil
         } else {
             self.currentDrinks = self.drinks.filter { drink in
                 return drink.name?.lowercased().contains(searchText.lowercased()) ?? false
@@ -135,6 +142,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.currentIngredients = self.ingredients.filter { ingredient in
                 return ingredient.name?.lowercased().contains(searchText.lowercased()) ?? false
             }
+            self.searchText = searchText
         }
         self.reloadData()
     }
@@ -142,6 +150,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.currentDrinks = []
         self.currentIngredients = []
+        self.searchText = nil
         self.reloadData()
     }
     
@@ -154,17 +163,11 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         let textField : UITextField = searchBar.getViewElement(type: UITextField.self)!
         
         //textField.backgroundColor = .darkGray
-        let blurView = textField.addBlurEffect(effect: .dark)
+        let blurView = textField.addBlurEffect(effect: .regular)
         
         blurView.clipsToBounds = true
         blurView.layer.cornerRadius = 5
-
-        
-        /*searchBar.barStyle = .black
-        */
-        
     }
-
     
 
     // MARK: - Navigation

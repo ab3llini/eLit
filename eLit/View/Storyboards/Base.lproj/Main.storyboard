@@ -323,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="-297" y="448"/>
         </scene>
-        <!--Search-->
+        <!--Discover-->
         <scene sceneID="1Et-Xa-3oW">
             <objects>
                 <tableViewController id="JYy-Zi-fA2" customClass="SearchTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
@@ -346,7 +346,7 @@
                             <outlet property="delegate" destination="JYy-Zi-fA2" id="oeB-Go-wAe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="9I2-ps-0zM"/>
+                    <navigationItem key="navigationItem" title="Discover" id="9I2-ps-0zM"/>
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrink2VC" id="mfK-pE-sFH"/>
                         <segue destination="3XV-ve-yYL" kind="show" identifier="toDrinkForIngredientVC" id="1QJ-wl-nhf"/>
@@ -397,6 +397,6 @@
         <image name="SettingsIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wV5-CP-adr"/>
+        <segue reference="mfK-pE-sFH"/>
     </inferredMetricsTieBreakers>
 </document>
