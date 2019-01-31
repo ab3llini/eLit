@@ -1,4 +1,6 @@
 import sys
+import os.path as op
+sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import simplejson
 import json

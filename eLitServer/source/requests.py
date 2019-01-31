@@ -1,6 +1,7 @@
 from typing import Dict
 from database_classes import *
 import time
+import random
 
 
 def connect():
@@ -54,8 +55,10 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
     data_list = []
     for x in reviews:
         last = next_index + x >= 39
+        eval = random.random() * 5
         data_list.append({
             'title': str(x),
+            'stars': str(eval),
             'is_last': str(last).lower()
         })
 
