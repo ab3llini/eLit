@@ -14,7 +14,7 @@ class User(DBObject):
     sign_in_date = me.DateTimeField(default=datetime.datetime.utcnow)
 
     def __init__(self, email: str = None, name: str = None, family_name: str = None, image_url: str = None,
-                 user_id: str = None, data_dict: Dict[str: str] = None, *args, **values):
+                 user_id: str = None, data_dict: Dict = None, *args, **values):
         if data_dict is None:
             self.email = email
             self.name = name
