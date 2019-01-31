@@ -111,6 +111,7 @@
             <connections>
                 <outlet property="mainView" destination="tuM-hb-5hL" id="TWh-QE-qxH"/>
                 <outlet property="reviewTextLabel" destination="GuH-SW-U2k" id="fpp-ML-WP7"/>
+                <outlet property="starsView" destination="ylb-TB-coE" id="4zV-vd-Yhu"/>
                 <outlet property="titleLabel" destination="w5F-kP-5fo" id="kRU-JV-p5g"/>
             </connections>
             <point key="canvasLocation" x="1438.4000000000001" y="-373.31334332833586"/>

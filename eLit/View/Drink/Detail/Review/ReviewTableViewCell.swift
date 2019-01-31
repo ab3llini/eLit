@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class ReviewTableViewCell: UITableViewCell {
     
@@ -15,7 +16,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var reviewTextLabel: UILabel!
-    @IBOutlet weak var starsView: UIView!
+    @IBOutlet weak var starsView: CosmosView!
     
     
     
