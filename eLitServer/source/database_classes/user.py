@@ -13,24 +13,24 @@ class User(DBObject):
     user_id = me.StringField(required=True, unique=True)
     sign_in_date = me.DateTimeField(default=datetime.datetime.utcnow)
 
-    def __init__(self, email: str, name: str, family_name: str, image_url: str, user_id: str, *args, **values):
-        self.email = email
-        self.name = name
-        self.family_name = family_name
-        self.image_url = image_url
-        self.user_id = user_id
-        self.sign_in_date = datetime.datetime.utcnow()
-        super().__init__(*args, **values)
+    def __init__(self, email: str = None, name: str = None, family_name: str = None, image_url: str = None,
+                 user_id: str = None, data_dict: Dict[str: str] = None, *args, **values):
+        if data_dict is None:
+            self.email = email
+            self.name = name
+            self.family_name = family_name
+            self.image_url = image_url
+            self.user_id = user_id
+            self.sign_in_date = datetime.datetime.utcnow()
 
-"""
-    def __init__(self, data_dict: Dict[str: str], *args, **values):
-        self.email = data_dict['email']
-        self.name = data_dict['name']
-        self.family_name = data_dict['family_name']
-        self.image_url = data_dict['image_url']
-        self.user_id = data_dict['user_id']
-        self.sign_in_date = datetime.datetime.utcnow()
+        else:
+            self.email = data_dict['email']
+            self.name = data_dict['name']
+            self.family_name = data_dict['family_name']
+            self.image_url = data_dict['image_url']
+            self.user_id = data_dict['user_id']
+            self.sign_in_date = datetime.datetime.utcnow()
+
         super().__init__(*args, **values)
-        """
 
 
