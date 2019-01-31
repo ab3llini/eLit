@@ -7,6 +7,7 @@ import json
 from typing import Dict
 from database_classes import *
 from requests import *
+from thread_pool_manager import ThreadPoolManager
 
 
 class Server(SimpleHTTPRequestHandler):
@@ -30,6 +31,9 @@ class Server(SimpleHTTPRequestHandler):
         self._set_headers()
 
     def do_POST(self):
+        ThreadPoolManager.get_thread_pool().submit(self.__handle_post_request)
+
+    def __handle_post_request(self):
         # Doesn't do anything with posted
         self._set_headers()
         print(self.headers)
