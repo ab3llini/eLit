@@ -15,4 +15,5 @@ enum Navigation : String {
     case toUserProfileVC = "toUserProfileVC"
     case toDrinkForIngredientVC = "toDrinkForIngredientVC"
     case fromDrinkForIngredientToDrinkVC = "fromDrinkForIngredientToDrinkVC"
+    case toReviewsVC = "toReviewsVC"
 }

@@ -35,6 +35,11 @@
 		A4E5A75021F3E00E00E60FAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A74F21F3E00E00E60FAF /* User.swift */; };
 		A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75821F3E9D100E60FAF /* LogInView.swift */; };
 		A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */; };
+		A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129922200A59E00910834 /* ReviewTableViewController.swift */; };
+		A4F129962200A5B200910834 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129942200A5B200910834 /* ReviewTableViewCell.swift */; };
+		A4F129972200A5B200910834 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F129952200A5B200910834 /* ReviewTableViewCell.xib */; };
+		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
+		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
 		BD0AA95E21F0AA0C00990A32 /* DrinkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */; };
 		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
@@ -121,6 +126,11 @@
 		A4E5A74F21F3E00E00E60FAF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A4E5A75821F3E9D100E60FAF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A4F129922200A59E00910834 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		A4F129942200A5B200910834 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		A4F129952200A5B200910834 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		A4F1299822021AB900910834 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		BD0AA95D21F0AA0C00990A32 /* DrinkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +289,18 @@
 			path = LogIn;
 			sourceTree = "<group>";
 		};
+		A4F129912200A58300910834 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				A4F129922200A59E00910834 /* ReviewTableViewController.swift */,
+				A4F129942200A5B200910834 /* ReviewTableViewCell.swift */,
+				A4F129952200A5B200910834 /* ReviewTableViewCell.xib */,
+				A4F1299822021AB900910834 /* LoadingTableViewCell.swift */,
+				A4F1299922021AB900910834 /* LoadingTableViewCell.xib */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		BD0AA95A21F0A51500990A32 /* Drink */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +432,7 @@
 		BD6EE94321FCBFB60034BAE9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A4F129912200A58300910834 /* Review */,
 				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
 				BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */,
 				BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */,
@@ -575,10 +598,12 @@
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
+				A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */,
 				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
+				A4F129972200A5B200910834 /* ReviewTableViewCell.xib in Resources */,
 				A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 			);
@@ -747,13 +772,16 @@
 				A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */,
 				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
 				BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */,
+				A4F129962200A5B200910834 /* ReviewTableViewCell.swift in Sources */,
 				A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */,
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */,
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,
 				A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */,
+				A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
+				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
 				BD2C651D21E24E7D00EC41C6 /* DrinkTableViewCell.swift in Sources */,
@@ -946,13 +974,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -970,13 +998,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";

@@ -65,6 +65,18 @@ class DataBaseManager: NSObject {
         self.sendRequest(dataDict: request, completion: completion)
     }
     
+    func requestReviews(for drink: Drink, from index: Int, completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request: [String: Any] = [
+            "request": RequestType.FETCH_REVIEWS.rawValue,
+            "data": [
+                "drink_id": drink.id!,
+                "from_index": index
+            ] as [String: Any]
+        ]
+        
+        self.sendRequest(dataDict: request, completion: completion)
+    }
+    
     
     //MARK: Private methods
     
@@ -88,7 +100,7 @@ class DataBaseManager: NSObject {
             print("All headers....", resp.allHeaderFields)
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
+                NSLog("error=\(String(describing: error))")
                 completion(["status": "error"])
                 return
             }

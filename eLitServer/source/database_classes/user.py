@@ -22,6 +22,7 @@ class User(DBObject):
         self.sign_in_date = datetime.datetime.utcnow()
         super().__init__(*args, **values)
 
+"""
     def __init__(self, data_dict: Dict[str: str], *args, **values):
         self.email = data_dict['email']
         self.name = data_dict['name']
@@ -30,5 +31,6 @@ class User(DBObject):
         self.user_id = data_dict['user_id']
         self.sign_in_date = datetime.datetime.utcnow()
         super().__init__(*args, **values)
+        """
 
 

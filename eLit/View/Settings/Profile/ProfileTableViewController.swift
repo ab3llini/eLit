@@ -48,6 +48,11 @@ class ProfileTableViewController: UITableViewController {
             cell.profileLabel.textColor = UIColor.red
             cell.profileLabel.text = "Log Out"
             return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: profileCellNib, for: indexPath) as! ProfileTableViewCell
+            cell.profileLabel.textColor = .black
+            cell.profileLabel.text = "Review test"
+            return cell
         default:
             return UITableViewCell()
         }
@@ -96,6 +101,8 @@ class ProfileTableViewController: UITableViewController {
             GIDSignIn.sharedInstance()?.signOut()
             navigationController?.popViewController(animated: true)
         //TODO: manage log out
+        case "Review test":
+            performSegue(withIdentifier: Navigation.toReviewsVC.rawValue, sender: self)
         default:
             return
         }
