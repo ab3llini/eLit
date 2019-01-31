@@ -36,8 +36,6 @@
 		A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75821F3E9D100E60FAF /* LogInView.swift */; };
 		A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */; };
 		A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129922200A59E00910834 /* ReviewTableViewController.swift */; };
-		A4F129962200A5B200910834 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129942200A5B200910834 /* ReviewTableViewCell.swift */; };
-		A4F129972200A5B200910834 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F129952200A5B200910834 /* ReviewTableViewCell.xib */; };
 		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
 		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
@@ -73,6 +71,8 @@
 		BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F821E7A2A200503B59 /* FSPageViewTransformer.swift */; };
 		BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F921E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift */; };
 		BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */; };
+		BDF2DA492203180C0020F62D /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF2DA472203180C0020F62D /* ReviewTableViewCell.swift */; };
+		BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDF2DA482203180C0020F62D /* ReviewTableViewCell.xib */; };
 		BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF964D521ECF98300228EEB /* DataBaseManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,8 +127,6 @@
 		A4E5A75821F3E9D100E60FAF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A4F129922200A59E00910834 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
-		A4F129942200A5B200910834 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
-		A4F129952200A5B200910834 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		A4F1299822021AB900910834 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +174,8 @@
 		BDED030221E7A2D500503B59 /* eLit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eLit-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDED030321E7A2D600503B59 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		BDED030421E7A2D600503B59 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
+		BDF2DA472203180C0020F62D /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		BDF2DA482203180C0020F62D /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		BDF964D521ECF98300228EEB /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,10 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				A4F129922200A59E00910834 /* ReviewTableViewController.swift */,
-				A4F129942200A5B200910834 /* ReviewTableViewCell.swift */,
-				A4F129952200A5B200910834 /* ReviewTableViewCell.xib */,
 				A4F1299822021AB900910834 /* LoadingTableViewCell.swift */,
 				A4F1299922021AB900910834 /* LoadingTableViewCell.xib */,
+				BDF2DA472203180C0020F62D /* ReviewTableViewCell.swift */,
+				BDF2DA482203180C0020F62D /* ReviewTableViewCell.xib */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -602,8 +602,8 @@
 				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
+				BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
-				A4F129972200A5B200910834 /* ReviewTableViewCell.xib in Resources */,
 				A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 			);
@@ -679,6 +679,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
@@ -687,6 +688,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
@@ -772,8 +774,8 @@
 				A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */,
 				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
 				BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */,
-				A4F129962200A5B200910834 /* ReviewTableViewCell.swift in Sources */,
 				A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */,
+				BDF2DA492203180C0020F62D /* ReviewTableViewCell.swift in Sources */,
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */,
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,

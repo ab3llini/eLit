@@ -9,6 +9,7 @@ target 'eLit' do
 	
   pod 'GoogleSignIn'
   pod "ViewAnimator"
+  pod 'Cosmos', '~> 18.0'
  target 'eLitTests' do
     inherit! :search_paths
     # Pods for testing

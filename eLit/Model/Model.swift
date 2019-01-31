@@ -38,7 +38,7 @@ class Model: NSObject {
     }
     
     class func randomString(length: Int) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyz"
+        let letters = "abc defgh ijklmn opqrs tuvwxyz "
         return String((0...length-1).map{ _ in letters.randomElement()! })
     }
     

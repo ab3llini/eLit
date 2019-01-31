@@ -63,7 +63,7 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         // else show the cell as usual
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
         cell.titleLabel.text = String(reviews[indexPath.row]["title"]!) + Model.randomString(length: 10)
-        
+        cell.reviewTextLabel.text = Model.randomString(length: Int.random(in: 100...1000))
         return cell
     }
     
@@ -77,15 +77,6 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
                     loadNextBatch()
                 }
             }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case self.reviews.count:
-            return 50
-        default:
-            return 300
         }
     }
     

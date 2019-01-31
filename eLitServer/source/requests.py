@@ -63,7 +63,7 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
         'request': 'fetch_reviews',
         'data': data_list
     }
-    time.sleep(5)
+    time.sleep(1)
     return payload
 
 if __name__ == '__main__':
