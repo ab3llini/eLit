@@ -1,5 +1,6 @@
 from typing import Dict
 from database_classes import *
+import time
 
 
 def connect():
@@ -43,6 +44,27 @@ def on_user_sign_in_request(data: Dict) -> Dict:
         'request': 'user_sign_in'
     }
 
+
+def on_fetch_reviews_request(data: Dict) -> Dict:
+    drink_id = data['drink_id']
+    next_index = data['from_index']
+
+    reviews = [x + next_index for x in range(10)]
+
+    data_list = []
+    for x in reviews:
+        last = next_index + x >= 39
+        data_list.append({
+            'title': str(x),
+            'is_last': str(last).lower()
+        })
+
+    payload = {
+        'request': 'fetch_reviews',
+        'data': data_list
+    }
+    time.sleep(5)
+    return payload
 
 if __name__ == '__main__':
     pass
