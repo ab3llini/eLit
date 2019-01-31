@@ -12,12 +12,26 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     
+    let cell_nibs = ["DrinkImageTableViewCell"]
+    let header_footer_nibs = ["RatingHeaderFooterView"]
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        // Register nibs
-        self.tableView.register(UINib(nibName: "DrinkImageTableViewCell", bundle: nil), forCellReuseIdentifier: "DrinkImageTableViewCell")
+        
+        for nib in cell_nibs {
+            
+            // Register nibs
+            self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
+            
+        }
+        for nib in header_footer_nibs {
+            
+            self.tableView.register(UINib(nibName: nib, bundle: nil), forHeaderFooterViewReuseIdentifier: nib)
+            
+        }
+        
         
         
         // Add negative inset to account for nav bar
@@ -59,12 +73,15 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        switch section {
+        case 0:
+            return nil
+        default:
+            let ratingView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "RatingHeaderFooterView") as! RatingHeaderFooterView
+            
+            return ratingView
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
