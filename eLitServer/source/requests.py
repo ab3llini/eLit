@@ -44,6 +44,8 @@ def on_user_sign_in_request(data: Dict) -> Dict:
         if user is None:
             user = User(data_dict=user_data)
             user.save()
+        else:
+            user.save()
         return {
             'request': 'user_sign_in',
             'status_code': 200
