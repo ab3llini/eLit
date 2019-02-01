@@ -40,12 +40,13 @@ def on_user_sign_in_request(data: Dict) -> Dict:
     connect()
     user_data = data
     try:
-        user = User.objects(user_id=user_data['user_id'])
-        if user is None:
+        users = User.objects(user_id=user_data['user_id'])
+        if users is None or len(users) == 0:
             user = User(data_dict=user_data)
             user.save()
         else:
-            user.save()
+            for user in users:
+                user.save()
         return {
             'request': 'user_sign_in',
             'status_code': 200

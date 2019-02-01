@@ -19,7 +19,6 @@ async def on_post_request(request):
     data_dict = await request.json()
     sender = request.transport.get_extra_info('peername')
     host, port = sender or (None, None)
-    print(data_dict)
     response = request_map[data_dict['request']](data_dict['data'])
     print(f'Received request "{data_dict["request"]}" from ip {host}:{port}')
     status_code = response['status_code']
