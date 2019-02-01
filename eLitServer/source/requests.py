@@ -2,6 +2,7 @@ from typing import Dict
 from database_classes import *
 import time
 import random
+import pymongo.errors as mongoerr
 
 
 def connect():
@@ -14,6 +15,7 @@ def on_fetch_all_request(data: Dict) -> Dict:
     drinks = Drink.objects
     payload = {
         'request': 'fetch_all',
+        'status_code': 200,
         'data': [x.to_dict() for x in drinks]
     }
     return payload
@@ -28,6 +30,7 @@ def on_update_request(data: Dict) -> Dict:
            *RecipeStep.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values())))]
     payload = {
         'request': 'fetch_all',
+        'status_code': 200,
         'data': [x.to_dict() for x in obj]
     }
     return payload
@@ -36,14 +39,20 @@ def on_update_request(data: Dict) -> Dict:
 def on_user_sign_in_request(data: Dict) -> Dict:
     connect()
     user_data = data
-    user = User.objects(user_id=user_data['user_id'])
-    if user is None:
-        user = User(data_dict=user_data)
-        user.save()
-
-    return {
-        'request': 'user_sign_in'
-    }
+    try:
+        user = User.objects(user_id=user_data['user_id'])
+        if user is None:
+            user = User(data_dict=user_data)
+            user.save()
+        return {
+            'request': 'user_sign_in',
+            'status_code': 200
+        }
+    except mongoerr.ServerSelectionTimeoutError as error:
+        return {
+            'request': 'user_sign_in',
+            'status_code': 500
+        }
 
 
 def on_fetch_reviews_request(data: Dict) -> Dict:
@@ -64,7 +73,8 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
 
     payload = {
         'request': 'fetch_reviews',
-        'data': data_list
+        'data': data_list,
+        'status_code': 200
     }
     return payload
 

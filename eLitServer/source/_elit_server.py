@@ -22,7 +22,8 @@ async def on_post_request(request):
     print(data_dict)
     response = request_map[data_dict['request']](data_dict['data'])
     print(f'Received request "{data_dict["request"]}" from ip {host}:{port}')
-    return web.Response(text=json.dumps(response))
+    status_code = response['status_code']
+    return web.Response(status=status_code, text=json.dumps(response))
 
 
 if __name__ == '__main__':
