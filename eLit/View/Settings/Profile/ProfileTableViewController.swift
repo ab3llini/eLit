@@ -14,6 +14,7 @@ class ProfileTableViewController: UITableViewController {
     let profileHeaderSectionHeight : CGFloat = 500.0
     let profileCellNib = "ProfileTableViewCell"
     let headerSectionNib = "ProfileHeaderView"
+    var callerVC: SettingsTableViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ class ProfileTableViewController: UITableViewController {
         switch cell.profileLabel.text {
         case "Log Out":
             GIDSignIn.sharedInstance()?.signOut()
+            callerVC.onLoginEnd()
             navigationController?.popViewController(animated: true)
         //TODO: manage log out
         case "Review test":

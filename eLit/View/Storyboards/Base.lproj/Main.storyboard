@@ -62,6 +62,16 @@
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Lde-60-FnQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ShD-Cg-pxR">
+                                                        <rect key="frame" x="197" y="352" width="20" height="20"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="centerX" secondItem="Lde-60-FnQ" secondAttribute="centerX" id="Zeo-0S-OFo"/>
+                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="centerY" secondItem="Lde-60-FnQ" secondAttribute="centerY" id="cEo-vH-xN6"/>
+                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="top" secondItem="Lde-60-FnQ" secondAttribute="top" constant="352" id="z2a-2K-4gN"/>
+                                                </constraints>
                                             </view>
                                             <vibrancyEffect>
                                                 <blurEffect style="light"/>
@@ -116,6 +126,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NPa-Yo-DWb"/>
                     </view>
+                    <connections>
+                        <outlet property="loggingIn" destination="ShD-Cg-pxR" id="S7h-hC-PiM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBz-2t-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uyK-4C-xaM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="uyK-4C-xaM">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyK-4C-xaM" id="YY3-uY-a2k">

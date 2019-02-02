@@ -38,14 +38,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3gA-dm-7NI">
+                        <rect key="frame" x="15" y="15" width="69.5" height="69.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="3gA-dm-7NI" secondAttribute="height" multiplier="1:1" id="Lao-bw-F2z"/>
+                        </constraints>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Jvl-W9-aMG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="1Ck-ur-hUT"/>
+                    <constraint firstAttribute="bottom" secondItem="3gA-dm-7NI" secondAttribute="bottom" constant="15" id="2Cw-au-yTz"/>
                     <constraint firstItem="Jvl-W9-aMG" firstAttribute="leading" secondItem="vP7-wr-jCF" secondAttribute="trailing" constant="15" id="Eyw-HJ-pBK"/>
                     <constraint firstItem="vP7-wr-jCF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FlY-kR-AWF"/>
                     <constraint firstAttribute="bottom" secondItem="vP7-wr-jCF" secondAttribute="bottom" constant="15" id="Fr8-Od-fa6"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Jvl-W9-aMG" secondAttribute="trailing" constant="5" id="Hu1-2M-4Da"/>
+                    <constraint firstItem="3gA-dm-7NI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OtK-hQ-bQe"/>
                     <constraint firstItem="yFV-8J-JPC" firstAttribute="leading" secondItem="vP7-wr-jCF" secondAttribute="trailing" constant="15" id="WVr-L0-S1S"/>
+                    <constraint firstItem="3gA-dm-7NI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Z8Y-lv-0ie"/>
                     <constraint firstItem="vP7-wr-jCF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="d6e-rR-YjV"/>
                     <constraint firstItem="yFV-8J-JPC" firstAttribute="top" secondItem="Jvl-W9-aMG" secondAttribute="bottom" constant="5" id="zIH-hg-5wP"/>
                 </constraints>
@@ -53,6 +62,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="emailLabel" destination="yFV-8J-JPC" id="Xg1-ng-6ZX"/>
+                <outlet property="loginIndicator" destination="3gA-dm-7NI" id="had-6O-kee"/>
                 <outlet property="nameLabel" destination="Jvl-W9-aMG" id="EyN-Fd-vmj"/>
                 <outlet property="profileImageView" destination="vP7-wr-jCF" id="9vm-ku-lAJ"/>
             </connections>
