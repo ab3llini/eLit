@@ -10,7 +10,8 @@ import UIKit
 import GoogleSignIn
 
 class LogInViewController: UIViewController {
-
+    @IBOutlet weak var loggingIn: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

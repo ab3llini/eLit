@@ -60,6 +60,9 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             
             // Check if the user is logged in
             guard gid.hasAuthInKeychain() else {
+                cell.nameLabel.text = "Login with Google"
+                cell.profileImageView.image = UIImage(named: "GoogleIcon")
+                cell.loginIndicator.stopAnimating()
                 return cell
             }
             
@@ -90,12 +93,6 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         }
     }
     
-    
-    // Changes the table raws if needed
-    override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadRows(at: [IndexPath(indexes: [0, 0])], with: UITableView.RowAnimation.automatic)
-    }
-    
     // MARK: Google Sing in
     func prepareForSignIn() {
         GIDSignIn.sharedInstance()?.clientID = "398361482981-in05p8hbkfqrvva0gdfq4hqoh053jrbo.apps.googleusercontent.com"
@@ -114,18 +111,27 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             print("Error during signIn = \(occuredError.localizedDescription)")
         }
         
+        
+        let cell = tableView.cellForRow(at: IndexPath(indexes: [0, 0])) as! AccountTableViewCell
+        cell.profileImageView.image = nil
+        cell.loginIndicator.startAnimating()
+        
         if let oldUser = Model.shared.user {
             oldUser.updateUserData(data: user)
         } else {
             Model.shared.user = User(data : user)
         }
         
-        Model.shared.savePersistentModel()
         DataBaseManager.shared.signInUser(user: Model.shared.user!, completion: { response in
             if (response["status"] as? String ?? "error") == "error" {
                 // TODO: uncomment the following line in deployment
-                // GIDSignIn.sharedInstance()?.signOut()
+                GIDSignIn.sharedInstance()?.signOut()
                 print("ERROR saving the user in the remote DB")
+            } else {
+                Model.shared.savePersistentModel()
+            }
+            DispatchQueue.main.async {
+                self.onLoginEnd()
             }
         })
     }
@@ -133,7 +139,8 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             if (GIDSignIn.sharedInstance()?.hasAuthInKeychain() ?? false) == false {
-                performSegue(withIdentifier: Navigation.toLogInVC.rawValue, sender: self)
+                GIDSignIn.sharedInstance()?.signIn()
+                //TODO: manage sign in data
             } else {
                 performSegue(withIdentifier: Navigation.toUserProfileVC.rawValue, sender: self)
             }
@@ -145,6 +152,12 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
         default:
             return 30
         }
+    }
+    
+    func onLoginEnd() {
+        let cell = self.tableView.cellForRow(at: IndexPath(indexes: [0, 0])) as! AccountTableViewCell
+        cell.loginIndicator.stopAnimating()
+        self.tableView.reloadRows(at: [IndexPath(indexes: [0, 0])], with: UITableView.RowAnimation.automatic)
     }
     
 
@@ -183,14 +196,21 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case Navigation.toUserProfileVC.rawValue:
+            let profileVC = segue.destination as! ProfileTableViewController
+            profileVC.callerVC = self
+        default:
+            return
+        }
     }
-    */
+    
 
 }
