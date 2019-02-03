@@ -39,8 +39,6 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         
         self.setupSearchBar()
         
-        
-        
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = true

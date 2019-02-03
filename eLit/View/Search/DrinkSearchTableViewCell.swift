@@ -14,15 +14,17 @@ enum ObjectClass: String {
 }
 
 class DrinkSearchTableViewCell: UITableViewCell {
+    
+    
     @IBOutlet weak var objectImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var objectNameLabel: UILabel!
+    @IBOutlet weak var objectClassLabel: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,17 +37,17 @@ class DrinkSearchTableViewCell: UITableViewCell {
         switch type {
         case .drink:
             let drink = object as! Drink
-            self.nameLabel.text = drink.name ?? ""
+            self.objectNameLabel.text = drink.name ?? ""
             
             // TODO: fix this
-            self.imageView?.image = UIImage(named: drink.image ?? ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
+            self.objectImageView.image = UIImage(named: drink.image ?? ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
         case .ingredient:
             let ingredient = object as! Ingredient
-            self.nameLabel.text = ingredient.name ?? ""
-            self.imageView?.image = UIImage(named: ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
+            self.objectNameLabel.text = ingredient.name ?? ""
+            self.objectImageView.image = UIImage(named: ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
         }
         
-        self.classLabel.text = type.rawValue
+        self.objectClassLabel.text = type.rawValue
     }
     
 }

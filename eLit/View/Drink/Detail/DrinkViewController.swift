@@ -76,7 +76,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         case 0:
             return 1
         default:
-            return 10
+            return 0
         }
     }
     

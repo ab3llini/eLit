@@ -395,6 +395,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Discover" id="9I2-ps-0zM"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="transparentNavBar" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrink2VC" id="mfK-pE-sFH"/>
                         <segue destination="3XV-ve-yYL" kind="show" identifier="toDrinkForIngredientVC" id="1QJ-wl-nhf"/>
@@ -445,6 +449,6 @@
         <image name="SettingsIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wV5-CP-adr"/>
+        <segue reference="mfK-pE-sFH"/>
     </inferredMetricsTieBreakers>
 </document>
