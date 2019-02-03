@@ -31,13 +31,9 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             self.tableView.register(UINib(nibName: nib, bundle: nil), forHeaderFooterViewReuseIdentifier: nib)
             
         }
-        
-        
-        
-        // Add negative inset to account for nav bar
-        self.tableView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
 
     }
+    
     
     
     public func setDrink(drink : Drink) {
@@ -49,9 +45,11 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
+        
         //Layout content
         self.layoutContent()
-        
+                
     }
 
     private func layoutContent() {
@@ -64,23 +62,36 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         return 2
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return CGFloat.leastNormalMagnitude
+        default:
+            return 50
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
         default:
-            return 0
+            return 10
         }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case 0:
-            return nil
-        default:
+        case 1:
             let ratingView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "RatingHeaderFooterView") as! RatingHeaderFooterView
             
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
+            
+            ratingView.addGestureRecognizer(tapRecognizer)
+            
             return ratingView
+        default:
+            return nil
         }
     }
     
@@ -100,4 +111,25 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         }
     }
     
+    @objc func showReviewsViewController() {
+        
+        performSegue(withIdentifier: Navigation.toReviewsVC.rawValue, sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        case Navigation.toReviewsVC.rawValue:
+            
+            let destination : ReviewTableViewController = segue.destination as! ReviewTableViewController
+            
+            destination.drink = self.drink
+            
+        default: break
+            
+        }
+        
+    }
 }

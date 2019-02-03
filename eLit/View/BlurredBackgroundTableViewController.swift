@@ -18,6 +18,12 @@ class BlurredBackgroundTableViewController: UITableViewController {
     @IBInspectable
     var backgroundImageSpeedRatio : CGFloat = 0.8
     
+    @IBInspectable
+    var transparentNavBar : Bool = false
+    
+    @IBInspectable
+    var largeTitles : Bool = true
+    
     // Background view
     var backgroundImageView : UIImageView!
 
@@ -72,4 +78,20 @@ class BlurredBackgroundTableViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let lvnc : LargeVbrantNavigatonController = self.navigationController as? LargeVbrantNavigatonController else {
+            
+            print("Warning: Using a Blurred VC without a proper nav controller")
+            
+            return
+            
+        }
+        
+        // Optimize nav controller
+        lvnc.optimize(for: self)
+        
+    }
+    
+
 }

@@ -100,9 +100,6 @@ class ProfileTableViewController: UITableViewController {
         case "Log Out":
             GIDSignIn.sharedInstance()?.signOut()
             navigationController?.popViewController(animated: true)
-        //TODO: manage log out
-        case "Review test":
-            performSegue(withIdentifier: Navigation.toReviewsVC.rawValue, sender: self)
         default:
             return
         }

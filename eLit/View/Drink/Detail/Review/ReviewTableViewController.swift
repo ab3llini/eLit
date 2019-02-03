@@ -14,11 +14,7 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
     var endReviews = false
     var requestPending = false
     var error = false
-    var drink: Drink {
-        let d = Drink(name: "lala", image: "Drink1", degree: 1)
-        d.id = String(1000)
-        return d
-    }
+    var drink : Drink!
     var reviews: [[String: String]] = []
 
     override func viewDidLoad() {

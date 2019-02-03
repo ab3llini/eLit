@@ -33,6 +33,9 @@ class Model: NSObject {
             let step = RecipeStep(description: "", drinkComponents: [component])
             let recipe = Recipe(with: [step])
             let drink = Drink(name: "Drink" + String(i%5 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%5 + 1), degree: Int16(i*10), recipe: recipe)
+            
+            drink.id = "0"
+            
             drinks.append(drink)
         }
     }

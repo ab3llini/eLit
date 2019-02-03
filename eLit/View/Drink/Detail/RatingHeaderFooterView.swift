@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Cosmos
 
 class RatingHeaderFooterView: UITableViewHeaderFooterView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let hasRecognizer = false
+    
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingStars: CosmosView!
+    
+    override func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
+        if !self.hasRecognizer {
+            
+            super.addGestureRecognizer(gestureRecognizer)
+            
+        }
     }
-    */
 
 }
