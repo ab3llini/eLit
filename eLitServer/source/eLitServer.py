@@ -7,7 +7,6 @@ import json
 from typing import Dict
 from database_classes import *
 from requests import *
-from thread_pool_manager import ThreadPoolManager
 
 
 class Server(SimpleHTTPRequestHandler):
@@ -15,7 +14,8 @@ class Server(SimpleHTTPRequestHandler):
         'fetch_all': on_fetch_all_request,
         'update_db': on_update_request,
         'user_sign_in': on_user_sign_in_request,
-        'fetch_reviews': on_fetch_reviews_request
+        'fetch_reviews': on_fetch_reviews_request,
+        'rating': on_rating_request
     }
 
     def _set_headers(self):

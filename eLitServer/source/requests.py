@@ -3,6 +3,7 @@ from database_classes import *
 import time
 import random
 import pymongo.errors as mongoerr
+import numpy as np
 
 
 def connect():
@@ -80,6 +81,25 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
         'status_code': 200
     }
     return payload
+
+
+def on_rating_request(data: Dict) -> Dict:
+    payload = {
+        'request': 'rating',
+        'status_code': 200
+    }
+    if False:
+        drink_id = data['drink_id']
+        reviews = Review.objects(for_drink__id=drink_id)
+        ratings = [x.rating for x in reviews]
+        rating = np.mean(ratings) if len(ratings) > 0 else 0
+        payload['data'] = {'rating': str(rating)}
+        return payload
+    else:
+        rating = random.random() * 5
+        payload['data'] = {'rating': str(rating)}
+        return payload
+
 
 if __name__ == '__main__':
     pass

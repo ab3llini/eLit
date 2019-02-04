@@ -6,4 +6,5 @@ from database_classes.ingredient import Ingredient
 from database_classes.db_object import DBObject
 from database_classes.unit import *
 from database_classes.user import User
+from database_classes.review import Review
 import mongoengine as me

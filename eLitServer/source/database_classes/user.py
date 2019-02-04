@@ -14,14 +14,14 @@ class User(DBObject):
     sign_in_date = me.DateTimeField(default=datetime.datetime.utcnow)
 
     def __init__(self, email: str = None, name: str = None, family_name: str = None, image_url: str = None,
-                 user_id: str = None, data_dict: Dict = None, *args, **values):
+                 user_id: str = None, sign_in_date = None, data_dict: Dict = None, *args, **values):
         if data_dict is None:
             self.email = email
             self.name = name
             self.family_name = family_name
             self.image_url = image_url
             self.user_id = user_id
-            self.sign_in_date = datetime.datetime.utcnow()
+            self.sign_in_date = sign_in_date or datetime.datetime.utcnow()
 
         else:
             self.email = data_dict['email']
