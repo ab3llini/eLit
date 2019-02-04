@@ -89,6 +89,22 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             ratingView.addGestureRecognizer(tapRecognizer)
             
+            ratingView.ratingLabel.text = "0.0"
+            ratingView.ratingStars.rating = 0.0
+            
+            //Sending request for drink rating
+            DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
+                if (data["status"] as! String) == "ok" {
+                    let ratingData = data["data"] as! [String: Any]
+                    var rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                    rating = (rating * 10).rounded()/10
+                    DispatchQueue.main.async {
+                        ratingView.ratingLabel.text = String(rating)
+                        ratingView.ratingStars.rating = rating
+                    }
+                }
+            })
+            
             return ratingView
         default:
             return nil

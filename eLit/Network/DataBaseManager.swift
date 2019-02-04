@@ -15,7 +15,7 @@ class DataBaseManager: NSObject {
     
     //MARK: Initializers
     private override init() {
-        self.defaultURL = URL(string: "http://104.248.32.36")!
+        self.defaultURL = URL(string: "http://127.0.0.1")!
     }
     
     //MARK: Public methods
@@ -26,8 +26,7 @@ class DataBaseManager: NSObject {
  - Parameter completion: the function that will be called after the response, it takes as input the data dictionary with all the informations about the drinks. It has also a key "status" that is "ok" if the request succeded and "error" if something went wrong
  **/
     func fetchAllData(completion: @escaping (_ data: [String: Any]) -> Void) {
-        let request = ["request": RequestType.FETCH_ALL.rawValue, "data": nil]
-        self.sendRequest(dataDict: request as [String : Any], completion: completion)
+        self.sendRequest(for: .FETCH_ALL, with: [:], completion: completion)
     }
     
     
@@ -49,8 +48,7 @@ class DataBaseManager: NSObject {
             values[o.id ?? ""] = o.fingerprint ?? ""
         }
         
-        let dataDict = ["request": RequestType.FETCH_ALL.rawValue, "data": values] as [String : Any]
-        sendRequest(dataDict: dataDict, completion: completion)
+        sendRequest(for: .UPDATE_DB, with: values, completion: completion)
     }
     
     
@@ -61,20 +59,32 @@ class DataBaseManager: NSObject {
  - Parameter completion: function called after the response
  **/
     func signInUser(user: User, completion: @escaping (_ data: [String: Any]) -> Void) {
-        let request = ["request": RequestType.USER_SIGN_IN.rawValue, "data": user.toDict()] as [String : Any]
-        self.sendRequest(dataDict: request, completion: completion)
+        self.sendRequest(for: .USER_SIGN_IN, with: user.toDict(), completion: completion)
     }
     
+/**
+     This method will send a request to the DB for fetching a batch of reviews for a specific drink
+     - Parameter drink: is the drink for the reviews
+     - Parameter index: is the next index for fetching the reviews
+     - Parameter completion: is the callback function to call when the response arrives
+ **/
     func requestReviews(for drink: Drink, from index: Int, completion: @escaping (_ data: [String: Any]) -> Void) {
         let request: [String: Any] = [
-            "request": RequestType.FETCH_REVIEWS.rawValue,
-            "data": [
-                "drink_id": drink.id!,
-                "from_index": index
-            ] as [String: Any]
-        ]
+            "drink_id": drink.id ?? "0",
+            "from_index": index] as [String: Any]
         
-        self.sendRequest(dataDict: request, completion: completion)
+        self.sendRequest(for: .FETCH_REVIEWS, with: request, completion: completion)
+    }
+    
+/**
+     This method will send a request to the main DB for getting the rating for a specific drink
+     - Parameter drink: is the drink for which we are asking the rating
+     - Parameter completion: is the callback function called when the response arrives
+ **/
+    func requestRating(for drink: Drink, completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request: [String: Any] = ["drink_id": drink.id ?? "0"]
+        
+        self.sendRequest(for: .RATING, with: request, completion: completion)
     }
     
     
@@ -87,10 +97,11 @@ class DataBaseManager: NSObject {
  
  - Parameter completion: is the function that will be called after the request is completed. As input will be passed the data dictionary that comes from the server with a "status" key that will be "ok" if the request succeded otherwhise "error"
  **/
-    private func sendRequest(dataDict: [String: Any], completion: @escaping ([String: Any]) -> Void) {
+    private func sendRequest(for requestType: RequestType, with dataDict: [String: Any], completion: @escaping ([String: Any]) -> Void) {
         var request = URLRequest(url: self.defaultURL)
         request.httpMethod = "POST"
-        request.httpBody = toJson(dataDict)!
+        let data = ["request": requestType.rawValue, "data": dataDict] as [String : Any]
+        request.httpBody = toJson(data)!
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let resp : HTTPURLResponse = response as? HTTPURLResponse else {

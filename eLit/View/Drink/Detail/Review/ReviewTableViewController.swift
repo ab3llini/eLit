@@ -52,7 +52,11 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         // if reached last row, load next batch
         if indexPath.row == self.reviews.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath) as! LoadingTableViewCell
-            cell.spinner.startAnimating()
+            if !endReviews {
+                cell.spinner.startAnimating()
+            } else {
+                cell.spinner.stopAnimating()
+            }
             return cell
         }
         
@@ -83,9 +87,15 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         let callback: (_ data: [String: Any]) -> Void = { data in
             if data["status"] as! String == "error" {
                 self.error = true
+                self.endReviews = true
+                self.tableView.reloadData()
                 return
             }
-            let r = data["data"] as! NSArray
+            guard let r = data["data"] as? NSArray else {
+                self.endReviews = true
+                self.tableView.reloadData()
+                return
+            }
             for e in r {
                 let i = e as! NSDictionary
                 self.reviews.append(["title": i["title"] as! String, "stars": i["stars"] as! String])
