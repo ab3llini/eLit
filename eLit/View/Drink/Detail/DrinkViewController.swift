@@ -11,12 +11,24 @@ import UIKit
 class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
+    var rating: Double = 0
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //Sending request for drink rating
+        DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
+            if (data["status"] as! String) == "ok" {
+                let ratingData = data["data"] as! [String: Any]
+                self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
+                }
+            }
+        })
         
         
         for nib in cell_nibs {
@@ -124,17 +136,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             cell.addGestureRecognizer(tapRecognizer)
             
-            //Sending request for drink rating
-            DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
-                if (data["status"] as! String) == "ok" {
-                    let ratingData = data["data"] as! [String: Any]
-                    let rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
-                    DispatchQueue.main.async {
-                        cell.ratingLabel.text = String(format: "%.1f", rating)
-                        cell.ratingStars.rating = rating
-                    }
-                }
-            })
+            cell.ratingLabel.text = String(format: "%.1f", self.rating)
+            cell.ratingStars.rating = self.rating
             
             return cell
             

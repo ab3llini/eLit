@@ -145,7 +145,6 @@ class DataBaseManager: NSObject {
         do {
             let json = try JSONSerialization.jsonObject(with: jsonData)
             let dictData = json as? [String: Any] ?? [:]
-            print(dictData)
             return dictData
         } catch {
             return [:]
