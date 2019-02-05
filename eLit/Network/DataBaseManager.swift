@@ -15,7 +15,7 @@ class DataBaseManager: NSObject {
     
     //MARK: Initializers
     private override init() {
-        self.defaultURL = URL(string: "http://127.0.0.1")!
+        self.defaultURL = URL(string: "http://192.168.178.115")!
     }
     
     //MARK: Public methods
@@ -108,7 +108,6 @@ class DataBaseManager: NSObject {
                 completion(["status": "error"])
                 return
             }
-            print("All headers....", resp.allHeaderFields)
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 NSLog("error=\(String(describing: error))")
@@ -118,14 +117,12 @@ class DataBaseManager: NSObject {
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
                 completion(["status": "error"])
             }
             
             let responseString = String(data: data, encoding: .utf8)!
             var dict = self.fromJson(data)
             dict["status"] = "ok"
-            print("responseString = \(responseString)")
             completion(dict)
         }
         task.resume()

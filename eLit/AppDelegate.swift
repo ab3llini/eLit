@@ -20,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         let tabController = self.window?.rootViewController as? UITabBarController ?? nil
         tabController?.delegate = self
+        
+        // Removing the text for the navigation controller items
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        let barButtonItemAppearance = UIBarButtonItem.appearance()
+        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
+        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
 
         /*
         var drinks = Model.getInstance().getDrinks()

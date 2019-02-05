@@ -13,6 +13,7 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
     var initComplete : Bool = false
     var blurredImageView : UIImageView!
     var prevVC : UIViewController!
+    let color = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
     
     
     override func viewDidLoad() {
@@ -27,6 +28,10 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
         self.delegate = self
         
         self.prevVC = self.visibleViewController
+        
+        self.navigationBar.tintColor = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
+        
+        
         
     }
     
