@@ -7,7 +7,7 @@ import numpy as np
 
 
 def connect():
-    me.connect('eLit', host='localhost', port=4321)
+    me.connect('eLit', host='localhost', port=27017)
 
 
 # Utilities functions for handle the requests

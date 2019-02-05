@@ -30,7 +30,11 @@ async def on_post_request(request):
 
 if __name__ == '__main__':
     app = web.Application()
-    app.add_routes([web.post('/', on_post_request)])
+    app.add_routes([
+        web.post('/', on_post_request),
+        web.static('/assets', '../resources/assets/', show_index=False)
+    ])
+
     args = sys.argv
 
     if len(args) == 3:
