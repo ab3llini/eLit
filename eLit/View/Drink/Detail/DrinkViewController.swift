@@ -135,6 +135,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             return cell
             
         case 3:
+            
             // Steps
             let cell : TimelineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell") as! TimelineTableViewCell
             
