@@ -63,7 +63,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         case 2:
             return "Ingredients"
         case 3:
-            return "Preparation"
+            return "How to mix"
         default:
             return nil
             
@@ -142,7 +142,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
             
-            cell.rounded(radius: 10, withBorder: 1, withBorderColor: .green)
+            //cell.rounded(radius: 10, withBorder: 1, withBorderColor: .green)
             
             return cell
             
@@ -165,6 +165,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
+            cell.stepLabel.text = "Step \(indexPath.row + 1)"
             cell.preparationLabel.text = Model.randomString(length: Int.random(in: 10...300))
             
             return cell

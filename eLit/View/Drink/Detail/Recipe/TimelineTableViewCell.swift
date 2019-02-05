@@ -12,6 +12,7 @@ class TimelineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timelineView: TimelineView!
     @IBOutlet weak var preparationLabel: UILabel!
+    @IBOutlet weak var stepLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -454,6 +454,15 @@
 			path = Recipe;
 			sourceTree = "<group>";
 		};
+		BD613A982209C11000A5A36E /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */,
+				BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */,
+			);
+			path = Rating;
+			sourceTree = "<group>";
+		};
 		BD6EE94221FCBF980034BAE9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,14 +480,13 @@
 		BD6EE94321FCBFB60034BAE9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				BD613A982209C11000A5A36E /* Rating */,
 				BD613A972209AF1600A5A36E /* Recipe */,
 				A4D1D9702209A33200888EAD /* Ingredient */,
 				A4F129912200A58300910834 /* Review */,
 				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
 				BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */,
 				BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */,
-				BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */,
-				BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
