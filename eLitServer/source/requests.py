@@ -99,9 +99,9 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
         return payload
 
 
-def on_fetch_ingredient_request(data: Dict) -> Dict:
+def on_fetch_ingredients_request(data: Dict) -> Dict:
     connect()
-    payload = {'request': 'fetch_ingredient'}
+    payload = {'request': 'fetch_ingredients'}
     try:
         ingredients = Ingredient.objects()
         if len(ingredients) > 0:

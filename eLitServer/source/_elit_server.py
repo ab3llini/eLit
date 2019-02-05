@@ -14,7 +14,7 @@ request_map = {
     'fetch_reviews': on_fetch_reviews_request,
     'rating': on_rating_request,
     'insert_ingredient': on_insert_ingredient_request,
-    'fetch_ingredient': on_fetch_ingredient_request,
+    'fetch_ingredients': on_fetch_ingredients_request,
 }
 
 
