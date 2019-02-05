@@ -12,7 +12,9 @@ request_map = {
     'update_db': on_update_request,
     'user_sign_in': on_user_sign_in_request,
     'fetch_reviews': on_fetch_reviews_request,
-    'rating': on_rating_request
+    'rating': on_rating_request,
+    'insert_ingredient': on_insert_ingredient_request,
+    'fetch_ingredients': on_fetch_ingredients_request,
 }
 
 
