@@ -16,7 +16,7 @@ class BlurredBackgroundTableViewController: UITableViewController {
     
     // Speed ratio at which images slides away while scolling
     @IBInspectable
-    var backgroundImageSpeedRatio : CGFloat = 0.8
+    var backgroundImageSpeedRatio : CGFloat = 0.5
     
     @IBInspectable
     var transparentNavBar : Bool = false

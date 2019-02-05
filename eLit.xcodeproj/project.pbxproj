@@ -56,8 +56,11 @@
 		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
-		BD60001622033D0C00360BF3 /* RatingHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD60001522033D0C00360BF3 /* RatingHeaderFooterView.swift */; };
-		BD60001822033D1900360BF3 /* RatingHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD60001722033D1900360BF3 /* RatingHeaderFooterView.xib */; };
+		BD613A7C22099C8800A5A36E /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A7A22099C8800A5A36E /* TimelineTableViewCell.swift */; };
+		BD613A7D22099C8800A5A36E /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A7B22099C8800A5A36E /* TimelineTableViewCell.xib */; };
+		BD613A7F22099CDA00A5A36E /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A7E22099CDA00A5A36E /* TimelineView.swift */; };
+		BD613A822209A5A400A5A36E /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */; };
+		BD613A832209A5A400A5A36E /* RatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */; };
 		BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */; };
 		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
@@ -159,8 +162,11 @@
 		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
-		BD60001522033D0C00360BF3 /* RatingHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHeaderFooterView.swift; sourceTree = "<group>"; };
-		BD60001722033D1900360BF3 /* RatingHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingHeaderFooterView.xib; sourceTree = "<group>"; };
+		BD613A7A22099C8800A5A36E /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
+		BD613A7B22099C8800A5A36E /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
+		BD613A7E22099CDA00A5A36E /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
+		BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingTableViewCell.xib; sourceTree = "<group>"; };
 		BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundTableViewController.swift; sourceTree = "<group>"; };
 		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -419,6 +425,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BD613A7922099C5F00A5A36E /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				BD613A7A22099C8800A5A36E /* TimelineTableViewCell.swift */,
+				BD613A7B22099C8800A5A36E /* TimelineTableViewCell.xib */,
+				BD613A7E22099CDA00A5A36E /* TimelineView.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
 		BD6EE94221FCBF980034BAE9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,12 +452,13 @@
 		BD6EE94321FCBFB60034BAE9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				BD613A7922099C5F00A5A36E /* Recipe */,
 				A4F129912200A58300910834 /* Review */,
 				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
 				BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */,
 				BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */,
-				BD60001522033D0C00360BF3 /* RatingHeaderFooterView.swift */,
-				BD60001722033D1900360BF3 /* RatingHeaderFooterView.xib */,
+				BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */,
+				BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -599,6 +616,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD613A832209A5A400A5A36E /* RatingTableViewCell.xib in Resources */,
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
 				BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */,
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
@@ -606,11 +624,11 @@
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */,
 				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
+				BD613A7D22099C8800A5A36E /* TimelineTableViewCell.xib in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
-				BD60001822033D1900360BF3 /* RatingHeaderFooterView.xib in Resources */,
 				A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 			);
@@ -759,7 +777,6 @@
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
-				BD60001622033D0C00360BF3 /* RatingHeaderFooterView.swift in Sources */,
 				A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */,
 				BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */,
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
@@ -781,12 +798,14 @@
 				BDED02FD21E7A2A200503B59 /* FSPageViewLayout.swift in Sources */,
 				A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */,
 				BDED02FE21E7A2A200503B59 /* FSPagerViewCell.swift in Sources */,
+				BD613A822209A5A400A5A36E /* RatingTableViewCell.swift in Sources */,
 				BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */,
 				A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */,
 				BDF2DA492203180C0020F62D /* ReviewTableViewCell.swift in Sources */,
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
 				BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */,
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,
+				BD613A7C22099C8800A5A36E /* TimelineTableViewCell.swift in Sources */,
 				A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */,
 				A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
@@ -806,6 +825,7 @@
 				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,
 				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
+				BD613A7F22099CDA00A5A36E /* TimelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

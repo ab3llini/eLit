@@ -12,8 +12,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     
-    let cell_nibs = ["DrinkImageTableViewCell"]
-    let header_footer_nibs = ["RatingHeaderFooterView"]
+    let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "TimelineTableViewCell"]
     
     override func viewDidLoad() {
         
@@ -24,11 +23,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             // Register nibs
             self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
-            
-        }
-        for nib in header_footer_nibs {
-            
-            self.tableView.register(UINib(nibName: nib, bundle: nil), forHeaderFooterViewReuseIdentifier: nib)
             
         }
 
@@ -59,15 +53,35 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 1:
+            return "Rating"
+        case 3:
+            return "Preparation"
+        default:
+            return nil
+            
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
         switch section {
-        case 0:
-            return CGFloat.leastNormalMagnitude
-        default:
-            return 50
+            case 1:
+                fallthrough
+            case 3:
+                return UITableView.automaticDimension
+            default:
+                return CGFloat.leastNormalMagnitude
+
         }
     }
     
@@ -75,39 +89,16 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         switch section {
         case 0:
             return 1
+        case 1:
+            return 1
+        case 2:
+            // Ingredients
+            return 0
+        case 3:
+            // Steps
+            return 10
         default:
             return 0
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 1:
-            let ratingView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "RatingHeaderFooterView") as! RatingHeaderFooterView
-            
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
-            
-            ratingView.addGestureRecognizer(tapRecognizer)
-            
-            ratingView.ratingLabel.text = "0.0"
-            ratingView.ratingStars.rating = 0.0
-            
-            //Sending request for drink rating
-            DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
-                if (data["status"] as! String) == "ok" {
-                    let ratingData = data["data"] as! [String: Any]
-                    var rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
-                    rating = (rating * 10).rounded()/10
-                    DispatchQueue.main.async {
-                        ratingView.ratingLabel.text = String(rating)
-                        ratingView.ratingStars.rating = rating
-                    }
-                }
-            })
-            
-            return ratingView
-        default:
-            return nil
         }
     }
     
@@ -119,6 +110,49 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             cell.imageViewContainer.image = UIImage(named: self.drink.image!)!
             cell.drinkNameLabel.text = self.drink.name
+            
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+            
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
+            
+            cell.addGestureRecognizer(tapRecognizer)
+            
+            //Sending request for drink rating
+            DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
+                if (data["status"] as! String) == "ok" {
+                    let ratingData = data["data"] as! [String: Any]
+                    let rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                    DispatchQueue.main.async {
+                        cell.ratingLabel.text = String(format: "%.1f", rating)
+                        cell.ratingStars.rating = rating
+                    }
+                }
+            })
+            
+            return cell
+            
+        case 3:
+            // Steps
+            let cell : TimelineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell") as! TimelineTableViewCell
+            
+            cell.resetAfterDeque()
+
+            if (indexPath.row == 0) {
+                
+                cell.timelineView.isFistCell = true
+                
+            }
+            
+            if (indexPath.row == 9) {
+                
+                cell.timelineView.isLastCell = true
+                
+            }
+            
+            cell.preparationLabel.text = Model.randomString(length: Int.random(in: 10...300))
             
             return cell
             

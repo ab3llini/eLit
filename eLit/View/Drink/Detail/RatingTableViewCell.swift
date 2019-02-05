@@ -1,18 +1,24 @@
 //
-//  RatingHeaderFooterView.swift
+//  RatingTableViewCell.swift
 //  eLit
 //
-//  Created by Alberto Mario Bellini on 31/01/2019.
+//  Created by Alberto Mario Bellini on 05/02/2019.
 //  Copyright © 2019 eLit.app. All rights reserved.
 //
 
 import UIKit
 import Cosmos
 
-class RatingHeaderFooterView: UITableViewHeaderFooterView {
+class RatingTableViewCell: UITableViewCell {
 
     let hasRecognizer = false
+
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingStars: CosmosView!
     
@@ -23,5 +29,5 @@ class RatingHeaderFooterView: UITableViewHeaderFooterView {
             
         }
     }
-
+    
 }
