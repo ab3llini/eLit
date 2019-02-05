@@ -29,6 +29,8 @@
 		A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */; };
 		A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BED32421F713EB00C1A31D /* DrinkObject.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
+		A4D1D96E22099F8800888EAD /* DrinkComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */; };
+		A4D1D96F22099F8800888EAD /* DrinkComponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
 		A4D6D00921D8313500469827 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00821D8313500469827 /* Recipe.swift */; };
 		A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00A21D8318900469827 /* RecipeStep.swift */; };
@@ -122,6 +124,8 @@
 		A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkSearchTableViewCell.xib; sourceTree = "<group>"; };
 		A4BED32421F713EB00C1A31D /* DrinkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObject.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponentTableViewCell.swift; sourceTree = "<group>"; };
+		A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkComponentTableViewCell.xib; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		A4D6D00821D8313500469827 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A4D6D00A21D8318900469827 /* RecipeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStep.swift; sourceTree = "<group>"; };
@@ -268,6 +272,15 @@
 				A48E992621F88923004254E0 /* ProfileHeaderView.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		A4D1D9702209A33200888EAD /* Ingredient */ = {
+			isa = PBXGroup;
+			children = (
+				A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */,
+				A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */,
+			);
+			path = Ingredient;
 			sourceTree = "<group>";
 		};
 		A4D6D00721D82F4E00469827 /* DrinkParts */ = {
@@ -436,6 +449,7 @@
 		BD6EE94321FCBFB60034BAE9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A4D1D9702209A33200888EAD /* Ingredient */,
 				A4F129912200A58300910834 /* Review */,
 				BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */,
 				BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */,
@@ -602,6 +616,7 @@
 				BD37F4B321CE4FE70080C0F7 /* LaunchScreen.storyboard in Resources */,
 				BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */,
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
+				A4D1D96F22099F8800888EAD /* DrinkComponentTableViewCell.xib in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */,
@@ -789,6 +804,7 @@
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,
 				A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */,
 				A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */,
+				A4D1D96E22099F8800888EAD /* DrinkComponentTableViewCell.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
