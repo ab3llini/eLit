@@ -17,7 +17,6 @@ class DrinkComponentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        componentView.layer.cornerRadius = componentView.frame.height / 2
         
         // Initialization code
     }

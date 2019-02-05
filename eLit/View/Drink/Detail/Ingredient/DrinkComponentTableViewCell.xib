@@ -22,13 +22,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVn-wn-oxK">
                         <rect key="frame" x="0.0" y="0.0" width="326" height="50.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5YH-5k-2uU">
-                                <rect key="frame" x="10" y="5.5" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5YH-5k-2uU" secondAttribute="height" multiplier="1:1" id="VcC-nT-G18"/>
-                                    <constraint firstAttribute="height" constant="40" id="WE6-C1-KQC"/>
-                                </constraints>
-                            </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ9-aY-fIY">
                                 <rect key="frame" x="60" y="11" width="256" height="28.5"/>
                                 <subviews>
@@ -64,18 +57,27 @@
                                     <constraint firstItem="hgU-oS-0F5" firstAttribute="leading" secondItem="uJ9-aY-fIY" secondAttribute="leading" constant="8" id="xqw-UR-F3K"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drink4" translatesAutoresizingMaskIntoConstraints="NO" id="ECT-kg-L7v">
+                                <rect key="frame" x="10" y="5.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ECT-kg-L7v" secondAttribute="height" multiplier="1:1" id="BID-0s-W4r"/>
+                                    <constraint firstAttribute="width" constant="40" id="Svp-Uh-3AL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ECT-kg-L7v" firstAttribute="leading" secondItem="mVn-wn-oxK" secondAttribute="leading" constant="10" id="0oR-dg-klD"/>
                             <constraint firstAttribute="trailing" secondItem="uJ9-aY-fIY" secondAttribute="trailing" constant="10" id="ExI-FC-msl"/>
-                            <constraint firstItem="uJ9-aY-fIY" firstAttribute="leading" secondItem="5YH-5k-2uU" secondAttribute="trailing" constant="10" id="HaJ-du-Sqa"/>
-                            <constraint firstItem="5YH-5k-2uU" firstAttribute="leading" secondItem="mVn-wn-oxK" secondAttribute="leading" constant="10" id="VVK-xm-oDD"/>
-                            <constraint firstItem="5YH-5k-2uU" firstAttribute="centerY" secondItem="mVn-wn-oxK" secondAttribute="centerY" id="kos-FK-2ge"/>
+                            <constraint firstItem="uJ9-aY-fIY" firstAttribute="leading" secondItem="ECT-kg-L7v" secondAttribute="trailing" constant="10" id="h8X-7T-i7K"/>
+                            <constraint firstItem="ECT-kg-L7v" firstAttribute="centerY" secondItem="mVn-wn-oxK" secondAttribute="centerY" id="u8P-v5-awE"/>
                             <constraint firstItem="uJ9-aY-fIY" firstAttribute="centerY" secondItem="mVn-wn-oxK" secondAttribute="centerY" id="xGB-Xw-oZe"/>
                             <constraint firstAttribute="height" constant="50" id="xct-Rb-Gee"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="mVn-wn-oxK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1KY-7t-p7p"/>
                     <constraint firstAttribute="bottom" secondItem="mVn-wn-oxK" secondAttribute="bottom" id="PS8-bY-664"/>
@@ -83,11 +85,10 @@
                     <constraint firstAttribute="trailing" secondItem="mVn-wn-oxK" secondAttribute="trailing" id="ytw-a1-qoo"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="componentView" destination="uJ9-aY-fIY" id="ypz-qo-KBR"/>
-                <outlet property="imageView" destination="5YH-5k-2uU" id="cRX-0x-UxS"/>
-                <outlet property="ingredientImageView" destination="5YH-5k-2uU" id="cuD-1l-aek"/>
                 <outlet property="ingredientLabel" destination="ckd-uf-NLW" id="Y0W-P7-k55"/>
                 <outlet property="qtyLabel" destination="hgU-oS-0F5" id="JVu-Ty-4ip"/>
                 <outlet property="unitLabel" destination="4vP-7c-wST" id="nhq-EL-pbL"/>
@@ -95,4 +96,7 @@
             <point key="canvasLocation" x="168" y="111.54422788605699"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Drink4" width="665.5999755859375" height="956.79998779296875"/>
+    </resources>
 </document>

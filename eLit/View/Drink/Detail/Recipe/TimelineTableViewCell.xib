@@ -27,7 +27,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="topMargin">
-                                <real key="value" value="10"/>
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="color">
                                 <color key="value" red="0.92549019610000005" green="0.00044488306954599898" blue="0.32852152205257451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

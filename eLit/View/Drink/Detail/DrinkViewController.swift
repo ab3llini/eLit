@@ -12,7 +12,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     
-    let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "TimelineTableViewCell"]
+    let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
     
     override func viewDidLoad() {
         
@@ -60,6 +60,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         switch section {
         case 1:
             return "Rating"
+        case 2:
+            return "Ingredients"
         case 3:
             return "Preparation"
         default:
@@ -77,6 +79,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         switch section {
             case 1:
                 fallthrough
+            case 2:
+                fallthrough
             case 3:
                 return UITableView.automaticDimension
             default:
@@ -93,7 +97,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             return 1
         case 2:
             // Ingredients
-            return 0
+            return 3
         case 3:
             // Steps
             return 10
@@ -131,6 +135,14 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                     }
                 }
             })
+            
+            return cell
+            
+        case 2:
+            
+            let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
+            
+            cell.rounded(radius: 10, withBorder: 1, withBorderColor: .green)
             
             return cell
             
