@@ -83,12 +83,45 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
     return payload
 
 
+def on_insert_ingredient_request(data: Dict) -> Dict:
+    connect()
+    name = data['name']
+    grade = data['grade']
+    image = data['image']
+    description = data['ingredient_description']
+    payload = {'request': 'insert_ingredient'}
+    try:
+        Ingredient(name=name, grade=int(grade), image=image, ingredient_description=description).save()
+        payload['status_code'] = 200
+        return payload
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
+
+
+def on_fetch_ingredient_request(data: Dict) -> Dict:
+    connect()
+    payload = {'request': 'fetch_ingredient'}
+    try:
+        ingredients = Ingredient.objects()
+        if len(ingredients) > 0:
+            ingredients[0].save()
+        data_dict = [ingredient.to_dict() for ingredient in ingredients]
+        payload['data'] = data_dict
+        payload['status_code'] = 200
+        return payload
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
+
+
 def on_rating_request(data: Dict) -> Dict:
     payload = {
         'request': 'rating',
         'status_code': 200
     }
     if False:
+        connect()
         drink_id = data['drink_id']
         reviews = Review.objects(for_drink__id=drink_id)
         ratings = [x.rating for x in reviews]
