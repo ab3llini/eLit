@@ -28,7 +28,7 @@ async def handler(websocket, path):
         print('[RX] -', rx)
         tx = request_map[rx['request']](rx['data'])
         print('[TX] -', tx)
-        await websocket.send()
+        await websocket.send(json.dumps(tx))
 
 
 start_server = websockets.serve(handler, '127.0.0.1', 9999)

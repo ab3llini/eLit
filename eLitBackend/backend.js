@@ -77,7 +77,7 @@ let ws_ingredient_handler = (ingredients) => {
 
 let table_new_line_handler = (_class, _conn) => {
 
-    let _new = $("." + _class + " > tbody > tr")
+    let _new = $("." + _class + " > tbody > tr").last()
 
     let request = {request: 'insert_' + _class , data : {}}
 
@@ -97,6 +97,8 @@ let table_new_line_handler = (_class, _conn) => {
     console.log(request)
 
     _conn.ws.send(JSON.stringify(request))
+
+    ws_ingredient_handler([request.data])
 
 }
 
