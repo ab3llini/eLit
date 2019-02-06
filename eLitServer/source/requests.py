@@ -7,7 +7,7 @@ import numpy as np
 
 
 def connect():
-    me.connect('eLit', host='localhost', port=4321)
+    me.connect('eLit', host='localhost', port=27017)
 
 
 # Utilities functions for handle the requests
@@ -101,6 +101,7 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
 
 def on_fetch_ingredients_request(data: Dict) -> Dict:
     connect()
+    print('Fetching ingredients..')
     payload = {'request': 'fetch_ingredients'}
     try:
         ingredients = Ingredient.objects()
