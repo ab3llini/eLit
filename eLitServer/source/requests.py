@@ -97,6 +97,9 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
     except mongoerr.ServerSelectionTimeoutError:
         payload['status_code'] = 500
         return payload
+    except mongoerr.DuplicateKeyError:
+        payload['status_code'] = 500
+        payload['message'] = 'Found duplicate key'
 
 
 def on_fetch_ingredients_request(data: Dict) -> Dict:
@@ -105,8 +108,6 @@ def on_fetch_ingredients_request(data: Dict) -> Dict:
     payload = {'request': 'fetch_ingredients'}
     try:
         ingredients = Ingredient.objects()
-        if len(ingredients) > 0:
-            ingredients[0].save()
         data_dict = [ingredient.to_dict() for ingredient in ingredients]
         payload['data'] = data_dict
         payload['status_code'] = 200

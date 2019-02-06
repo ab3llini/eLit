@@ -15,7 +15,7 @@ class Review(DBObject):
     timestamp: me.DateTimeField(default=datetime.datetime.utcnow)
 
     def __init__(self, title: str = "", text: str = "", rating: float = 0.0, for_drink: Drink = None,
-                 written_by: User = None, timestamp = None, *args, **values):
+                 written_by: User = None, timestamp=None, *args, **values):
         super().__init__(*args, **values)
         self.title = title
         self.text = text
@@ -34,5 +34,3 @@ class Review(DBObject):
         data['timestamp'] = self.timestamp
 
         return data
-
-

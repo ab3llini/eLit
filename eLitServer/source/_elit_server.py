@@ -28,6 +28,11 @@ async def on_post_request(request):
     return web.Response(status=status_code, text=json.dumps(response))
 
 
+async def on_get_image_request(request):
+    web.Response()
+    pass
+
+
 if __name__ == '__main__':
     app = web.Application()
     app.add_routes([
