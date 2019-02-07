@@ -4,6 +4,12 @@ import time
 import random
 import pymongo.errors as mongoerr
 import numpy as np
+import logging
+import datetime
+from mongoengine.queryset import DoesNotExist
+from mongoengine.queryset.visitor import Q
+
+logger = logging.getLogger('server_logger')
 
 
 def connect():
@@ -39,24 +45,18 @@ def on_update_request(data: Dict) -> Dict:
 
 def on_user_sign_in_request(data: Dict) -> Dict:
     connect()
+    payload = {'request': 'user_sign_in'}
     user_data = data
     try:
-        users = User.objects(user_id=user_data['user_id'])
-        if users is None or len(users) == 0:
-            user = User(data_dict=user_data)
-            user.save()
-        else:
-            for user in users:
-                user.save()
-        return {
-            'request': 'user_sign_in',
-            'status_code': 200
-        }
-    except mongoerr.ServerSelectionTimeoutError as error:
-        return {
-            'request': 'user_sign_in',
-            'status_code': 500
-        }
+        User.objects(user_id=user_data['user_id']).get()
+    except DoesNotExist:
+        logger.info(f'sign in new user with email {user_data["email"]}')
+        User(data_dict=user_data).save()
+        payload['status_code'] = 200
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+    payload['status_code'] = 200
+    return payload
 
 
 def on_fetch_reviews_request(data: Dict) -> Dict:
@@ -83,6 +83,36 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
     return payload
 
 
+def on_add_review_request(data: Dict) -> Dict:
+    payload = {'request': 'add_review'}
+    user_id = data['user_id']
+    title = data['title']
+    text = data['text']
+    rating = float(data['rating'])
+    drink_name = data['drink_name']
+    try:
+        drink = Drink.objects(name=drink_name).get()
+        user = User.objects(user_id=user_id).get()
+    except DoesNotExist:
+        payload['status_code'] = 500
+        payload['message'] = f'unable to find drink {drink_name} or user with id {user_id}'
+        return payload
+
+    current_reviews = Review.objects(Q(written_by=user) & Q(for_drink=drink))
+    if len(current_reviews) >= 1:
+        for review in current_reviews:
+            review.delete()
+
+    try:
+        Review(title, text, rating, drink, user).save()
+    except me.ValidationError:
+        payload['status_code'] = 200
+        payload['message'] = 'invalid attributes'
+        return payload
+    payload['status_code'] = 200
+    return payload
+
+
 def on_insert_ingredient_request(data: Dict) -> Dict:
     connect()
     name = data['name']
@@ -102,9 +132,48 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
         payload['message'] = 'Found duplicate key'
 
 
+def on_insert_drink_request(data: Dict) -> Dict:
+    connect()
+    logger.debug(data)
+    payload = {'request': 'insert_drink'}
+    recipe = data['recipe']
+    steps = recipe['steps']
+    steps_obj = []
+    try:
+        for step in steps:
+            components_obj = []
+            components = step['components']
+
+            for component in components:
+                ingredient_name = component['ingredient']['name']
+                try:
+                    ingredient = Ingredient.objects(name=ingredient_name).get()
+                except DoesNotExist:
+                    payload['status_code'] = 500
+                    payload['message'] = f'invalid ingredient {ingredient_name}'
+                    return payload
+
+                component = DrinkComponent(ingredient, component['qty'], component['unit'])
+                components_obj.append(component)
+
+            step = RecipeStep(step['step_description'], components_obj)
+            steps_obj.append(step)
+
+        recipe_obj = Recipe(steps_obj)
+        drink = Drink(data['name'], int(data['degree']), data['image'], data['description'], recipe=recipe_obj)
+        drink.save()
+    except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
+        payload['status_code'] = 500
+        return payload
+
+    # All goes fine
+    payload['status_code'] = 200
+    return payload
+
+
 def on_fetch_ingredients_request(data: Dict) -> Dict:
     connect()
-    print('Fetching ingredients..')
+    logger.debug('Fetching ingredients..')
     payload = {'request': 'fetch_ingredients'}
     try:
         ingredients = Ingredient.objects()
@@ -125,9 +194,7 @@ def on_rating_request(data: Dict) -> Dict:
     if False:
         connect()
         drink_id = data['drink_id']
-        reviews = Review.objects(for_drink__id=drink_id)
-        ratings = [x.rating for x in reviews]
-        rating = np.mean(ratings) if len(ratings) > 0 else 0
+        rating = Review.objects(for_drink__id=drink_id).average('rating')
         payload['data'] = {'rating': str(rating)}
         return payload
     else:

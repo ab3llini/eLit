@@ -2,17 +2,17 @@ import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.drink import Drink
 from database_classes.user import User
-from typing import List, Dict
+from typing import Dict
 import datetime
 
 
 class Review(DBObject):
-    title: me.StringField()
-    text: me.StringField()
-    rating: me.FloatField(required=True)
-    for_drink: me.ReferenceField(Drink, required=True)
-    written_by: me.ReferenceField(User, required=True)
-    timestamp: me.DateTimeField(default=datetime.datetime.utcnow)
+    title = me.StringField()
+    text = me.StringField()
+    rating = me.FloatField(required=True)
+    for_drink = me.ReferenceField(Drink, required=True)
+    written_by = me.ReferenceField(User, required=True)
+    timestamp = me.DateTimeField(default=datetime.datetime.utcnow)
 
     def __init__(self, title: str = "", text: str = "", rating: float = 0.0, for_drink: Drink = None,
                  written_by: User = None, timestamp=None, *args, **values):
@@ -29,8 +29,8 @@ class Review(DBObject):
         data['title'] = self.title
         data['text'] = self.text
         data['rating'] = str(self.rating)
-        data['for_drink_name'] = self.for_drink.name
-        data['written_by'] = self.written_by.name + ' ' + self.written_by.family_name
+        data['for_drink_name'] = self.for_drink.name if self.for_drink is not None else ""
+        data['written_by'] = (self.written_by.name + ' ' + self.written_by.family_name) if self.written_by is not None else ""
         data['timestamp'] = self.timestamp
 
         return data

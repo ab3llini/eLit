@@ -3,6 +3,7 @@ import sys
 
 from aiohttp import web
 import json
+import logging
 
 sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
 from requests import *
@@ -15,14 +16,18 @@ request_map = {
     'rating': on_rating_request,
     'insert_ingredient': on_insert_ingredient_request,
     'fetch_ingredients': on_fetch_ingredients_request,
+    'insert_drink': on_insert_drink_request,
 }
+
+logger = logging.getLogger('server_logger')
+log_file = '/root/serverLog.log'
 
 
 async def on_post_request(request):
     data_dict = await request.json()
     sender = request.transport.get_extra_info('peername')
     host, port = sender or (None, None)
-    print(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')
+    logger.info(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')
     response = request_map[data_dict['request']](data_dict['data'])
     status_code = response['status_code']
     return web.Response(status=status_code, text=json.dumps(response))
@@ -34,6 +39,8 @@ async def on_get_image_request(request):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(format='[%(asctime)s] %(message)s')
+    logger.setLevel(logging.DEBUG)
     app = web.Application()
     app.add_routes([
         web.post('/', on_post_request),

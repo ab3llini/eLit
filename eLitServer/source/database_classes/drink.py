@@ -19,11 +19,10 @@ class Drink(DBObject):
     image = me.StringField()
     recipe = me.ReferenceField(Recipe, required=True)
     description = me.StringField()
-    created_by = me.ReferenceField(User)
 
-    def __init__(self, name: str, degree: int, image: str = None, description: str = '', recipe: Recipe = None, created_by: User = None, *args, **values):
+    def __init__(self, name: str, degree: int, image: str = None, description: str = '',
+                 recipe: Recipe = None, *args, **values):
         super().__init__(*args, **values)
-        self.created_by = created_by
         self.name = name
         self.degree = degree
         self.image = image
@@ -43,5 +42,4 @@ class Drink(DBObject):
         data['image'] = self.image
         data['recipe'] = self.recipe.to_dict()
         data['drink_description'] = self.description
-        data['created_by'] = self.created_by.name + ' ' + self.created_by.family_name
         return data
