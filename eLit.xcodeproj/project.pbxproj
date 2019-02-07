@@ -10,6 +10,7 @@
 		3910E7902DF3B7A3A2556E25 /* Pods_eLitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54AF290653DE960EA8879BE /* Pods_eLitTests.framework */; };
 		6358F8E9864C9BDF72FA5536 /* Pods_eLitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72CE9AEEC5A4C988AD1D0E /* Pods_eLitUITests.framework */; };
 		8B24BCD3516494E880784DE0 /* Pods_eLit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */; };
+		A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */; };
 		A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */; };
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
@@ -108,6 +109,7 @@
 		6ADD5D44653B179884CE66A5 /* Pods-eLitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71B7C904835201D365D96C80 /* Pods-eLit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLit.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLit/Pods-eLit.release.xcconfig"; sourceTree = "<group>"; };
 		90ABF3712F7631617FA7C05B /* Pods-eLitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eLitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eLitTests/Pods-eLitTests.release.xcconfig"; sourceTree = "<group>"; };
+		A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObjectWithImage.swift; sourceTree = "<group>"; };
 		A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkForIngredientTableViewController.swift; sourceTree = "<group>"; };
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				A4D6D00821D8313500469827 /* Recipe.swift */,
 				A4D6D00A21D8318900469827 /* RecipeStep.swift */,
 				A4BED32421F713EB00C1A31D /* DrinkObject.swift */,
+				A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */,
 			);
 			path = DrinkParts;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */,
+				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,

@@ -15,7 +15,7 @@ class DataBaseManager: NSObject {
     
     //MARK: Initializers
     private override init() {
-        self.defaultURL = URL(string: "http://127.0.0.1")!
+        self.defaultURL = URL(string: "http://46.101.164.224")!
     }
     
     //MARK: Public methods

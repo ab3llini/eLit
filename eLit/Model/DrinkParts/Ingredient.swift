@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(Ingredient)
-class Ingredient: DrinkObject {
+class Ingredient: DrinkObjectWithImage {
     //MARK: Attributes
     public override var description: String {
         return "name: \(String(describing: self.name))\n" +
@@ -34,6 +34,8 @@ class Ingredient: DrinkObject {
         self.grade = dict["grade"] as? Int16 ?? 0
         self.name = dict["name"] as? String
         self.ingredientDescription = dict["ingredient_description"] as? String
+        self.imageURLString = dict["image"] as? String ?? ""
+        self.setImage(forceReload: true)
     }
 
 }

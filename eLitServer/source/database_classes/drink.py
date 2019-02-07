@@ -18,7 +18,7 @@ class Drink(DBObject):
     degree = me.IntField(required=True)
     image = me.StringField()
     recipe = me.ReferenceField(Recipe, required=True)
-    description = me.StringField(required=False)
+    description = me.StringField()
     created_by = me.ReferenceField(User)
 
     def __init__(self, name: str, degree: int, image: str = None, description: str = '', recipe: Recipe = None, created_by: User = None, *args, **values):

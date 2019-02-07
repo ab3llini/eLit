@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 @objc(Drink)
-class Drink: DrinkObject {
+class Drink: DrinkObjectWithImage {
+    
+    var imageName: String?
         
     //MARK: Attributes
     public override var description: String {
@@ -27,7 +29,7 @@ class Drink: DrinkObject {
     convenience init(name: String, image: String, degree: Int16, recipe: Recipe? = nil) {
         self.init()
         self.name = name
-        self.image = image
+        self.imageName = image
         self.degree = degree
         self.drinkRecipe = recipe
     }
@@ -35,11 +37,12 @@ class Drink: DrinkObject {
     convenience init(dict: [String: Any]) {
         self.init()
         self.name = dict["name"] as? String ?? ""
-        self.image = dict["image"] as? String ?? ""
+        self.imageURLString = dict["image"] as? String ?? ""
         self.degree = dict["degree"] as? Int16 ?? 0
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
+        self.setImage(forceReload: true)
     }
     
     //MARK: Methods
