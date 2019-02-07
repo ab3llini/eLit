@@ -54,34 +54,33 @@ class Connection {
 
 let connection = new Connection(server, port)
 
+// ------------------------------------------- UTILS ----------------------------------------------
+
+
 // ------------------------------------------- HANDLERS -------------------------------------------
 
 let ws_ingredient_handler = (ingredients) => {
 
     ingredients.reverse().forEach(function (ingredient) {
 
-        let c = '<tr>';
-
-        c += '<td>'+ingredient.name+'</td>';
-        c += '<td>'+ingredient.grade+'</td>';
-        c += '<td>'+ingredient.image+'</td>';
-        c += '<td>'+ingredient.ingredient_description+'</td></tr>';
-
-        $(".ingredient").prepend(c);
+        $(".ingredient").DataTable().row.add( [
+            ingredient.name,
+            ingredient.grade,
+            ingredient.image,
+            ingredient.ingredient_description
+        ] ).draw( false );
 
     })
-
-
 
 }
 
 let table_new_line_handler = (_class, _conn) => {
 
-    let _new = $("." + _class + " > tbody > tr").last()
+    let table = $(".new-" + _class).last()
 
     let request = {request: 'insert_' + _class , data : {}}
 
-    $(_new).find('input').each(function () {
+    table.find('input').each(function () {
 
         if ($(this).attr('type') != 'button') {
 
@@ -89,7 +88,6 @@ let table_new_line_handler = (_class, _conn) => {
             var val = $(this).val()
 
             request.data[key] = val
-
 
         }
     })
@@ -99,8 +97,8 @@ let table_new_line_handler = (_class, _conn) => {
     _conn.ws.send(JSON.stringify(request))
 
     ws_ingredient_handler([request.data])
-
 }
+
 
 // ------------------------------------------- BINDING ---------------------------------------------
 
@@ -115,7 +113,9 @@ $(document).ready(function () {
 
     tables.forEach(function (table) {
 
-        $('.' + table).on("click", ".add-" + table, function () {
+        let t = $('.new-' + table)
+
+        t.on("click", ".add-" + table, function () {
 
             table_new_line_handler(table, connection)
 

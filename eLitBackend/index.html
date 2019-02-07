@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
 
 </head>
 
@@ -25,56 +26,60 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <h1 class="mt-5">Ingredients</h1>
 
-            <table class="table ingredient">
+            <table class="table table-striped table-bordered ingredient">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Grade</th>
                     <th scope="col">Image</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Actions</th>
                 </tr>
-
                 </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <table class="table new-ingredient table-borderless mt-5">
                 <tbody>
                 <tr>
                     <td><input type="text" class="form-control" name="name"/></td>
-                    <td><input type="text" class="form-control" name="grade"/></td>
+                    <td><input type="text" class="form-control" name="grade" value="0"/></td>
                     <td><input type="text" class="form-control" name="image"/></td>
                     <td><input type="text" class="form-control" name="ingredient_description"/></td>
                     <td><input type="button" class="btn btn-md btn-success add-ingredient" value="Add ingredient"/></td>
                 </tr>
                 </tbody>
             </table>
+
         </div>
-        <div class="col-lg-6">
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <h1 class="mt-5">Drinks - disabled</h1>
 
-            <table class="table drink">
+            <table class="table table-striped table-bordered drink">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Grade</th>
                     <th scope="col">Image</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Actions</th>
                 </tr>
 
                 </thead>
                 <tbody>
-                <tr>
-                    <td><input type="text" class="form-control" name="name"/></td>
-                    <td><input type="text" class="form-control" name="grade"/></td>
-                    <td><input type="text" class="form-control" name="image"/></td>
-                    <td><input type="text" class="form-control" name="description"/></td>
-                    <td><input type="button" class="btn btn-md btn-success add-drink" value="Add drink"/></td>
-                </tr>
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td><input type="button" class="btn btn-md btn-success add-drink" value="Add ingredient"/></td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -86,6 +91,8 @@
         crossorigin="anonymous"></script>
 
 <script src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+
 <script src="backend.js"></script>
 
 
