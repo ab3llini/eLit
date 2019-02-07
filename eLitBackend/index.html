@@ -48,7 +48,7 @@
                 <tbody>
                 <tr>
                     <td><input type="text" class="form-control" name="name"/></td>
-                    <td><input type="text" class="form-control" name="grade" value="0"/></td>
+                    <td><input type="number" class="form-control" name="grade" value="0"/></td>
                     <td><input type="text" class="form-control" name="image"/></td>
                     <td><input type="text" class="form-control" name="ingredient_description"/></td>
                     <td><input type="button" class="btn btn-md btn-primary add-ingredient" value="Add ingredient"/></td>
@@ -102,44 +102,47 @@
 
                 </div>
                 <div class="recipe">
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label>Recipe step</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Description" name="description">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary add-recipe-step" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+                    <div class="recipe-step">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Recipe step</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Description"
+                                           name="description">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary add-recipe-step" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="components">
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label>Component</label>
-                            <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Quantity" name="quantity">
-                                <select class="custom-select unit-select" name="unit">
-                                    <option selected>Choose...</option>
-                                </select>
-                                <select class="custom-select ingredient-select" name="ingredient">
-                                    <option selected>Choose...</option>
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary add-component" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+                        <div class="components">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" placeholder="Quantity"
+                                               name="quantity">
+                                        <select class="custom-select unit-select" name="unit">
+                                            <option selected>Choose...</option>
+                                        </select>
+                                        <select class="custom-select ingredient-select" name="ingredient">
+                                            <option selected>Choose...</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary add-component" type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix mt-4">
-                    <button type="button" class="btn btn-primary float-right">Add drink</button>
+                    <button type="button" class="btn btn-primary float-right add-drink">Add drink</button>
                 </div>
             </form>
         </div>

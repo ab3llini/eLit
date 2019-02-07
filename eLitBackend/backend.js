@@ -115,20 +115,61 @@ let on_add_ingredient = (_class, _conn) => {
 
 }
 
-let on_add_drink = () => {
+let on_add_drink = (_conn) => {
 
     let form = $('.new-drink-form')
 
     let request = {request: 'insert_drink', data: {}}
 
+    request.data.name = form.find('input[name="name"]').val()
+    request.data.grade = form.find('input[name="grade"]').val()
+    request.data.image = form.find('input[name="image"]').val()
+    request.data.description = form.find('input[name="description"]').val()
 
+    let recipe = form.find('.recipe')
+
+    let steps = recipe.find('.recipe-step')
+
+    request.data.steps = []
+
+    steps.each(function () {
+
+        let step = {components : []}
+
+        step.description = $(this).find('input[name="description"]').val()
+
+        let components = $(this).find('.components').find('.form-row')
+
+
+        components.each(function () {
+
+            let component = {
+
+                quantity : $(this).find('input[name="quantity"]').val(),
+                unit : $(this).find('select[name="unit"]').val(),
+                ingredient : $(this).find('select[name="ingredient"]').val()
+
+            }
+
+            step.components.push(component)
+
+        })
+
+        request.data.steps.push(step)
+
+    })
+
+
+    console.log(JSON.stringify(request))
+
+    _conn.ws.send(JSON.stringify(request))
 
 
 }
 
 let create_options_for = (list) => {
 
-    let options = ''
+    let options = '<option>Select..</option>'
 
     list.forEach(function (o) {
 
@@ -142,74 +183,29 @@ let create_options_for = (list) => {
 
 let update_ingredient_dropdowns = () => {
 
-    $('.components').find('.ingredient-select').append(create_options_for(ingredient_names))
+    $('.components').find('.ingredient-select').html(create_options_for(ingredient_names))
 
 }
 
 let update_unit_dropdowns = () => {
 
-    $('.components').find('.unit-select').append(create_options_for(units))
+    $('.components').find('.unit-select').html(create_options_for(units))
 
 }
 
 
+let bind_add_component = (ctx) => {
 
-
-
-// ------------------------------------------- BINDING ---------------------------------------------
-
-connection.bind('fetch_ingredients', ws_ingredient_handler)
-
-
-// ------------------------------------------- OBSERVERS -------------------------------------------
-
-$(document).ready(function () {
-
-
-    let new_drink_table = $('.new-ingredient')
-
-    new_drink_table.on("click", ".add-ingredient", function () {
-
-        on_add_ingredient('ingredient', connection)
-
-    })
+    if (ctx == null) {
+        ctx = $('.components')
+    }
 
     // Handle new recipe step add
-    $('.recipe').on('click', '.add-recipe-step', function () {
+    ctx.on('click', '.add-component', function () {
 
-        $(this).closest('.recipe').append(
+        let _new = $(
             '<div class="form-row">\n' +
             '<div class="form-group col-md-12">\n' +
-            '<label>Recipe step</label>\n' +
-            '<div class="input-group">\n' +
-            '<input type="text" class="form-control" placeholder="Description" name="description">\n' +
-            '<div class="input-group-append">\n' +
-            '<button class="btn btn-outline-danger remove-recipe-step" type="button">' +
-            '<i class="fa fa-minus"></i>\n' +
-            '</button>\n' +
-            '<button class="btn btn-outline-primary add-recipe-step" type="button">' +
-            '<i class="fa fa-plus"></i>\n' +
-            '</button>\n' +
-            '</div>\n' +
-            '</div>\n' +
-            '</div>\n' +
-            '</div>'
-        )
-
-        $('.recipe').on('click', '.remove-recipe-step', function () {
-            $(this).closest('.form-row').remove()
-        })
-
-
-    })
-
-    // Handle new recipe step add
-    $('.components').on('click', '.add-component', function () {
-
-        $(this).closest('.components').append(
-            '<div class="form-row">\n' +
-            '<div class="form-group col-md-12">\n' +
-            '<label>Component</label>\n' +
             '<div class="input-group">\n' +
             '<input type="number" class="form-control" placeholder="Quantity" name="quantity">\n' +
             '<select class="custom-select unit-select" name="unit">\n' +
@@ -233,12 +229,119 @@ $(document).ready(function () {
             '</div>'
         )
 
-        $('.components').on('click', '.remove-component', function () {
-            $(this).closest('.form-row').remove()
+        $(this).parents('.components').append(_new)
+
+        _new.on('click', '.remove-component', function () {
+            $(this).parents('.form-row').remove()
         })
 
     })
 
+
+}
+
+
+let bind_add_recipe_step = () => {
+
+    $('.recipe').on('click', '.add-recipe-step', function () {
+
+        let _recipe_step = $(
+            '<div class="recipe-step"></div>'
+        )
+
+        let _header = $(
+            '<div class="form-row">\n' +
+            '<div class="form-group col-md-12">\n' +
+            '<label>Recipe step</label>\n' +
+            '<div class="input-group">\n' +
+            '<input type="text" class="form-control" placeholder="Description" name="description">\n' +
+            '<div class="input-group-append">\n' +
+            '<button class="btn btn-outline-danger remove-recipe-step" type="button">' +
+            '<i class="fa fa-minus"></i>\n' +
+            '</button>\n' +
+            '<button class="btn btn-outline-primary add-recipe-step" type="button">' +
+            '<i class="fa fa-plus"></i>\n' +
+            '</button>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>\n'
+        )
+
+        let _components = $(
+
+            '<div class="components">\n' +
+            '<div class="form-row aa">\n' +
+            '<div class="form-group col-md-12">\n' +
+            '<div class="input-group">\n' +
+            '<input type="number" class="form-control" placeholder="Quantity" name="quantity">\n' +
+            '<select class="custom-select unit-select" name="unit">\n' +
+            '<option selected>Choose...</option>\n' +
+            create_options_for(units) +
+            '</select>\n' +
+            '<select class="custom-select ingredient-select" name="ingredient">\n' +
+            '<option selected>Choose...</option>\n' +
+            create_options_for(ingredient_names) +
+            '</select>\n' +
+            '<div class="input-group-append">\n' +
+            '<button class="btn btn-outline-primary add-component" type="button">\n' +
+            '<i class="fa fa-plus"></i>\n' +
+            '</button>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>'
+
+        )
+
+        _recipe_step.append(_header)
+        _recipe_step.append(_components)
+
+
+        $(this).parents('.recipe').append(_recipe_step)
+
+        _header.on('click', '.remove-recipe-step', function () {
+
+            $(this).parents('.recipe-step').remove()
+
+
+        })
+
+        bind_add_component(_components)
+
+    })
+
+}
+
+// ------------------------------------------- BINDING ---------------------------------------------
+
+connection.bind('fetch_ingredients', ws_ingredient_handler)
+
+
+// ------------------------------------------- OBSERVERS -------------------------------------------
+
+$(document).ready(function () {
+
+
+    let new_drink_table = $('.new-ingredient')
+
+    new_drink_table.on("click", ".add-ingredient", function () {
+
+        on_add_ingredient('ingredient', connection)
+
+    })
+
+
+    $('.new-drink-form').on("click", ".add-drink", function () {
+
+        on_add_drink( connection)
+
+    })
+
+    // Handle new recipe step add
+
+    bind_add_recipe_step()
+    bind_add_component()
 
     // Update dropdowns on load
 
