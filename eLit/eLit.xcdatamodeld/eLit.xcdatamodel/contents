@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CoreDataObject" representedClassName="CoreDataObject" isAbstract="YES" syncable="YES" codeGenerationType="category"/>
-    <entity name="Drink" representedClassName="Drink" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
+    <entity name="Drink" representedClassName="Drink" parentEntity="DrinkObjectWithImage" syncable="YES" codeGenerationType="category">
         <attribute name="createdBy" optional="YES" attributeType="String" defaultValueString="eLit" syncable="YES"/>
         <attribute name="degree" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="drinkDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
@@ -20,7 +18,11 @@
         <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Ingredient" representedClassName="Ingredient" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
+    <entity name="DrinkObjectWithImage" representedClassName="DrinkObjectWithImage" isAbstract="YES" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" parentEntity="DrinkObjectWithImage" syncable="YES" codeGenerationType="category">
         <attribute name="grade" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ingredientDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -45,12 +47,13 @@
     </entity>
     <elements>
         <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="45"/>
-        <element name="Drink" positionX="-259.0078125" positionY="-1051.64453125" width="128" height="148"/>
+        <element name="Drink" positionX="-241.6171875" positionY="-1047.66796875" width="128" height="120"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
-        <element name="Ingredient" positionX="-658.75" positionY="-1139.57421875" width="128" height="105"/>
+        <element name="DrinkObject" positionX="-329.51171875" positionY="-1464.0390625" width="128" height="75"/>
+        <element name="Ingredient" positionX="-426.22265625" positionY="-1119.28125" width="128" height="103"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
         <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="88"/>
         <element name="User" positionX="-940" positionY="-1492" width="128" height="135"/>
-        <element name="DrinkObject" positionX="-333" positionY="-1389" width="128" height="75"/>
+        <element name="DrinkObjectWithImage" positionX="-291.875" positionY="-1285.90625" width="128" height="75"/>
     </elements>
 </model>
