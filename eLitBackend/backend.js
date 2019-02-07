@@ -121,8 +121,8 @@ let on_add_drink = () => {
 
     let request = {request: 'insert_drink', data: {}}
 
-    data.name =
-        
+
+
 
 }
 
