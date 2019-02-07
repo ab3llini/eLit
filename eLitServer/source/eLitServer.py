@@ -1,58 +1,50 @@
-import sys
 import os.path as op
-sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
-from http.server import SimpleHTTPRequestHandler, HTTPServer
-import simplejson
+import sys
+
+from aiohttp import web
 import json
-from typing import Dict
-from database_classes import *
+
+sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
 from requests import *
 
-
-class Server(SimpleHTTPRequestHandler):
-    request_map = {
-        'fetch_all': on_fetch_all_request,
-        'update_db': on_update_request,
-        'user_sign_in': on_user_sign_in_request,
-        'fetch_reviews': on_fetch_reviews_request,
-        'rating': on_rating_request
-    }
-
-    def _set_headers(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-
-    def do_GET(self):
-        self._set_headers()
-        self.wfile.write(str.encode("<html><body><h1>hi!</h1></body></html>"))
-
-    def do_HEAD(self):
-        self._set_headers()
-
-    def do_POST(self):
-        # Doesn't do anything with posted
-        self._set_headers()
-        print(self.headers)
-        data_string = self.rfile.read(int(self.headers['Content-Length']))
-        print('Received:', data_string)
-        data_dict = simplejson.loads(data_string)
-        print('Parsed:', data_dict)
-        print(self.request_map)
-        response = self.request_map[data_dict['request']](data_dict['data'])
-        self.wfile.write(json.dumps(response).encode())
+request_map = {
+    'fetch_all': on_fetch_all_request,
+    'update_db': on_update_request,
+    'user_sign_in': on_user_sign_in_request,
+    'fetch_reviews': on_fetch_reviews_request,
+    'rating': on_rating_request,
+    'insert_ingredient': on_insert_ingredient_request,
+    'fetch_ingredients': on_fetch_ingredients_request,
+}
 
 
-def start_server(ip: str, port: int):
-    server_address = (ip, port)
-    httpd = HTTPServer(server_address, Server)
-    print('Starting httpd...')
-    httpd.serve_forever()
+async def on_post_request(request):
+    data_dict = await request.json()
+    sender = request.transport.get_extra_info('peername')
+    host, port = sender or (None, None)
+    print(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')
+    response = request_map[data_dict['request']](data_dict['data'])
+    status_code = response['status_code']
+    return web.Response(status=status_code, text=json.dumps(response))
+
+
+async def on_get_image_request(request):
+    web.Response()
+    pass
 
 
 if __name__ == '__main__':
+    app = web.Application()
+    app.add_routes([
+        web.post('/', on_post_request),
+        web.static('/assets', '../resources/assets/', show_index=False)
+    ])
+
     args = sys.argv
-    if len(args) != 3:
-        start_server('localhost', 80)
+
+    if len(args) == 3:
+        web.run_app(app, host=args[1], port=int(args[2]))
+    elif len(args) == 2:
+        web.run_app(app, host=args[1], port=80)
     else:
-        start_server(args[1], int(args[2]))
+        web.run_app(app, host='localhost', port=80)
