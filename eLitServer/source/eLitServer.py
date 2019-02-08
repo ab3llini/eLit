@@ -47,7 +47,7 @@ if __name__ == '__main__':
     app = web.Application()
     app.add_routes([
         web.post('/', on_post_request),
-        web.static('/', '../../eLitBackend/', show_index=False),
+        web.static('/backend', '../../eLitBackend/', show_index=False),
         web.static('/assets', '../resources/assets/', show_index=False)
     ])
 
@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     if len(args) == 3:
         # Backend
-        backend_thread = Backend(args[1], args[2]).start()
+        backend_thread = Backend(args[1], 9999).start()
         web.run_app(app, host=args[1], port=int(args[2]))
     elif len(args) == 2:
         # Backend
