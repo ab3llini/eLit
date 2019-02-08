@@ -12,8 +12,9 @@ from eLitServer import request_map
 
 class Backend:
 
-    def __init__(self, port):
+    def __init__(self, server, port):
         self.port = port
+        self.server = server
 
     async def on_connect(self, websocket):
 
@@ -36,7 +37,7 @@ class Backend:
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        start_server = websockets.serve(self.handler, '127.0.0.1', self.port)
+        start_server = websockets.serve(self.handler, self.server, self.port)
         asyncio.get_event_loop().run_until_complete(start_server)
         asyncio.get_event_loop().run_forever()
 
