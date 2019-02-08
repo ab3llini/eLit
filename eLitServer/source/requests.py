@@ -137,15 +137,14 @@ def on_insert_drink_request(data: Dict) -> Dict:
     logger.debug(data)
     payload = {'request': 'insert_drink'}
     recipe = data['recipe']
-    steps = recipe['steps']
     steps_obj = []
     try:
-        for step in steps:
+        for step in recipe:
             components_obj = []
             components = step['components']
 
             for component in components:
-                ingredient_name = component['ingredient']['name']
+                ingredient_name = component['ingredient']
                 try:
                     ingredient = Ingredient.objects(name=ingredient_name).get()
                 except DoesNotExist:
@@ -153,14 +152,14 @@ def on_insert_drink_request(data: Dict) -> Dict:
                     payload['message'] = f'invalid ingredient {ingredient_name}'
                     return payload
 
-                component = DrinkComponent(ingredient, component['qty'], component['unit'])
+                component = DrinkComponent(ingredient, component['quantity'], component['unit'])
                 components_obj.append(component)
 
-            step = RecipeStep(step['step_description'], components_obj)
+            step = RecipeStep(step['description'], components_obj)
             steps_obj.append(step)
 
         recipe_obj = Recipe(steps_obj)
-        drink = Drink(data['name'], int(data['degree']), data['image'], data['description'], recipe=recipe_obj)
+        drink = Drink(data['name'], int(data['grade']), data['image'], data['description'], recipe=recipe_obj)
         drink.save()
     except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
         payload['status_code'] = 500

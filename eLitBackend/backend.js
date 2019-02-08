@@ -81,6 +81,9 @@ let ws_ingredient_handler = (ingredients) => {
 
     })
 
+    update_ingredient_dropdowns()
+
+
 }
 
 
@@ -130,7 +133,7 @@ let on_add_drink = (_conn) => {
 
     let steps = recipe.find('.recipe-step')
 
-    request.data.steps = []
+    request.data.recipe = []
 
     steps.each(function () {
 
@@ -155,7 +158,7 @@ let on_add_drink = (_conn) => {
 
         })
 
-        request.data.steps.push(step)
+        request.data.recipe.push(step)
 
     })
 
@@ -169,7 +172,7 @@ let on_add_drink = (_conn) => {
 
 let create_options_for = (list) => {
 
-    let options = '<option>Select..</option>'
+    let options = '<option>Choose..</option>'
 
     list.forEach(function (o) {
 
@@ -344,8 +347,6 @@ $(document).ready(function () {
     bind_add_component()
 
     // Update dropdowns on load
-
-    update_ingredient_dropdowns()
     update_unit_dropdowns()
 
 })
