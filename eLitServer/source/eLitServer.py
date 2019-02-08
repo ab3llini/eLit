@@ -6,7 +6,9 @@ import json
 import logging
 
 sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
+
 from requests import *
+from elitBackend import *
 
 request_map = {
     'fetch_all': on_fetch_all_request,
@@ -16,6 +18,7 @@ request_map = {
     'rating': on_rating_request,
     'insert_ingredient': on_insert_ingredient_request,
     'fetch_ingredients': on_fetch_ingredients_request,
+    'fetch_drinks': on_fetch_drinks_request,
     'insert_drink': on_insert_drink_request,
 }
 
@@ -55,3 +58,7 @@ if __name__ == '__main__':
         web.run_app(app, host=args[1], port=80)
     else:
         web.run_app(app, host='localhost', port=80)
+
+    # Backend
+    backend_thread = Backend(9999).start()
+

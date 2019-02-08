@@ -86,6 +86,24 @@ let ws_ingredient_handler = (ingredients) => {
 
 }
 
+let ws_drink_handler = (drinks) => {
+
+    console.log(drinks)
+
+    drinks.reverse().forEach(function (drink) {
+
+        $(".drink").DataTable().row.add([
+            drink.name,
+            drink.degree,
+            drink.image,
+            drink.drink_description,
+            drink.steps
+        ]).draw(false);
+
+    })
+
+}
+
 
 // ------------------------------------------- UTILS ----------------------------------------------
 
@@ -212,11 +230,9 @@ let bind_add_component = (ctx) => {
             '<div class="input-group">\n' +
             '<input type="number" class="form-control" placeholder="Quantity" name="quantity">\n' +
             '<select class="custom-select unit-select" name="unit">\n' +
-            '<option selected>Choose...</option>\n' +
             create_options_for(units) +
             '</select>\n' +
             '<select class="custom-select ingredient-select" name="ingredient">\n' +
-            '<option selected>Choose...</option>\n' +
             create_options_for(ingredient_names) +
             '</select>\n' +
             '<div class="input-group-append">\n' +
@@ -319,6 +335,8 @@ let bind_add_recipe_step = () => {
 // ------------------------------------------- BINDING ---------------------------------------------
 
 connection.bind('fetch_ingredients', ws_ingredient_handler)
+connection.bind('fetch_drinks', ws_drink_handler)
+
 
 
 // ------------------------------------------- OBSERVERS -------------------------------------------

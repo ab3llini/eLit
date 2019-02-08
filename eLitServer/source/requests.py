@@ -185,6 +185,25 @@ def on_fetch_ingredients_request(data: Dict) -> Dict:
         return payload
 
 
+def on_fetch_drinks_request(data: Dict) -> Dict:
+    connect()
+    logger.debug('Fetching drinks..')
+    payload = {'request': 'fetch_drinks'}
+    try:
+        drinks = Drink.objects()
+        data_dict = []
+        for d in drinks:
+            dict = d.to_dict()
+            dict['steps'] = len(d.recipe.steps)
+            data_dict.append(dict)
+        payload['data'] = data_dict
+        payload['status_code'] = 200
+        return payload
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
+
+
 def on_rating_request(data: Dict) -> Dict:
     payload = {
         'request': 'rating',
