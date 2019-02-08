@@ -8,7 +8,7 @@ import logging
 sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
 
 from requests import *
-from elitBackend import *
+from eLitBackend import *
 
 request_map = {
     'fetch_all': on_fetch_all_request,
@@ -53,14 +53,18 @@ if __name__ == '__main__':
 
     args = sys.argv
 
-    # Backend
-    backend_thread = Backend(9999).start()
 
     if len(args) == 3:
+        # Backend
+        backend_thread = Backend(args[1], args[2]).start()
         web.run_app(app, host=args[1], port=int(args[2]))
     elif len(args) == 2:
+        # Backend
+        backend_thread = Backend(args[1], 9999).start()
         web.run_app(app, host=args[1], port=80)
     else:
+        # Backend
+        backend_thread = Backend('127.0.0.1', 9999).start()
         web.run_app(app, host='localhost', port=80)
 
 
