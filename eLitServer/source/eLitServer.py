@@ -47,6 +47,7 @@ if __name__ == '__main__':
     app = web.Application()
     app.add_routes([
         web.post('/', on_post_request),
+        web.static('/', '../../eLitBackend/', show_index=False)
         web.static('/assets', '../resources/assets/', show_index=False)
     ])
 
