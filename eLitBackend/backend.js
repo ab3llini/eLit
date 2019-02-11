@@ -8,7 +8,22 @@ let port = '9999'
 let ingredient_names = []
 let units = ['part']
 
+// ------------------------------------------- LOGGER -------------------------------------------
+
+let ui_log = null
+
+$(document).ready(function () {
+    ui_log = (o) => {
+
+        console.log(o)
+
+        $('.server-log').append('<br>' + o.toString())
+
+    }
+})
+
 // ------------------------------------------- CLASSES -------------------------------------------
+
 
 
 class Connection {
@@ -23,11 +38,11 @@ class Connection {
         let _self = this
 
         this.ws.onopen = function () {
-            console.log("Socket opened")
+            ui_log("Socket opened")
         }
 
         this.ws.onerror = function () {
-            console.log("Socket error")
+            ui_log("Socket error")
         }
         this.ws.onmessage = function (event) {
             _self.handle(JSON.parse(event.data))
@@ -48,7 +63,7 @@ class Connection {
 
         if (handler === undefined) {
 
-            console.log('No handler for request: ' + payload.request)
+            ui_log('No handler for request: ' + payload.request)
 
         } else {
 
@@ -88,7 +103,7 @@ let ws_ingredient_handler = (ingredients) => {
 
 let ws_drink_handler = (drinks) => {
 
-    console.log(drinks)
+    ui_log(drinks)
 
     drinks.reverse().forEach(function (drink) {
 
@@ -126,7 +141,7 @@ let on_add_ingredient = (_class, _conn) => {
         }
     })
 
-    console.log(request)
+    ui_log(request)
 
     _conn.ws.send(JSON.stringify(request))
 
@@ -181,7 +196,7 @@ let on_add_drink = (_conn) => {
     })
 
 
-    console.log(JSON.stringify(request))
+    ui_log(JSON.stringify(request))
 
     _conn.ws.send(JSON.stringify(request))
 
