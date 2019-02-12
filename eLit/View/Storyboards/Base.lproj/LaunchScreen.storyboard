@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,34 +13,33 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-aC-VPe">
-                                <rect key="frame" x="157" y="323" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-hW-Wkl">
-                                <rect key="frame" x="177.5" y="352" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="x0Y-y1-Omw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5ZR-hW-Wkl" firstAttribute="top" secondItem="sW6-aC-VPe" secondAttribute="bottom" constant="8" id="LZ0-Rc-Tl2"/>
-                            <constraint firstItem="5ZR-hW-Wkl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="del-NY-kH2"/>
-                            <constraint firstItem="sW6-aC-VPe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fgG-z7-ZJf"/>
-                            <constraint firstItem="sW6-aC-VPe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hWB-gu-Ds6"/>
+                            <constraint firstItem="x0Y-y1-Omw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="BUk-GO-XIA"/>
+                            <constraint firstItem="x0Y-y1-Omw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jWI-xv-RaR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x0Y-y1-Omw" secondAttribute="trailing" id="mw0-mk-i75"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x0Y-y1-Omw" secondAttribute="bottom" constant="-34" id="z89-0b-qpy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchscreen" width="1440" height="2832"/>
+    </resources>
 </document>

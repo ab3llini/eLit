@@ -70,6 +70,7 @@
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
+		BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
 		BDED02FA21E7A2A200503B59 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */; };
@@ -183,6 +184,7 @@
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
+		BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundViewController.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
 		BDED02F321E7A2A100503B59 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				BD19106221F3A67E00F1B213 /* LargeVbrantNavigatonController.swift */,
+				BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */,
 				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 				BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */,
 				BD903B9521ECBA2300F0D856 /* Renderer.swift */,
@@ -848,6 +851,7 @@
 				A4D1D96E22099F8800888EAD /* DrinkComponentTableViewCell.swift in Sources */,
 				BD3A31FC21E520BC009A135F /* HeaderTableViewCell.swift in Sources */,
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
+				BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */,
 				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,

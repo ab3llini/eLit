@@ -26,6 +26,7 @@ class BlurredBackgroundTableViewController: UITableViewController {
     
     // Background view
     var backgroundImageView : UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class BlurredBackgroundTableViewController: UITableViewController {
         
         // Assign the container view as background view
         tableView.backgroundView = containerView
+    
         
     }
     

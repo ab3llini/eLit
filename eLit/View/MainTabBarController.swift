@@ -11,14 +11,22 @@ import UIKit
 class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         // Removing the text for the navigation controller items
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         let barButtonItemAppearance = UIBarButtonItem.appearance()
         barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
         barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
 
-        // Do any additional setup after loading the view.
+        // Present loading VC if we need to download the data from the server
+        if (Model.shared.isEmpty()) {
+            
+            self.performSegue(withIdentifier: Navigation.toUpdateVC.rawValue, sender: self)
+        }
+        
+        
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

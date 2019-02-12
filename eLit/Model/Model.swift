@@ -28,6 +28,8 @@ class Model: NSObject {
         self.user = self.entityManager.fetchAll(type: User.self)?.first
         self.user?.setImage()
         
+        /*
+        
         var ingredients: [Ingredient] = []
         for _ in 0...4 {
             ingredients.append(Ingredient(name: Model.randomString(length: 20)))
@@ -43,6 +45,8 @@ class Model: NSObject {
             
             drinks.append(drink)
         }
+        
+        */
     }
     
     class func randomString(length: Int) -> String {
@@ -79,4 +83,10 @@ class Model: NSObject {
         }
     }
 
+    public func isEmpty() -> Bool {
+        
+        return (self.drinks.count == 0)
+        
+    }
+    
 }

@@ -282,11 +282,36 @@
                         <segue destination="vjC-Uw-Emz" kind="relationship" relationship="viewControllers" id="I7W-Cm-IC0"/>
                         <segue destination="tSU-i0-kSz" kind="relationship" relationship="viewControllers" id="vZ9-YL-ehJ"/>
                         <segue destination="MDl-Ea-nl5" kind="relationship" relationship="viewControllers" id="ZbB-K6-Oi8"/>
+                        <segue destination="j4N-tf-UAp" kind="show" identifier="toUpdateVC" id="tKL-5L-IPZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1x-PQ-8mI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1881" y="81"/>
+        </scene>
+        <!--Blurred Background View Controller-->
+        <scene sceneID="ibb-b7-qJN">
+            <objects>
+                <viewController id="j4N-tf-UAp" customClass="BlurredBackgroundViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s2X-nX-jcs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="R7w-LL-VAU"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="backgroundImageViewHeight">
+                            <real key="value" value="400"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="launchscreen"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundImageColor">
+                            <color key="value" red="0.83228094040838985" green="0.68204500898156439" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TJ-Sp-UnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1883" y="-835"/>
         </scene>
         <!--Home-->
         <scene sceneID="CaU-gx-OkA">
@@ -443,6 +468,20 @@
             </objects>
             <point key="canvasLocation" x="2190" y="448"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="YKn-aW-5Bm">
+            <objects>
+                <viewController id="7Kj-lH-6fP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Bl-K5-LFH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OlG-4b-zzs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EL1-Kn-ZaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="DrinkWallpaper" width="559" height="289"/>
@@ -451,6 +490,7 @@
         <image name="HomeIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
+        <image name="launchscreen" width="1440" height="2832"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wV5-CP-adr"/>
