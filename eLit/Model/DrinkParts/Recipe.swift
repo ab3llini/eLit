@@ -29,6 +29,8 @@ class Recipe: DrinkObject {
             steps.append(RecipeStep(dict: step))
         }
         self.init(with: steps)
+        self.id = dict["id"] as? String ?? ""
+        self.fingerprint = dict["fingerprint"] as? String ?? ""
     }
 
 }

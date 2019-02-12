@@ -31,6 +31,8 @@ class Ingredient: DrinkObjectWithImage {
     
     convenience init(dict: [String: Any]) {
         self.init()
+        self.id = dict["id"] as? String ?? ""
+        self.fingerprint = dict["fingerprint"] as? String ?? ""
         self.grade = dict["grade"] as? Int16 ?? 0
         self.name = dict["name"] as? String
         self.ingredientDescription = dict["ingredient_description"] as? String
