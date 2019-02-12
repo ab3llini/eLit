@@ -12,6 +12,27 @@ class DataBaseManager: NSObject {
     //MARK: Attributes
     public static let shared = DataBaseManager()
     private let defaultURL: URL
+    // Default completion handler for update db request
+    private let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
+        let drinks = response["data"] as? [[String: Any]] ?? []
+        var currentDrinks = Model.shared.getDrinks()
+        let model = Model.shared
+        let drinkIds = drinks.map({ d in
+            return d["id"] as! String
+        })
+        
+        for drink in currentDrinks {
+            if drinkIds.contains(drink.id!) {
+                model.deleteDrink(drink)
+            }
+        }
+        
+        for drink in drinks {
+            model.addDrink(Drink(dict: drink))
+        }
+        
+        model.savePersistentModel()
+    }
     
     //MARK: Initializers
     private override init() {
@@ -35,32 +56,11 @@ class DataBaseManager: NSObject {
  
  - Parameter comletion: the function that will be called after the response, it takes as input the data dictionary with all the informations about the modified drinks. It has also a key "status" that is "ok" if the request succeded and "error" if something went wrong
  **/
-    func updateDB(completion: ((_ data: [String: Any]) -> Void)? = nil) {
+    func updateDB(completion: @escaping ((_ data: [String: Any]) -> Void) = DataBaseManager.shared.defaultUdateDbHandler) {
+        
         let model = Model.shared
         let objects: [DrinkObject]? = model.entityManager.fetchAll(type: DrinkObject.self)
         
-        let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
-            let drinks = response["data"] as? [[String: Any]] ?? []
-            var currentDrinks = Model.shared.getDrinks()
-            let model = Model.shared
-            let drinkIds = drinks.map({ d in
-                return d["id"] as! String
-            })
-            
-            for drink in currentDrinks {
-                if drinkIds.contains(drink.id!) {
-                    model.deleteDrink(drink)
-                }
-            }
-            
-            for drink in drinks {
-                model.addDrink(Drink(dict: drink))
-            }
-            
-            model.savePersistentModel()
-        }
-        
-                
         guard let cdObjects = objects else {
             completion(["status": "error"])
             return
@@ -127,7 +127,7 @@ class DataBaseManager: NSObject {
         request.httpBody = toJson(data)!
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            guard let resp : HTTPURLResponse = response as? HTTPURLResponse else {
+            guard let _ : HTTPURLResponse = response as? HTTPURLResponse else {
                 completion(["status": "error"])
                 return
             }
