@@ -168,10 +168,10 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
-            let steps = drink.drinkRecipe?.steps ?? []
+            let steps : [RecipeStep] = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
             // FIXME
-            //cell.stepLabel.text = steps[indexPath.row].stepDescription
-            cell.preparationLabel.text = Model.randomString(length: Int.random(in: 10...300))
+            cell.stepLabel.text = "Step \(indexPath.row + 1)"
+            cell.preparationLabel.text = steps[indexPath.row].stepDescription
             
             return cell
             
