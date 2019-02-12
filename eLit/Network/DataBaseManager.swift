@@ -13,7 +13,7 @@ class DataBaseManager: NSObject {
     public static let shared = DataBaseManager()
     private let defaultURL: URL
     // Default completion handler for update db request
-    private let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
+    let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
         let drinks = response["data"] as? [[String: Any]] ?? []
         var currentDrinks = Model.shared.getDrinks()
         let model = Model.shared

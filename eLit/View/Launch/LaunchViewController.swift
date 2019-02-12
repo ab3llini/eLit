@@ -15,10 +15,6 @@ class LaunchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        launchLabel.isHidden = true
-        launchSpinner.isHidden = true
         
     }
     
@@ -26,8 +22,7 @@ class LaunchViewController: UIViewController {
 
         if Model.shared.isEmpty() {
             
-            launchLabel.isHidden = false
-            launchSpinner.isHidden = false
+            self.launchLabel.text = "Pouring vodka..."
             
             //Loading data from remote server
             let dataCreation: (_: [String: Any]) -> Void = { response in
@@ -56,8 +51,11 @@ class LaunchViewController: UIViewController {
                 }
                 else {
                     
-                    self.launchLabel.text = "Something went wrong.."
-                    self.launchSpinner.isHidden = true
+                    DispatchQueue.main.async {
+                    
+                        self.displayError(error: "Something went wrong..")
+                        
+                    }
                     
                 }
                 
@@ -69,13 +67,46 @@ class LaunchViewController: UIViewController {
         }
         else {
             
-            self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
+            self.launchLabel.text = "Adding juice..."
+            
+            let handler : (_: [String: Any]) -> Void = { response in
+                
+                if response["status"] as? String ?? "" == "ok" {
+                    
+                    DataBaseManager.shared.defaultUdateDbHandler(response)
+                    
+                    DispatchQueue.main.async {
+
+                        self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
+                        
+                    }
+
+                    
+                }
+                else {
+                    
+                    DispatchQueue.main.async {
+                    
+                        self.displayError(error: "Something went wrong..")
+                        
+                    }
+
+                }
+                
+            }
+            
+            DataBaseManager.shared.updateDB(completion: handler)
+
             
         }
         
     }
-    
-    
-    
 
+    private func displayError(error : String) {
+        
+        self.launchLabel.text = error
+        self.launchSpinner.isHidden = true
+        
+    }
+    
 }
