@@ -42,7 +42,7 @@ async def on_get_image_request(request):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(format='[%(asctime)s] %(message)s')
+    logging.basicConfig(format='[%(asctime)s] %(message)s', filename=log_file)
     logger.setLevel(logging.DEBUG)
     app = web.Application()
     app.add_routes([
@@ -52,7 +52,6 @@ if __name__ == '__main__':
     ])
 
     args = sys.argv
-
 
     if len(args) == 3:
         # Backend

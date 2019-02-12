@@ -31,6 +31,19 @@ class EntityManager: NSObject {
         }
     }
     
+    public func fetchOne <T: DrinkObject> (of type: T.Type, with id: String) -> T? {
+        let request : NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+        do {
+            let objects = try EntityManager.shared.getContext().fetch(request) as? [T] ?? []
+            let filtered = objects.filter {$0.id! == id}
+            return filtered.first
+        }
+        catch {
+            print("ERROR in fetch all")
+            return nil
+        }
+    }
+    
     public func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext

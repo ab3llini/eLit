@@ -19,6 +19,7 @@
 		A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347021F37F020061D0D2 /* SettingsTableViewController.swift */; };
 		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
 		A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467347221F37F020061D0D2 /* AccountTableViewCell.xib */; };
+		A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470E54F2211DF65004872A2 /* MainTabBarController.swift */; };
 		A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */; };
 		A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
@@ -118,6 +119,7 @@
 		A467347021F37F020061D0D2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		A467347221F37F020061D0D2 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		A470E54F2211DF65004872A2 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				A467346F21F37F020061D0D2 /* Settings */,
 				BD2600A821F0F5D30068D7F8 /* Storyboards */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
+				A470E54F2211DF65004872A2 /* MainTabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 			files = (
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
+				A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
 				A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */,
 				BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */,

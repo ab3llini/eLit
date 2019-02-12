@@ -42,7 +42,8 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
-        self.setImage(forceReload: true)
+        self.imageName = "Drink1"
+        //self.setImage(forceReload: true)
     }
     
     //MARK: Methods

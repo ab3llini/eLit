@@ -31,3 +31,13 @@ class User(DBObject):
             self.image_url = data_dict['image_url']
             self.user_id = data_dict['user_id']
             self.sign_in_date = datetime.datetime.utcnow()
+
+    def to_dict(self) -> Dict:
+        data = super().to_dict()
+        data['name'] = self.name
+        data['email'] = self.email
+        data['family_name'] = self.family_name
+        data['image_url'] = self.image_url
+        data['user_id'] = self.user_id
+
+

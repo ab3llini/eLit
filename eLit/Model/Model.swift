@@ -20,6 +20,11 @@ class Model: NSObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         _ = appDelegate.persistentContainer.viewContext
         self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
+        for drink in self.drinks {
+            if drink.imageName == nil {
+                drink.imageName = "Drink1"
+            }
+        }
         self.user = self.entityManager.fetchAll(type: User.self)?.first
         self.user?.setImage()
         
@@ -28,7 +33,7 @@ class Model: NSObject {
             ingredients.append(Ingredient(name: Model.randomString(length: 20)))
         }
         
-        for i in 0...19 {
+        for i in 0...4 {
             let component = DrinkComponent(ingredient: ingredients[i%5], quantity: 1, unit: .PART)
             let step = RecipeStep(description: "", drinkComponents: [component])
             let recipe = Recipe(with: [step])
@@ -57,6 +62,19 @@ class Model: NSObject {
     public func savePersistentModel() {
         DispatchQueue.main.async {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+        }
+    }
+    
+    public func deleteDrink(_ drink: Drink) {
+        DispatchQueue.main.async {
+            let context = self.entityManager.getContext()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            guard let index = self.drinks.firstIndex(of: drink) else {
+                return
+            }
+            self.drinks.remove(at: index)
+            context.delete(drink)
             appDelegate.saveContext()
         }
     }

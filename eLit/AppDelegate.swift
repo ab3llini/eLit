@@ -18,14 +18,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let tabController = self.window?.rootViewController as? UITabBarController ?? nil
-        tabController?.delegate = self
+        //Loading data from remote server
+        let dataCreation: (_: [String: Any]) -> Void = { response in
+            let drinks = response["data"] as? [[String: Any]] ?? []
+            var drinkList: [Drink] = []
+            DispatchQueue.main.async {
+                for drink in drinks {
+                    let d = Drink(dict: drink)
+                    drinkList.append(d)
+                }
+                
+                for drink in drinkList {
+                    Model.shared.addDrink(drink)
+                }
+                Model.shared.savePersistentModel()
+            }
+        }
         
-        // Removing the text for the navigation controller items
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
-        let barButtonItemAppearance = UIBarButtonItem.appearance()
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
+        DataBaseManager.shared.fetchAllData(completion: dataCreation)
+        
+        let udateDatabase: (_: [String: Any]) -> Void = { response in
+            let drinks = response["data"] as? [[String: Any]] ?? []
+            var currentDrinks = Model.shared.getDrinks()
+            let model = Model.shared
+            let drinkIds = drinks.map({ d in
+                return d["id"] as! String
+            })
+            
+            for drink in currentDrinks {
+                if drinkIds.contains(drink.id!) {
+                    model.deleteDrink(drink)
+                }
+            }
+            
+            for drink in drinks {
+                model.addDrink(Drink(dict: drink))
+            }
+            
+            model.savePersistentModel()
+            
+        }
 
         /*
         var drinks = Model.getInstance().getDrinks()

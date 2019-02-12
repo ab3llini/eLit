@@ -262,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="-1882" y="970"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="WRS-vg-YZI">
             <objects>
-                <tabBarController id="sZs-Fl-fxU" sceneMemberID="viewController">
+                <tabBarController id="sZs-Fl-fxU" customClass="MainTabBarController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JDM-HU-dwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -453,6 +453,6 @@
         <image name="SettingsIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mfK-pE-sFH"/>
+        <segue reference="wV5-CP-adr"/>
     </inferredMetricsTieBreakers>
 </document>

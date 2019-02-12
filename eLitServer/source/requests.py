@@ -51,6 +51,7 @@ def on_user_sign_in_request(data: Dict) -> Dict:
         User.objects(user_id=user_data['user_id']).get()
     except DoesNotExist:
         logger.info(f'sign in new user with email {user_data["email"]}')
+        print(user_data['user_id'])
         User(data_dict=user_data).save()
         payload['status_code'] = 200
     except mongoerr.ServerSelectionTimeoutError:
