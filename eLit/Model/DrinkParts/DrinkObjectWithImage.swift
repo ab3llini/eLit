@@ -11,7 +11,7 @@ import UIKit
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
-    var image: UIImage?
+    var image: UIImage = UIImage()
     
     func setImage(forceReload: Bool = false) {
         guard let id = self.imageData, !forceReload else {
@@ -19,7 +19,7 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
-        self.image = UIImage(data: id)
+        self.image = UIImage(data: id) ?? UIImage()
     }
     
     func setImage(forceReload: Bool = false, completion: (_ image: UIImage?) -> Void) {
@@ -39,7 +39,7 @@ class DrinkObjectWithImage: DrinkObject {
         
         if let id: NSData = NSData(contentsOf: url) {
             self.imageData = id as Data
-            self.image = UIImage(data: self.imageData!)
+            self.image = UIImage(data: self.imageData!) ?? UIImage()
         } else { return }
     }
 

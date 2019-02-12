@@ -36,7 +36,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        let image = UIImage(named: drinks[index].imageName!)
+        let image = drinks[index].image
         cell.imageView?.image = image
         cell.textLabel?.text = drinks[index].name
         

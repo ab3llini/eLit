@@ -74,7 +74,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
         let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
         let drink : Drink = drinks[indexPath.row]
         let color = Renderer.shared.getCoreColors()[drink.name!]!
-        let image = UIImage(named: drink.imageName!)!
+        let image = drink.image
         
         cell.setDrink(drink: drink, withImage: image, andColor: color)
         

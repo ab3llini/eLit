@@ -60,7 +60,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
 
     private func layoutContent() {
         
-        self.setBackgroundImage(UIImage(named: self.drink.imageName!)!, withColor: Renderer.shared.getCoreColors()[self.drink.name!]!)
+        self.setBackgroundImage(drink.image, withColor: Renderer.shared.getCoreColors()[self.drink.name!]!)
         
     }
     
@@ -112,7 +112,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             return 3
         case 3:
             // Steps
-            return 10
+            return drink.drinkRecipe?.steps?.count ?? 0
         default:
             return 0
         }
@@ -124,7 +124,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let cell : DrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkImageTableViewCell") as! DrinkImageTableViewCell
             
-            cell.imageViewContainer.image = UIImage(named: self.drink.imageName!)!
+            cell.imageViewContainer.image = drink.image
             cell.drinkNameLabel.text = self.drink.name
             
             return cell
@@ -168,7 +168,9 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
-            cell.stepLabel.text = "Step \(indexPath.row + 1)"
+            let steps = drink.drinkRecipe?.steps ?? []
+            // FIXME
+            //cell.stepLabel.text = steps[indexPath.row].stepDescription
             cell.preparationLabel.text = Model.randomString(length: Int.random(in: 10...300))
             
             return cell

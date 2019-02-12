@@ -20,11 +20,6 @@ class Model: NSObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         _ = appDelegate.persistentContainer.viewContext
         self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
-        for drink in self.drinks {
-            if drink.imageName == nil {
-                drink.imageName = "Drink1"
-            }
-        }
         self.user = self.entityManager.fetchAll(type: User.self)?.first
         self.user?.setImage()
         

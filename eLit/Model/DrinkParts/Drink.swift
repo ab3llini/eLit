@@ -12,8 +12,6 @@ import CoreData
 @objc(Drink)
 class Drink: DrinkObjectWithImage {
     
-    var imageName: String?
-        
     //MARK: Attributes
     public override var description: String {
         return self.name! + "\n\(String(describing: self.drinkRecipe))"
@@ -29,7 +27,6 @@ class Drink: DrinkObjectWithImage {
     convenience init(name: String, image: String, degree: Int16, recipe: Recipe? = nil) {
         self.init()
         self.name = name
-        self.imageName = image
         self.degree = degree
         self.drinkRecipe = recipe
     }
@@ -44,8 +41,6 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
-        self.imageName = "Drink1"
-        //self.setImage(forceReload: true)
     }
     
     //MARK: Methods

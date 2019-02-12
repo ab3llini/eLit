@@ -14,12 +14,15 @@ class DataBaseManager: NSObject {
     private let defaultURL: URL
     // Default completion handler for update db request
     let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
+        
         let drinks = response["data"] as? [[String: Any]] ?? []
         var currentDrinks = Model.shared.getDrinks()
         let model = Model.shared
         let drinkIds = drinks.map({ d in
             return d["id"] as! String
         })
+        
+        DispatchQueue.main.async {
         
         for drink in currentDrinks {
             if drinkIds.contains(drink.id!) {
@@ -31,7 +34,8 @@ class DataBaseManager: NSObject {
             model.addDrink(Drink(dict: drink))
         }
         
-        model.savePersistentModel()
+            model.savePersistentModel()
+        }
     }
     
     //MARK: Initializers

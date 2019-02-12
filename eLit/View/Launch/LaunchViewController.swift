@@ -20,6 +20,42 @@ class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
 
+        // Setup chain
+        self.retrieveData()
+        
+    }
+    
+    private func prepareData() {
+        
+        DispatchQueue.main.async {
+            
+            self.launchLabel.text = "Adding sugar..."
+            
+            Model.shared.getDrinks().forEach { (drink) in
+                drink.setImage()
+                print(drink.imageURLString)
+                print(drink.image)
+            }
+            
+            // Move to main vc
+            self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
+            
+            self.finalizeData()
+            
+        }
+        
+    }
+    
+    private func finalizeData() {
+        
+        self.launchLabel.text = "Mixing things..."
+        
+        _ = Renderer.shared.getCoreColors()
+        
+    }
+    
+    private func retrieveData() {
+    
         if Model.shared.isEmpty() {
             
             self.launchLabel.text = "Pouring vodka..."
@@ -43,22 +79,22 @@ class LaunchViewController: UIViewController {
                         
                         Model.shared.savePersistentModel()
                         
-                        // Move to main vc
-                        self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
-                    
+                        // Proceed
+                        self.prepareData()
+
+                        
                     }
                     
                 }
                 else {
                     
                     DispatchQueue.main.async {
-                    
+                        
                         self.displayError(error: "Something went wrong..")
                         
                     }
                     
                 }
-                
                 
             }
             
@@ -75,31 +111,26 @@ class LaunchViewController: UIViewController {
                     
                     DataBaseManager.shared.defaultUdateDbHandler(response)
                     
-                    DispatchQueue.main.async {
-
-                        self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
-                        
-                    }
-
-                    
+                    // Proceed
+                    self.prepareData()
+            
                 }
                 else {
                     
                     DispatchQueue.main.async {
-                    
+                        
                         self.displayError(error: "Something went wrong..")
                         
                     }
-
+                    
                 }
                 
             }
             
             DataBaseManager.shared.updateDB(completion: handler)
-
             
         }
-        
+    
     }
 
     private func displayError(error : String) {

@@ -22,8 +22,8 @@ class Renderer: NSObject {
         for drink in drinks {
             
             if self.coreColors[drink.name!] == nil {
-                let image = UIImage(named: drink.imageName!)
-                let color = image!.getCenterPixelColor()
+                let image = drink.image
+                let color = image.getCenterPixelColor()
                 
                 
                 self.coreColors[drink.name!] = color.adjust(hueBy: 0, saturationBy: 0.6, brightnessBy: 0.7)

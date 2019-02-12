@@ -59,7 +59,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         
         // Assign bg
         if (self.drinks.count > 0) {
-            self.setBackgroundImage(UIImage(named: self.drinks[0].imageName!)!, withColor: self.coreColors[self.drinks[0].name!]!)
+            self.setBackgroundImage(self.drinks[0].image, withColor: self.coreColors[self.drinks[0].name!]!)
         }
         
     }
@@ -67,9 +67,9 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         
         let color = self.coreColors[self.drinks[targetIndex].name!]!
-        let image = UIImage(named: self.drinks[targetIndex].imageName!)
+        let image = self.drinks[targetIndex].image
         
-        self.setBackgroundImage(image!, withColor: color)
+        self.setBackgroundImage(image, withColor: color)
         
         self.selection.selectionChanged()
         
@@ -150,7 +150,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
             let drink : Drink = drinks[indexPath.row]
             let color = Renderer.shared.getCoreColors()[drink.name!]!
-            let image = UIImage(named: drink.imageName!)!
+            let image = drink.image
             
             cell.setDrink(drink: drink, withImage: image, andColor: color)
             
