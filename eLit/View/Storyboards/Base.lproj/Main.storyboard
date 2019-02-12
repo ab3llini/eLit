@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sZs-Fl-fxU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="McI-2h-WEy">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -288,33 +288,6 @@
             </objects>
             <point key="canvasLocation" x="-1881" y="81"/>
         </scene>
-        <!--Blurred Background View Controller-->
-        <scene sceneID="ibb-b7-qJN">
-            <objects>
-                <viewController id="j4N-tf-UAp" customClass="BlurredBackgroundViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="s2X-nX-jcs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="R7w-LL-VAU"/>
-                    </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="backgroundImageViewHeight">
-                            <real key="value" value="400"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="launchscreen"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundImageColor">
-                            <color key="value" red="0.83228094040838985" green="0.68204500898156439" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="sZs-Fl-fxU" kind="show" id="4WS-Qt-76o"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5TJ-Sp-UnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1883" y="-835"/>
-        </scene>
         <!--Home-->
         <scene sceneID="CaU-gx-OkA">
             <objects>
@@ -469,6 +442,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etC-b2-0MK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2190" y="448"/>
+        </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="k4e-Wc-U22">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="McI-2h-WEy" customClass="LaunchViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yr7-8j-ZAy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="tAh-ky-83f">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pis-1H-KhO">
+                                <rect key="frame" x="197" y="722" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting drunk.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqJ-OD-3ph">
+                                <rect key="frame" x="150.5" y="691" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nqJ-OD-3ph" firstAttribute="centerX" secondItem="Yr7-8j-ZAy" secondAttribute="centerX" id="799-qg-65t"/>
+                            <constraint firstItem="tAh-ky-83f" firstAttribute="leading" secondItem="Hha-Sg-GOp" secondAttribute="leading" id="9tz-z9-3SS"/>
+                            <constraint firstItem="Hha-Sg-GOp" firstAttribute="bottom" secondItem="pis-1H-KhO" secondAttribute="bottom" constant="120" id="EYI-jD-3zZ"/>
+                            <constraint firstItem="tAh-ky-83f" firstAttribute="top" secondItem="Hha-Sg-GOp" secondAttribute="top" constant="-44" id="GgA-Vi-eiF"/>
+                            <constraint firstItem="pis-1H-KhO" firstAttribute="centerX" secondItem="Yr7-8j-ZAy" secondAttribute="centerX" id="bP8-au-mxr"/>
+                            <constraint firstItem="Hha-Sg-GOp" firstAttribute="bottom" secondItem="tAh-ky-83f" secondAttribute="bottom" constant="-34" id="mNe-Fu-whc"/>
+                            <constraint firstItem="Hha-Sg-GOp" firstAttribute="trailing" secondItem="tAh-ky-83f" secondAttribute="trailing" id="sDc-om-Adm"/>
+                            <constraint firstItem="pis-1H-KhO" firstAttribute="top" secondItem="nqJ-OD-3ph" secondAttribute="bottom" constant="10" id="vIb-xP-Rqw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hha-Sg-GOp"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="launchLabel" destination="nqJ-OD-3ph" id="ukM-av-BdV"/>
+                        <outlet property="launchSpinner" destination="pis-1H-KhO" id="b5j-tz-C6Y"/>
+                        <segue destination="sZs-Fl-fxU" kind="show" identifier="toMainVC" id="R7B-xQ-Zxw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x8P-q4-sm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3143" y="80"/>
         </scene>
     </scenes>
     <resources>

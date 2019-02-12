@@ -18,25 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Loading data from remote server
-        let dataCreation: (_: [String: Any]) -> Void = { response in
-            let drinks = response["data"] as? [[String: Any]] ?? []
-            var drinkList: [Drink] = []
-            DispatchQueue.main.async {
-                for drink in drinks {
-                    let d = Drink(dict: drink)
-                    drinkList.append(d)
-                }
-                
-                for drink in drinkList {
-                    Model.shared.addDrink(drink)
-                }
-                Model.shared.savePersistentModel()
-            }
-        }
-        
-        DataBaseManager.shared.fetchAllData(completion: dataCreation)
-        
+
         let udateDatabase: (_: [String: Any]) -> Void = { response in
             let drinks = response["data"] as? [[String: Any]] ?? []
             var currentDrinks = Model.shared.getDrinks()

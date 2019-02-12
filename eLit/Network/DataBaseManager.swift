@@ -35,9 +35,32 @@ class DataBaseManager: NSObject {
  
  - Parameter comletion: the function that will be called after the response, it takes as input the data dictionary with all the informations about the modified drinks. It has also a key "status" that is "ok" if the request succeded and "error" if something went wrong
  **/
-    func updateDB(completion: @escaping (_ data: [String: Any]) -> Void) {
+    func updateDB(completion: ((_ data: [String: Any]) -> Void)? = nil) {
         let model = Model.shared
         let objects: [DrinkObject]? = model.entityManager.fetchAll(type: DrinkObject.self)
+        
+        let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
+            let drinks = response["data"] as? [[String: Any]] ?? []
+            var currentDrinks = Model.shared.getDrinks()
+            let model = Model.shared
+            let drinkIds = drinks.map({ d in
+                return d["id"] as! String
+            })
+            
+            for drink in currentDrinks {
+                if drinkIds.contains(drink.id!) {
+                    model.deleteDrink(drink)
+                }
+            }
+            
+            for drink in drinks {
+                model.addDrink(Drink(dict: drink))
+            }
+            
+            model.savePersistentModel()
+        }
+        
+                
         guard let cdObjects = objects else {
             completion(["status": "error"])
             return

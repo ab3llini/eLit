@@ -19,17 +19,14 @@ class MainTabBarController: UITabBarController {
         let barButtonItemAppearance = UIBarButtonItem.appearance()
         barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
         barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
-
-        // Present loading VC if we need to download the data from the server
-        if (Model.shared.isEmpty()) {
-            
-            self.performSegue(withIdentifier: Navigation.toUpdateVC.rawValue, sender: self)
-        }
-        
         
     }
     
+    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        //TODO: Fix this mess
+        
         guard let navVC = self.selectedViewController as? LargeVbrantNavigatonController else {
             return
         }
