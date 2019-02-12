@@ -29,7 +29,13 @@ class DrinkComponent: DrinkObject {
         self.init()
         self.qty = dict["qty"] as? Int16 ?? 0
         self.unit = dict["unit"] as? String
-        self.withIngredient = Ingredient(dict: dict["ingredient"] as? [String: Any] ?? [:])
+        let ingredientDict = dict["ingredient"] as? [String: Any] ?? [:]
+        let ingredientID = ingredientDict["id"] as? String ?? ""
+        if let ingredient = EntityManager.shared.fetchOne(of: Ingredient.self, with: ingredientID) {
+            self.withIngredient = ingredient
+        } else {
+            self.withIngredient = Ingredient(dict: dict["ingredient"] as? [String: Any] ?? [:])
+        }
     }
 
 }

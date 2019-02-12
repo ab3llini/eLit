@@ -33,7 +33,11 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
-        if let id: NSData = NSData(contentsOf: URL(string: self.imageURLString!)!) {
+        guard let url = URL(string: self.imageURLString!) else {
+            return
+        }
+        
+        if let id: NSData = NSData(contentsOf: url) {
             self.imageData = id as Data
             self.image = UIImage(data: self.imageData!)
         } else { return }

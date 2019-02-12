@@ -6,7 +6,7 @@
         <attribute name="degree" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="drinkDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="DrinkComponent" representedClassName="DrinkComponent" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -30,12 +30,12 @@
     </entity>
     <entity name="Recipe" representedClassName="Recipe" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <relationship name="ofDrink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="drinkRecipe" inverseEntity="Drink" syncable="YES"/>
-        <relationship name="steps" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeStep" inverseName="ofRecipe" inverseEntity="RecipeStep" syncable="YES"/>
+        <relationship name="steps" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="RecipeStep" inverseName="ofRecipe" inverseEntity="RecipeStep" syncable="YES"/>
     </entity>
     <entity name="RecipeStep" representedClassName="RecipeStep" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="stepDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
-        <relationship name="withComponents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
+        <relationship name="withComponents" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="DrinkComponent" inverseName="inRecipeSteps" inverseEntity="DrinkComponent" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" parentEntity="CoreDataObject" syncable="YES" codeGenerationType="category">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,10 +50,10 @@
         <element name="Drink" positionX="-241.6171875" positionY="-1047.66796875" width="128" height="120"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
         <element name="DrinkObject" positionX="-329.51171875" positionY="-1464.0390625" width="128" height="75"/>
+        <element name="DrinkObjectWithImage" positionX="-291.875" positionY="-1285.90625" width="128" height="75"/>
         <element name="Ingredient" positionX="-426.22265625" positionY="-1119.28125" width="128" height="103"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
-        <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="88"/>
+        <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
         <element name="User" positionX="-940" positionY="-1492" width="128" height="135"/>
-        <element name="DrinkObjectWithImage" positionX="-291.875" positionY="-1285.90625" width="128" height="75"/>
     </elements>
 </model>
