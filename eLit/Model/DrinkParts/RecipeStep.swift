@@ -36,6 +36,8 @@ class RecipeStep: DrinkObject {
         }
         self.init(drinkComponents: components)
         self.stepDescription = dict["step_description"] as? String ?? ""
+        self.id = dict["id"] as? String ?? ""
+        self.fingerprint = dict["fingerprint"] as? String ?? ""
     }
     
     

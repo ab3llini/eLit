@@ -27,6 +27,8 @@ class DrinkComponent: DrinkObject {
     
     convenience init(dict: [String: Any]){
         self.init()
+        self.id = dict["id"] as? String ?? ""
+        self.fingerprint = dict["fingerprint"] as? String ?? ""
         self.qty = dict["qty"] as? Int16 ?? 0
         self.unit = dict["unit"] as? String
         let ingredientDict = dict["ingredient"] as? [String: Any] ?? [:]
