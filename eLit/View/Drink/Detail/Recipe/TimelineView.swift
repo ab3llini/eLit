@@ -20,9 +20,8 @@ class TimelineView: UIView {
     var isLastCell = false
     
     
-    
     override func draw(_ rect: CGRect) {
-        
+                
         var path = UIBezierPath()
         let start = CGPoint(x: self.bounds.size.width / 2, y: 0)
         
