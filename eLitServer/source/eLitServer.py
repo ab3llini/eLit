@@ -27,7 +27,11 @@ log_file = '/root/serverLog.log'
 
 
 async def on_post_request(request):
+
     data_dict = await request.json()
+
+    print("[*} New POST request:", data_dict)
+
     sender = request.transport.get_extra_info('peername')
     host, port = sender or (None, None)
     logger.info(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')

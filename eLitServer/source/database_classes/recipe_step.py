@@ -8,9 +8,9 @@ class RecipeStep(DBObject):
     step_description = me.StringField()
     components = me.ListField(me.ReferenceField(DrinkComponent))
 
-    def __init__(self, description: str = None, components: List[DrinkComponent] = None, *args, **values):
+    def __init__(self, step_description: str = None, components: List[DrinkComponent] = None, *args, **values):
         super().__init__(*args, **values)
-        self.step_description = description or ''
+        self.step_description = step_description or ''
         self.components = components or List[DrinkComponent]
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,

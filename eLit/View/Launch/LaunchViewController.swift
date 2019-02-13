@@ -67,6 +67,9 @@ class LaunchViewController: UIViewController {
                     
                     let drinks = response["data"] as? [[String: Any]] ?? []
                     var drinkList: [Drink] = []
+                    
+                    print(drinks)
+                    
                     DispatchQueue.main.async {
                         for drink in drinks {
                             let d = Drink(dict: drink)

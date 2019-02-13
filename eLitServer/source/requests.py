@@ -25,6 +25,7 @@ def on_fetch_all_request(data: Dict) -> Dict:
         'status_code': 200,
         'data': [x.to_dict() for x in drinks]
     }
+
     return payload
 
 
@@ -36,6 +37,7 @@ def on_update_request(data: Dict) -> Dict:
         'status_code': 200,
         'data': [x.to_dict() for x in obj]
     }
+
     return payload
 
 

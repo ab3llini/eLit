@@ -12,6 +12,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     var rating: Double = 0
+    var steps : [RecipeStep]!
+
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
     
@@ -46,6 +48,9 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         
         // Set drink
         self.drink = drink
+        
+        // Load steps
+        self.steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
         
     }
     
@@ -168,10 +173,9 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
-            let steps : [RecipeStep] = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
             // FIXME
             cell.stepLabel.text = "Step \(indexPath.row + 1)"
-            cell.preparationLabel.text = steps[indexPath.row].stepDescription
+            cell.preparationLabel.text = self.steps[indexPath.row].stepDescription
             
             return cell
             
