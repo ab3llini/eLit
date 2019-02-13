@@ -24,6 +24,7 @@ class DBObject(me.Document):
     def to_dict(self) -> Dict:
         data = {
             'id': str(self.id),
-            'fingerprint': self.fingerprint
+            'fingerprint': self.fingerprint,
+            'cls': self.__class__.__name__
         }
         return data

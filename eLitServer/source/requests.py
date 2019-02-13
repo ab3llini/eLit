@@ -37,20 +37,23 @@ def on_update_request(data: Dict) -> Dict:
 
     for c in classes:
 
-        diff_finder = me.Q(fingerprint__not__in=list(data.values()))
+        diff_finder = Q(id__in=list(data.keys())) & Q(fingerprint__not__in=list(data.values()))
         diff = [*c.objects(diff_finder)]
 
         changed += diff
 
+    new = [*Ingredient.objects(id__not__in=list(data.keys())),
+           *Drink.objects(id__not__in=list(data.keys()))]
+
     print("[*] The following items have changed:", changed)
+    print(f"[*] The following items are new: {changed}")
 
     payload = {
         'request': 'update_db',
         'status_code': 200,
-        'data': [o.to_dict() for o in changed]
+        'data': [o.to_dict() for o in [*changed, *new]]
 
     }
-
 
     return payload
 
