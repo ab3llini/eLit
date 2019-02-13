@@ -47,6 +47,7 @@ extension UIImageView
 
 extension UIImage {
     
+    
     static func gradientImageWithBounds(bounds: CGRect, colors: [CGColor]) -> UIImage {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds

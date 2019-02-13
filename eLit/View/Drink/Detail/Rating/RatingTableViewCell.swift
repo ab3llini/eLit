@@ -12,11 +12,14 @@ import Cosmos
 class RatingTableViewCell: UITableViewCell {
 
     let hasRecognizer = false
-
+    @IBOutlet weak var writeReviewImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        writeReviewImageView.tintColor = UIColor(red: 236, green: 69, blue: 90, alpha: 1)
+        
     }
 
     @IBOutlet weak var ratingLabel: UILabel!
@@ -30,4 +33,9 @@ class RatingTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func onWiteReviewTap(_ sender: UIButton) {
+        
+    
+        
+    }
 }
