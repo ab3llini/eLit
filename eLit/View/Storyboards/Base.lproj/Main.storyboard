@@ -330,6 +330,21 @@
             </objects>
             <point key="canvasLocation" x="922" y="-443"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="UWA-ee-JUs">
+            <objects>
+                <viewController id="4Bg-xm-hWQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9L3-cO-DDh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="s9O-1p-kyM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEV-sC-dTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="-1205"/>
+        </scene>
         <!--Drink View Controller-->
         <scene sceneID="lPH-BZ-zqr">
             <objects>
@@ -350,6 +365,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="QGF-Ey-Y6L" kind="show" identifier="toReviewsVC" id="DvC-0T-Lz0"/>
+                        <segue destination="4Bg-xm-hWQ" kind="show" identifier="toAddReviewVC" id="cbd-0b-h5X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCs-rY-ODc" userLabel="First Responder" sceneMemberID="firstResponder"/>
