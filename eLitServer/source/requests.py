@@ -30,11 +30,7 @@ def on_fetch_all_request(data: Dict) -> Dict:
 
 def on_update_request(data: Dict) -> Dict:
     connect()
-    obj = [*Drink.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values()))),
-           *DrinkComponent.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values()))),
-           *Ingredient.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values()))),
-           *Recipe.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values()))),
-           *RecipeStep.objects(me.Q(id__in=list(data.keys())) & me.Q(fingerprint__not__in=list(data.values())))]
+    obj = [*Drink.objects(me.Q(fingerprint__not__in=list(data.values())))]
     payload = {
         'request': 'fetch_all',
         'status_code': 200,
