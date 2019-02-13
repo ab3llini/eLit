@@ -55,5 +55,17 @@ class Drink: DrinkObjectWithImage {
             }
         }
     }
+    
+    override func update(with data: [String : Any], savePersistent: Bool) {
+        self.name = data["name"] as? String ?? ""
+        self.imageURLString = data["image"] as? String ?? ""
+        self.degree = data["degree"] as? Int16 ?? 0
+        self.drinkRecipe = Recipe(dict: data["recipe"] as? [String: Any] ?? [:])
+        self.drinkDescription = data["drink_description"] as? String ?? ""
+        self.createdBy = data["created_by"] as? String ?? ""
+        self.image = UIImage()
+        self.imageData = nil
+        super.update(with: data, savePersistent: savePersistent)
+    }
         
 }

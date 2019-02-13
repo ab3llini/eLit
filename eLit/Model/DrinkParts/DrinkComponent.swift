@@ -39,5 +39,11 @@ class DrinkComponent: DrinkObject {
             self.withIngredient = Ingredient(dict: dict["ingredient"] as? [String: Any] ?? [:])
         }
     }
+    
+    override func update(with data: [String : Any], savePersistent: Bool) {
+        self.qty = data["qty"] as? Int16 ?? 0
+        self.unit = data["unit"] as? String
+        super.update(with: data, savePersistent: savePersistent)
+    }
 
 }

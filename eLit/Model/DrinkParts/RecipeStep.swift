@@ -40,6 +40,11 @@ class RecipeStep: DrinkObject {
         self.fingerprint = dict["fingerprint"] as? String ?? ""
     }
     
+    override func update(with data: [String : Any], savePersistent: Bool = false) {
+        self.stepDescription = data["step_description"] as? String ?? ""
+        super.update(with: data, savePersistent: savePersistent)
+    }
+    
     
     //MARK: getter & setter
     func setDescription(description:String) {

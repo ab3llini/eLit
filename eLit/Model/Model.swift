@@ -65,16 +65,9 @@ class Model: NSObject {
         }
     }
     
-    public func deleteDrink(_ drink: Drink) {
+    public func reloadDrinks() {
         DispatchQueue.main.async {
-            let context = self.entityManager.getContext()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            guard let index = self.drinks.firstIndex(of: drink) else {
-                return
-            }
-            self.drinks.remove(at: index)
-            context.delete(drink)
-            appDelegate.saveContext()
+            self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
         }
     }
 
