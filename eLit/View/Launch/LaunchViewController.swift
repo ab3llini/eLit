@@ -10,8 +10,10 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
-    @IBOutlet var launchLabel : UILabel!
+    @IBOutlet var launchLabel : ChangingLable!
     @IBOutlet var launchSpinner : UIActivityIndicatorView!
+    
+    var strings = ["Adding sugar...", "Mixing things...", "Pouring vodka...", "Adding juice..."]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         // Setup chain
+        self.launchLabel.startChanging(every: 1, with: self.strings)
         self.retrieveData()
         
     }
@@ -29,8 +32,7 @@ class LaunchViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-            self.launchLabel.text = "Adding sugar..."
-            
+            //self.launchLabel.text = "Adding sugar..."
             Model.shared.getDrinks().forEach { (drink) in
                 drink.setImage()
                 print(drink.imageURLString)
@@ -48,7 +50,7 @@ class LaunchViewController: UIViewController {
     
     private func finalizeData() {
         
-        self.launchLabel.text = "Mixing things..."
+        //self.launchLabel.text = "Mixing things..."
         
         _ = Renderer.shared.getCoreColors()
         
@@ -58,7 +60,7 @@ class LaunchViewController: UIViewController {
     
         if Model.shared.isEmpty() {
             
-            self.launchLabel.text = "Pouring vodka..."
+            //self.launchLabel.text = "Pouring vodka..."
             
             //Loading data from remote server
             let dataCreation: (_: [String: Any]) -> Void = { response in
@@ -92,7 +94,6 @@ class LaunchViewController: UIViewController {
                 else {
                     
                     DispatchQueue.main.async {
-                        
                         self.displayError(error: "Something went wrong..")
                         
                     }
@@ -106,7 +107,7 @@ class LaunchViewController: UIViewController {
         }
         else {
             
-            self.launchLabel.text = "Adding juice..."
+            //self.launchLabel.text = "Adding juice..."
             
             let handler : (_: [String: Any]) -> Void = { response in
                 
@@ -137,7 +138,7 @@ class LaunchViewController: UIViewController {
     }
 
     private func displayError(error : String) {
-        
+        self.launchLabel.stopChanging()
         self.launchLabel.text = error
         self.launchSpinner.isHidden = true
         
