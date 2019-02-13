@@ -6,10 +6,11 @@ target 'eLit' do
   use_frameworks!
 
   # Pods for eLit
-	
+
   pod 'GoogleSignIn'
   pod "ViewAnimator"
   pod 'Cosmos', '~> 18.0'
+  pod 'UIImageColors'
  target 'eLitTests' do
     inherit! :search_paths
     # Pods for testing

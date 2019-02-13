@@ -13,11 +13,13 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GTMSessionFetcher/Core (1.2.1)
+  - UIImageColors (2.0.1)
   - ViewAnimator (2.2.2)
 
 DEPENDENCIES:
   - Cosmos (~> 18.0)
   - GoogleSignIn
+  - UIImageColors
   - ViewAnimator
 
 SPEC REPOS:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - UIImageColors
     - ViewAnimator
 
 SPEC CHECKSUMS:
@@ -33,8 +36,9 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  UIImageColors: c83669aff7ceb55a3b3f2c398f3b5c14632a267b
   ViewAnimator: 6eaa112663b6a2d9e6b2573df65b416dd051cbe4
 
-PODFILE CHECKSUM: e457f35c5c96f1c949fa1914a76fe0acc5502be7
+PODFILE CHECKSUM: a79ab999447d4b7cd49455651f96ac720487d194
 
 COCOAPODS: 1.5.3

@@ -69,6 +69,8 @@
 		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
+		BD9C195E2214347200E05927 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* Settings.plist */; };
+		BD9C19612214352200E05927 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Settings.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
 		BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */; };
 		BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18964221341BF00009A77 /* LaunchViewController.swift */; };
@@ -184,6 +186,8 @@
 		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BD9C195D2214347200E05927 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		BD9C19602214352200E05927 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
 		BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundViewController.swift; sourceTree = "<group>"; };
 		BDC18964221341BF00009A77 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				BD9C195F2214347E00E05927 /* Settings */,
 				A462A19921F1E7B90041BCB4 /* credentials.plist */,
 				BDF964D421ECF98300228EEB /* Network */,
 				BDED02F021E7A22D00503B59 /* Libraries */,
@@ -501,6 +506,15 @@
 				BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		BD9C195F2214347E00E05927 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BD9C195D2214347200E05927 /* Settings.plist */,
+				BD9C19602214352200E05927 /* Settings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		BDC189662213421F00009A77 /* Launch */ = {
@@ -674,6 +688,7 @@
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */,
 				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
+				BD9C195E2214347200E05927 /* Settings.plist in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */,
@@ -756,6 +771,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -765,6 +781,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,6 +840,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9C19612214352200E05927 /* Settings.swift in Sources */,
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */,

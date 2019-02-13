@@ -1,6 +1,6 @@
 // ------------------------------------------- CONFIG -------------------------------------------
 
-let server = '46.101.164.224'
+let server = '68.183.64.146'
 let port = '9999'
 
 // ------------------------------------------- GLOBALS -------------------------------------------
@@ -8,22 +8,10 @@ let port = '9999'
 let ingredient_names = []
 let units = ['part']
 
-// ------------------------------------------- LOGGER -------------------------------------------
-
-let ui_log = null
-
-$(document).ready(function () {
-    ui_log = (o) => {
-
-        console.log(o)
-
-        $('.server-log').append('<br>' + o.toString())
-
-    }
-})
 
 // ------------------------------------------- CLASSES -------------------------------------------
 
+let ui_log = null
 
 
 class Connection {
@@ -74,8 +62,6 @@ class Connection {
     }
 
 }
-
-let connection = new Connection(server, port)
 
 
 // ------------------------------------------- HANDLERS -------------------------------------------
@@ -347,16 +333,28 @@ let bind_add_recipe_step = () => {
 
 }
 
-// ------------------------------------------- BINDING ---------------------------------------------
-
-connection.bind('fetch_ingredients', ws_ingredient_handler)
-connection.bind('fetch_drinks', ws_drink_handler)
-
-
 
 // ------------------------------------------- OBSERVERS -------------------------------------------
 
+
 $(document).ready(function () {
+
+    ui_log = (o) => {
+
+        console.log(o)
+
+        $('.server-log').append('<br>' + o.toString())
+
+    }
+
+    let connection = new Connection(server, port)
+
+    // ------------------------------------------- BINDING ---------------------------------------------
+
+    connection.bind('fetch_ingredients', ws_ingredient_handler)
+    connection.bind('fetch_drinks', ws_drink_handler)
+
+
 
 
     let new_drink_table = $('.new-ingredient')

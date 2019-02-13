@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIImageColors
 
 class Renderer: NSObject {
 
@@ -23,10 +24,10 @@ class Renderer: NSObject {
             
             if self.coreColors[drink.name!] == nil {
                 let image = drink.image
-                let color = image.getCenterPixelColor()
+                let color = image.getColors().primary
                 
                 
-                self.coreColors[drink.name!] = color.adjust(hueBy: 0, saturationBy: 0.6, brightnessBy: 0.7)
+                self.coreColors[drink.name!] = color!.adjust(hueBy: 0, saturationBy: 0, brightnessBy: 0.7)
                 
             }
             

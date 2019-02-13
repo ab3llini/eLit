@@ -17,64 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-
-        let udateDatabase: (_: [String: Any]) -> Void = { response in
-            let drinks = response["data"] as? [[String: Any]] ?? []
-            var currentDrinks = Model.shared.getDrinks()
-            let model = Model.shared
-            let drinkIds = drinks.map({ d in
-                return d["id"] as! String
-            })
-            
-            for drink in currentDrinks {
-                if drinkIds.contains(drink.id!) {
-                    model.deleteDrink(drink)
-                }
-            }
-            
-            for drink in drinks {
-                model.addDrink(Drink(dict: drink))
-            }
-            
-            model.savePersistentModel()
-        }
-
-        /*
-        var drinks = Model.getInstance().getDrinks()
-        drinks.forEach { d in print(d) }
-        
-        let ingredient = Ingredient(name: "testIngredient")
-        let ingredient2 = Ingredient(name: "testIngredient2")
-        let component = DrinkComponent(ingredient: ingredient, quantity: 2, unit: .PART)
-        let component2 = DrinkComponent(ingredient: ingredient2, quantity: 4, unit: .PART)
-        let step = RecipeStep(drinkComponents: [component])
-        let step2 = RecipeStep(drinkComponents: [component, component2])
-        let recipe = Recipe(steps: [step, step2])
- */
-        
-        /*
-        for _ in 1...10 {
-            _ = Ingredient(name: randomString(length: 20))
-        }
-        
-        model.savePersistentModel()
- 
- */
-        
-        
-//        let dbManager = DataBaseManager.shared
-//        _ = dbManager.fetchAllData() { print($0) }
-        
-        
-        //model.savePersistentModel()
-        
-        // Removes status bar globally
-        // UIApplication.shared.isStatusBarHidden = true
-        
-        
-        
-        
+                
         return true
     }
 
