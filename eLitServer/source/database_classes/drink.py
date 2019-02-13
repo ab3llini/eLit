@@ -2,7 +2,7 @@ from typing import Dict
 
 import mongoengine as me
 from database_classes import *
-from database_classes.db_object import DBObject
+from database_classes.drink_object import DrinkObject
 from database_classes.recipe import Recipe
 from database_classes.drink_component import DrinkComponent
 from database_classes.recipe import Recipe
@@ -13,7 +13,7 @@ from database_classes.unit import *
 from database_classes.user import User
 
 
-class Drink(DBObject):
+class Drink(DrinkObject):
     name = me.StringField(required=True, unique=True)
     degree = me.IntField(required=True)
     image = me.StringField()

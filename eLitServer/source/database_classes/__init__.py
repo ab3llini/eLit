@@ -7,4 +7,6 @@ from database_classes.db_object import DBObject
 from database_classes.unit import *
 from database_classes.user import User
 from database_classes.review import Review
+from database_classes.drink_object import DrinkObject
+
 import mongoengine as me

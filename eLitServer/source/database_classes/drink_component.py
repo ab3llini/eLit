@@ -4,9 +4,10 @@ import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.ingredient import Ingredient
 from database_classes.unit import *
+from database_classes.drink_object import DrinkObject
 
 
-class DrinkComponent(DBObject):
+class DrinkComponent(DrinkObject):
     qty = me.IntField()
     unit = me.StringField(required=True, unique=False, choices=UNITS)
     ingredient = me.ReferenceField(Ingredient, required=True)

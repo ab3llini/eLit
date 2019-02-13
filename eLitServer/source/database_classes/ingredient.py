@@ -2,9 +2,10 @@ from typing import Dict
 
 import mongoengine as me
 from database_classes.db_object import DBObject
+from database_classes.drink_object import DrinkObject
 
 
-class Ingredient(DBObject):
+class Ingredient(DrinkObject):
     name = me.StringField(required=True, unique=True)
     grade = me.IntField()
     image = me.StringField()

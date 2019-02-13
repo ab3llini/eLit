@@ -29,11 +29,11 @@ log_file = '/root/serverLog.log'
 async def on_post_request(request):
 
     data_dict = await request.json()
-
-    print("[*} New POST request:", data_dict)
-
     sender = request.transport.get_extra_info('peername')
     host, port = sender or (None, None)
+
+    print("[*] New POST request <" + data_dict['request'] + "> from %s:%s" % (host, port))
+
     logger.info(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')
     response = request_map[data_dict['request']](data_dict['data'])
     status_code = response['status_code']

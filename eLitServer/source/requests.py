@@ -31,12 +31,26 @@ def on_fetch_all_request(data: Dict) -> Dict:
 
 def on_update_request(data: Dict) -> Dict:
     connect()
-    obj = [*Drink.objects(me.Q(fingerprint__not__in=list(data.values())))]
+
+    classes = DrinkObject.__subclasses__()
+    changed = []
+
+    for c in classes:
+
+        diff_finder = me.Q(fingerprint__not__in=list(data.values()))
+        diff = [*c.objects(diff_finder)]
+
+        changed += diff
+
+    print("[*] The following items have changed:", changed)
+
     payload = {
-        'request': 'fetch_all',
+        'request': 'update_db',
         'status_code': 200,
-        'data': [x.to_dict() for x in obj]
+        'data': [o.to_dict() for o in changed]
+
     }
+
 
     return payload
 

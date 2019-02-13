@@ -2,9 +2,10 @@ import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.recipe_step import RecipeStep
 from typing import List, Dict
+from database_classes.drink_object import DrinkObject
 
 
-class Recipe(DBObject):
+class Recipe(DrinkObject):
     steps = me.ListField(me.ReferenceField(RecipeStep), required=True)
 
     def __init__(self, steps: List[RecipeStep] = None, *args, **values):

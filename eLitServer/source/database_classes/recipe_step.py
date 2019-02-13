@@ -2,9 +2,10 @@ import mongoengine as me
 from database_classes.db_object import DBObject
 from database_classes.drink_component import DrinkComponent
 from typing import List, Dict
+from database_classes.drink_object import DrinkObject
 
 
-class RecipeStep(DBObject):
+class RecipeStep(DrinkObject):
     step_description = me.StringField()
     components = me.ListField(me.ReferenceField(DrinkComponent))
 
