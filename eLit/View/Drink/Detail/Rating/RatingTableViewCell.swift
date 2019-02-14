@@ -10,15 +10,19 @@ import UIKit
 import Cosmos
 
 class RatingTableViewCell: UITableViewCell {
-
-    let hasRecognizer = false
+    
+    var viewController : UIViewController?
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var footerView: UIView!
+    
+    var hasRecognizer = false
     @IBOutlet weak var writeReviewImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        writeReviewImageView.tintColor = UIColor(red: 236, green: 69, blue: 90, alpha: 1)
+        writeReviewImageView.tintColor = UIColor(red: 236/255, green: 69/255, blue: 90/255, alpha: 1)
         
     }
 
@@ -28,14 +32,18 @@ class RatingTableViewCell: UITableViewCell {
     override func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         if !self.hasRecognizer {
             
-            super.addGestureRecognizer(gestureRecognizer)
-            
+            self.headerView.addGestureRecognizer(gestureRecognizer)
+            self.hasRecognizer = true
         }
     }
     
-    @IBAction func onWiteReviewTap(_ sender: UIButton) {
+    @IBAction func onWriteReviewTap(_ sender: UIButton) {
         
-    
+        if let vc = viewController {
+            
+            vc.performSegue(withIdentifier: Navigation.toAddReviewVC.rawValue, sender: vc)
+            
+        }
         
     }
 }

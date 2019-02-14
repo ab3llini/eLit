@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ChangingLable: UILabel {
+class ChangingLabel: UILabel {
+    
     var textList: [String] = []
     private var displayTime: Double = 0.0
     private var timer: Timer?
@@ -26,7 +27,16 @@ class ChangingLable: UILabel {
     
     @objc
     private func changeText() {
+        
+        UIView.animate(withDuration: 0.4) {
+            self.alpha = 0
+        }
+        
         self.text = textList[currentIndex]
+        
+        UIView.animate(withDuration: 0.4) {
+            self.alpha = 1
+        }
         self.currentIndex = (self.currentIndex + 1) % (textList.count)
     }
     
