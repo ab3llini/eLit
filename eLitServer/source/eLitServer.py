@@ -2,8 +2,6 @@ import os.path as op
 import sys
 
 from aiohttp import web
-import json
-import logging
 
 sys.path.append(op.realpath(op.join(op.split(__file__)[0])))
 
@@ -20,6 +18,8 @@ request_map = {
     'fetch_ingredients': on_fetch_ingredients_request,
     'fetch_drinks': on_fetch_drinks_request,
     'insert_drink': on_insert_drink_request,
+    'fetch_categories': on_fetch_categories_request,
+    'insert_category': on_insert_category_request,
 }
 
 logger = logging.getLogger('server_logger')
@@ -37,6 +37,8 @@ async def on_post_request(request):
     logger.info(f'Received request "{data_dict["request"]}" from ip: {host} at port: {port}')
     response = request_map[data_dict['request']](data_dict['data'])
     status_code = response['status_code']
+    if status_code == 500 and 'message' in response:
+        print(f"[*] - Error in request {response['request']} with message {response['message']}")
     return web.Response(status=status_code, text=json.dumps(response))
 
 
