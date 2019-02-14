@@ -41,6 +41,14 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
+        
+        let categoryDict = dict["category"] as? [String: Any] ?? [:]
+        let categoryID = categoryDict["id"] as? String ?? ""
+        if let category = EntityManager.shared.fetchOne(of: DrinkCategory.self, with: categoryID) {
+            self.ofCategory = category
+        } else {
+            self.ofCategory = DrinkCategory(dict: dict["category"] as? [String: Any] ?? [:])
+        }
     }
     
     //MARK: Methods
