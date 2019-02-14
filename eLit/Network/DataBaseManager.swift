@@ -15,27 +15,49 @@ class DataBaseManager: NSObject {
     // Default completion handler for update db request
     let defaultUdateDbHandler: (_: [String: Any]) -> Void = { response in
         
-        let drinks = response["data"] as? [[String: Any]] ?? []
-        var currentDrinks = Model.shared.getDrinks()
+        let updatedObjectsList = response["data"] as? [[String: Any]] ?? []
         let model = Model.shared
-        let drinkIds = drinks.map({ d in
-            return d["id"] as! String
+        let idsToUpdate = updatedObjectsList.map({ dict in
+            return dict["id"] as? String ?? ""
         })
         
         DispatchQueue.main.async {
-        
-        for drink in currentDrinks {
-            if drinkIds.contains(drink.id!) {
-                model.deleteDrink(drink)
+            // Updating exsisting objects
+            var currentObjects: [DrinkObject]? = EntityManager.shared.fetchAll(type: DrinkObject.self)
+            let currentIds = currentObjects?.map({ (obj: DrinkObject) in
+                return obj.id ?? ""
+            }) ?? []
+            currentObjects = currentObjects?.filter {idsToUpdate.contains($0.id ?? "")}
+            
+            for updatedObject in updatedObjectsList {
+                let toUpdateList = currentObjects?.filter { ($0.id ?? "") == (updatedObject["id"] as? String ?? "") }
+                if let toUpdate = toUpdateList?.first {
+                    toUpdate.update(with: updatedObject)
+                }
+            }
+            
+            // Creating new objects
+            let newObjectList = updatedObjectsList.filter { !(currentIds.contains($0["id"] as? String ?? "")) }
+            
+            for obj in newObjectList {
+                switch obj["cls"] as! String {
+                case "Ingredient":
+                    let _ = Ingredient(dict: obj)
+                case "DrinkComponent":
+                    let _ = DrinkComponent(dict: obj)
+                case "RecipeStep":
+                    let _ = RecipeStep(dict: obj)
+                case "Recipe":
+                    let _ = Recipe(dict: obj)
+                default:
+                    let _ = Drink(dict: obj)
+                }
             }
         }
         
-        for drink in drinks {
-            model.addDrink(Drink(dict: drink))
-        }
-        
-            model.savePersistentModel()
-        }
+        // Saving the model
+        model.reloadDrinks()
+        model.savePersistentModel()
     }
     
     //MARK: Initializers

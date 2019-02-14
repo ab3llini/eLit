@@ -17,5 +17,12 @@ class DrinkObject: CoreDataObject {
         self.id = dict["id"] as? String
         self.fingerprint = dict["fingerprint"] as? String
     }
+    
+    public func update(with data: [String: Any], savePersistent: Bool = false) {
+        self.fingerprint = data["fingerprint"] as? String
+        if savePersistent {
+            Model.shared.savePersistentModel()
+        }
+    }
 
 }

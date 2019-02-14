@@ -37,7 +37,16 @@ class Ingredient: DrinkObjectWithImage {
         self.name = dict["name"] as? String
         self.ingredientDescription = dict["ingredient_description"] as? String
         self.imageURLString = dict["image"] as? String ?? ""
-        self.setImage(forceReload: true)
+    }
+    
+    override func update(with data: [String : Any], savePersistent: Bool) {
+        self.grade = data["grade"] as? Int16 ?? 0
+        self.name = data["name"] as? String
+        self.ingredientDescription = data["ingredient_description"] as? String
+        self.imageURLString = data["image"] as? String ?? ""
+        self.image = UIImage()
+        self.imageData = nil
+        super.update(with: data, savePersistent: savePersistent)
     }
 
 }
