@@ -33,7 +33,7 @@ class RatingTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func onWiteReviewTap(_ sender: UIButton) {
+    @IBAction func onWriteReviewTap(_ sender: UIButton) {
         
     
         
