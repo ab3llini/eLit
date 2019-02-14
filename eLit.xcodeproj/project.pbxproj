@@ -15,7 +15,7 @@
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
 		A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4548B7921F9D09800549099 /* SearchTableViewController.swift */; };
-		A45B2F082214AB210031B4B1 /* ChangingLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B2F072214AB210031B4B1 /* ChangingLable.swift */; };
+		A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B2F072214AB210031B4B1 /* ChangingLabel.swift */; };
 		A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A462A19921F1E7B90041BCB4 /* credentials.plist */; };
 		A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347021F37F020061D0D2 /* SettingsTableViewController.swift */; };
 		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
@@ -73,6 +73,8 @@
 		BD9C195E2214347200E05927 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* Settings.plist */; };
 		BD9C19612214352200E05927 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Settings.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
+		BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CB22159477002926BE /* AddReviewViewController.swift */; };
+		BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CD22159DE6002926BE /* ReviewTextView.swift */; };
 		BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */; };
 		BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18964221341BF00009A77 /* LaunchViewController.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
@@ -120,7 +122,7 @@
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		A4548B7921F9D09800549099 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
-		A45B2F072214AB210031B4B1 /* ChangingLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangingLable.swift; sourceTree = "<group>"; };
+		A45B2F072214AB210031B4B1 /* ChangingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangingLabel.swift; sourceTree = "<group>"; };
 		A462A19921F1E7B90041BCB4 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A467347021F37F020061D0D2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +193,8 @@
 		BD9C195D2214347200E05927 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		BD9C19602214352200E05927 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
+		BDB310CB22159477002926BE /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		BDB310CD22159DE6002926BE /* ReviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextView.swift; sourceTree = "<group>"; };
 		BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundViewController.swift; sourceTree = "<group>"; };
 		BDC18964221341BF00009A77 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -388,7 +392,7 @@
 				BDC189662213421F00009A77 /* Launch */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
 				A470E54F2211DF65004872A2 /* MainTabBarController.swift */,
-				A45B2F072214AB210031B4B1 /* ChangingLable.swift */,
+				A45B2F072214AB210031B4B1 /* ChangingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -479,6 +483,8 @@
 			children = (
 				BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */,
 				BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */,
+				BDB310CD22159DE6002926BE /* ReviewTextView.swift */,
+				BDB310CB22159477002926BE /* AddReviewViewController.swift */,
 			);
 			path = Rating;
 			sourceTree = "<group>";
@@ -857,11 +863,13 @@
 				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
-				A45B2F082214AB210031B4B1 /* ChangingLable.swift in Sources */,
+				A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */,
 				BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */,
 				A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
+				BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */,
 				A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */,
+				BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */,
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
@@ -1080,13 +1088,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.albertogianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -1104,13 +1112,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.albertogianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";

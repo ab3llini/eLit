@@ -17,9 +17,7 @@ protocol HeaderViewProtocol {
 
 class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
-    
-    var gradient : CAGradientLayer!
-    
+        
     //Load drinks
     var drinks : [Drink] = []
     

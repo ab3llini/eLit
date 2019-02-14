@@ -10,7 +10,7 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
-    @IBOutlet var launchLabel : ChangingLable!
+    @IBOutlet var launchLabel : ChangingLabel!
     @IBOutlet var launchSpinner : UIActivityIndicatorView!
     
     var strings = ["Adding sugar...", "Mixing things...", "Pouring vodka...", "Adding juice..."]
@@ -23,7 +23,7 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         // Setup chain
-        self.launchLabel.startChanging(every: 1, with: self.strings)
+        self.launchLabel.startChanging(every: 2, with: self.strings)
         self.retrieveData()
         
     }
@@ -35,8 +35,6 @@ class LaunchViewController: UIViewController {
             //self.launchLabel.text = "Adding sugar..."
             Model.shared.getDrinks().forEach { (drink) in
                 drink.setImage()
-                print(drink.imageURLString)
-                print(drink.image)
             }
             
             // Move to main vc

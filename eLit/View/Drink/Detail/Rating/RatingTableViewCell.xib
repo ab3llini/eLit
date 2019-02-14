@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +28,7 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77T-Nc-xEx" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77T-Nc-xEx" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="52" y="4.5" width="203" height="17"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -89,8 +93,8 @@
                         <rect key="frame" x="0.0" y="25.5" width="320" height="25"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sl-zZ-DN7">
-                                <rect key="frame" x="216" y="-1" width="84" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="204" y="-2" width="96" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Write a Review">
                                     <color key="titleColor" red="0.92549019610000005" green="0.27058823529999998" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -99,10 +103,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EditIcon" translatesAutoresizingMaskIntoConstraints="NO" id="o1m-lj-BdQ">
-                                <rect key="frame" x="201" y="7.5" width="10" height="10"/>
+                                <rect key="frame" x="187" y="6.5" width="12" height="12"/>
                                 <color key="tintColor" red="0.92549019610000005" green="0.27058823529999998" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="BnA-06-sI5"/>
+                                    <constraint firstAttribute="height" constant="12" id="BnA-06-sI5"/>
                                     <constraint firstAttribute="width" secondItem="o1m-lj-BdQ" secondAttribute="height" multiplier="1:1" id="m10-P0-gvm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -136,6 +140,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="footerView" destination="B6u-jU-FYx" id="dZK-z2-rAL"/>
+                <outlet property="headerView" destination="6XX-MM-LZ7" id="eov-aq-j6f"/>
                 <outlet property="ratingLabel" destination="Cqn-W3-dqQ" id="xMM-1U-Ld7"/>
                 <outlet property="ratingStars" destination="77T-Nc-xEx" id="VvU-FP-Nld"/>
                 <outlet property="writeReviewImageView" destination="o1m-lj-BdQ" id="dI7-Nw-hXm"/>

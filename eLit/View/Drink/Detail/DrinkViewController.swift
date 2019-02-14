@@ -143,6 +143,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             cell.ratingLabel.text = String(format: "%.1f", self.rating)
             cell.ratingStars.rating = self.rating
+            cell.viewController = self
             
             return cell
             
@@ -199,6 +200,13 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             let destination : ReviewTableViewController = segue.destination as! ReviewTableViewController
             
             destination.drink = self.drink
+            
+        case Navigation.toAddReviewVC.rawValue:
+            
+            let destination : AddReviewViewController = segue.destination as! AddReviewViewController
+            
+            destination.drink = self.drink
+
             
         default: break
             

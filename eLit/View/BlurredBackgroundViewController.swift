@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BlurredBackgroundViewController: UITableViewController {
+class BlurredBackgroundViewController: UIViewController {
 
     // Height of the blurred background image view
     @IBInspectable
@@ -35,26 +35,27 @@ class BlurredBackgroundViewController: UITableViewController {
         super.viewDidLoad()
         
         //Adding blurred background
-        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: self.backgroundImageViewHeight))
+        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: self.backgroundImageViewHeight))
+        
+        // Set aspect fit
+        self.backgroundImageView.contentMode = .scaleAspectFit
         
         // Create a container view to attach image on top
-        let containerView = UIImageView()
+        let containerView = UIView(frame: self.view.bounds)
         
         // Setup background color
-        containerView.backgroundColor = UIColor.white
+        containerView.backgroundColor = UIColor.clear
         
         // Add image view
         containerView.addSubview(self.backgroundImageView)
         
         // Add blur
         _ = containerView.addBlurEffect(effect: .extraLight)
-        
-        // Set aspect fit
-        self.backgroundImageView.contentMode = .scaleAspectFit
+
         
         // Assign the container view as background view
-        tableView.backgroundView = containerView
-        
+        self.view.insertSubview(containerView, at: 0)
+                
         if let img = self.backgroundImage {
             
             if let color = self.backgroundImageColor {
