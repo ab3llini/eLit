@@ -38,6 +38,6 @@ class Drink(DrinkObject):
         data['degree'] = self.degree
         data['image'] = self.image
         data['recipe'] = self.recipe.to_dict()
-        data['category'] = self.category.to_dict()
+        data['category'] = self.category.to_dict() if self.category is not None else ""
         data['drink_description'] = self.description
         return data
