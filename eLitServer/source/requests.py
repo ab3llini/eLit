@@ -76,8 +76,6 @@ def on_user_sign_in_request(data: Dict) -> Dict:
 
 def on_fetch_reviews_request(data: Dict) -> Dict:
 
-    print(data)
-
     drink_id = data['drink_id']
     next_index = data['from_index']
 
@@ -93,8 +91,6 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
         return payload
 
     data_list = []
-
-    print("Reviews for drink:", reviews, "n =", n_reviews)
 
     if next_index < n_reviews:
 
@@ -113,8 +109,6 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
 
     payload['data'] = data_list
     payload['status_code'] = 200
-
-    print(payload)
 
     return payload
 
