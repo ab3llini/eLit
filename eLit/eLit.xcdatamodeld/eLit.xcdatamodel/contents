@@ -7,6 +7,11 @@
         <attribute name="drinkDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="ofCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrinkCategory" inverseName="withDrinks" inverseEntity="DrinkCategory" syncable="YES"/>
+    </entity>
+    <entity name="DrinkCategory" representedClassName="DrinkCategory" parentEntity="DrinkObjectWithImage" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="withDrinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="ofCategory" inverseEntity="Drink" syncable="YES"/>
     </entity>
     <entity name="DrinkComponent" representedClassName="DrinkComponent" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
         <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -47,7 +52,7 @@
     </entity>
     <elements>
         <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="45"/>
-        <element name="Drink" positionX="-241.6171875" positionY="-1047.66796875" width="128" height="120"/>
+        <element name="Drink" positionX="-241.6171875" positionY="-1047.66796875" width="128" height="135"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
         <element name="DrinkObject" positionX="-329.51171875" positionY="-1464.0390625" width="128" height="75"/>
         <element name="DrinkObjectWithImage" positionX="-291.875" positionY="-1285.90625" width="128" height="75"/>
@@ -55,5 +60,6 @@
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
         <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
         <element name="User" positionX="-940" positionY="-1492" width="128" height="135"/>
+        <element name="DrinkCategory" positionX="-738" positionY="-1359" width="128" height="75"/>
     </elements>
 </model>

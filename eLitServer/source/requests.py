@@ -1,13 +1,12 @@
-from typing import Dict
-from database_classes import *
-import time
-import random
-import pymongo.errors as mongoerr
-import numpy as np
 import logging
-import datetime
+import random
+from typing import Dict
+
+import pymongo.errors as mongoerr
 from mongoengine.queryset import DoesNotExist
 from mongoengine.queryset.visitor import Q
+
+from database_classes import *
 
 logger = logging.getLogger('server_logger')
 
@@ -129,6 +128,26 @@ def on_add_review_request(data: Dict) -> Dict:
     return payload
 
 
+def on_insert_category_request(data: Dict) -> Dict:
+    connect()
+    name = data['name']
+    image = data['image']
+    payload = {
+        'request': 'insert_category'
+    }
+    try:
+        DrinkCategory(name=name, image=image).save()
+        payload['status_code'] = 200
+        return payload
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
+    except mongoerr.DuplicateKeyError:
+        payload['status_code'] = 500
+        payload['message'] = f"Duplicate key {name}"
+        return payload
+
+
 def on_insert_ingredient_request(data: Dict) -> Dict:
     connect()
     name = data['name']
@@ -153,6 +172,14 @@ def on_insert_drink_request(data: Dict) -> Dict:
     logger.debug(data)
     payload = {'request': 'insert_drink'}
     recipe = data['recipe']
+    category_dict = data['category']
+    # Category
+    try:
+        category = DrinkCategory.objects(name=category_dict['name']).get()
+    except DoesNotExist:
+        payload['status_code'] = 500
+        payload['message'] = f"invalid category {category_dict['name']}"
+        return payload
     steps_obj = []
     try:
         for step in recipe:
@@ -175,7 +202,8 @@ def on_insert_drink_request(data: Dict) -> Dict:
             steps_obj.append(step)
 
         recipe_obj = Recipe(steps_obj)
-        drink = Drink(data['name'], int(data['grade']), data['image'], data['description'], recipe=recipe_obj)
+        drink = Drink(data['name'], int(data['grade']), data['image'], data['description'],
+                      recipe=recipe_obj, category=category)
         drink.save()
     except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
         payload['status_code'] = 500
@@ -199,6 +227,21 @@ def on_fetch_ingredients_request(data: Dict) -> Dict:
     except mongoerr.ServerSelectionTimeoutError:
         payload['status_code'] = 500
         return payload
+
+
+def on_fetch_categories_request(data: Dict) -> Dict:
+    connect()
+    payload = {'request': 'fetch_categories'}
+    try:
+        categories = DrinkCategory.objects()
+        data_dict = [category.to_dict() for category in categories]
+        payload['data'] = data_dict
+        payload['status_code'] = 200
+        return payload
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
+
 
 
 def on_fetch_drinks_request(data: Dict) -> Dict:
