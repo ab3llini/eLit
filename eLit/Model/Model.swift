@@ -55,8 +55,15 @@ class Model: NSObject {
         return self.drinks
     }
     
-    public func getCategories() -> [DrinkObjectWithImage] {
+    public func getCategories() -> [DrinkCategory] {
         return self.entityManager.fetchAll(type: DrinkCategory.self) ?? []
+    }
+    
+    public func getIngredients() -> [Ingredient] {
+        
+        return self.entityManager.fetchAll(type: Ingredient.self) ?? []
+
+        
     }
     
     public func addDrink(_ drink: Drink) {

@@ -38,7 +38,13 @@ class LaunchViewController: UIViewController {
                 drink.setImage()
             }
             
-            print(Model.shared.getCategories())
+            Model.shared.getCategories().forEach { (category) in
+                category.setImage()
+            }
+            
+            Model.shared.getIngredients().forEach { (ingredient) in
+                ingredient.setImage()
+            }
         
             self.finalizeData()
             

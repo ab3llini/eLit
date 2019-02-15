@@ -9,7 +9,7 @@ from database_classes.drink_object import DrinkObject
 
 class DrinkComponent(DrinkObject):
     qty = me.IntField()
-    unit = me.StringField(required=True, unique=False, choices=UNITS)
+    unit = me.StringField(required=True, unique=False)
     ingredient = me.ReferenceField(Ingredient, required=True)
 
     def __init__(self, ingredient: Ingredient, qty: int = None, unit: str = None, *args, **values):
