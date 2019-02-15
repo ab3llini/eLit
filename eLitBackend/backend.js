@@ -85,7 +85,7 @@ let ws_ingredient_handler = (ingredients) => {
         $(".ingredient").DataTable().row.add([
             ingredient.name,
             ingredient.grade,
-            ingredient.image,
+            '<a href="' + ingredient.image + '">'+ ingredient.image + '</a>',
             ingredient.ingredient_description
         ]).draw(false);
 
@@ -105,7 +105,7 @@ let ws_category_handler = (cat) => {
 
         $(".category").DataTable().row.add([
             category.name,
-            category.image
+            '<a href="' + category.image + '">' + category.image + '</a>'
         ]).draw(false);
 
     })
@@ -124,7 +124,7 @@ let ws_drink_handler = (drinks) => {
         $(".drink").DataTable().row.add([
             drink.name,
             drink.degree,
-            drink.image,
+            '<a href="' + drink.image + '">'+ drink.image + '</a>',
             drink.drink_description,
             drink.steps
         ]).draw(false);
