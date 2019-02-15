@@ -55,6 +55,10 @@ class Model: NSObject {
         return self.drinks
     }
     
+    public func getCategories() -> [DrinkObjectWithImage] {
+        return self.entityManager.fetchAll(type: DrinkCategory.self) ?? []
+    }
+    
     public func addDrink(_ drink: Drink) {
         self.drinks.append(drink)
     }

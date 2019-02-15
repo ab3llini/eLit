@@ -146,6 +146,18 @@ class DataBaseManager: NSObject {
         self.sendRequest(for: .ADD_REVIEW, with: request, completion: completion)
     }
     
+    /**
+     This method will send a request to the DB for fetching a batch of reviews for a specific drink
+     - Parameter drink: is the drink for the reviews
+     - Parameter index: is the next index for fetching the reviews
+     - Parameter completion: is the callback function to call when the response arrives
+     **/
+    func requestCategories(completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request: [String: Any] = [:]
+        
+        self.sendRequest(for: .FETCH_CATEGORIES, with: request, completion: completion)
+    }
+    
 /**
      This method will send a request to the main DB for getting the rating for a specific drink
      - Parameter drink: is the drink for which we are asking the rating

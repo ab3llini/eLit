@@ -38,6 +38,7 @@ class LaunchViewController: UIViewController {
                 drink.setImage()
             }
             
+            print(Model.shared.getCategories())
         
             self.finalizeData()
             
@@ -60,10 +61,8 @@ class LaunchViewController: UIViewController {
     
         if Model.shared.isEmpty() {
             
-            //self.launchLabel.text = "Pouring vodka..."
-            
-            //Loading data from remote server
-            let dataCreation: (_: [String: Any]) -> Void = { response in
+            // Download drinks
+            let init_drinks: (_: [String: Any]) -> Void = { response in
                 
                 if response["status"] as? String ?? "" == "ok" {
                     
@@ -102,7 +101,7 @@ class LaunchViewController: UIViewController {
                 
             }
             
-            DataBaseManager.shared.fetchAllData(completion: dataCreation)
+            DataBaseManager.shared.fetchAllData(completion: init_drinks)
             
         }
         else {

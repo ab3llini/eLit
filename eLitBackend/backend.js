@@ -7,7 +7,13 @@ let port = '9999'
 
 let ingredient_names = []
 let categories = []
-let units = ['part']
+let units = [
+    'part',
+    'jigger',
+    'sprig',
+    'twist',
+    'slice'
+]
 
 
 // ------------------------------------------- CLASSES -------------------------------------------
@@ -387,7 +393,7 @@ $(document).ready(function () {
     $('.new-ingredient').on("click", ".add-ingredient", function () {
 
         let added = on_add_table('ingredient', connection)
-        ws_ingredient_handler(added)
+        ws_ingredient_handler([added])
         update_ingredient_dropdowns()
 
 
