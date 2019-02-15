@@ -10,7 +10,7 @@ from database_classes import *
 
 logger = logging.getLogger('server_logger')
 
-image_basepath = 'http://68.183.64.146/resources/assets/'
+image_basepath = 'http://68.183.64.146/assets/'
 
 def connect():
     me.connect('eLit', host='localhost', port=27017)
