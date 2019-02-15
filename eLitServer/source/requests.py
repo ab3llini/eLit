@@ -33,6 +33,7 @@ def on_update_request(data: Dict) -> Dict:
 
     classes = DrinkObject.__subclasses__()
     changed = []
+    print(f"[*] - ids: {list(data.keys())}")
 
     for c in classes:
 
@@ -193,13 +194,13 @@ def on_insert_drink_request(data: Dict) -> Dict:
     logger.debug(data)
     payload = {'request': 'insert_drink'}
     recipe = data['recipe']
-    category_dict = data['category']
+    category_name = data['category']
     # Category
     try:
-        category = DrinkCategory.objects(name=category_dict['name']).get()
+        category = DrinkCategory.objects(name=category_name).get()
     except DoesNotExist:
         payload['status_code'] = 500
-        payload['message'] = f"invalid category {category_dict['name']}"
+        payload['message'] = f"invalid category {category_name}"
         return payload
     steps_obj = []
     try:

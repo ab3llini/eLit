@@ -30,7 +30,7 @@ def create_cocktail():
 
 if __name__ == '__main__':
     # dbm = DBManager('192.168.178.37', 27017)
-    me.connect('eLit', host='localhost', port=27017)
+    me.connect('eLit', host='localhost', port=4444)
     # _ = Test(title='Luca').save()
     # _ = Test(title='Piero').save()
     # create_cocktail()
@@ -40,7 +40,8 @@ if __name__ == '__main__':
     # for drink in drinks:
         # drink.delete()
         # print(str(drink.id))
-
-    print('*' * 300)
+    print('*'*300)
     obj = Review.objects(for_drink='5c61c88cc7170d4d4fc70d4d').get()
-    print(obj)
+    print(obj.to_dict())
+
+    print(Drink.objects(name='vsbvsb').get().category.name)
