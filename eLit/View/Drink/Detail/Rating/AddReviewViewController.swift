@@ -32,11 +32,48 @@ class AddReviewViewController: BlurredBackgroundViewController {
         self.setBackgroundImage(self.drink.image, withColor: Renderer.shared.getCoreColors()[self.drink.name!]!)
     }
     
+    func onReviewSubmitted(response : [String : Any]) -> Void {
+        
+        DispatchQueue.main.async {
+        
+            var title, content : String
+            
+            if response["status"] as? String ?? "" == "ok" {
+                
+                title = "Thanks!"
+                content = "Your review has been submitted."
+                
+            }
+            else {
+                
+                title = "Oops"
+                content = "Something went wrong, try again later."
+                
+            }
+            
+            let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        
+            self.present(alert, animated: true)
+            
+        }
+        
+    }
+    
     @objc func submitReview() {
         
-        if (reviewTitle.text!.count > 5) {
+        
+        if (reviewTitle.text!.count >= 5) {
             
-            
+
+            DataBaseManager.shared.addNewReview(
+                for: self.drink,
+                rating: Int(ratingView.rating),
+                title: reviewTitle.text ?? "No title",
+                content: reviewContent.text ?? "No content",
+                completion: self.onReviewSubmitted
+            )
             
         }
         else {

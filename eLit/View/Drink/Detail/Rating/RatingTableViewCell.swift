@@ -37,7 +37,24 @@ class RatingTableViewCell: UITableViewCell {
         }
     }
     
+    func notifyUserNotLoggedIn() {
+        
+        let alert = UIAlertController(title: "Register/Login", message: "Either register or login to add a review", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        
+        
+        viewController?.present(alert, animated: true)
+        
+    }
+    
     @IBAction func onWriteReviewTap(_ sender: UIButton) {
+        
+        if !Model.shared.userHasAuthenticated() {
+            
+            self.notifyUserNotLoggedIn()
+            return
+            
+        }
         
         if let vc = viewController {
             

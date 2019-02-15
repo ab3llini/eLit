@@ -7,6 +7,16 @@
 //
 
 import UIKit
+import Foundation
+
+struct Review {
+    
+    let author : String
+    let rating : Double
+    let title : String
+    let text : String
+    let timestamp : String
+}
 
 class ReviewTableViewController: BlurredBackgroundTableViewController {
     
@@ -15,7 +25,7 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
     var requestPending = false
     var error = false
     var drink : Drink!
-    var reviews: [[String: String]] = []
+    var reviews: [Review] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +73,13 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         
         // else show the cell as usual
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
-        cell.titleLabel.text = String(reviews[indexPath.row]["title"]!) + Model.randomString(length: 10)
-        cell.starsView.rating = Double(reviews[indexPath.row]["stars"]!) ?? 0
-        cell.reviewTextLabel.text = Model.randomString(length: Int.random(in: 100...1000))
+        cell.titleLabel.text = reviews[indexPath.row].title
+        cell.starsView.rating = reviews[indexPath.row].rating
+        cell.reviewTextLabel.text = reviews[indexPath.row].text
+        cell.userLabel.text = reviews[indexPath.row].author
+        cell.timestampLabel.text = reviews[indexPath.row].timestamp
+
+
         return cell
     }
     
@@ -86,29 +100,50 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
     // MARK: Auxiliar functions
     private func loadNextBatch() {
         let callback: (_ data: [String: Any]) -> Void = { data in
+            
+            func reload() {
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.requestPending = false
+                }
+                
+            }
+            
             if data["status"] as! String == "error" {
                 self.error = true
                 self.endReviews = true
-                self.tableView.reloadData()
+                reload()
                 return
             }
             guard let r = data["data"] as? NSArray else {
                 self.endReviews = true
-                self.tableView.reloadData()
+                reload()
                 return
             }
             for e in r {
                 let i = e as! NSDictionary
-                self.reviews.append(["title": i["title"] as! String, "stars": i["stars"] as! String])
-                if (i["is_last"] as! String) == "true" {
+                
+                
+                
+                let review = Review(
+                    author : i["author"] as! String,
+                    rating: i["rating"] as! Double,
+                    title: i["title"] as! String,
+                    text: i["text"] as! String,
+                    timestamp: i["timestamp"] as! String
+
+                )
+                
+                self.reviews.append(review)
+                
+                if (i["is_last"] as! Bool) {
                     self.endReviews = true
                 }
             }
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.requestPending = false
-            }
+            reload()
+
         }
         
         self.requestPending = true

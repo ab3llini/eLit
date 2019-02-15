@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LaunchViewController: UIViewController {
     
@@ -23,7 +24,7 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         // Setup chain
-        self.launchLabel.startChanging(every: 2, with: self.strings)
+        self.launchLabel.startChanging(every: 1, with: self.strings)
         self.retrieveData()
         
     }
@@ -46,9 +47,9 @@ class LaunchViewController: UIViewController {
     
     private func finalizeData() {
         
-        //self.launchLabel.text = "Mixing things..."
-        
+        // Compute core colors
         _ = Renderer.shared.getCoreColors()
+        
         
         // Move to main vc
         self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)

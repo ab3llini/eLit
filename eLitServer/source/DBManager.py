@@ -30,13 +30,17 @@ def create_cocktail():
 
 if __name__ == '__main__':
     # dbm = DBManager('192.168.178.37', 27017)
-    me.connect('eLit', host='localhost', port=4321)
+    me.connect('eLit', host='localhost', port=27017)
     # _ = Test(title='Luca').save()
     # _ = Test(title='Piero').save()
-    create_cocktail()
+    # create_cocktail()
     obj = [*Drink.objects, *DrinkComponent.objects, *Ingredient.objects, *Recipe.objects, *RecipeStep.objects]
     for o in obj:
         print(o.to_json())
     # for drink in drinks:
         # drink.delete()
         # print(str(drink.id))
+
+    print('*' * 300)
+    obj = Review.objects(for_drink='5c61c88cc7170d4d4fc70d4d').get()
+    print(obj)

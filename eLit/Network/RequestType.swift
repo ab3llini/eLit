@@ -14,4 +14,5 @@ enum RequestType: String {
     case USER_SIGN_IN = "user_sign_in"
     case FETCH_REVIEWS = "fetch_reviews"
     case RATING = "rating"
+    case ADD_REVIEW = "add_review"
 }

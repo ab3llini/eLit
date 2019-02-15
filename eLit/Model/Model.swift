@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class Model: NSObject {
     //MARK: attributes
@@ -75,6 +76,13 @@ class Model: NSObject {
         
         return (self.drinks.count == 0)
         
+    }
+    
+    public func userHasAuthenticated() -> Bool {
+    
+        guard let gid = GIDSignIn.sharedInstance() else { return false }
+        return gid.hasAuthInKeychain()
+    
     }
     
 }

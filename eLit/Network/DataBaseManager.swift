@@ -127,6 +127,25 @@ class DataBaseManager: NSObject {
         self.sendRequest(for: .FETCH_REVIEWS, with: request, completion: completion)
     }
     
+    /**
+     This method will send a request to the DB to add a review for specific drink
+     - Parameter drink: is the drink for the reviews
+     - Parameter rating: the rating of the review (0--5)
+     - Parameter title: the title of the review
+     - Parameter content: the content of the review
+     - Parameter completion: is the callback function to call when the response arrives
+     **/
+    func addNewReview(for drink: Drink, rating : Int, title : String, content : String, completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request: [String: Any] = [
+            "user_id": Model.shared.user?.userID ?? "Not authenticated!",
+            "drink_id": drink.id ?? "",
+            "rating" : rating,
+            "title" : title,
+            "content" : content] as [String: Any]
+        
+        self.sendRequest(for: .ADD_REVIEW, with: request, completion: completion)
+    }
+    
 /**
      This method will send a request to the main DB for getting the rating for a specific drink
      - Parameter drink: is the drink for which we are asking the rating
@@ -169,6 +188,7 @@ class DataBaseManager: NSObject {
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 completion(["status": "error"])
+                return
             }
             
             let responseString = String(data: data, encoding: .utf8)!

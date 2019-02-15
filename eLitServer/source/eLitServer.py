@@ -20,6 +20,7 @@ request_map = {
     'insert_drink': on_insert_drink_request,
     'fetch_categories': on_fetch_categories_request,
     'insert_category': on_insert_category_request,
+    'add_review' : on_add_review_request
 }
 
 logger = logging.getLogger('server_logger')

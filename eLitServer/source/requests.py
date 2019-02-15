@@ -75,26 +75,47 @@ def on_user_sign_in_request(data: Dict) -> Dict:
 
 
 def on_fetch_reviews_request(data: Dict) -> Dict:
+
+    print(data)
+
     drink_id = data['drink_id']
     next_index = data['from_index']
 
-    reviews = [x + next_index for x in range(10)]
+    payload = {
+        'request': 'fetch_reviews'
+    }
+
+    try:
+        reviews = Review.objects(for_drink=drink_id).order_by('timestamp')
+        n_reviews = Review.objects(for_drink=drink_id).count()
+    except mongoerr.ServerSelectionTimeoutError:
+        payload['status_code'] = 500
+        return payload
 
     data_list = []
-    for x in reviews:
-        last = next_index + x >= 39
-        eval = random.random() * 5
-        data_list.append({
-            'title': str(x),
-            'stars': str(eval),
-            'is_last': str(last).lower()
-        })
 
-    payload = {
-        'request': 'fetch_reviews',
-        'data': data_list,
-        'status_code': 200
-    }
+    print("Reviews for drink:", reviews, "n =", n_reviews)
+
+    if next_index < n_reviews:
+
+        reviews = reviews[next_index: next_index + 10]
+
+        for i, review in enumerate(reviews):
+
+            data_list.append({
+                'author' : review.written_by.name,
+                'timestamp': review.timestamp.strftime('%w %b \'%y'),
+                'title': review.title,
+                'rating': review.rating,
+                'text' : review.text,
+                'is_last': i + next_index == n_reviews - 1
+            })
+
+    payload['data'] = data_list
+    payload['status_code'] = 200
+
+    print(payload)
+
     return payload
 
 
@@ -102,15 +123,15 @@ def on_add_review_request(data: Dict) -> Dict:
     payload = {'request': 'add_review'}
     user_id = data['user_id']
     title = data['title']
-    text = data['text']
+    text = data['content']
     rating = float(data['rating'])
-    drink_name = data['drink_name']
+    drink_id = data['drink_id']
     try:
-        drink = Drink.objects(name=drink_name).get()
+        drink = Drink.objects(id=drink_id).get()
         user = User.objects(user_id=user_id).get()
     except DoesNotExist:
         payload['status_code'] = 500
-        payload['message'] = f'unable to find drink {drink_name} or user with id {user_id}'
+        payload['message'] = f'unable to find drink {drink_id} or user with id {user_id}'
         return payload
 
     current_reviews = Review.objects(Q(written_by=user) & Q(for_drink=drink))
