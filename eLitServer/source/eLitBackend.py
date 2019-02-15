@@ -18,10 +18,12 @@ class Backend:
 
     async def on_connect(self, websocket):
 
-        print('New connection established, sending ingredients & drinks')
+        print('[Backend] Sending ingredients, drinks & categories')
 
         await websocket.send(json.dumps(request_map['fetch_ingredients']({})))
         await websocket.send(json.dumps(request_map['fetch_drinks']({})))
+        await websocket.send(json.dumps(request_map['fetch_categories']({})))
+
 
     async def handler(self, websocket, path):
         await self.on_connect(websocket)

@@ -168,7 +168,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
-            if (indexPath.row == 9) {
+            if (indexPath.row == self.steps.count - 1) {
                 
                 cell.timelineView.isLastCell = true
                 

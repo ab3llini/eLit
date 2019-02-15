@@ -26,149 +26,175 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container-fluid">
+<div class="container">
 
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="mt-5">Ingredients</h3>
+        <div class="col-lg-12">
 
-                    <table class="table ingredient">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Grade</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <table class="table new-ingredient table-borderless mt-5 p-5 bg-light">
-                        <tbody>
-                        <tr>
-                            <td><input type="text" class="form-control" name="name"/></td>
-                            <td><input type="number" class="form-control" name="grade" value="0"/></td>
-                            <td><input type="text" class="form-control" name="image"/></td>
-                            <td><input type="text" class="form-control" name="ingredient_description"/></td>
-                            <td><input type="button" class="btn btn-md btn-primary add-ingredient"
-                                       value="Add ingredient"/></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="mt-5">Drinks</h3>
+            <h3 class="mt-5">Ingredients</h3>
 
-                    <table class="table drink">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Grade</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Steps</th>
-                        </tr>
+            <table class="table ingredient">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table new-ingredient table-borderless mt-5 p-5 bg-light">
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="name" placeholder="Name"/></td>
+                    <td><input type="number" class="form-control" name="grade" value="0"/></td>
+                    <td><input type="text" class="form-control" name="image" placeholder="Image URL"/></td>
+                    <td><input type="text" class="form-control" name="ingredient_description" placeholder="Description"/></td>
+                    <td><input type="button" class="btn btn-md btn-primary add-ingredient"
+                               value="Add ingredient"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div about="" class="col-lg-12 mt-5">
+            <h3 class="mt-5">Categories</h3>
 
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 mb-5 mt-5">
-                    <form class="new-drink-form p-5 bg-light">
-                        <div class="form-row">
-                            <div class="form-group col-md-8">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="name">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label>Grade</label>
-                                <input type="number" class="form-control" name="grade">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label>Image</label>
-                                <input type="text" class="form-control" name="image">
-                            </div>
+            <table class="table category">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table new-category table-borderless mt-5 p-5 bg-light">
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="name" placeholder="Category name"/></td>
+                    <td><input type="text" class="form-control" name="image" placeholder="Image URL"/></td>
+
+                    <td><input type="button" class="btn btn-md btn-primary add-category float-right"
+                               value="Add category"/></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="mt-5">Drinks</h3>
+
+            <table class="table drink">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Steps</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mb-5 mt-5">
+            <form class="new-drink-form p-5 bg-light">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label>Name</label>
+                        <div class="input-group">
+                            <select class="custom-select category-select" name="category">
+                                <option selected>Choose category...</option>
+                            </select>
+                            <input type="text" class="form-control" name="name" placeholder="Name">
                         </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Grade</label>
+                        <input type="number" class="form-control" name="grade">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Image</label>
+                        <input type="text" class="form-control" name="image">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Description</label>
+                        <input type="text" class="form-control" name="description">
+                    </div>
+
+                </div>
+                <div class="recipe">
+                    <div class="recipe-step">
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label>Description</label>
-                                <input type="text" class="form-control" name="description">
-                            </div>
-
-                        </div>
-                        <div class="recipe">
-                            <div class="recipe-step">
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Recipe step</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Description"
-                                                   name="description">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary add-recipe-step"
-                                                        type="button">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
+                                <label>Recipe step</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Description"
+                                           name="description">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary add-recipe-step"
+                                                type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="components">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Quantity"
-                                                       name="quantity">
-                                                <select class="custom-select unit-select" name="unit">
-                                                    <option selected>Choose...</option>
-                                                </select>
-                                                <select class="custom-select ingredient-select" name="ingredient">
-                                                    <option selected>Choose...</option>
-                                                </select>
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary add-component"
-                                                            type="button">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+
+                            </div>
+                        </div>
+                        <div class="components">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" placeholder="Quantity"
+                                               name="quantity">
+                                        <select class="custom-select unit-select" name="unit">
+                                            <option selected>Choose...</option>
+                                        </select>
+                                        <select class="custom-select ingredient-select" name="ingredient">
+                                            <option selected>Choose...</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary add-component"
+                                                    type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix mt-4">
-                            <button type="button" class="btn btn-primary float-right add-drink">Add drink</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div about="" class="col-lg-3 mt-5">
-            <div class="card border-primary mb-3 mt-5" style="max-width: 18rem;">
-                <div class="card-header">Server Log</div>
-                <div class="card-body text-primary">
-                    <div class="card-text server-log"></div>
+                <div class="clearfix mt-4">
+                    <button type="button" class="btn btn-primary float-right add-drink">Add drink</button>
                 </div>
-            </div>
+            </form>
         </div>
-
     </div>
 </div>
+
 
 
 <!-- Bootstrap core JavaScript -->

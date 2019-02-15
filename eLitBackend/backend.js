@@ -6,6 +6,7 @@ let port = '9999'
 // ------------------------------------------- GLOBALS -------------------------------------------
 
 let ingredient_names = []
+let categories = []
 let units = ['part']
 
 
@@ -33,6 +34,8 @@ class Connection {
             ui_log("Socket error")
         }
         this.ws.onmessage = function (event) {
+            console.log("Received: " + event.data)
+
             _self.handle(JSON.parse(event.data))
         }
 
@@ -87,6 +90,25 @@ let ws_ingredient_handler = (ingredients) => {
 
 }
 
+let ws_category_handler = (cat) => {
+
+    cat.reverse().forEach(function (category) {
+
+        // Add ingredient name to global var
+        categories.push(category.name)
+
+        $(".category").DataTable().row.add([
+            category.name,
+            category.image
+        ]).draw(false);
+
+    })
+
+    update_category_dropdowns()
+
+
+}
+
 let ws_drink_handler = (drinks) => {
 
     ui_log(drinks)
@@ -109,11 +131,12 @@ let ws_drink_handler = (drinks) => {
 // ------------------------------------------- UTILS ----------------------------------------------
 
 
-let on_add_ingredient = (_class, _conn) => {
+let on_add_table = (_class, _conn) => {
 
     let table = $(".new-" + _class).last()
 
     let request = {request: 'insert_' + _class, data: {}}
+
 
     table.find('input').each(function () {
 
@@ -131,9 +154,7 @@ let on_add_ingredient = (_class, _conn) => {
 
     _conn.ws.send(JSON.stringify(request))
 
-    ws_ingredient_handler([request.data])
-
-    update_ingredient_dropdowns()
+    return request.data
 
 }
 
@@ -144,6 +165,7 @@ let on_add_drink = (_conn) => {
     let request = {request: 'insert_drink', data: {}}
 
     request.data.name = form.find('input[name="name"]').val()
+    request.data.category = form.find('select[name="category"]').val()
     request.data.grade = form.find('input[name="grade"]').val()
     request.data.image = form.find('input[name="image"]').val()
     request.data.description = form.find('input[name="description"]').val()
@@ -206,6 +228,12 @@ let create_options_for = (list) => {
 let update_ingredient_dropdowns = () => {
 
     $('.components').find('.ingredient-select').html(create_options_for(ingredient_names))
+
+}
+
+let update_category_dropdowns = () => {
+
+    $('.new-drink-form').find('.category-select').html(create_options_for(categories))
 
 }
 
@@ -343,7 +371,7 @@ $(document).ready(function () {
 
         console.log(o)
 
-        $('.server-log').append('<br>' + o.toString())
+        $('.server-log').append(o.toString() + '<br>')
 
     }
 
@@ -352,19 +380,27 @@ $(document).ready(function () {
     // ------------------------------------------- BINDING ---------------------------------------------
 
     connection.bind('fetch_ingredients', ws_ingredient_handler)
+    connection.bind('fetch_categories', ws_category_handler)
     connection.bind('fetch_drinks', ws_drink_handler)
 
 
+    $('.new-ingredient').on("click", ".add-ingredient", function () {
 
+        let added = on_add_table('ingredient', connection)
+        ws_ingredient_handler(added)
+        update_ingredient_dropdowns()
 
-    let new_drink_table = $('.new-ingredient')
-
-    new_drink_table.on("click", ".add-ingredient", function () {
-
-        on_add_ingredient('ingredient', connection)
 
     })
 
+    $('.new-category').on("click", ".add-category", function () {
+
+        let added = on_add_table('category', connection)
+        ws_category_handler([added])
+        update_category_dropdowns()
+
+
+    })
 
     $('.new-drink-form').on("click", ".add-drink", function () {
 
