@@ -447,7 +447,7 @@
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="transparentNavBar" value="NO"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="ratingView" destination="mcE-a8-byM" id="EEd-W3-Jfn"/>

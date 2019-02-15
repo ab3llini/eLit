@@ -13,12 +13,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        // Removing the text for the navigation controller items
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
-        let barButtonItemAppearance = UIBarButtonItem.appearance()
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
+
         
     }
     

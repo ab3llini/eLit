@@ -66,6 +66,8 @@ class BlurredBackgroundViewController: UIViewController {
             
         }
         
+        
+        
     }
     
     // Changes the background image and color

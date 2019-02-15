@@ -30,12 +30,13 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
         self.prevVC = self.visibleViewController
         
         self.navigationBar.tintColor = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
-        
-        
+    
         
     }
+
     
     override func viewWillLayoutSubviews() {
+    
         
         if !initComplete  {
             

@@ -14,7 +14,7 @@ class LaunchViewController: UIViewController {
     @IBOutlet var launchSpinner : UIActivityIndicatorView!
     
     var strings = ["Adding sugar...", "Mixing things...", "Pouring vodka...", "Adding juice..."]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,9 +37,7 @@ class LaunchViewController: UIViewController {
                 drink.setImage()
             }
             
-            // Move to main vc
-            self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
-            
+        
             self.finalizeData()
             
         }
@@ -51,6 +49,9 @@ class LaunchViewController: UIViewController {
         //self.launchLabel.text = "Mixing things..."
         
         _ = Renderer.shared.getCoreColors()
+        
+        // Move to main vc
+        self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
         
     }
     
