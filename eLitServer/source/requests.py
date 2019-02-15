@@ -10,6 +10,7 @@ from database_classes import *
 
 logger = logging.getLogger('server_logger')
 
+image_basepath = 'http://68.183.64.146/resources/assets/'
 
 def connect():
     me.connect('eLit', host='localhost', port=27017)
@@ -147,7 +148,7 @@ def on_add_review_request(data: Dict) -> Dict:
 def on_insert_category_request(data: Dict) -> Dict:
     connect()
     name = data['name']
-    image = data['image']
+    image = image_basepath + data['image']
     payload = {
         'request': 'insert_category'
     }
@@ -168,7 +169,7 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
     connect()
     name = data['name']
     grade = data['grade']
-    image = data['image']
+    image = image_basepath + data['image']
     description = data['ingredient_description']
     payload = {'request': 'insert_ingredient'}
     try:
@@ -218,7 +219,7 @@ def on_insert_drink_request(data: Dict) -> Dict:
             steps_obj.append(step)
 
         recipe_obj = Recipe(steps_obj)
-        drink = Drink(data['name'], int(data['grade']), data['image'], data['description'],
+        drink = Drink(data['name'], int(data['grade']), image_basepath + data['image'], data['description'],
                       recipe=recipe_obj, category=category)
         drink.save()
     except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
