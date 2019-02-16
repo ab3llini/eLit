@@ -285,16 +285,11 @@ def on_rating_request(data: Dict) -> Dict:
         'request': 'rating',
         'status_code': 200
     }
-    if False:
-        connect()
-        drink_id = data['drink_id']
-        rating = Review.objects(for_drink__id=drink_id).average('rating')
-        payload['data'] = {'rating': str(rating)}
-        return payload
-    else:
-        rating = random.random() * 5
-        payload['data'] = {'rating': str(rating)}
-        return payload
+    connect()
+    drink_id = data['drink_id']
+    rating = Review.objects(for_drink__id=drink_id).average('rating')
+    payload['data'] = {'rating': str(rating)}
+    return payload
 
 
 if __name__ == '__main__':

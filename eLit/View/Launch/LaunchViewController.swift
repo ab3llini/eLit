@@ -92,7 +92,9 @@ class LaunchViewController: UIViewController {
                         Model.shared.addDrink(drink)
                     }
                     
-                    Model.shared.savePersistentModel()
+                    Model.shared.categories = EntityManager.shared.fetchAll(type: DrinkCategory.self) ?? []
+                    
+                    Model.shared.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
                     
                     // Proceed
                     self.prepareData()
