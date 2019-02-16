@@ -13,8 +13,8 @@ class Model: NSObject {
     //MARK: attributes
     public static let shared = Model()
     private var drinks: [Drink]
-    private var categories: [DrinkCategory]
-    private var ingredients: [Ingredient]
+    public var categories: [DrinkCategory]
+    public var ingredients: [Ingredient]
     public var user: User?
     public let entityManager = EntityManager.shared
     
