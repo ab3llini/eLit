@@ -14,7 +14,7 @@
         <relationship name="withDrinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drink" inverseName="ofCategory" inverseEntity="Drink" syncable="YES"/>
     </entity>
     <entity name="DrinkComponent" representedClassName="DrinkComponent" parentEntity="DrinkObject" syncable="YES" codeGenerationType="category">
-        <attribute name="qty" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="qty" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unit" attributeType="String" syncable="YES"/>
         <relationship name="inRecipeSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="withComponents" inverseEntity="RecipeStep" syncable="YES"/>
         <relationship name="withIngredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inComponents" inverseEntity="Ingredient" syncable="YES"/>
@@ -28,7 +28,7 @@
         <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Ingredient" representedClassName="Ingredient" parentEntity="DrinkObjectWithImage" syncable="YES" codeGenerationType="category">
-        <attribute name="grade" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="grade" attributeType="Double" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ingredientDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="inComponents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrinkComponent" inverseName="withIngredient" inverseEntity="DrinkComponent" syncable="YES"/>
@@ -53,13 +53,13 @@
     <elements>
         <element name="CoreDataObject" positionX="-597.6015625" positionY="-1514.08203125" width="128" height="45"/>
         <element name="Drink" positionX="-241.6171875" positionY="-1047.66796875" width="128" height="135"/>
+        <element name="DrinkCategory" positionX="-738" positionY="-1359" width="128" height="75"/>
         <element name="DrinkComponent" positionX="-800.0078125" positionY="-1321.2109375" width="104.05078125" height="105"/>
         <element name="DrinkObject" positionX="-329.51171875" positionY="-1464.0390625" width="128" height="75"/>
         <element name="DrinkObjectWithImage" positionX="-291.875" positionY="-1285.90625" width="128" height="75"/>
-        <element name="Ingredient" positionX="-426.22265625" positionY="-1119.28125" width="128" height="103"/>
+        <element name="Ingredient" positionX="-426.22265625" positionY="-1119.28125" width="128" height="105"/>
         <element name="Recipe" positionX="-548.5078125" positionY="-1028.7265625" width="128" height="75"/>
         <element name="RecipeStep" positionX="-853.015625" positionY="-1078.27734375" width="128" height="90"/>
         <element name="User" positionX="-940" positionY="-1492" width="128" height="135"/>
-        <element name="DrinkCategory" positionX="-738" positionY="-1359" width="128" height="75"/>
     </elements>
 </model>

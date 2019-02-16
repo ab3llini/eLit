@@ -18,7 +18,7 @@ class DrinkComponent: DrinkObject {
     }
     
     //MARK: Initializers
-    convenience init(ingredient: Ingredient, quantity: Int16, unit: Unit) {
+    convenience init(ingredient: Ingredient, quantity: Double, unit: Unit) {
         self.init()
         self.withIngredient = ingredient
         self.qty = quantity
@@ -29,7 +29,7 @@ class DrinkComponent: DrinkObject {
         self.init()
         self.id = dict["id"] as? String ?? ""
         self.fingerprint = dict["fingerprint"] as? String ?? ""
-        self.qty = dict["qty"] as? Int16 ?? 0
+        self.qty = dict["qty"] as? Double ?? 0.0
         self.unit = dict["unit"] as? String
         let ingredientDict = dict["ingredient"] as? [String: Any] ?? [:]
         let ingredientID = ingredientDict["id"] as? String ?? ""
@@ -41,7 +41,7 @@ class DrinkComponent: DrinkObject {
     }
     
     override func update(with data: [String : Any], savePersistent: Bool) {
-        self.qty = data["qty"] as? Int16 ?? 0
+        self.qty = data["qty"] as? Double ?? 0.0
         self.unit = data["unit"] as? String
         super.update(with: data, savePersistent: savePersistent)
     }
