@@ -287,7 +287,7 @@ def on_rating_request(data: Dict) -> Dict:
     }
     connect()
     drink_id = data['drink_id']
-    rating = Review.objects(for_drink__id=drink_id).average('rating')
+    rating = Review.objects(for_drink=drink_id).average('rating')
     payload['data'] = {'rating': str(rating)}
     return payload
 
