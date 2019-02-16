@@ -40,12 +40,14 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
-        guard let url = URL(string: self.imageURLString!) else {
+        guard let url = URL(string: Preferences.shared.settings.host + self.imageURLString!) else {
             return
         }
         
-        print("Requesting image from server...")
+        print("Requesting asset: \(url)")
+        
         if let id: NSData = NSData(contentsOf: url) {
+            
             self.imageData = id as Data
             self.image = UIImage(data: self.imageData!) ?? UIImage()
         } else { return }

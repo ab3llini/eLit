@@ -24,7 +24,7 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         // Setup chain
-        self.launchLabel.startChanging(every: 0.1, with: self.strings)
+        self.launchLabel.startChanging(every: 1, with: self.strings)
         self.retrieveData()
         
     }

@@ -72,7 +72,7 @@
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
 		BD903B9621ECBA2300F0D856 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD903B9521ECBA2300F0D856 /* Renderer.swift */; };
 		BD9C195E2214347200E05927 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* Settings.plist */; };
-		BD9C19612214352200E05927 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Settings.swift */; };
+		BD9C19612214352200E05927 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Preferences.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
 		BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CB22159477002926BE /* AddReviewViewController.swift */; };
 		BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CD22159DE6002926BE /* ReviewTextView.swift */; };
@@ -193,7 +193,7 @@
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD903B9521ECBA2300F0D856 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		BD9C195D2214347200E05927 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		BD9C19602214352200E05927 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		BD9C19602214352200E05927 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
 		BDB310CB22159477002926BE /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		BDB310CD22159DE6002926BE /* ReviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextView.swift; sourceTree = "<group>"; };
@@ -524,7 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9C195D2214347200E05927 /* Settings.plist */,
-				BD9C19602214352200E05927 /* Settings.swift */,
+				BD9C19602214352200E05927 /* Preferences.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -852,7 +852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD9C19612214352200E05927 /* Settings.swift in Sources */,
+				BD9C19612214352200E05927 /* Preferences.swift in Sources */,
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */,
