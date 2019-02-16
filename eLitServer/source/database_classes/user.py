@@ -39,5 +39,6 @@ class User(DBObject):
         data['family_name'] = self.family_name
         data['image_url'] = self.image_url
         data['user_id'] = self.user_id
+        return data
 
 
