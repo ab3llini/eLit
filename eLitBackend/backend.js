@@ -72,6 +72,19 @@ class Connection {
 
 }
 
+// -- UTIL
+
+let get_img_obj = (url) => {
+
+    return '<img src="'+url+'" class="rounded mr-3" style="height: 40px; width: 40px">'
+
+}
+
+let get_a_obj = (url) => {
+
+    return '<a href="' + url + '"> Open </a>'
+
+}
 
 // ------------------------------------------- HANDLERS -------------------------------------------
 
@@ -85,7 +98,7 @@ let ws_ingredient_handler = (ingredients) => {
         $(".ingredient").DataTable().row.add([
             ingredient.name,
             ingredient.grade,
-            '<a href="' + ingredient.image + '">'+ ingredient.image + '</a>',
+            get_img_obj(ingredient.image) + get_a_obj(ingredient.image),
             ingredient.ingredient_description
         ]).draw(false);
 
@@ -105,7 +118,7 @@ let ws_category_handler = (cat) => {
 
         $(".category").DataTable().row.add([
             category.name,
-            '<a href="' + category.image + '">' + category.image + '</a>'
+            get_img_obj(category.image) + get_a_obj(category.image)
         ]).draw(false);
 
     })
@@ -124,7 +137,7 @@ let ws_drink_handler = (drinks) => {
         $(".drink").DataTable().row.add([
             drink.name,
             drink.degree,
-            '<a href="' + drink.image + '">'+ drink.image + '</a>',
+            get_img_obj(drink.image) + get_a_obj(drink.image),
             drink.drink_description,
             drink.steps
         ]).draw(false);

@@ -18,8 +18,9 @@ protocol HeaderViewProtocol {
 class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
         
-    //Load drinks
-    var drinks : [Drink] = []
+    //Load categories
+    
+    var categories : [DrinkCategory]!
     
     
     @IBOutlet weak var drinkPagerView: FSPagerView! {
@@ -29,14 +30,14 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     }
     
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return drinks.count
+        return categories.count
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        let image = drinks[index].image
+        let image = categories[index].image
         cell.imageView?.image = image
-        cell.textLabel?.text = drinks[index].name
+        cell.textLabel?.text = categories[index].name
         
         //let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
         //cell.setBlurredImage(to: image!, withBackground: bg)
@@ -55,7 +56,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         
         self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
     
-        self.drinks = Model.shared.getDrinks()
+        self.categories = Model.shared.getCategories()
     
         
     }

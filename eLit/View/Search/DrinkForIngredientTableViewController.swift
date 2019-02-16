@@ -27,7 +27,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
         registerForPreviewing(with: self, sourceView: self.tableView)
         
         self.drinks = Model.shared.getDrinks()
-        self.coreColors = Renderer.shared.getCoreColors()
+        self.coreColors = Renderer.shared.getDrinkCoreColors()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -73,7 +73,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
         //Drinks
         let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
         let drink : Drink = drinks[indexPath.row]
-        let color = Renderer.shared.getCoreColors()[drink.name!]!
+        let color = Renderer.shared.getDrinkCoreColors()[drink.name!]!
         let image = drink.image
         
         cell.setDrink(drink: drink, withImage: image, andColor: color)

@@ -39,6 +39,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
             
         }
+        
+        print(drink.ingredients())
 
     }
     
@@ -65,12 +67,12 @@ class DrinkViewController: BlurredBackgroundTableViewController {
 
     private func layoutContent() {
         
-        self.setBackgroundImage(drink.image, withColor: Renderer.shared.getCoreColors()[self.drink.name!]!)
+        self.setBackgroundImage(drink.image, withColor: Renderer.shared.getDrinkCoreColors()[self.drink.name!]!)
         
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return self.drink.ingredients().count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -151,7 +153,10 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
             
-            //cell.rounded(radius: 10, withBorder: 1, withBorderColor: .green)
+            let ingredient = self.drink.ingredients()[indexPath.row]
+            
+            cell.ingredientImageView.image = ingredient.image
+            cell.ingredientLabel.text = ingredient.name
             
             return cell
             
