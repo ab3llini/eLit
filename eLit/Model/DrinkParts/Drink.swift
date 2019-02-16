@@ -64,6 +64,25 @@ class Drink: DrinkObjectWithImage {
         }
     }
     
+    public func components() -> [DrinkComponent] {
+        guard let recipeSteps = self.drinkRecipe?.steps?.array as? [RecipeStep] else {
+            return []
+        }
+        
+        var components: [DrinkComponent] = []
+        for step in recipeSteps {
+            for component in (step.withComponents?.array as? [DrinkComponent] ?? []) {
+                if !components.contains(where: {$0.withIngredient?.id == component.withIngredient?.id}) {
+                    components.append(component)
+                } else {
+                    // TODO: manage this case
+                }
+            }
+        }
+        
+        return components
+    }
+    
     override func update(with data: [String : Any], savePersistent: Bool) {
         self.name = data["name"] as? String ?? ""
         self.imageURLString = data["image"] as? String ?? ""
