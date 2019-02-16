@@ -47,7 +47,7 @@ class LaunchViewController: UIViewController {
                 ingredient.setImage()
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 
                 self.finalizeData()
 
@@ -62,6 +62,9 @@ class LaunchViewController: UIViewController {
         
         // Compute core colors
         _ = Renderer.shared.getDrinkCoreColors()
+        
+        // Save new images data to db
+        Model.shared.savePersistentModel()
         
         self.launchLabel.stopChanging()
         

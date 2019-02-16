@@ -21,11 +21,10 @@ class DrinkObjectWithImage: DrinkObject {
             self.image = UIImage(data: id) ?? UIImage()
         } else {
             getImageData(forceReload: true)
-            guard let id = self.imageData else {
+            guard let _ = self.imageData else {
                 self.image = UIImage()
                 return
             }
-            self.image = UIImage(data: id) ?? UIImage()
         }
         
     }

@@ -20,7 +20,7 @@ class DataBaseManager: NSObject {
         let idsToUpdate = updatedObjectsList.map({ dict in
             return dict["id"] as? String ?? ""
         })
-        
+            
         // Updating exsisting objects
         var currentObjects: [DrinkObject]? = EntityManager.shared.fetchAll(type: DrinkObject.self)
         let currentIds = currentObjects?.map({ (obj: DrinkObject) in
