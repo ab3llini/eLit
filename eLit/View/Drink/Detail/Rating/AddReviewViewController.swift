@@ -29,7 +29,7 @@ class AddReviewViewController: BlurredBackgroundViewController {
         self.reviewContent.placeholder = reviewContentPlaceholder
         
         // Setupd bg image
-        self.setBackgroundImage(self.drink.image, withColor: Renderer.shared.getCoreColors()[self.drink.name!]!)
+        self.setBackgroundImage(self.drink.image, withColor: Renderer.shared.getDrinkCoreColors()[self.drink.name!]!)
     }
     
     func onReviewSubmitted(response : [String : Any]) -> Void {

@@ -44,7 +44,8 @@ def on_update_request(data: Dict) -> Dict:
         changed += diff
 
     new = [*Ingredient.objects(id__not__in=list(data.keys())),
-           *Drink.objects(id__not__in=list(data.keys()))]
+           *Drink.objects(id__not__in=list(data.keys())),
+           *DrinkCategory.objects(id__not__in=list(data.keys()))]
 
     print("[*] The following items have changed:", changed)
     print(f"[*] The following items are new: {changed}")

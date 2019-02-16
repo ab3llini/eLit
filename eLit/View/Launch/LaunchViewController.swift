@@ -38,7 +38,7 @@ class LaunchViewController: UIViewController {
                 drink.setImage()
             }
             
-            Model.shared.getCategories().forEach { (category) in
+            Model.shared.getCategories().forEach { (category) in                
                 category.setImage()
             }
             
@@ -55,7 +55,7 @@ class LaunchViewController: UIViewController {
     private func finalizeData() {
         
         // Compute core colors
-        _ = Renderer.shared.getCoreColors()
+        _ = Renderer.shared.getDrinkCoreColors()
         
         
         // Move to main vc

@@ -14,6 +14,9 @@ class DrinkCategory: DrinkObjectWithImage {
     //MARK: Initializers
     
     convenience init(dict: [String: Any]) {
+        
+        // TODO CHeck existence
+        
         self.init()
         self.id = dict["id"] as? String ?? ""
         self.fingerprint = dict["fingerprint"] as? String ?? ""

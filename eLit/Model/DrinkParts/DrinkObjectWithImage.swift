@@ -14,12 +14,17 @@ class DrinkObjectWithImage: DrinkObject {
     var image: UIImage = UIImage()
     
     func setImage(forceReload: Bool = false) {
-        guard let id = self.imageData, !forceReload else {
+        if forceReload {
+             getImageData(forceReload: true)
+        }
+        if let id = self.imageData {
+            self.image = UIImage(data: id) ?? UIImage()
+        }
+        else {
             getImageData(forceReload: true)
-            return
+            self.image = UIImage(data: self.imageData!) ?? UIImage()
         }
         
-        self.image = UIImage(data: id) ?? UIImage()
     }
     
     func setImage(forceReload: Bool = false, completion: (_ image: UIImage?) -> Void) {

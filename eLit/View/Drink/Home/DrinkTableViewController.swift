@@ -22,8 +22,12 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     
     //Load drinks
     var drinks : [Drink] = []
+    var categories : [DrinkCategory] = []
+
     
-    var coreColors : [String : UIColor] = [:]
+    var drinkCoreColors : [String : UIColor] = [:]
+    var categoryCoreColors : [String : UIColor] = [:]
+
     
     // Storyboard segue
     var segue = Navigation.toDrinkVC
@@ -44,7 +48,9 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         registerForPreviewing(with: self, sourceView: self.tableView)
         
         self.drinks = Model.shared.getDrinks()
-        self.coreColors = Renderer.shared.getCoreColors()
+        self.categories = Model.shared.getCategories()
+        self.drinkCoreColors = Renderer.shared.getDrinkCoreColors()
+        self.categoryCoreColors = Renderer.shared.getCategoryCoreColors() 
         
         
         // Remove space between sections.
@@ -59,15 +65,19 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         
         // Assign bg
         if (self.drinks.count > 0) {
-            self.setBackgroundImage(self.drinks[0].image, withColor: self.coreColors[self.drinks[0].name!]!)
+            
+            print(Model.shared.getCategories()[0].image)
+            
+            self.setBackgroundImage(self.categories[0].image, withColor:
+                self.categoryCoreColors[self.categories[0].name!]!)
         }
         
     }
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         
-        let color = self.coreColors[self.drinks[targetIndex].name!]!
-        let image = self.drinks[targetIndex].image
+        let color = self.categoryCoreColors[self.categories[targetIndex].name!]!
+        let image = self.categories[targetIndex].image
         
         self.setBackgroundImage(image, withColor: color)
         
@@ -149,7 +159,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
             //Drinks
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
             let drink : Drink = drinks[indexPath.row]
-            let color = Renderer.shared.getCoreColors()[drink.name!]!
+            let color = Renderer.shared.getDrinkCoreColors()[drink.name!]!
             let image = drink.image
             
             cell.setDrink(drink: drink, withImage: image, andColor: color)

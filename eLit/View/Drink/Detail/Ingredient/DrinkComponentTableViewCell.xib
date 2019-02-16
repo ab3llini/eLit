@@ -87,6 +87,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="componentView" destination="uJ9-aY-fIY" id="ypz-qo-KBR"/>
+                <outlet property="ingredientImageView" destination="ECT-kg-L7v" id="Ea6-zM-Xm5"/>
                 <outlet property="ingredientLabel" destination="ckd-uf-NLW" id="Y0W-P7-k55"/>
                 <outlet property="qtyLabel" destination="hgU-oS-0F5" id="JVu-Ty-4ip"/>
                 <outlet property="unitLabel" destination="4vP-7c-wST" id="nhq-EL-pbL"/>
