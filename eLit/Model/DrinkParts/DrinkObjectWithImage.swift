@@ -45,10 +45,16 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
+        print("Requesting image from server...")
         if let id: NSData = NSData(contentsOf: url) {
             self.imageData = id as Data
             self.image = UIImage(data: self.imageData!) ?? UIImage()
         } else { return }
+    }
+    
+    override func update(with data: [String : Any], savePersistent: Bool) {
+        self.getImageData(forceReload: true)
+        super.update(with: data, savePersistent: true)
     }
 
 }

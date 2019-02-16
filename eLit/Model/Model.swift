@@ -13,6 +13,8 @@ class Model: NSObject {
     //MARK: attributes
     public static let shared = Model()
     private var drinks: [Drink]
+    private var categories: [DrinkCategory]
+    private var ingredients: [Ingredient]
     public var user: User?
     public let entityManager = EntityManager.shared
     
@@ -22,6 +24,8 @@ class Model: NSObject {
         _ = appDelegate.persistentContainer.viewContext
         self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
         self.user = self.entityManager.fetchAll(type: User.self)?.first
+        self.categories = self.entityManager.fetchAll(type: DrinkCategory.self) ?? []
+        self.ingredients = self.entityManager.fetchAll(type: Ingredient.self) ?? []
         self.user?.setImage()
         
         /*
@@ -56,14 +60,11 @@ class Model: NSObject {
     }
     
     public func getCategories() -> [DrinkCategory] {
-        return self.entityManager.fetchAll(type: DrinkCategory.self) ?? []
+        return self.categories
     }
     
     public func getIngredients() -> [Ingredient] {
-        
-        return self.entityManager.fetchAll(type: Ingredient.self) ?? []
-
-        
+        return self.ingredients
     }
     
     public func addDrink(_ drink: Drink) {
@@ -71,16 +72,12 @@ class Model: NSObject {
     }
     
     public func savePersistentModel() {
-        DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.saveContext()
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.saveContext()
     }
     
     public func reloadDrinks() {
-        DispatchQueue.main.async {
-            self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
-        }
+        self.drinks = self.entityManager.fetchAll(type: Drink.self) ?? []
     }
 
     public func isEmpty() -> Bool {

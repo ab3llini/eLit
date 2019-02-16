@@ -24,39 +24,46 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 
         // Setup chain
-        self.launchLabel.startChanging(every: 1, with: self.strings)
+        self.launchLabel.startChanging(every: 0.1, with: self.strings)
         self.retrieveData()
         
     }
     
-    private func prepareData() {
+    private func prepareData(realoadImages : Bool = false) {
         
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
+            print("Preparing data...")
             
             //self.launchLabel.text = "Adding sugar..."
             Model.shared.getDrinks().forEach { (drink) in
                 drink.setImage()
             }
             
-            Model.shared.getCategories().forEach { (category) in                
+            Model.shared.getCategories().forEach { (category) in
                 category.setImage()
             }
             
             Model.shared.getIngredients().forEach { (ingredient) in
                 ingredient.setImage()
             }
-        
-            self.finalizeData()
+            
+            DispatchQueue.main.async {
+                
+                self.finalizeData()
+
+            }
             
         }
         
     }
     
     private func finalizeData() {
+        print("finalizing")
         
         // Compute core colors
         _ = Renderer.shared.getDrinkCoreColors()
         
+        self.launchLabel.stopChanging()
         
         // Move to main vc
         self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
@@ -75,34 +82,26 @@ class LaunchViewController: UIViewController {
                     let drinks = response["data"] as? [[String: Any]] ?? []
                     var drinkList: [Drink] = []
                     
-                    print(drinks)
                     
-                    DispatchQueue.main.async {
-                        for drink in drinks {
-                            let d = Drink(dict: drink)
-                            drinkList.append(d)
-                        }
-                        
-                        for drink in drinkList {
-                            Model.shared.addDrink(drink)
-                        }
-                        
-                        Model.shared.savePersistentModel()
-                        
-                        // Proceed
-                        self.prepareData()
-
-                        
+                    for drink in drinks {
+                        let d = Drink(dict: drink)
+                        drinkList.append(d)
                     }
+                    
+                    for drink in drinkList {
+                        Model.shared.addDrink(drink)
+                    }
+                    
+                    Model.shared.savePersistentModel()
+                    
+                    // Proceed
+                    self.prepareData()
                     
                 }
                 else {
                     
-                    DispatchQueue.main.async {
-                        self.displayError(error: "Something went wrong..")
-                        
-                    }
-                    
+                    self.displayError(error: "Something went wrong..")
+
                 }
                 
             }
@@ -126,11 +125,7 @@ class LaunchViewController: UIViewController {
                 }
                 else {
                     
-                    DispatchQueue.main.async {
-                        
-                        self.displayError(error: "Something went wrong..")
-                        
-                    }
+                    self.displayError(error: "Something went wrong..")
                     
                 }
                 

@@ -28,16 +28,17 @@ class ChangingLabel: UILabel {
     @objc
     private func changeText() {
         
-        UIView.animate(withDuration: 0.4) {
-            self.alpha = 0
-        }
+//        UIView.animate(withDuration: 0.4) {
+//            self.alpha = 0
+//        }
         
         self.text = textList[currentIndex]
         
-        UIView.animate(withDuration: 0.4) {
-            self.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.4) {
+//            self.alpha = 1
+//        }
         self.currentIndex = (self.currentIndex + 1) % (textList.count)
+        print("Changed label")
     }
     
     func startChanging(every seconds: Double, with strings: [String]?) {

@@ -130,9 +130,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             } else {
                 Model.shared.savePersistentModel()
             }
-            DispatchQueue.main.async {
-                self.onLoginEnd()
-            }
+            self.onLoginEnd()
         })
     }
     

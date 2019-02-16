@@ -33,31 +33,26 @@ class AddReviewViewController: BlurredBackgroundViewController {
     }
     
     func onReviewSubmitted(response : [String : Any]) -> Void {
+        var title, content : String
         
-        DispatchQueue.main.async {
-        
-            var title, content : String
+        if response["status"] as? String ?? "" == "ok" {
             
-            if response["status"] as? String ?? "" == "ok" {
-                
-                title = "Thanks!"
-                content = "Your review has been submitted."
-                
-            }
-            else {
-                
-                title = "Oops"
-                content = "Something went wrong, try again later."
-                
-            }
-            
-            let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
-        
-            self.present(alert, animated: true)
+            title = "Thanks!"
+            content = "Your review has been submitted."
             
         }
+        else {
+            
+            title = "Oops"
+            content = "Something went wrong, try again later."
+            
+        }
+        
+        let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    
+    
+        self.present(alert, animated: true)
         
     }
     

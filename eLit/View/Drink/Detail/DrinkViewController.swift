@@ -26,9 +26,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             if (data["status"] as! String) == "ok" {
                 let ratingData = data["data"] as! [String: Any]
                 self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
-                DispatchQueue.main.async {
-                    self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
-                }
+                self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
             }
         })
         

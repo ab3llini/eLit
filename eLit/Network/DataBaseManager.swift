@@ -21,41 +21,40 @@ class DataBaseManager: NSObject {
             return dict["id"] as? String ?? ""
         })
         
-        DispatchQueue.main.async {
-            // Updating exsisting objects
-            var currentObjects: [DrinkObject]? = EntityManager.shared.fetchAll(type: DrinkObject.self)
-            let currentIds = currentObjects?.map({ (obj: DrinkObject) in
-                return obj.id ?? ""
-            }) ?? []
-            currentObjects = currentObjects?.filter {idsToUpdate.contains($0.id ?? "")}
-            
-            for updatedObject in updatedObjectsList {
-                let toUpdateList = currentObjects?.filter { ($0.id ?? "") == (updatedObject["id"] as? String ?? "") }
-                if let toUpdate = toUpdateList?.first {
-                    toUpdate.update(with: updatedObject)
-                }
-            }
-            
-            // Creating new objects
-            let newObjectList = updatedObjectsList.filter { !(currentIds.contains($0["id"] as? String ?? "")) }
-            
-            for obj in newObjectList {
-                switch obj["cls"] as! String {
-                case "Ingredient":
-                    let _ = Ingredient(dict: obj)
-                case "DrinkComponent":
-                    let _ = DrinkComponent(dict: obj)
-                case "RecipeStep":
-                    let _ = RecipeStep(dict: obj)
-                case "Recipe":
-                    let _ = Recipe(dict: obj)
-                case "DrinkCategory":
-                    let _ = DrinkCategory(dict: obj)
-                default:
-                    let _ = Drink(dict: obj)
-                }
+        // Updating exsisting objects
+        var currentObjects: [DrinkObject]? = EntityManager.shared.fetchAll(type: DrinkObject.self)
+        let currentIds = currentObjects?.map({ (obj: DrinkObject) in
+            return obj.id ?? ""
+        }) ?? []
+        currentObjects = currentObjects?.filter {idsToUpdate.contains($0.id ?? "")}
+        
+        for updatedObject in updatedObjectsList {
+            let toUpdateList = currentObjects?.filter { ($0.id ?? "") == (updatedObject["id"] as? String ?? "") }
+            if let toUpdate = toUpdateList?.first {
+                toUpdate.update(with: updatedObject)
             }
         }
+        
+        // Creating new objects
+        let newObjectList = updatedObjectsList.filter { !(currentIds.contains($0["id"] as? String ?? "")) }
+        
+        for obj in newObjectList {
+            switch obj["cls"] as! String {
+            case "Ingredient":
+                let _ = Ingredient(dict: obj)
+            case "DrinkComponent":
+                let _ = DrinkComponent(dict: obj)
+            case "RecipeStep":
+                let _ = RecipeStep(dict: obj)
+            case "Recipe":
+                let _ = Recipe(dict: obj)
+            case "DrinkCategory":
+                let _ = DrinkCategory(dict: obj)
+            default:
+                let _ = Drink(dict: obj)
+            }
+        }
+        
         
         // Saving the model
         model.reloadDrinks()
@@ -187,26 +186,35 @@ class DataBaseManager: NSObject {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let _ : HTTPURLResponse = response as? HTTPURLResponse else {
-                completion(["status": "error"])
+                DispatchQueue.main.async {
+                    completion(["status": "error"])
+                }
                 return
             }
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 NSLog("error=\(String(describing: error))")
-                completion(["status": "error"])
+                DispatchQueue.main.async {
+                    completion(["status": "error"])
+                }
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                completion(["status": "error"])
+                DispatchQueue.main.async {
+                    completion(["status": "error"])
+                }
                 return
             }
             
             let responseString = String(data: data, encoding: .utf8)!
             var dict = self.fromJson(data)
             dict["status"] = "ok"
-            completion(dict)
+            DispatchQueue.main.async {
+                completion(dict)
+            }
+            
         }
         task.resume()
     }

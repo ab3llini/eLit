@@ -102,12 +102,8 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         let callback: (_ data: [String: Any]) -> Void = { data in
             
             func reload() {
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.requestPending = false
-                }
-                
+                self.tableView.reloadData()
+                self.requestPending = false
             }
             
             if data["status"] as! String == "error" {
