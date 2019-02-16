@@ -66,10 +66,11 @@ class LaunchViewController: UIViewController {
         // Save new images data to db
         Model.shared.savePersistentModel()
         
-        self.launchLabel.stopChanging()
-        
         // Move to main vc
         self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
+        
+        self.launchLabel.stopChanging()
+
         
     }
     
