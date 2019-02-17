@@ -10,7 +10,7 @@ import UIKit
 import GoogleSignIn
 
 
-class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     let accountNib = "AccountTableViewCell"
 
@@ -61,6 +61,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             // Check if the user is logged in
             guard gid.hasAuthInKeychain() else {
                 cell.nameLabel.text = "Login with Google"
+                cell.emailLabel.text = ""
                 cell.profileImageView.image = UIImage(named: "GoogleIcon")
                 cell.loginIndicator.stopAnimating()
                 return cell
@@ -95,7 +96,7 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
     
     // MARK: Google Sing in
     func prepareForSignIn() {
-        GIDSignIn.sharedInstance()?.clientID = "398361482981-in05p8hbkfqrvva0gdfq4hqoh053jrbo.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.clientID = Preferences.shared.settings.gid
         if GIDSignIn.sharedInstance()?.uiDelegate == nil {
             GIDSignIn.sharedInstance()?.uiDelegate = self
         }
@@ -126,6 +127,9 @@ class SettingsTableViewController: UITableViewController, GIDSignInUIDelegate, G
             if (response["status"] as? String ?? "error") == "error" {
                 // TODO: uncomment the following line in deployment
                 GIDSignIn.sharedInstance()?.signOut()
+                let alert = UIAlertController(title: "Error", message: "An error occurred trying to sign in, please try again later", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                self.present(alert, animated: true)
                 print("ERROR saving the user in the remote DB")
             } else {
                 Model.shared.savePersistentModel()
