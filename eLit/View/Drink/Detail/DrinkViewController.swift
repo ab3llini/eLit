@@ -54,7 +54,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
         //Layout content
         self.layoutContent()
                 

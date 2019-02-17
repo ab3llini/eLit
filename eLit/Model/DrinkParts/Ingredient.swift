@@ -13,7 +13,7 @@ import CoreData
 class Ingredient: DrinkObjectWithImage {
     
     //MARK: Initializers
-    convenience init(grade: Int16, name: String) {
+    convenience init(grade: Double, name: String) {
         self.init()
         self.grade = grade
         self.name = name
@@ -27,14 +27,14 @@ class Ingredient: DrinkObjectWithImage {
         self.init()
         self.id = dict["id"] as? String ?? ""
         self.fingerprint = dict["fingerprint"] as? String ?? ""
-        self.grade = dict["grade"] as? Int16 ?? 0
+        self.grade = dict["grade"] as? Double ?? 0.0
         self.name = dict["name"] as? String
         self.ingredientDescription = dict["ingredient_description"] as? String
         self.imageURLString = dict["image"] as? String ?? ""
     }
     
     override func update(with data: [String : Any], savePersistent: Bool) {
-        self.grade = data["grade"] as? Int16 ?? 0
+        self.grade = data["grade"] as? Double ?? 0.0
         self.name = data["name"] as? String
         self.ingredientDescription = data["ingredient_description"] as? String
         self.imageURLString = data["image"] as? String ?? ""

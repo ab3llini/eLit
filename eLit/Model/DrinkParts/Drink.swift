@@ -9,6 +9,13 @@
 import UIKit
 import CoreData
 
+struct Component {
+    var qty: Double
+    var unit: String
+    var name: String
+    var image: UIImage
+}
+
 @objc(Drink)
 class Drink: DrinkObjectWithImage {
     
@@ -64,22 +71,19 @@ class Drink: DrinkObjectWithImage {
         }
     }
     
-    public func components() -> [DrinkComponent] {
+    public func components() -> [Component] {
         guard let recipeSteps = self.drinkRecipe?.steps?.array as? [RecipeStep] else {
             return []
         }
         
-        var components: [DrinkComponent] = []
+        var components: [Component] = []
         for step in recipeSteps {
             for component in (step.withComponents?.array as? [DrinkComponent] ?? []) {
-                if !components.contains(where: {$0.withIngredient?.id == component.withIngredient?.id}) {
-                    components.append(component)
-                } else {
-                    // TODO: manage this case
-                }
+                let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
+                components.removeAll(where: {$0.name == component.withIngredient?.name})
+                components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", image: component.withIngredient?.image ?? UIImage()))
             }
         }
-        
         return components
     }
     
