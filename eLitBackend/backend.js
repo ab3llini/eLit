@@ -2,6 +2,7 @@
 
 let server = '68.183.64.146'
 let port = '9999'
+let basepath = 'http://' + server + '/'
 
 // ------------------------------------------- GLOBALS -------------------------------------------
 
@@ -12,7 +13,8 @@ let units = [
     'jigger',
     'sprig',
     'twist',
-    'slice'
+    'slice',
+    'cl'
 ]
 
 
@@ -76,13 +78,13 @@ class Connection {
 
 let get_img_obj = (url) => {
 
-    return '<img src="'+url+'" class="rounded mr-3" style="height: 40px; width: 40px">'
+    return '<img src="'+basepath + url+'" class="rounded mr-3" style="height: 40px; width: 40px">'
 
 }
 
 let get_a_obj = (url) => {
 
-    return '<a href="' + url + '"> Open </a>'
+    return '<a href="' + basepath + url + '"> Open </a>'
 
 }
 
@@ -164,6 +166,12 @@ let on_add_table = (_class, _conn) => {
             var key = $(this).attr('name')
             var val = $(this).val()
 
+            if (key == 'image') {
+
+                val = _class + '/' + val
+
+            }
+
             request.data[key] = val
 
         }
@@ -186,7 +194,7 @@ let on_add_drink = (_conn) => {
     request.data.name = form.find('input[name="name"]').val()
     request.data.category = form.find('select[name="category"]').val()
     request.data.grade = form.find('input[name="grade"]').val()
-    request.data.image = form.find('input[name="image"]').val()
+    request.data.image = 'drink/' + form.find('input[name="image"]').val()
     request.data.description = form.find('input[name="description"]').val()
 
     let recipe = form.find('.recipe')

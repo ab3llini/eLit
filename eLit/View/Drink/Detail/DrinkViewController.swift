@@ -37,9 +37,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
             
         }
-        
-        print(drink.ingredients())
-
     }
     
     
@@ -70,7 +67,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.drink.ingredients().count
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -114,16 +111,17 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             return 1
         case 2:
             // Ingredients
-            return 3
+            return drink.ingredients().count
         case 3:
             // Steps
-            return drink.drinkRecipe?.steps?.count ?? 0
+            return self.steps.count
         default:
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                
         switch indexPath.section {
         case 0:
             
