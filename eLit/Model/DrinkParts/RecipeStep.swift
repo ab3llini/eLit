@@ -50,4 +50,38 @@ class RecipeStep: DrinkObject {
     func setDescription(description:String) {
         self.stepDescription = description
     }
+    
+    func translateToAttributedString() -> NSMutableAttributedString {
+        
+        let mString = NSMutableAttributedString(string: self.stepDescription!)
+        let components = self.withComponents?.array as! [DrinkComponent]
+        
+        for (index, component) in components.enumerated() {
+            
+            guard let range = mString.string.range(of: "{\(index)}") else { continue }
+
+            // Replacing i-th occurence of {i} with respective attributed string
+            let attachment = NSTextAttachment()
+            attachment.image = component.withIngredient?.image.resizeImage(targetSize: CGSize(width: 15, height: 15))
+            
+            let iconString = NSMutableAttributedString(attachment: attachment)
+            let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
+
+            iconString.appendWith(" ")
+            
+            let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+            
+            iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
+            
+            let nsRange = NSRange(range, in: mString.string)
+            
+            mString.replaceCharacters(in: nsRange, with: iconString)
+            
+            
+        }
+        
+        return mString
+        
+    }
+
 }

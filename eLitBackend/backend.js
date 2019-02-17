@@ -358,6 +358,9 @@ let bind_add_recipe_step = () => {
             create_options_for(ingredient_names) +
             '</select>\n' +
             '<div class="input-group-append">\n' +
+            '<button class="btn btn-outline-danger remove-component" type="button" onclick="remove_component(this)">\n' +
+            '<i class="fa fa-minus"></i>\n' +
+            '</button>\n' +
             '<button class="btn btn-outline-primary add-component" type="button">\n' +
             '<i class="fa fa-plus"></i>\n' +
             '</button>\n' +
@@ -445,3 +448,7 @@ $(document).ready(function () {
 
 })
 
+function remove_component(object) {
+    console.log(object)
+    $(object).parents('.form-row').remove()
+}

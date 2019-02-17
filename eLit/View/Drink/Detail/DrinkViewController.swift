@@ -8,11 +8,13 @@
 
 import UIKit
 
+
 class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     var rating: Double = 0
     var steps : [RecipeStep]!
+    var components : [Component]!
 
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
@@ -48,6 +50,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         
         // Load steps
         self.steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
+        
+        self.components = self.drink.components()
         
     }
     
@@ -148,10 +152,19 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
             
-            let ingredient = self.drink.ingredients()[indexPath.row]
+            let component = self.components[indexPath.row]
             
-            cell.ingredientImageView.image = ingredient.image
-            cell.ingredientLabel.text = ingredient.name
+            var qty : String
+            if floor(component.qty) == component.qty {
+                qty = String(format: "%.0f", component.qty)
+            } else {
+                qty = String(format: "%.1f", component.qty)
+            }
+            
+            cell.ingredientImageView.image = component.image
+            cell.qtyLabel.text = qty
+            cell.unitLabel.text = component.unit.uppercased()
+            cell.ingredientLabel.text = component.name
             
             return cell
             
@@ -176,7 +189,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             // FIXME
             cell.stepLabel.text = "Step \(indexPath.row + 1)"
-            cell.preparationLabel.text = self.steps[indexPath.row].stepDescription
+            cell.preparationLabel.attributedText = self.steps[indexPath.row].translateToAttributedString()
             
             return cell
             
@@ -211,6 +224,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         default: break
             
         }
-        
     }
+    
 }

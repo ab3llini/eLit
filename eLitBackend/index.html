@@ -55,7 +55,8 @@
                     <td><input type="text" class="form-control" name="name" placeholder="Name"/></td>
                     <td><input type="number" class="form-control" name="grade" value="0"/></td>
                     <td><input type="text" class="form-control" name="image" placeholder="Image URL" value=""/></td>
-                    <td><input type="text" class="form-control" name="ingredient_description" placeholder="Description"/></td>
+                    <td><input type="text" class="form-control" name="ingredient_description"
+                               placeholder="Description"/></td>
                     <td><input type="button" class="btn btn-md btn-primary add-ingredient"
                                value="Add ingredient"/></td>
                 </tr>
@@ -176,6 +177,9 @@
                                             <option selected>Choose...</option>
                                         </select>
                                         <div class="input-group-append">
+                                            <button class="btn btn-outline-danger" onclick="remove_component(this)" type="button">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
                                             <button class="btn btn-outline-primary add-component"
                                                     type="button">
                                                 <i class="fa fa-plus"></i>
@@ -194,7 +198,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- Bootstrap core JavaScript -->

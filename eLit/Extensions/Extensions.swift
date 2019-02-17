@@ -47,6 +47,31 @@ extension UIImageView
 
 extension UIImage {
     
+    func resizeImage(targetSize: CGSize) -> UIImage? {
+        let size = self.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
     
     static func gradientImageWithBounds(bounds: CGRect, colors: [CGColor]) -> UIImage {
         let gradientLayer = CAGradientLayer()
@@ -242,5 +267,23 @@ extension UISearchBar {
                 textField.backgroundColor = color
             }
         }
+    }
+}
+
+extension NSMutableAttributedString {
+    
+    @discardableResult func appendWith(color: UIColor = UIColor.darkText, weight: UIFont.Weight = .regular, ofSize: CGFloat = 16.0, _ text: String) -> NSMutableAttributedString{
+        let attrText = NSAttributedString.makeWith(color: color, weight: weight, ofSize:ofSize, text)
+        self.append(attrText)
+        return self
+    }
+    
+}
+extension NSAttributedString {
+    
+    public static func makeWith(color: UIColor = UIColor.darkText, weight: UIFont.Weight = .regular, ofSize: CGFloat = 12.0, _ text: String) -> NSMutableAttributedString {
+        
+        let attrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: ofSize, weight: weight), NSAttributedString.Key.foregroundColor: color]
+        return NSMutableAttributedString(string: text, attributes:attrs)
     }
 }
