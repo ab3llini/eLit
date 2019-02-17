@@ -11,6 +11,7 @@ import Foundation
 struct Settings : Codable {
     
     var host : String
+    var gid : String
     
 }
 
