@@ -33,16 +33,16 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         
         categories[index].setImage { (image) in
+            
             cell.imageView?.image = image
-            cell.setNeedsDisplay()
-
-        }
-        
-        cell.textLabel?.text = categories[index].name
+            cell.textLabel?.text = self.categories[index].name
+            cell.setNeedsLayout()
     
+        }
         
         return cell
     }

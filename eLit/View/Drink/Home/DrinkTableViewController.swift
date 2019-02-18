@@ -23,11 +23,6 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     //Load drinks
     var drinks : [Drink] = []
     var categories : [DrinkCategory] = []
-
-    
-    var drinkCoreColors : [String : UIColor] = [:]
-    var categoryCoreColors : [String : UIColor] = [:]
-
     
     // Storyboard segue
     var segue = Navigation.toDrinkVC
@@ -74,12 +69,12 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         
-        let color = self.categoryCoreColors[self.categories[targetIndex].name!]!
-        let image = self.categories[targetIndex].image
-        
-        self.setBackgroundImage(image, withColor: color)
+        self.categories[targetIndex].setImageAndColor { (image, color) in
+            self.setBackgroundImage(image, withColor: color)
+        }
         
         self.selection.selectionChanged()
+
         
     }
 
