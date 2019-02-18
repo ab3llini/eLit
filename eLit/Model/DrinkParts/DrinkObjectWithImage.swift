@@ -101,6 +101,7 @@ class DrinkObjectWithImage: DrinkObject {
                 
                 DispatchQueue.main.async {
                     actualCompletion(self.image)
+                    Model.shared.savePersistentModel()
                 }
                 
             }
