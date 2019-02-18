@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkForIngredientTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
+class DrinkForIngredientTableViewController: BlurredBackgroundTableViewController, UIViewControllerPreviewingDelegate {
     
     var withIngredient: Ingredient?
     var segue: Navigation = .fromDrinkForIngredientToDrinkVC
@@ -19,6 +19,9 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.segue = Navigation.fromDrinkForIngredientToDrinkVC
+        withIngredient?.setImageAndColor(completion: { image, color in
+            self.setBackgroundImage(image, withColor: color.withAlphaComponent(0.6))
+        })
         
         //Load nibs
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
@@ -37,7 +40,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
             }
             return drink.ingredients().contains(ing)
         }
-        self.title = "Drinks with \"\(self.withIngredient?.name ?? "")\""
+        self.title = "\(self.withIngredient?.name ?? "")"
         self.tableView.reloadData()
     }
 

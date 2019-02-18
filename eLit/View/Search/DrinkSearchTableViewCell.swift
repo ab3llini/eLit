@@ -39,12 +39,16 @@ class DrinkSearchTableViewCell: UITableViewCell {
             let drink = object as! Drink
             self.objectNameLabel.text = drink.name ?? ""
             
-            // TODO: fix this
-            self.objectImageView.image = drink.image
+            drink.setImage(completion: { image in
+                self.objectImageView.image = image
+            })
             
         case .ingredient:
             let ingredient = object as! Ingredient
             self.objectNameLabel.text = ingredient.name ?? ""
+            ingredient.setImage(completion: { image in
+                self.objectImageView.image = image
+            })
             self.objectImageView.image = UIImage(named: ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
         }
         

@@ -115,6 +115,21 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
     return payload
 
 
+def on_fetch_review_request(data: Dict) -> Dict:
+    drink_id = data['drink_id']
+    user_id = data['from_user']
+    payload = {'request': 'fetch_review'}
+    try:
+        user = User.objects(user_id=user_id).get()
+        review = Review.objects(Q(for_drink=drink_id) & Q(written_by=user.id)).get()
+        payload['data'] = review.to_dict()
+        payload['status_code'] = 200
+        return payload
+    except DoesNotExist:
+        payload['status_code'] = 500
+        return payload
+
+
 def on_add_review_request(data: Dict) -> Dict:
     payload = {'request': 'add_review'}
     user_id = data['user_id']

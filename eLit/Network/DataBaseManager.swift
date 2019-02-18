@@ -126,6 +126,14 @@ class DataBaseManager: NSObject {
         self.sendRequest(for: .FETCH_REVIEWS, with: request, completion: completion)
     }
     
+    
+    func requestReview(for drink: Drink, from userID: String, completion: @escaping (_ data: [String: Any]) -> Void) {
+        let request: [String: Any] = [
+            "drink_id": drink.id ?? "0",
+            "from_user": userID] as [String: Any]
+        self.sendRequest(for: .FETCH_REVIEW, with: request, completion: completion)
+    }
+    
     /**
      This method will send a request to the DB to add a review for specific drink
      - Parameter drink: is the drink for the reviews

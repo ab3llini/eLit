@@ -32,6 +32,14 @@ class AddReviewViewController: BlurredBackgroundViewController {
         self.drink.setImageAndColor { (image, color) in
             self.setBackgroundImage(image, withColor: color)
         }
+        
+        DataBaseManager.shared.requestReview(for: drink, from: Model.shared.user?.userID ?? "", completion: { data in
+            guard (data["status"] as! String) == "ok" else { return }
+            let d = data["data"] as! [String: Any]
+            self.reviewTitle.text = d["title"] as? String ?? ""
+            self.reviewContent.text = d["text"] as? String ?? ""
+            self.ratingView.rating = d["rating"] as? Double ?? 0.0
+        })
     }
     
     func onReviewSubmitted(response : [String : Any]) -> Void {
@@ -51,7 +59,9 @@ class AddReviewViewController: BlurredBackgroundViewController {
         }
         
         let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
     
     
         self.present(alert, animated: true)
@@ -61,7 +71,7 @@ class AddReviewViewController: BlurredBackgroundViewController {
     @objc func submitReview() {
         
         
-        if (reviewTitle.text!.count >= 5) {
+        if ((reviewTitle.text?.count ?? 0) >= 5) {
             
 
             DataBaseManager.shared.addNewReview(
