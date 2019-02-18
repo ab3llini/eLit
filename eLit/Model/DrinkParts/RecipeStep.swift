@@ -62,7 +62,9 @@ class RecipeStep: DrinkObject {
 
             // Replacing i-th occurence of {i} with respective attributed string
             let attachment = NSTextAttachment()
-            attachment.image = component.withIngredient?.image.resizeImage(targetSize: CGSize(width: 15, height: 15))
+            
+            
+            //attachment.image = component.withIngredient?.image.resizeImage(targetSize: CGSize(width: 15, height: 15))
             
             let iconString = NSMutableAttributedString(attachment: attachment)
             let nameString = NSAttributedString(string: (component.withIngredient?.name)!)

@@ -19,7 +19,6 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
         
     //Load categories
-    
     var categories : [DrinkCategory]!
     
     
@@ -35,12 +34,15 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        let image = categories[index].image
-        cell.imageView?.image = image
-        cell.textLabel?.text = categories[index].name
         
-        //let bg = Renderer.shared.getCoreColors()[drinks[index].name!]!.withAlphaComponent(0.1)
-        //cell.setBlurredImage(to: image!, withBackground: bg)
+        categories[index].setImage { (image) in
+            cell.imageView?.image = image
+            cell.setNeedsDisplay()
+
+        }
+        
+        cell.textLabel?.text = categories[index].name
+    
         
         return cell
     }

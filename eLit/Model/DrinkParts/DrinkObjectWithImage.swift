@@ -12,7 +12,7 @@ import UIImageColors
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
-    var image: UIImage = UIImage()
+    var image: UIImage?
     var color: UIColor?
     
     func setImage(forceReload: Bool = false, completion: ((_ image: UIImage?) -> Void)? = nil) {
@@ -36,14 +36,35 @@ class DrinkObjectWithImage: DrinkObject {
             }
         } else {
             getImageData(forceReload: true, completion: completion)
-            guard let _ = self.imageData else {
-                self.image = UIImage()
-                return
-            }
+
         }
         
     }
     
+    func setImageAndColor(completion: @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
+        
+        self.setImage { (image) in
+            self.setColor(completion: { (color) in
+                completion(image, color)
+            })
+        }
+        
+    }
+    
+    func setColor(completion: @escaping (_ color: UIColor) -> Void) {
+        
+        guard self.color == nil else {
+            completion(self.color!)
+            return
+        }
+        
+        self.setImage { (image) in
+            image?.getColors({ (colors) in
+                completion(colors.primary)
+            })
+        }
+        
+    }
     
     private func getImageData(forceReload: Bool, completion: ((_ image: UIImage?) -> Void)?) {
         if self.imageData != nil && (!forceReload) {
@@ -72,13 +93,22 @@ class DrinkObjectWithImage: DrinkObject {
                 DispatchQueue.main.async {
                     actualCompletion(UIImage())
                 }
-                return
+                
             }
-            
-            DispatchQueue.main.async {
+            else {
                 self.imageData = data
                 self.image = UIImage(data: data)
+                
+                DispatchQueue.main.async {
+                    actualCompletion(self.image)
+                }
+                
             }
+            
+            
+            
+            
+            
         }
         
         task.resume()
