@@ -40,18 +40,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
         }
         
-        for step in drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? [] {
-            
-            step.setAttributedString { (_) in
-                
-                self.steps.append(step)
-        
-                self.tableView.reloadData()
-                
-            }
-            
-        }
-        
     }
     
     
@@ -62,6 +50,21 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         self.drink = drink
         
         self.components = self.drink.components()
+        
+        let steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
+        
+        for step in steps {
+            
+            step.setAttributedString { (_) in
+
+                self.steps.append(step)
+                
+                if step == steps.last {
+                    self.tableView.reloadSections([3], with: .automatic)
+                }
+            }
+            
+        }
         
     }
     
