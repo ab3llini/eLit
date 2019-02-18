@@ -49,8 +49,6 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         
         self.drinks = Model.shared.getDrinks()
         self.categories = Model.shared.getCategories()
-        self.drinkCoreColors = Renderer.shared.getDrinkCoreColors()
-        self.categoryCoreColors = Renderer.shared.getCategoryCoreColors() 
         
         
         // Remove space between sections.
@@ -64,12 +62,12 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         self.navigationController?.delegate = self
         
         // Assign bg
-        if (self.drinks.count > 0) {
+        if (self.categories.count > 0) {
             
-            print(Model.shared.getCategories()[0].image)
-            
-            self.setBackgroundImage(self.categories[0].image, withColor:
-                self.categoryCoreColors[self.categories[0].name!]!)
+            self.categories.first!.setImageAndColor { (image, color) in
+                self.setBackgroundImage(image, withColor:color)
+            }
+        
         }
         
     }
@@ -159,10 +157,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
             //Drinks
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
             let drink : Drink = drinks[indexPath.row]
-            let color = Renderer.shared.getDrinkCoreColors()[drink.name!]!
-            let image = drink.image
-            
-            cell.setDrink(drink: drink, withImage: image, andColor: color)
+            cell.setDrink(drink: drink)
             
             return cell
             
@@ -211,21 +206,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         
         switch section {
         case 0:
-            /*
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 100))
             
-            view.backgroundColor = UIColor.clear
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: 100)
-            label.text = "Home"
-            label.textColor = UIColor.black
-            label.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
-            
-            view.addSubview(label)
-            
-            return view
-             */
             return nil
 
         default:

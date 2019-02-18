@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import UIImageColors
 
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
     var image: UIImage = UIImage()
+    var color: UIColor?
     
     func setImage(forceReload: Bool = false) {
         if forceReload {
@@ -25,6 +27,31 @@ class DrinkObjectWithImage: DrinkObject {
                 self.image = UIImage()
                 return
             }
+        }
+        
+    }
+    
+    func setImageAndColor(completion: @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
+        
+        self.setImage { (image) in
+            self.setColor(completion: { (color) in
+                completion(image, color)
+            })
+        }
+        
+    }
+    
+    func setColor(completion: @escaping (_ color: UIColor) -> Void) {
+        
+        guard self.color != nil else {
+            completion(self.color!)
+            return
+        }
+        
+        self.setImage { (image) in
+            image?.getColors({ (colors) in
+                completion(colors.primary)
+            })
         }
         
     }

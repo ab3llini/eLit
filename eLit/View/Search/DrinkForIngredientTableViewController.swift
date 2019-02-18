@@ -27,13 +27,7 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
         registerForPreviewing(with: self, sourceView: self.tableView)
         
         self.drinks = Model.shared.getDrinks()
-        self.coreColors = Renderer.shared.getDrinkCoreColors()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,23 +66,14 @@ class DrinkForIngredientTableViewController: UITableViewController, UIViewContro
         
         //Drinks
         let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
-        let drink : Drink = drinks[indexPath.row]
-        let color = Renderer.shared.getDrinkCoreColors()[drink.name!]!
-        let image = drink.image
         
-        cell.setDrink(drink: drink, withImage: image, andColor: color)
+        let drink : Drink = drinks[indexPath.row]
+        
+        cell.setDrink(drink: drink)
         
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return nil
-//    }
-//    
+   
     //MARK: preview
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         show(viewControllerToCommit, sender: self)

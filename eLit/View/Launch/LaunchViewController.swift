@@ -29,39 +29,7 @@ class LaunchViewController: UIViewController {
         
     }
     
-    private func prepareData(realoadImages : Bool = false) {
-        
-        DispatchQueue.global().async {
-            print("Preparing data...")
-            
-            //self.launchLabel.text = "Adding sugar..."
-            Model.shared.getDrinks().forEach { (drink) in
-                drink.setImage()
-            }
-            
-            Model.shared.getCategories().forEach { (category) in
-                category.setImage()
-            }
-            
-            Model.shared.getIngredients().forEach { (ingredient) in
-                ingredient.setImage()
-            }
-            
-            DispatchQueue.main.sync {
-                
-                self.finalizeData()
-
-            }
-            
-        }
-        
-    }
-    
     private func finalizeData() {
-        print("finalizing")
-        
-        // Compute core colors
-        _ = Renderer.shared.getDrinkCoreColors()
         
         // Save new images data to db
         Model.shared.savePersistentModel()
@@ -69,6 +37,7 @@ class LaunchViewController: UIViewController {
         // Move to main vc
         self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
         
+        // Stop label
         self.launchLabel.stopChanging()
 
         
@@ -101,7 +70,7 @@ class LaunchViewController: UIViewController {
                     Model.shared.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
                     
                     // Proceed
-                    self.prepareData()
+                    self.finalizeData()
                     
                 }
                 else {
@@ -126,7 +95,7 @@ class LaunchViewController: UIViewController {
                     DataBaseManager.shared.defaultUdateDbHandler(response)
                     
                     // Proceed
-                    self.prepareData()
+                    self.finalizeData()
             
                 }
                 else {

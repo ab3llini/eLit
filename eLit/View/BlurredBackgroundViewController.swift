@@ -71,7 +71,7 @@ class BlurredBackgroundViewController: UIViewController {
     }
     
     // Changes the background image and color
-    public func setBackgroundImage(_ image : UIImage, withColor color : UIColor) {
+    public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor) {
         
         UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
             

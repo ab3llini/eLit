@@ -78,10 +78,16 @@ class Drink: DrinkObjectWithImage {
         
         var components: [Component] = []
         for step in recipeSteps {
+            
             for component in (step.withComponents?.array as? [DrinkComponent] ?? []) {
-                let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
-                components.removeAll(where: {$0.name == component.withIngredient?.name})
-                components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", image: component.withIngredient?.image ?? UIImage()))
+                
+                component.withIngredient?.setImage(completion: { (image) in
+                    let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
+                    components.removeAll(where: {$0.name == component.withIngredient?.name})
+                    components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", image: image ?? UIImage()))
+                })
+                
+                
             }
         }
         return components

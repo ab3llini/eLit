@@ -65,7 +65,10 @@ class DrinkViewController: BlurredBackgroundTableViewController {
 
     private func layoutContent() {
         
-        self.setBackgroundImage(drink.image, withColor: Renderer.shared.getDrinkCoreColors()[self.drink.name!]!)
+        self.drink.setImageAndColor { (image, color) in
+            self.setBackgroundImage(image, withColor: color)
+        }
+        
         
     }
     
@@ -130,7 +133,11 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let cell : DrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkImageTableViewCell") as! DrinkImageTableViewCell
             
-            cell.imageViewContainer.image = drink.image
+            drink.setImage { (image) in
+                cell.imageViewContainer.image = image
+
+            }
+        
             cell.drinkNameLabel.text = self.drink.name
             
             return cell
