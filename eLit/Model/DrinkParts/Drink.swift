@@ -13,7 +13,12 @@ struct Component {
     var qty: Double
     var unit: String
     var name: String
-    var image: UIImage
+    
+    var ingredient: Ingredient?
+    
+    func setImage(completion: @escaping (_ image: UIImage?) -> Void) -> Void {
+        self.ingredient?.setImage(completion: completion)
+    }
 }
 
 @objc(Drink)
@@ -80,14 +85,9 @@ class Drink: DrinkObjectWithImage {
         for step in recipeSteps {
             
             for component in (step.withComponents?.array as? [DrinkComponent] ?? []) {
-                
-                component.withIngredient?.setImage(completion: { (image) in
-                    let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
-                    components.removeAll(where: {$0.name == component.withIngredient?.name})
-                    components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", image: image ?? UIImage()))
-                })
-                
-                
+                let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
+                components.removeAll(where: {$0.name == component.withIngredient?.name})
+                components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", ingredient: component.withIngredient))
             }
         }
         return components

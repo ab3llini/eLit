@@ -38,7 +38,6 @@ class DrinkObjectWithImage: DrinkObject {
             getImageData(forceReload: true, completion: completion)
 
         }
-        
     }
     
     func setImageAndColor(completion: @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
