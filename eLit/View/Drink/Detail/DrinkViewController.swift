@@ -13,8 +13,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     
     var drink : Drink!
     var rating: Double = 0
-    var steps : [RecipeStep]!
-    var components : [Component]!
+    var steps : [RecipeStep] = []
+    var components : [Component] = []
 
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
@@ -39,6 +39,19 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
             
         }
+        
+        for step in drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? [] {
+            
+            step.setAttributedString { (_) in
+                
+                self.steps.append(step)
+                
+                self.tableView.reloadData()
+                
+            }
+            
+        }
+        
     }
     
     
@@ -47,9 +60,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         
         // Set drink
         self.drink = drink
-        
-        // Load steps
-        self.steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
         
         self.components = self.drink.components()
         
@@ -68,7 +78,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         self.drink.setImageAndColor { (image, color) in
             self.setBackgroundImage(image, withColor: color)
         }
-        
         
     }
     
@@ -127,9 +136,6 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        print("Asked for cell \(indexPath.section)")
-
         
         switch indexPath.section {
         case 0:
@@ -201,11 +207,8 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             }
             
             cell.stepLabel.text = "Step \(indexPath.row + 1)"
-            self.steps[indexPath.row].setAttributedString { (string) in
-                
-                cell.preparationLabel.attributedText = string
-                
-            }
+            cell.preparationLabel.attributedText = self.steps[indexPath.row].attributedString
+            
 
             return cell
             

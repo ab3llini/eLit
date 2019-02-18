@@ -56,59 +56,55 @@ class RecipeStep: DrinkObject {
     
     func setAttributedString(completion :@escaping (_ string : NSMutableAttributedString) -> Void) {
         
-        guard !(self.attributedString != nil) else {
-            completion(self.attributedString!)
-            return
-        }
+        DispatchQueue.global().async {
         
-        let mString = NSMutableAttributedString(string: self.stepDescription!)
-        let components = self.withComponents?.array as! [DrinkComponent]
-        
-        if components.count > 0 {
+            let appendQueue = DispatchQueue(label: "appendQueue")
+
             
-            for component in components {
-                
-                component.withIngredient?.setImage { (_) in
-                 
-                    if component == components.last {
-                        
-                        for (index, component) in components.enumerated() {
-                            
-                            let image = component.withIngredient?.image
-                            
-                            guard let range = mString.string.range(of: "{\(index)}") else { continue }
-                            
-                            let attachment = NSTextAttachment()
-                            
-                            attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
-                            
-                            let iconString = NSMutableAttributedString(attachment: attachment)
-                            let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
-                            
-                            let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
-                            
-                        
-                            iconString.appendWith(" ")
-                            iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
-                            
-                            let nsRange = NSRange(range, in: mString.string)
-                            
-                            mString.replaceCharacters(in: nsRange, with: iconString)
-                            
-                        }
-                        self.attributedString = mString
-                        print(mString.string)
-                        completion(mString)
-                    }
-                    
-                }
-                
-                
+            guard !(self.attributedString != nil) else {
+                completion(self.attributedString!)
+                return
             }
             
-        }
-        else {
-            completion(mString)
+            let mString = NSMutableAttributedString(string: self.stepDescription!)
+            let components = self.withComponents?.array as! [DrinkComponent]
+            
+            
+            for (index, component) in components.enumerated() {
+                
+                component.withIngredient?.setImage { (image) in
+                
+                    let attachment = NSTextAttachment()
+                    
+                    attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
+                    
+                    let iconString = NSMutableAttributedString(attachment: attachment)
+                    let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
+                    
+                    let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+                    
+                    
+                    iconString.appendWith(" ")
+                    iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
+                    
+                    appendQueue.sync {
+                        guard let range = mString.string.range(of: "{\(index)}") else { return }
+                        let nsRange = NSRange(range, in: mString.string)
+                        mString.replaceCharacters(in: nsRange, with: iconString)
+                        
+                        if (component == components.last) {
+                            self.attributedString = mString
+                            DispatchQueue.main.async {
+                                completion(mString)
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
         }
     }
 
