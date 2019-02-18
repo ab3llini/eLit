@@ -45,7 +45,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             step.setAttributedString { (_) in
                 
                 self.steps.append(step)
-                
+        
                 self.tableView.reloadData()
                 
             }

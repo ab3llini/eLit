@@ -62,47 +62,56 @@ class RecipeStep: DrinkObject {
 
             
             guard !(self.attributedString != nil) else {
-                completion(self.attributedString!)
+                DispatchQueue.main.async {
+                    completion(self.attributedString!)
+                }
                 return
             }
             
             let mString = NSMutableAttributedString(string: self.stepDescription!)
             let components = self.withComponents?.array as! [DrinkComponent]
-            
-            
-            for (index, component) in components.enumerated() {
-                
-                component.withIngredient?.setImage { (image) in
-                
-                    let attachment = NSTextAttachment()
-                    
-                    attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
-                    
-                    let iconString = NSMutableAttributedString(attachment: attachment)
-                    let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
-                    
-                    let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
-                    
-                    
-                    iconString.appendWith(" ")
-                    iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
-                    
-                    appendQueue.sync {
-                        guard let range = mString.string.range(of: "{\(index)}") else { return }
-                        let nsRange = NSRange(range, in: mString.string)
-                        mString.replaceCharacters(in: nsRange, with: iconString)
                         
-                        if (component == components.last) {
-                            self.attributedString = mString
-                            DispatchQueue.main.async {
-                                completion(mString)
+            if (components.count > 0) {
+                for (index, component) in components.enumerated() {
+                    
+                    component.withIngredient?.setImage { (image) in
+                    
+                        let attachment = NSTextAttachment()
+                        
+                        attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
+                        
+                        let iconString = NSMutableAttributedString(attachment: attachment)
+                        let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
+                        
+                        let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+                        
+                        
+                        iconString.appendWith(" ")
+                        iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
+                        
+                        appendQueue.sync {
+                            if let range = mString.string.range(of: "{\(index)}") {
+                                let nsRange = NSRange(range, in: mString.string)
+                                mString.replaceCharacters(in: nsRange, with: iconString)
+                            }
+                            
+                            if (component == components.last) {
+                                self.attributedString = mString
+                                DispatchQueue.main.async {
+                                    completion(mString)
+                                }
+                                
                             }
                             
                         }
                         
+                        
                     }
-                    
-                    
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    completion(mString)
                 }
             }
         }
