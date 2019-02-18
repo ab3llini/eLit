@@ -25,13 +25,13 @@ class DrinkTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Initialization code
-        // _ = self.backgroundImage.addBlurEffect(effect: .light)
-        
         //Disable ugly selection effect
         self.selectionStyle = .none;
         
         self.containerView.layer.borderWidth = 1
+        
+        self.alpha = 0
+
         
     }
 
@@ -43,51 +43,47 @@ class DrinkTableViewCell: UITableViewCell {
     
     private func setDrinkImage(image : UIImage?) {
         
-        UIView.animate(withDuration: animationDuration) {
-            self.drinkImageView.image = image
-        }
+        self.drinkImageView.image = image
+        
 
     }
     
     private func setDrinkBackgroundColor(color : UIColor) {
         
-        UIView.animate(withDuration: animationDuration) {
-            self.backgroundImage.backgroundColor = color.withAlphaComponent(0.1)
-            self.containerView.layer.borderColor = color.withAlphaComponent(0.2).cgColor
-        }
+        self.backgroundImage.backgroundColor = color.withAlphaComponent(0.1)
+        self.containerView.layer.borderColor = color.withAlphaComponent(0.2).cgColor
+    
         
     }
     
     private func setAlcholicRibbon(degree: String, color : UIColor) {
-        UIView.animate(withDuration: animationDuration) {
-            self.alcholicRibbonView.label.text = degree + "%"
-            self.alcholicRibbonView.label.textColor = UIColor.black
-            self.alcholicRibbonView.backgroundColor = color.withAlphaComponent(0.2)
-        }
+        self.alcholicRibbonView.label.text = degree + "%"
+        self.alcholicRibbonView.label.textColor = UIColor.black
+        self.alcholicRibbonView.backgroundColor = color.withAlphaComponent(0.2)
 
     }
     
     private func setBaseRibbon(base: String, color : UIColor) {
         
-        UIView.animate(withDuration: animationDuration) {
-            self.baseRIbbonView.label.text = base
-            self.baseRIbbonView.backgroundColor = color
-            self.baseRIbbonView.label.textColor = UIColor.black
-        }
+        self.baseRIbbonView.label.text = base
+        self.baseRIbbonView.backgroundColor = color
+        self.baseRIbbonView.label.textColor = UIColor.black
+
 
     }
     
     public func setDrink(drink : Drink) {
         
-        self.setBaseRibbon(base: (drink.ofCategory?.name)!, color: UIColor.white.withAlphaComponent(0.3))
-        self.drinkNameLabel.text = drink.name
-        
-        
         drink.setImageAndColor { (image, color) in
-            self.setDrinkImage(image: image)
-            self.setDrinkBackgroundColor(color: color)
-            self.setAlcholicRibbon(degree: String(drink.degree), color: color)
-
+            UIView.animate(withDuration: self.animationDuration) {
+                self.setBaseRibbon(base: (drink.ofCategory?.name)!, color: UIColor.white.withAlphaComponent(0.3))
+                self.drinkNameLabel.text = drink.name
+                self.setDrinkImage(image: image)
+                self.setDrinkBackgroundColor(color: color)
+                self.setAlcholicRibbon(degree: String(drink.degree), color: color)
+                self.alpha = 1
+            }
+        
         }
         
     }
