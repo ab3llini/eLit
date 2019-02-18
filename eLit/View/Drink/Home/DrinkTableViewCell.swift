@@ -30,7 +30,7 @@ class DrinkTableViewCell: UITableViewCell {
         
         self.containerView.layer.borderWidth = 1
         
-        self.alpha = 0
+        self.containerView.alpha = 0
 
         
     }
@@ -81,7 +81,7 @@ class DrinkTableViewCell: UITableViewCell {
                 self.setDrinkImage(image: image)
                 self.setDrinkBackgroundColor(color: color)
                 self.setAlcholicRibbon(degree: String(drink.degree), color: color)
-                self.alpha = 1
+                self.containerView.alpha = 1
             }
         
         }

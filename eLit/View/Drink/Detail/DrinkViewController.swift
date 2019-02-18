@@ -127,7 +127,10 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
+        
+        print("Asked for cell \(indexPath.section)")
+
+        
         switch indexPath.section {
         case 0:
             
@@ -168,7 +171,10 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 qty = String(format: "%.1f", component.qty)
             }
             
-            cell.ingredientImageView.image = component.image
+            component.setImage { (image) in
+                cell.ingredientImageView.image = image
+            }
+            
             cell.qtyLabel.text = qty
             cell.unitLabel.text = component.unit.uppercased()
             cell.ingredientLabel.text = component.name
@@ -194,10 +200,13 @@ class DrinkViewController: BlurredBackgroundTableViewController {
                 
             }
             
-            // FIXME
             cell.stepLabel.text = "Step \(indexPath.row + 1)"
-            cell.preparationLabel.attributedText = self.steps[indexPath.row].translateToAttributedString()
-            
+            self.steps[indexPath.row].setAttributedString { (string) in
+                
+                cell.preparationLabel.attributedText = string
+                
+            }
+
             return cell
             
         default:

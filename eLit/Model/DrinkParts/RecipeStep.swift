@@ -11,6 +11,9 @@ import CoreData
 
 @objc(RecipeStep)
 class RecipeStep: DrinkObject {
+    
+    var attributedString : NSMutableAttributedString?
+    
     //MARK: Attributes
     public override var description: String {
         let components = self.withComponents?.array as! [DrinkComponent]
@@ -51,39 +54,62 @@ class RecipeStep: DrinkObject {
         self.stepDescription = description
     }
     
-    func translateToAttributedString() -> NSMutableAttributedString {
+    func setAttributedString(completion :@escaping (_ string : NSMutableAttributedString) -> Void) {
+        
+        guard !(self.attributedString != nil) else {
+            completion(self.attributedString!)
+            return
+        }
         
         let mString = NSMutableAttributedString(string: self.stepDescription!)
         let components = self.withComponents?.array as! [DrinkComponent]
         
-        for (index, component) in components.enumerated() {
+        if components.count > 0 {
             
-            guard let range = mString.string.range(of: "{\(index)}") else { continue }
-
-            // Replacing i-th occurence of {i} with respective attributed string
-            let attachment = NSTextAttachment()
-            
-            
-            //attachment.image = component.withIngredient?.image.resizeImage(targetSize: CGSize(width: 15, height: 15))
-            
-            let iconString = NSMutableAttributedString(attachment: attachment)
-            let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
-
-            iconString.appendWith(" ")
-            
-            let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
-            
-            iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
-            
-            let nsRange = NSRange(range, in: mString.string)
-            
-            mString.replaceCharacters(in: nsRange, with: iconString)
-            
+            for component in components {
+                
+                component.withIngredient?.setImage { (_) in
+                 
+                    if component == components.last {
+                        
+                        for (index, component) in components.enumerated() {
+                            
+                            let image = component.withIngredient?.image
+                            
+                            guard let range = mString.string.range(of: "{\(index)}") else { continue }
+                            
+                            let attachment = NSTextAttachment()
+                            
+                            attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
+                            
+                            let iconString = NSMutableAttributedString(attachment: attachment)
+                            let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
+                            
+                            let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+                            
+                        
+                            iconString.appendWith(" ")
+                            iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
+                            
+                            let nsRange = NSRange(range, in: mString.string)
+                            
+                            mString.replaceCharacters(in: nsRange, with: iconString)
+                            
+                        }
+                        self.attributedString = mString
+                        print(mString.string)
+                        completion(mString)
+                    }
+                    
+                }
+                
+                
+            }
             
         }
-        
-        return mString
-        
+        else {
+            completion(mString)
+        }
     }
 
 }
