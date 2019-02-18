@@ -13,6 +13,7 @@ request_map = {
     'update_db': on_update_request,
     'user_sign_in': on_user_sign_in_request,
     'fetch_reviews': on_fetch_reviews_request,
+    'fetch_review': on_fetch_review_request,
     'rating': on_rating_request,
     'insert_ingredient': on_insert_ingredient_request,
     'fetch_ingredients': on_fetch_ingredients_request,
@@ -20,7 +21,7 @@ request_map = {
     'insert_drink': on_insert_drink_request,
     'fetch_categories': on_fetch_categories_request,
     'insert_category': on_insert_category_request,
-    'add_review' : on_add_review_request
+    'add_review': on_add_review_request
 }
 
 logger = logging.getLogger('server_logger')

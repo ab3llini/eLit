@@ -31,6 +31,6 @@ class Review(DBObject):
         data['rating'] = str(self.rating)
         data['for_drink_name'] = self.for_drink.name if self.for_drink is not None else ""
         data['written_by'] = (self.written_by.name + ' ' + self.written_by.family_name) if self.written_by is not None else ""
-        data['timestamp'] = self.timestamp
+        data['timestamp'] = self.timestamp.strftime('%w %b \'%y')
 
         return data
