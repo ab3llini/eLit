@@ -3,7 +3,7 @@
     <entity name="CoreDataObject" representedClassName="CoreDataObject" isAbstract="YES" syncable="YES" codeGenerationType="category"/>
     <entity name="Drink" representedClassName="Drink" parentEntity="DrinkObjectWithImage" syncable="YES" codeGenerationType="category">
         <attribute name="createdBy" optional="YES" attributeType="String" defaultValueString="eLit" syncable="YES"/>
-        <attribute name="degree" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="degree" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="drinkDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="drinkRecipe" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Recipe" inverseName="ofDrink" inverseEntity="Recipe" syncable="YES"/>

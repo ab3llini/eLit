@@ -187,10 +187,14 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             let component = self.components[indexPath.row]
             
             var qty : String
-            if floor(component.qty) == component.qty {
+            if component.qty == 0 {
+                qty = ""
+            } else if floor(component.qty) == component.qty {
                 qty = String(format: "%.0f", component.qty)
-            } else {
+            } else if (component.qty * 10) == floor(component.qty * 10) {
                 qty = String(format: "%.1f", component.qty)
+            } else {
+                qty = String(format: "%.2f", component.qty)
             }
             
             component.setImage { (image) in

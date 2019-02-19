@@ -29,7 +29,7 @@ class DrinkComponent: DrinkObject {
         self.init()
         self.id = dict["id"] as? String ?? ""
         self.fingerprint = dict["fingerprint"] as? String ?? ""
-        self.qty = dict["qty"] as? Double ?? 0.0
+        self.qty = Double(dict["qty"] as? String ?? "0.0") ?? 0.0
         self.unit = dict["unit"] as? String
         let ingredientDict = dict["ingredient"] as? [String: Any] ?? [:]
         let ingredientID = ingredientDict["id"] as? String ?? ""

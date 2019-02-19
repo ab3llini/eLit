@@ -7,7 +7,7 @@ from database_classes.drink_object import DrinkObject
 
 class RecipeStep(DrinkObject):
     step_description = me.StringField()
-    components = me.ListField(me.ReferenceField(DrinkComponent))
+    components = me.ListField(me.ReferenceField(DrinkComponent, reverse_delete_rule=me.CASCADE))
 
     def __init__(self, step_description: str = None, components: List[DrinkComponent] = None, *args, **values):
         super().__init__(*args, **values)

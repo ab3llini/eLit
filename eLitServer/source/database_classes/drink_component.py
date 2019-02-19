@@ -10,7 +10,7 @@ from database_classes.drink_object import DrinkObject
 class DrinkComponent(DrinkObject):
     qty = me.FloatField(default=0.0)
     unit = me.StringField(required=True, unique=False)
-    ingredient = me.ReferenceField(Ingredient, required=True)
+    ingredient = me.ReferenceField(Ingredient, required=True, reverse_delete_rule=me.NULLIFY)
 
     def __init__(self, ingredient: Ingredient, qty: float = 0.0, unit: str = None, *args, **values):
         super().__init__(*args, **values)

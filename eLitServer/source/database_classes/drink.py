@@ -11,9 +11,9 @@ class Drink(DrinkObject):
     name = me.StringField(required=True, unique=True)
     degree = me.FloatField(required=True)
     image = me.StringField()
-    recipe = me.ReferenceField(Recipe, required=True)
+    recipe = me.ReferenceField(Recipe, required=True, reverse_delete_rule=me.CASCADE)
     description = me.StringField()
-    category = me.ReferenceField(DrinkCategory, required=True)
+    category = me.ReferenceField(DrinkCategory, required=True, reverse_delete_rule=me.NULLIFY)
 
     def __init__(self, name: str, degree: float, image: str = None, description: str = '',
                  recipe: Recipe = None, category: DrinkCategory = None, *args, **values):

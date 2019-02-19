@@ -36,7 +36,7 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = recipe
     }
     
-    convenience init(name: String, image: String, degree: Int16, recipe: Recipe? = nil) {
+    convenience init(name: String, image: String, degree: Double, recipe: Recipe? = nil) {
         self.init()
         self.name = name
         self.degree = degree
@@ -49,7 +49,7 @@ class Drink: DrinkObjectWithImage {
         self.fingerprint = dict["fingerprint"] as? String ?? ""
         self.name = dict["name"] as? String ?? ""
         self.imageURLString = dict["image"] as? String ?? ""
-        self.degree = dict["degree"] as? Int16 ?? 0
+        self.degree = dict["degree"] as? Double ?? 0
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
@@ -85,6 +85,7 @@ class Drink: DrinkObjectWithImage {
         for step in recipeSteps {
             
             for component in (step.withComponents?.array as? [DrinkComponent] ?? []) {
+                print("In drink: \(component.qty)")
                 let old: Double = components.first(where: {$0.name == component.withIngredient?.name})?.qty ?? 0
                 components.removeAll(where: {$0.name == component.withIngredient?.name})
                 components.append(Component(qty: old + component.qty, unit: component.unit ?? "", name: component.withIngredient?.name ?? "", ingredient: component.withIngredient))
@@ -96,7 +97,7 @@ class Drink: DrinkObjectWithImage {
     override func update(with data: [String : Any], savePersistent: Bool) {
         self.name = data["name"] as? String ?? ""
         self.imageURLString = data["image"] as? String ?? ""
-        self.degree = data["degree"] as? Int16 ?? 0
+        self.degree = data["degree"] as? Double ?? 0
         self.drinkRecipe = Recipe(dict: data["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = data["drink_description"] as? String ?? ""
         self.createdBy = data["created_by"] as? String ?? ""
