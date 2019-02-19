@@ -22,7 +22,7 @@ class Review(DBObject):
         self.rating = rating
         self.for_drink = for_drink
         self.written_by = written_by
-        self.timestamp = timestamp or datetime.datetime.utcnow
+        self.timestamp = timestamp or datetime.datetime.utcnow()
 
     def to_dict(self) -> Dict:
         data = super().to_dict()
@@ -31,6 +31,6 @@ class Review(DBObject):
         data['rating'] = str(self.rating)
         data['for_drink_name'] = self.for_drink.name if self.for_drink is not None else ""
         data['written_by'] = (self.written_by.name + ' ' + self.written_by.family_name) if self.written_by is not None else ""
-        data['timestamp'] = self.timestamp.strftime('%w %b \'%y')
+        data['timestamp'] = self.timestamp.strftime('%-d %b \'%y')
 
         return data

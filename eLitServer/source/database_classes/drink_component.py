@@ -26,7 +26,7 @@ class DrinkComponent(DrinkObject):
 
     def to_dict(self) -> Dict:
         data = super().to_dict()
-        data['qty'] = self.qty
+        data['qty'] = str(self.qty)
         data['unit'] = self.unit
         data['ingredient'] = self.ingredient.to_dict()
         return data
