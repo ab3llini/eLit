@@ -16,21 +16,13 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     var steps : [RecipeStep] = []
     var components : [Component] = []
 
+    var didPrepareSteps = false
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        //Sending request for drink rating
-        DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
-            if (data["status"] as! String) == "ok" {
-                let ratingData = data["data"] as! [String: Any]
-                self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
-                self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
-            }
-        })
         
         
         for nib in cell_nibs {
@@ -40,13 +32,24 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
         }
         
-        for step in drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? [] {
-            
-            step.setAttributedString { (_) in
-                
-                self.steps.append(step)
+        let steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
+        var ready = [RecipeStep?](repeating: nil, count: steps.count)
+
+        var computed = 0
         
-                self.tableView.reloadData()
+        for (idx, step) in steps.enumerated() {
+            
+            step.setAttributedString { (string) in
+                
+                ready[idx] = step
+            
+                if (computed == steps.count - 1) {
+                    self.steps = ready as! [RecipeStep]
+                    self.tableView.reloadData()
+                }
+                
+                computed = computed + 1
+
                 
             }
             
@@ -62,12 +65,24 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         self.drink = drink
         
         self.components = self.drink.components()
+    
         
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        //Sending request for drink rating
+        DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
+            if (data["status"] as! String) == "ok" {
+                let ratingData = data["data"] as! [String: Any]
+                self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
+            }
+        })
+        
         //Layout content
         self.layoutContent()
                 
@@ -84,6 +99,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {

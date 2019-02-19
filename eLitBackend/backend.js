@@ -78,7 +78,7 @@ class Connection {
 
 let get_img_obj = (url) => {
 
-    return '<img src="'+basepath + url+'" class="rounded mr-3" style="height: 40px; width: 40px">'
+    return '<img src="' + basepath + url + '" class="rounded mr-3" style="height: 40px; width: 40px">'
 
 }
 
@@ -187,6 +187,11 @@ let on_add_table = (_class, _conn) => {
 
 let on_add_drink = (_conn) => {
 
+    let r = '{"request":"insert_drink","data":{"name": "Moscow Mule", "category": "Vodka", "grade": "9", "image": "drink/moscow_mule.png", "description": "A Moscow mule is a cocktail made with vodka, spicy ginger beer, and lime juice.", "recipe": [{"components": [{"quantity": "0", "unit": "part", "ingredient": "Ice"}], "description": "Fill up a glass with {0}"}, {"components": [{"quantity": "2.25", "unit": "part", "ingredient": "Vodka Belvedere"}], "description": "Pour {0} into the glass"}, {"components": [{"quantity": "0.25", "unit": "part", "ingredient": "Angostura"}], "description": "Add {0} and {1} to the glass"}, {"components": [], "description": "Stir together"}, {"components": [{"quantity": "1", "unit": "slice", "ingredient": "Lime"}], "description": "Garnish with {0}"}]}}'
+
+    _conn.ws.send(r)
+
+
     let form = $('.new-drink-form')
 
     let request = {request: 'insert_drink', data: {}}
@@ -205,7 +210,7 @@ let on_add_drink = (_conn) => {
 
     steps.each(function () {
 
-        let step = {components : []}
+        let step = {components: []}
 
         step.description = $(this).find('input[name="description"]').val()
 
@@ -216,9 +221,9 @@ let on_add_drink = (_conn) => {
 
             let component = {
 
-                quantity : $(this).find('input[name="quantity"]').val(),
-                unit : $(this).find('select[name="unit"]').val(),
-                ingredient : $(this).find('select[name="ingredient"]').val()
+                quantity: $(this).find('input[name="quantity"]').val(),
+                unit: $(this).find('select[name="unit"]').val(),
+                ingredient: $(this).find('select[name="ingredient"]').val()
 
             }
 
@@ -232,6 +237,8 @@ let on_add_drink = (_conn) => {
 
 
     ui_log(JSON.stringify(request))
+
+    return
 
     _conn.ws.send(JSON.stringify(request))
 
@@ -343,7 +350,6 @@ let bind_add_recipe_step = () => {
         )
 
         let _components = $(
-
             '<div class="components">\n' +
             '<div class="form-row aa">\n' +
             '<div class="form-group col-md-12">\n' +
@@ -369,7 +375,6 @@ let bind_add_recipe_step = () => {
             '</div>\n' +
             '</div>\n' +
             '</div>'
-
         )
 
         _recipe_step.append(_header)
@@ -434,7 +439,7 @@ $(document).ready(function () {
 
     $('.new-drink-form').on("click", ".add-drink", function () {
 
-        on_add_drink( connection)
+        on_add_drink(connection)
 
     })
 

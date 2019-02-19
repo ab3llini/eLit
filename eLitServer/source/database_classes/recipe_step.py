@@ -12,7 +12,7 @@ class RecipeStep(DrinkObject):
     def __init__(self, step_description: str = None, components: List[DrinkComponent] = None, *args, **values):
         super().__init__(*args, **values)
         self.step_description = step_description or ''
-        self.components = components or List[DrinkComponent]
+        self.components = components if len(components) > 0 else None
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
              _refs=None, save_condition=None, signal_kwargs=None, **kwargs):

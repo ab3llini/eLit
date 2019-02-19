@@ -49,11 +49,6 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.drinks = Model.shared.getDrinks()
         self.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source

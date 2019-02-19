@@ -20,11 +20,8 @@ class AddReviewViewController: BlurredBackgroundViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        //Add right button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(submitReview))
-        
-
         // Do any additional setup after loading the view.
         self.reviewContent.placeholder = reviewContentPlaceholder
         
@@ -33,13 +30,26 @@ class AddReviewViewController: BlurredBackgroundViewController {
             self.setBackgroundImage(image, withColor: color)
         }
         
+        self.setNavButton(to: "Add")
+        
         DataBaseManager.shared.requestReview(for: drink, from: Model.shared.user?.userID ?? "", completion: { data in
-            guard (data["status"] as! String) == "ok" else { return }
-            let d = data["data"] as! [String: Any]
-            self.reviewTitle.text = d["title"] as? String ?? ""
-            self.reviewContent.text = d["text"] as? String ?? ""
-            self.ratingView.rating = d["rating"] as? Double ?? 0.0
+            if (data["status"] as! String) == "ok" {
+                let d = data["data"] as! [String: Any]
+                self.reviewTitle.text = d["title"] as? String ?? ""
+                self.reviewContent.text = d["text"] as? String ?? ""
+                self.ratingView.rating = Double(d["rating"] as? String ?? "0.0") ?? 0.0
+                self.reviewContentPlaceholder.alpha = 0
+                
+                self.setNavButton(to: "Update")
+            }
+            
         })
+    }
+    
+    func setNavButton(to string: String) {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: string, style: .plain, target: self, action: #selector(self.submitReview))
+        
     }
     
     func onReviewSubmitted(response : [String : Any]) -> Void {
