@@ -28,7 +28,7 @@ class DrinkTableViewCell: UITableViewCell {
         //Disable ugly selection effect
         self.selectionStyle = .none;
         
-        self.containerView.layer.borderWidth = 1
+        self.containerView.layer.borderWidth = 0
         
         self.setDrinkBackgroundColor(color: .gray)
         
@@ -49,9 +49,7 @@ class DrinkTableViewCell: UITableViewCell {
     
     private func setDrinkBackgroundColor(color : UIColor) {
         
-        self.backgroundImage.backgroundColor = color.withAlphaComponent(0.1)
-        self.containerView.layer.borderColor = color.withAlphaComponent(0.2).cgColor
-    
+        self.containerView.backgroundColor = color.withAlphaComponent(0.1)
         
     }
     

@@ -28,6 +28,7 @@ class RecipeStep(DrinkObject):
     def to_dict(self) -> Dict:
         data = super().to_dict()
         data['step_description'] = self.step_description
+        print("converting to dict:", self.components)
         data['components'] = [x.to_dict() for x in self.components] if self.components is not None else []
         return data
 

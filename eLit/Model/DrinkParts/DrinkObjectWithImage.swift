@@ -63,7 +63,7 @@ class DrinkObjectWithImage: DrinkObject {
         
         self.setImage { (image) in
             image?.getColors({ (colors) in
-                completion(colors.primary.adjust(brightnessBy: 0.4))
+                completion(colors.secondary.adjust(brightnessBy: 0.5))
             })
         }
         

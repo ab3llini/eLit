@@ -36,6 +36,10 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         
+        if cell.imageView?.image == nil {
+            cell.imageView?.image = UIImage(named: "category_placeholder.png")
+        }
+        
         categories[index].setImage { (image) in
             
             cell.imageView?.image = image
