@@ -12,6 +12,7 @@ logger = logging.getLogger('server_logger')
 
 image_basepath = 'assets/'
 
+
 def connect():
     me.connect('eLit', host='localhost', port=27017)
 
@@ -239,7 +240,7 @@ def on_insert_drink_request(data: Dict) -> Dict:
         drink = Drink(data['name'], float(data['grade']), image_basepath + data['image'], data['description'],
                       recipe=recipe_obj, category=category)
         drink.save()
-    except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
+    except mongoerr.ServerSelectionTimeoutError:
         payload['status_code'] = 500
         return payload
 
