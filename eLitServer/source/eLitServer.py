@@ -71,7 +71,7 @@ if __name__ == '__main__':
         web.run_app(app, host=args[1], port=80)
     else:
         # Backend
-        backend_thread = Backend('127.0.0.1', 9999).start()
-        web.run_app(app, host='localhost', port=80)
+        backend_thread = Backend('68.183.64.146', 9999).start()
+        web.run_app(app, host='68.183.64.146', port=80)
 
 

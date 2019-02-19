@@ -101,8 +101,8 @@ def on_fetch_reviews_request(data: Dict) -> Dict:
         for i, review in enumerate(reviews):
 
             data_list.append({
-                'author' : review.written_by.name,
-                'timestamp': review.timestamp.strftime('%w %b \'%y'),
+                'author': review.written_by.name,
+                'timestamp': review.timestamp.strftime('%-d %b \'%y'),
                 'title': review.title,
                 'rating': review.rating,
                 'text' : review.text,
@@ -168,7 +168,8 @@ def on_insert_category_request(data: Dict) -> Dict:
         'request': 'insert_category'
     }
     try:
-        DrinkCategory(name=name, image=image).save()
+        _new = DrinkCategory(name=name, image=image)
+        _new.save()
         payload['status_code'] = 200
         return payload
     except mongoerr.ServerSelectionTimeoutError:
@@ -188,7 +189,7 @@ def on_insert_ingredient_request(data: Dict) -> Dict:
     description = data['ingredient_description']
     payload = {'request': 'insert_ingredient'}
     try:
-        Ingredient(name=name, grade=int(grade), image=image, ingredient_description=description).save()
+        Ingredient(name=name, grade=float(grade), image=image, ingredient_description=description).save()
         payload['status_code'] = 200
         return payload
     except mongoerr.ServerSelectionTimeoutError:
@@ -215,6 +216,7 @@ def on_insert_drink_request(data: Dict) -> Dict:
     steps_obj = []
     try:
         for step in recipe:
+
             components_obj = []
             components = step['components']
 
@@ -227,17 +229,22 @@ def on_insert_drink_request(data: Dict) -> Dict:
                     payload['message'] = f'invalid ingredient {ingredient_name}'
                     return payload
 
-                component = DrinkComponent(ingredient, component['quantity'], component['unit'])
-                components_obj.append(component)
+                cmp = DrinkComponent(ingredient, float(component['quantity']), component['unit'])
+                components_obj.append(cmp)
 
             step = RecipeStep(step['description'], components_obj)
             steps_obj.append(step)
 
         recipe_obj = Recipe(steps_obj)
-        drink = Drink(data['name'], int(data['grade']), image_basepath + data['image'], data['description'],
+        drink = Drink(data['name'], float(data['grade']), image_basepath + data['image'], data['description'],
                       recipe=recipe_obj, category=category)
         drink.save()
     except (mongoerr.ServerSelectionTimeoutError, mongoerr.DuplicateKeyError):
+        payload['status_code'] = 500
+        return payload
+
+    except Exception as e:
+        print("This is bad:", e)
         payload['status_code'] = 500
         return payload
 
@@ -273,7 +280,6 @@ def on_fetch_categories_request(data: Dict) -> Dict:
     except mongoerr.ServerSelectionTimeoutError:
         payload['status_code'] = 500
         return payload
-
 
 
 def on_fetch_drinks_request(data: Dict) -> Dict:

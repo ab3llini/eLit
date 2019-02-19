@@ -9,13 +9,13 @@ from database_classes.drink_category import DrinkCategory
 
 class Drink(DrinkObject):
     name = me.StringField(required=True, unique=True)
-    degree = me.IntField(required=True)
+    degree = me.FloatField(required=True)
     image = me.StringField()
     recipe = me.ReferenceField(Recipe, required=True)
     description = me.StringField()
     category = me.ReferenceField(DrinkCategory, required=True)
 
-    def __init__(self, name: str, degree: int, image: str = None, description: str = '',
+    def __init__(self, name: str, degree: float, image: str = None, description: str = '',
                  recipe: Recipe = None, category: DrinkCategory = None, *args, **values):
         super().__init__(*args, **values)
         self.name = name

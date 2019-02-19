@@ -21,19 +21,20 @@ def create_cocktail():
     component1 = DrinkComponent(ingredient=ing1, qty=2, unit=PART)
     component2 = DrinkComponent(ingredient=ing2, qty=1, unit=PART)
     component3 = DrinkComponent(ingredient=ing3, qty=5, unit=PART)
-    step1 = RecipeStep(description='Mix component1 with component2', components=[component1, component2])
-    step2 = RecipeStep(description='Add component3', components=[component3])
+    step1 = RecipeStep(step_description='Mix component1 with component2', components=[component1, component2])
+    step2 = RecipeStep(step_description='Add component3', components=[component3])
     recipe = Recipe(steps=[step1, step2])
-    drink = Drink(name='Drink1', degree=20, image='http://test.me', description='Best drink ever', recipe=recipe)
+    cat = DrinkCategory(name='Test2', image='Test2.png')
+    drink = Drink(name='Drink1', category=cat, degree=20, image='http://test.me', description='Best drink ever', recipe=recipe)
     drink.save()
 
 
 if __name__ == '__main__':
     # dbm = DBManager('192.168.178.37', 27017)
-    me.connect('eLit', host='localhost', port=4444)
+    me.connect('eLit', host='localhost', port=27017)
     # _ = Test(title='Luca').save()
     # _ = Test(title='Piero').save()
-    # create_cocktail()
+    create_cocktail()
     obj = [*Drink.objects, *DrinkComponent.objects, *Ingredient.objects, *Recipe.objects, *RecipeStep.objects]
     for o in obj:
         print(o.to_json())

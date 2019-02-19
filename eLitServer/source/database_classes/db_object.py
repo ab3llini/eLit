@@ -2,6 +2,7 @@ import mongoengine as me
 from hashlib import md5
 from pickle import dumps
 from typing import Dict
+from datetime import datetime
 
 
 class DBObject(me.Document):
@@ -16,7 +17,11 @@ class DBObject(me.Document):
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
              _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
-        self.fingerprint = md5(dumps(self.to_dict())).hexdigest()
+
+        seed = self.to_dict()
+        seed['noise'] = str(datetime.utcnow())
+
+        self.fingerprint = md5(dumps(seed)).hexdigest()
         return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
                             save_condition, signal_kwargs, **kwargs)
 

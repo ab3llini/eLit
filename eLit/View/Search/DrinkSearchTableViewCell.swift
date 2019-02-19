@@ -20,7 +20,8 @@ class DrinkSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var objectNameLabel: UILabel!
     @IBOutlet weak var objectClassLabel: UILabel!
     
-
+    var current : DrinkObject!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,22 +35,34 @@ class DrinkSearchTableViewCell: UITableViewCell {
     }
     
     func setDrink(of type: ObjectClass, with object: DrinkObject) {
+        
+        self.current = object
+        
         switch type {
         case .drink:
             let drink = object as! Drink
             self.objectNameLabel.text = drink.name ?? ""
-            
-            drink.setImage(completion: { image in
-                self.objectImageView.image = image
-            })
+            drink.setImage { image in
+                if (object == self.current) {
+                    self.objectImageView.image = image
+                }
+                else {
+                    print("I was going to fuck up the app!")
+                }
+            }
             
         case .ingredient:
             let ingredient = object as! Ingredient
             self.objectNameLabel.text = ingredient.name ?? ""
             ingredient.setImage(completion: { image in
-                self.objectImageView.image = image
+                if (object == self.current) {
+                    self.objectImageView.image = image
+                }
+                else {
+                    print("I was going to fuck up the app!")
+
+                }
             })
-            self.objectImageView.image = UIImage(named: ("Drink" + (["1", "2", "3", "4"].randomElement() ?? "1")))
         }
         
         self.objectClassLabel.text = type.rawValue

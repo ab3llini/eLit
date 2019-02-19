@@ -8,11 +8,11 @@ from database_classes.drink_object import DrinkObject
 
 
 class DrinkComponent(DrinkObject):
-    qty = me.FloatField()
+    qty = me.FloatField(default=0.0)
     unit = me.StringField(required=True, unique=False)
     ingredient = me.ReferenceField(Ingredient, required=True)
 
-    def __init__(self, ingredient: Ingredient, qty: float = None, unit: str = None, *args, **values):
+    def __init__(self, ingredient: Ingredient, qty: float = 0.0, unit: str = None, *args, **values):
         super().__init__(*args, **values)
         self.ingredient = ingredient
         self.qty = qty
@@ -26,7 +26,7 @@ class DrinkComponent(DrinkObject):
 
     def to_dict(self) -> Dict:
         data = super().to_dict()
-        data['qty'] = self.qty
+        data['qty'] = str(self.qty)
         data['unit'] = self.unit
         data['ingredient'] = self.ingredient.to_dict()
         return data

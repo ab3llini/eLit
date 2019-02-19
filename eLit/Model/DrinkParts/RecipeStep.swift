@@ -110,6 +110,8 @@ class RecipeStep: DrinkObject {
                 }
             }
             else {
+                self.attributedString = mString
+
                 DispatchQueue.main.async {
                     completion(mString)
                 }
