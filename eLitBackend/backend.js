@@ -234,7 +234,7 @@ let on_add_drink = (_conn) => {
 
 
     ui_log(JSON.stringify(request))
-    
+
     _conn.ws.send(JSON.stringify(request))
 
 

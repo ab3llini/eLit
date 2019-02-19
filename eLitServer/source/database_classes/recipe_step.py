@@ -16,8 +16,9 @@ class RecipeStep(DrinkObject):
 
     def save(self, force_insert=False, validate=True, clean=True, write_concern=None, cascade=None, cascade_kwargs=None,
              _refs=None, save_condition=None, signal_kwargs=None, **kwargs):
-        for component in self.components:
-            component.save()
+        if self.components is not None:
+            for component in self.components:
+                component.save()
         return super().save(force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs,
                             save_condition, signal_kwargs, **kwargs)
 
@@ -27,6 +28,6 @@ class RecipeStep(DrinkObject):
     def to_dict(self) -> Dict:
         data = super().to_dict()
         data['step_description'] = self.step_description
-        data['components'] = [x.to_dict() for x in self.components]
+        data['components'] = [x.to_dict() for x in self.components] if self.components is not None else []
         return data
 
