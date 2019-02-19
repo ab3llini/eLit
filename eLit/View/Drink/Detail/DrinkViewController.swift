@@ -9,7 +9,7 @@
 import UIKit
 
 
-class DrinkViewController: BlurredBackgroundTableViewController {
+class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelegate {
     
     var drink : Drink!
     var rating: Double = 0
@@ -34,7 +34,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         
         let steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
         var ready = [RecipeStep?](repeating: nil, count: steps.count)
-
+        
         var computed = 0
         
         for (idx, step) in steps.enumerated() {
@@ -42,22 +42,36 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             step.setAttributedString { (string) in
                 
                 ready[idx] = step
-            
+                
                 if (computed == steps.count - 1) {
                     self.steps = ready as! [RecipeStep]
                     self.tableView.reloadData()
                 }
                 
                 computed = computed + 1
-
+                
                 
             }
             
         }
         
+        self.didSubmitReview()
+        
     }
     
-    
+    // Delegate method
+    func didSubmitReview() {
+        
+        //Sending request for drink rating
+        DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
+            if (data["status"] as! String) == "ok" {
+                let ratingData = data["data"] as! [String: Any]
+                self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
+            }
+        })
+        
+    }
     
     public func setDrink(drink : Drink) {
         
@@ -74,19 +88,12 @@ class DrinkViewController: BlurredBackgroundTableViewController {
         
         super.viewWillAppear(animated)
         
-        //Sending request for drink rating
-        DataBaseManager.shared.requestRating(for: self.drink, completion: { data in
-            if (data["status"] as! String) == "ok" {
-                let ratingData = data["data"] as! [String: Any]
-                self.rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
-                self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
-            }
-        })
-        
         //Layout content
         self.layoutContent()
                 
     }
+    
+    
 
     private func layoutContent() {
         
@@ -142,7 +149,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             return 1
         case 2:
             // Ingredients
-            return drink.ingredients().count
+            return self.components.count
         case 3:
             // Steps
             return self.steps.count
@@ -152,7 +159,7 @@ class DrinkViewController: BlurredBackgroundTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+                
         switch indexPath.section {
         case 0:
             
@@ -253,12 +260,39 @@ class DrinkViewController: BlurredBackgroundTableViewController {
             
             let destination : AddReviewViewController = segue.destination as! AddReviewViewController
             
+            destination.delegate = self
             destination.drink = self.drink
 
+        case Navigation.toDrinkForIngredientVC.rawValue:
+            let tableVC = segue.destination as! DrinkForIngredientTableViewController
+            
+            if let selected = tableView.indexPathForSelectedRow {
+                
+                tableVC.withIngredient = self.components[selected.row].ingredient
+
+            }
+            else {
+                
+                print("Can't setup ingredient")
+                
+            }
+            
             
         default: break
             
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 2:
+            
+            self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
+            
+        default:
+            return
+        }
+    }
+    
+
 }

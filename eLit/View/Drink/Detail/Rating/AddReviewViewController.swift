@@ -9,6 +9,11 @@
 import UIKit
 import Cosmos
 
+
+protocol AddReviewDelegate {
+    func didSubmitReview()
+}
+
 class AddReviewViewController: BlurredBackgroundViewController {
 
     @IBOutlet weak var reviewContentPlaceholder: UITextField!
@@ -17,6 +22,8 @@ class AddReviewViewController: BlurredBackgroundViewController {
     @IBOutlet weak var reviewTitle: UITextField!
     
     var drink : Drink!
+    
+    var delegate : AddReviewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +78,10 @@ class AddReviewViewController: BlurredBackgroundViewController {
         let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
             self.navigationController?.popViewController(animated: true)
+            if let d = self.delegate {
+                d.didSubmitReview()
+
+            }
         }))
     
     

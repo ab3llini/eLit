@@ -78,7 +78,9 @@ class RecipeStep: DrinkObject {
                     
                         let attachment = NSTextAttachment()
                         
-                        attachment.image = image!.resizeImage(targetSize: CGSize(width: 15, height: 15))
+                        attachment.image = image!
+                        attachment.bounds = CGRect(x: 0, y: -2, width: 15, height: 15)
+                        
                         
                         let iconString = NSMutableAttributedString(attachment: attachment)
                         let nameString = NSAttributedString(string: (component.withIngredient?.name)!)

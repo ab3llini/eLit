@@ -187,9 +187,6 @@ let on_add_table = (_class, _conn) => {
 
 let on_add_drink = (_conn) => {
 
-    let r = '{"request":"insert_drink","data":{"name": "Moscow Mule", "category": "Vodka", "grade": "9", "image": "drink/moscow_mule.png", "description": "A Moscow mule is a cocktail made with vodka, spicy ginger beer, and lime juice.", "recipe": [{"components": [{"quantity": "0", "unit": "part", "ingredient": "Ice"}], "description": "Fill up a glass with {0}"}, {"components": [{"quantity": "2.25", "unit": "part", "ingredient": "Vodka Belvedere"}], "description": "Pour {0} into the glass"}, {"components": [{"quantity": "0.25", "unit": "part", "ingredient": "Angostura"}], "description": "Add {0} and {1} to the glass"}, {"components": [], "description": "Stir together"}, {"components": [{"quantity": "1", "unit": "slice", "ingredient": "Lime"}], "description": "Garnish with {0}"}]}}'
-
-    _conn.ws.send(r)
 
 
     let form = $('.new-drink-form')
@@ -237,9 +234,7 @@ let on_add_drink = (_conn) => {
 
 
     ui_log(JSON.stringify(request))
-
-    return
-
+    
     _conn.ws.send(JSON.stringify(request))
 
 

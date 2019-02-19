@@ -46,9 +46,6 @@ class DrinkSearchTableViewCell: UITableViewCell {
                 if (object == self.current) {
                     self.objectImageView.image = image
                 }
-                else {
-                    print("I was going to fuck up the app!")
-                }
             }
             
         case .ingredient:
@@ -57,10 +54,6 @@ class DrinkSearchTableViewCell: UITableViewCell {
             ingredient.setImage(completion: { image in
                 if (object == self.current) {
                     self.objectImageView.image = image
-                }
-                else {
-                    print("I was going to fuck up the app!")
-
                 }
             })
         }

@@ -9,6 +9,7 @@
 import UIKit
 
 class DrinkComponentTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
@@ -26,7 +27,7 @@ class DrinkComponentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func rounded(radius: CGFloat?, withBorder border: CGFloat, withBorderColor borderColor: UIColor) {
         self.componentView.layer.borderWidth = border
         self.componentView.layer.borderColor = borderColor.cgColor

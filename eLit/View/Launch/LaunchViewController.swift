@@ -69,15 +69,14 @@ class LaunchViewController: UIViewController {
                     
                     Model.shared.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
                     
-                    // Proceed
-                    self.finalizeData()
-                    
                 }
                 else {
                     
-                    self.displayError(error: "Something went wrong..")
+                    self.displayError(error: "Unable to fetch data")
 
                 }
+                // Proceed
+                self.finalizeData()
                 
             }
             
@@ -93,26 +92,28 @@ class LaunchViewController: UIViewController {
                 if response["status"] as? String ?? "" == "ok" {
                     
                     DataBaseManager.shared.defaultUdateDbHandler(response)
-                    
-                    // Proceed
-                    self.finalizeData()
             
                 }
                 else {
                     
-                    self.displayError(error: "Something went wrong..")
+                    self.displayError(error: "Unable to update data")
                     
                 }
                 
+                // Proceed
+                self.finalizeData()
             }
             
             DataBaseManager.shared.updateDB(completion: handler)
             
         }
     
+        
+        
     }
 
     private func displayError(error : String) {
+        print(error)
         self.launchLabel.stopChanging()
         self.launchLabel.text = error
         self.launchSpinner.isHidden = true
