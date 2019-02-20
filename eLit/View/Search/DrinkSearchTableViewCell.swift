@@ -11,6 +11,7 @@ import UIKit
 enum ObjectClass: String {
     case drink = "Drink"
     case ingredient = "Ingredient"
+    case category = "Category"
 }
 
 class DrinkSearchTableViewCell: UITableViewCell {
@@ -56,7 +57,18 @@ class DrinkSearchTableViewCell: UITableViewCell {
                     self.objectImageView.image = image
                 }
             })
+            
+        case .category:
+            let category = object as! DrinkCategory
+            self.objectNameLabel.text = category.name ?? ""
+            category.setImage(completion: { image in
+                if (object == self.current) {
+                    self.objectImageView.image = image
+                }
+            })
         }
+        
+        
         
         self.objectClassLabel.text = type.rawValue
     }
