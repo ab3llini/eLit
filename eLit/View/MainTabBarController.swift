@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         //TODO: Fix this mess
-        
+        /* Uncomment this if you wanto to not have the searh that keeps the state
         guard let navVC = self.selectedViewController as? LargeVbrantNavigatonController else {
             return
         }
@@ -47,6 +47,7 @@ class MainTabBarController: UITabBarController {
         searchVC.currentDrinks = []
         searchVC.currentIngredients = []
         searchVC.reloadData()
+ */
     }
     
 

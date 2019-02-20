@@ -15,6 +15,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var ingredients: [Ingredient] = []
     var currentDrinks: [Drink] = []
     var currentIngredients: [Ingredient] = []
+    var categories: [DrinkCategory] = []
+    var currentCategories: [DrinkCategory] = []
     var selectedIngredient: Ingredient? = nil
     var separatorStyle: UITableViewCell.SeparatorStyle?
     
@@ -47,7 +49,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
         self.drinks = Model.shared.getDrinks()
-        self.ingredients = EntityManager.shared.fetchAll(type: Ingredient.self) ?? []
+        self.ingredients = Model.shared.ingredients
+        self.categories = Model.shared.categories
 
     }
 
@@ -55,15 +58,17 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return currentIngredients.count
+            return currentCategories.count
         case 1:
+            return currentIngredients.count
+        case 2:
             return currentDrinks.count
         default:
             return 0
@@ -74,10 +79,13 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         let cell = tableView.dequeueReusableCell(withIdentifier: nib, for: indexPath) as! DrinkSearchTableViewCell
         switch indexPath.section {
         case 0:
+            let category = currentCategories[indexPath.row]
+            cell.setDrink(of: .category, with: category)
+        case 1:
             // ingredients
             let ingredient = currentIngredients[indexPath.row]
             cell.setDrink(of: .ingredient, with: ingredient)
-        case 1:
+        case 2:
             // drinks
             let drink: Drink = currentDrinks[indexPath.row]
             cell.setDrink(of: .drink, with: drink)
@@ -92,12 +100,17 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
+            if currentCategories.count > 0 {
+                return "Categories"
+            }
+            return nil
+        case 1:
             if currentIngredients.count > 0 {
                 return "Ingredients"
             }
             return nil
             
-        case 1:
+        case 2:
             if currentDrinks.count > 0 {
                 return "Drinks"
             }
@@ -108,7 +121,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     }
     
     func reloadData() {
-        if self.currentDrinks.count == 0 && self.currentIngredients.count == 0{
+        if self.currentDrinks.count == 0 && self.currentIngredients.count == 0 && self.currentCategories.count == 0{
             self.tableView.separatorStyle = .none
         } else {
             self.tableView.separatorStyle = self.separatorStyle ?? .none
@@ -126,6 +139,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         if searchText == "" {
             self.currentDrinks = []
             self.currentIngredients = []
+            self.currentCategories = []
             self.searchText = nil
         } else {
             self.currentDrinks = self.drinks.filter { drink in
@@ -135,15 +149,18 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.currentIngredients = self.ingredients.filter { ingredient in
                 return ingredient.name?.lowercased().contains(searchText.lowercased()) ?? false
             }
+            
+            self.currentCategories = self.categories.filter { category in
+                return category.name?.lowercased().contains(searchText.lowercased()) ?? false
+            }
             self.searchText = searchText
         }
         self.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.currentDrinks = []
-        self.currentIngredients = []
-        self.searchText = nil
+        searchBar.text = self.searchText
+        //self.searchText = nil
         self.reloadData()
     }
     
@@ -167,11 +184,12 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
+        // TODO: CATEGORY
+        case 1:
             // An Ingredient has been selected
             self.selectedIngredient = currentIngredients[indexPath.row]
             self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
-        case 1:
+        case 2:
             self.performSegue(withIdentifier: Navigation.toDrink2VC.rawValue, sender: self)
         default:
             return
@@ -190,7 +208,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         case Navigation.toDrink2VC.rawValue:
             let v = segue.destination as! DrinkViewController
             if let index = self.tableView.indexPathForSelectedRow {
-                v.setDrink(drink: drinks[index.row])
+                v.setDrink(drink: currentDrinks[index.row])
             }
         
         default:
