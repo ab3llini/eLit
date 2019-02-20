@@ -17,7 +17,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var currentIngredients: [Ingredient] = []
     var categories: [DrinkCategory] = []
     var currentCategories: [DrinkCategory] = []
-    var selectedIngredient: Ingredient? = nil
+    var selectedIngredient: Ingredient?
+    var selectedCategory: DrinkCategory?
     var separatorStyle: UITableViewCell.SeparatorStyle?
     
     var searchText: String?
@@ -184,7 +185,9 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        // TODO: CATEGORY
+        case 0:
+            self.selectedCategory = currentCategories[indexPath.row]
+            self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
         case 1:
             // An Ingredient has been selected
             self.selectedIngredient = currentIngredients[indexPath.row]
@@ -203,7 +206,18 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         case Navigation.toDrinkForIngredientVC.rawValue:
             let tableVC = segue.destination as! DrinkForIngredientTableViewController
             let currentVC = sender as! SearchTableViewController
-            tableVC.withIngredient = currentVC.selectedIngredient!
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                switch indexPath.section {
+                case 0:
+                    tableVC.vcForClass = .category
+                    tableVC.category = currentVC.selectedCategory!
+                case 1:
+                    tableVC.vcForClass = .ingredient
+                    tableVC.withIngredient = currentVC.selectedIngredient!
+                default:
+                    return
+                }
+            }
         
         case Navigation.toDrink2VC.rawValue:
             let v = segue.destination as! DrinkViewController

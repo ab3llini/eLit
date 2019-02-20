@@ -11,17 +11,31 @@ import UIKit
 class DrinkForIngredientTableViewController: BlurredBackgroundTableViewController, UIViewControllerPreviewingDelegate {
     
     var withIngredient: Ingredient?
+    var category: DrinkCategory?
+    var vcForClass: ObjectClass!
     var segue: Navigation = .fromDrinkForIngredientToDrinkVC
     var drinks: [Drink] = []
+    var categories: [DrinkCategory] = []
     let nib = "DrinkTableViewCell"
     var coreColors : [String : UIColor] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.segue = Navigation.fromDrinkForIngredientToDrinkVC
-        withIngredient?.setImageAndColor(completion: { image, color in
-            self.setBackgroundImage(image, withColor: color.withAlphaComponent(0.6))
-        })
+        
+        switch self.vcForClass {
+        case .ingredient?:
+            self.segue = Navigation.fromDrinkForIngredientToDrinkVC
+            withIngredient?.setImageAndColor(completion: { image, color in
+                self.setBackgroundImage(image, withColor: color.withAlphaComponent(0.6))
+            })
+        case .category?:
+            self.segue = Navigation.fromDrinkForIngredientToDrinkVC
+            category?.setImageAndColor(completion: { image, color in
+                self.setBackgroundImage(image, withColor: color.withAlphaComponent(0.6))
+            })
+        default:
+            return
+        }
         
         //Load nibs
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
@@ -34,13 +48,29 @@ class DrinkForIngredientTableViewController: BlurredBackgroundTableViewControlle
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.drinks = Model.shared.getDrinks().filter { drink in
-            guard let ing = self.withIngredient else {
-                return false
+        switch self.vcForClass {
+        case .ingredient?:
+            self.drinks = Model.shared.getDrinks().filter { drink in
+                guard let ing = self.withIngredient else {
+                    return false
+                }
+                return drink.ingredients().contains(ing)
             }
-            return drink.ingredients().contains(ing)
+            self.title = "\(self.withIngredient?.name ?? "")"
+        
+        case .category?:
+            self.drinks = Model.shared.getDrinks().filter { drink in
+                guard let cat = self.category else {
+                    return false
+                }
+                return drink.ofCategory == cat
+            }
+            self.title = "\(self.category?.name ?? "")"
+        
+        default:
+            return
         }
-        self.title = "\(self.withIngredient?.name ?? "")"
+        
         self.tableView.reloadData()
     }
 
@@ -84,7 +114,9 @@ class DrinkForIngredientTableViewController: BlurredBackgroundTableViewControlle
     
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let path = tableView.indexPathForRow(at: location)!
+        guard let path = tableView.indexPathForRow(at: location) else {
+            return nil
+        }
         
         switch path.section {
         default:
