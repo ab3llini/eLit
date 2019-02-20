@@ -14,7 +14,6 @@ class DrinkTableViewCell: UITableViewCell {
     
     // Outlets
     @IBOutlet public var drinkImageView : UIImageView!
-    @IBOutlet public var backgroundImage : UIImageView!
     @IBOutlet weak var containerView: ContainerView!
     @IBOutlet weak var alcholicRibbonView: RibbonView!
     @IBOutlet weak var baseRIbbonView: RibbonView!
