@@ -169,7 +169,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 cell.imageViewContainer.image = image
             }
         
-            cell.drinkNameLabel.text = self.drink.name
+            cell.drinkNameLabel.text = self.drink?.name
             
             return cell
             
@@ -270,7 +270,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             let tableVC = segue.destination as! DrinkForIngredientTableViewController
             
             if let selected = tableView.indexPathForSelectedRow {
-                
+                tableVC.vcForClass = .ingredient
                 tableVC.withIngredient = self.components[selected.row].ingredient
 
             }
