@@ -239,9 +239,19 @@ def on_insert_drink_request(data: Dict) -> Dict:
         recipe_obj = Recipe(steps_obj)
         drink = Drink(data['name'], float(data['grade']), image_basepath + data['image'], data['description'],
                       recipe=recipe_obj, category=category)
+        len_drinks = Drink.objects(name=data['name']).count()
+        if len_drinks > 0:
+            raise me.errors.ValidationError(message=f"Drink {data['name']} already exists.")
+
         drink.save()
+
     except mongoerr.ServerSelectionTimeoutError:
         payload['status_code'] = 500
+        return payload
+
+    except me.ValidationError as e:
+        payload['status_code'] = 500
+        payload['message'] = 'This is bad: ' + str(e)
         return payload
 
     except Exception as e:
