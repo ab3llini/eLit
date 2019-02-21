@@ -28,30 +28,6 @@ class Model: NSObject {
         self.ingredients = self.entityManager.fetchAll(type: Ingredient.self) ?? []
         self.user?.setImage()
         
-        /*
-        
-        var ingredients: [Ingredient] = []
-        for _ in 0...4 {
-            ingredients.append(Ingredient(name: Model.randomString(length: 20)))
-        }
-        
-        for i in 0...4 {
-            let component = DrinkComponent(ingredient: ingredients[i%5], quantity: 1, unit: .PART)
-            let step = RecipeStep(description: "", drinkComponents: [component])
-            let recipe = Recipe(with: [step])
-            let drink = Drink(name: "Drink" + String(i%5 + 1) + Model.randomString(length: 10)  , image: "Drink" + String(i%5 + 1), degree: Int16(i*10), recipe: recipe)
-            
-            drink.id = "0"
-            
-            drinks.append(drink)
-        }
-        
-        */
-    }
-    
-    class func randomString(length: Int) -> String {
-        let letters = "abc defgh ijklmn opqrs tuvwxyz "
-        return String((0...length-1).map{ _ in letters.randomElement()! })
     }
     
     //MARK: Public Methods

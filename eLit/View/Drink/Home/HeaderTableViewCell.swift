@@ -40,13 +40,11 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
             cell.imageView?.image = UIImage(named: "category_placeholder.png")
         }
         
-        categories[index].setImage { (image) in
-            
-            cell.imageView?.image = image
-            cell.textLabel?.text = self.categories[index].name
+        categories[index].setImage(to: cell.imageView!) {
             cell.setNeedsLayout()
-    
         }
+        
+        cell.textLabel?.text = self.categories[index].name
         
         return cell
     }

@@ -165,9 +165,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             let cell : DrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkImageTableViewCell") as! DrinkImageTableViewCell
                         
-            drink.setImage { (image) in
-                cell.imageViewContainer.image = image
-            }
+            drink.setImage(to: cell.imageViewContainer)
         
             cell.drinkNameLabel.text = self.drink?.name
             

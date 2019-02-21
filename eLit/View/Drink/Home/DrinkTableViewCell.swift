@@ -20,6 +20,8 @@ class DrinkTableViewCell: UITableViewCell {
     @IBOutlet weak var drinkNameLabel: UILabel!
     
     let animationDuration = 0.5
+    
+    var drink : Drink!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,23 +41,28 @@ class DrinkTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    private func setDrinkImage(image : UIImage?) {
+    private func setDrinkImage() {
         
-        self.drinkImageView.image = image
-        
-
-    }
-    
-    private func setDrinkBackgroundColor(color : UIColor) {
-        
-        self.containerView.backgroundColor = color.withAlphaComponent(0.1)
+        self.drink.setImage(to: self.drinkImageView)
         
     }
     
-    private func setAlcholicRibbon(degree: String, color : UIColor) {
-        self.alcholicRibbonView.label.text = degree + "%"
+    private func setDrinkBackgroundColor(color : UIColor? = nil) {
+        
+        guard (color != nil) else {
+            self.drink.setColor(to: self.containerView, alpha: 0.1)
+            return
+        }
+        
+        self.containerView.backgroundColor = color?.withAlphaComponent(0.1)
+        
+    }
+    
+    private func setAlcholicRibbon() {
+        
+        self.alcholicRibbonView.label.text = String(self.drink.degree) + "%"
         self.alcholicRibbonView.label.textColor = UIColor.black
-        self.alcholicRibbonView.backgroundColor = color.withAlphaComponent(0.2)
+        self.drink.setColor(to: self.alcholicRibbonView, alpha: 0.2)
 
     }
     
@@ -70,16 +77,13 @@ class DrinkTableViewCell: UITableViewCell {
     
     public func setDrink(drink : Drink) {
         
-        drink.setImageAndColor { (image, color) in
-            UIView.animate(withDuration: self.animationDuration) {
-                self.setBaseRibbon(base: (drink.ofCategory?.name)!, color: UIColor.white.withAlphaComponent(0.3))
-                self.drinkNameLabel.text = drink.name
-                self.setDrinkImage(image: image)
-                self.setDrinkBackgroundColor(color: color)
-                self.setAlcholicRibbon(degree: String(drink.degree), color: color)
-            }
+        self.drink = drink
         
-        }
+        self.setBaseRibbon(base: (drink.ofCategory?.name)!, color: UIColor.white.withAlphaComponent(0.3))
+        self.drinkNameLabel.text = drink.name
+        self.setDrinkImage()
+        self.setDrinkBackgroundColor()
+        self.setAlcholicRibbon()
         
     }
     

@@ -59,9 +59,8 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         // Assign bg
         if (self.categories.count > 0) {
             
-            self.categories.first!.setImageAndColor { (image, color) in
-                self.setBackgroundImage(image, withColor:color)
-            }
+            self.categories.first!.setImageAndColor(calling: self.setBackgroundImage)
+    
         
         }
         

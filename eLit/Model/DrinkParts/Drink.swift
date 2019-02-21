@@ -17,7 +17,7 @@ struct Component {
     var ingredient: Ingredient?
     
     func setImage(completion: @escaping (_ image: UIImage?) -> Void) -> Void {
-        self.ingredient?.setImage(completion: completion)
+        self.ingredient?.getImage(completion: completion)
     }
 }
 

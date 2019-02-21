@@ -74,7 +74,7 @@ class RecipeStep: DrinkObject {
             if (components.count > 0) {
                 for (index, component) in components.enumerated() {
                     
-                    component.withIngredient?.setImage { (image) in
+                    component.withIngredient?.getImage { (image) in
                     
                         let attachment = NSTextAttachment()
                         

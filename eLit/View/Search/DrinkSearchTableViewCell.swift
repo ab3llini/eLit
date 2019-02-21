@@ -43,16 +43,16 @@ class DrinkSearchTableViewCell: UITableViewCell {
         case .drink:
             let drink = object as! Drink
             self.objectNameLabel.text = drink.name ?? ""
-            drink.setImage { image in
-                if (object == self.current) {
-                    self.objectImageView.image = image
-                }
+
+            drink.setImage(to: self.objectImageView) { () -> Bool in
+                return object == self.current
             }
+        
             
         case .ingredient:
             let ingredient = object as! Ingredient
             self.objectNameLabel.text = ingredient.name ?? ""
-            ingredient.setImage(completion: { image in
+            ingredient.getImage(completion: { image in
                 if (object == self.current) {
                     self.objectImageView.image = image
                 }
@@ -61,7 +61,7 @@ class DrinkSearchTableViewCell: UITableViewCell {
         case .category:
             let category = object as! DrinkCategory
             self.objectNameLabel.text = category.name ?? ""
-            category.setImage(completion: { image in
+            category.getImage(completion: { image in
                 if (object == self.current) {
                     self.objectImageView.image = image
                 }
