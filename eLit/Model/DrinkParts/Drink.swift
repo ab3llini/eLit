@@ -24,6 +24,9 @@ struct Component {
 @objc(Drink)
 class Drink: DrinkObjectWithImage {
     
+    internal var rating : Double = -1.0
+
+    
     //MARK: Attributes
     public override var description: String {
         return self.name! + "\n\(String(describing: self.drinkRecipe))"
@@ -104,5 +107,44 @@ class Drink: DrinkObjectWithImage {
         self.imageData = nil
         super.update(with: data, savePersistent: savePersistent)
     }
+    
+    func getRating (forceReload : Bool = false, completion : @escaping (_ : Double) -> Void) {
         
+        
+        let requestRating = {
+            
+            //Sending request for drink rating
+            DataBaseManager.shared.requestRating(for: self, completion: { data in
+                if (data["status"] as! String) == "ok" {
+                    let ratingData = data["data"] as! [String: Any]
+                    let rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                    completion(rating)
+                }
+                else {
+                    completion(0.0)
+                }
+            })
+            
+        }
+        
+        if forceReload {
+            
+            requestRating()
+            
+        }
+        
+        else{
+            
+            if self.degree == -1.0 {
+                requestRating()
+            }
+            else {
+                completion(self.rating)
+            }
+            
+        }
+        
+    }
+    
+
 }

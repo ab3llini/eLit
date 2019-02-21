@@ -12,8 +12,10 @@ import UIImageColors
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
-    var image: UIImage?
-    var color: UIColor?
+    internal var image: UIImage?
+    internal var color: UIColor?
+    
+    private let animationDuration = 0.5
     
     var setImageQueue = DispatchQueue(label: "getImageQueue")
     
@@ -59,14 +61,18 @@ class DrinkObjectWithImage: DrinkObject {
     func setImage (to imageView : UIImageView, then : (() -> Void)? = nil) {
         
         if self.image != nil {
+            
             imageView.image = self.image
+                        
             if let execute = then {
                 execute()
             }
         }
         else {
             self.getImage() { image in
-                imageView.image = image
+                
+                imageView.transitionTo(image: image, duration: self.animationDuration)
+
                 if let execute = then {
                     execute()
                 }
@@ -78,11 +84,15 @@ class DrinkObjectWithImage: DrinkObject {
     func setColor (to view : UIView, alpha : CGFloat = 1) {
         
         if self.color != nil {
-            view.backgroundColor = self.color?.withAlphaComponent(alpha)
+            UIView.animate(withDuration: self.animationDuration) {
+                view.backgroundColor = self.color?.withAlphaComponent(alpha)
+            }
         }
         else {
             self.getColor { (color) in
-                view.backgroundColor = color.withAlphaComponent(alpha)
+                UIView.animate(withDuration: self.animationDuration) {
+                    view.backgroundColor = color.withAlphaComponent(alpha)
+                }
             }
         }
         

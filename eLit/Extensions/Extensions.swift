@@ -42,6 +42,15 @@ extension UIImageView
         
     }
     
+    func transitionTo(image : UIImage?, duration : Double) {
+        
+        UIView.transition(with: self,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: { self.image = image },
+                          completion: nil)
+        
+    }
     
 }
 

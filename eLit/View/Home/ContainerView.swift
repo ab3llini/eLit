@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class ContainerView: UIView {
+class ContainerView: UIView {
     
     @IBInspectable public var borderRadius : CGFloat = 0
 

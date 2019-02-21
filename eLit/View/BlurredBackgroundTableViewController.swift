@@ -8,7 +8,11 @@
 
 import UIKit
 
+
 class BlurredBackgroundTableViewController: UITableViewController {
+    
+    @IBInspectable
+    var animationDuration : TimeInterval = 0.5
     
     // Height of the blurred background image view
     @IBInspectable
@@ -58,7 +62,7 @@ class BlurredBackgroundTableViewController: UITableViewController {
     // Changes the background image and color
     public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor) {
         
-        UIView.transition(with: self.backgroundImageView,  duration: 0.75, options: .transitionCrossDissolve, animations: {
+        UIView.transition(with: self.backgroundImageView,  duration: self.animationDuration, options: .transitionCrossDissolve, animations: {
             
             self.backgroundImageView.image = image
             self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)

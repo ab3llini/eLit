@@ -187,9 +187,9 @@ let on_add_table = (_class, _conn) => {
 
 let on_add_drink = (_conn) => {
 
-    let r = '{"request" : "insert_drink", "data" : {"name": "White Russian", "category": "Vodka", "grade": "19", "image": "drink/white_russian.png", "description": "A White Russian is a cocktail made with vodka, coffee liqueur and cream served with ice in an Old Fashioned glass. Often milk or half and half will be used as an alternative to cream.", "recipe": [{"components": [{"quantity": "0", "unit": "part", "ingredient": "Ice"}], "description": "Add {0} to the Shaker"}, {"components": [{"quantity": "2", "unit": "part", "ingredient": "Vodka Belvedere"}, {"quantity": "1", "unit": "part", "ingredient": "Kahlùa Coffee Liqueur"}, {"quantity": "1", "unit": "part", "ingredient": "Heavy Cream"}], "description": "Add {0}, {1} and {2} to the Shaker"}, {"components": [], "description": "Shake well"}, {"components": [], "description": "Strain into the Old Fashioned Glass"}]}}'
+    //let r = '{"request" : "insert_drink", "data" : {"name": "White Russian", "category": "Vodka", "grade": "19", "image": "drink/white_russian.png", "description": "A White Russian is a cocktail made with vodka, coffee liqueur and cream served with ice in an Old Fashioned glass. Often milk or half and half will be used as an alternative to cream.", "recipe": [{"components": [{"quantity": "0", "unit": "part", "ingredient": "Ice"}], "description": "Add {0} to the Shaker"}, {"components": [{"quantity": "2", "unit": "part", "ingredient": "Vodka Belvedere"}, {"quantity": "1", "unit": "part", "ingredient": "Kahlùa Coffee Liqueur"}, {"quantity": "1", "unit": "part", "ingredient": "Heavy Cream"}], "description": "Add {0}, {1} and {2} to the Shaker"}, {"components": [], "description": "Shake well"}, {"components": [], "description": "Strain into the Old Fashioned Glass"}]}}'
 
-    _conn.ws.send(r)
+    //_conn.ws.send(r)
 
 
     let form = $('.new-drink-form')
@@ -237,8 +237,6 @@ let on_add_drink = (_conn) => {
 
 
     ui_log(JSON.stringify(request))
-
-    return
     _conn.ws.send(JSON.stringify(request))
 
 

@@ -9,7 +9,7 @@
 import UIKit
 import ViewAnimator
 
-class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate, FSPagerViewDelegate {
+class HomeTableViewController: BlurredBackgroundTableViewController, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate, FSPagerViewDelegate {
     
 
     let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
@@ -17,9 +17,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     let selection = UISelectionFeedbackGenerator()
     
     let drinkSectionHeight : CGFloat = 40.0
-    
-    var needBgReset : DrinkTableViewCell?
-    
+        
     //Load drinks
     var drinks : [Drink] = []
     var categories : [DrinkCategory] = []
@@ -164,18 +162,7 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
         case 0:
             return
         case 1:
-            let selected : DrinkTableViewCell = tableView.cellForRow(at: indexPath) as! DrinkTableViewCell
-            
-            
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                
-                selected.containerView.backgroundColor = selected.containerView.backgroundColor!.withAlphaComponent(0.4)
-                
-                self.needBgReset = selected
-                
-            }) { (completition) in
-                self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
-            }
+            self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
         default:
             return
         }
@@ -223,16 +210,6 @@ class DrinkTableViewController: BlurredBackgroundTableViewController, UINavigati
     
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        
-        if let cell = needBgReset {
-            
-            cell.containerView.backgroundColor = cell.containerView.backgroundColor!.withAlphaComponent(0.1)
-
-            needBgReset = nil
-            
-        }
-        
-
         
     }
     

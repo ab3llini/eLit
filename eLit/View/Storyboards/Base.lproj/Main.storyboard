@@ -39,101 +39,6 @@
             </objects>
             <point key="canvasLocation" x="-1052" y="970"/>
         </scene>
-        <!--Log In View Controller-->
-        <scene sceneID="a8w-SS-Klt">
-            <objects>
-                <viewController id="xMj-P9-QoY" customClass="LogInViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qEv-1E-S6m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkWallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="bzk-9z-nZF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6m-PG-l5V">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M7e-th-iGh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23H-OS-vbJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Lde-60-FnQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ShD-Cg-pxR">
-                                                        <rect key="frame" x="197" y="352" width="20" height="20"/>
-                                                    </activityIndicatorView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="centerX" secondItem="Lde-60-FnQ" secondAttribute="centerX" id="Zeo-0S-OFo"/>
-                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="centerY" secondItem="Lde-60-FnQ" secondAttribute="centerY" id="cEo-vH-xN6"/>
-                                                    <constraint firstItem="ShD-Cg-pxR" firstAttribute="top" secondItem="Lde-60-FnQ" secondAttribute="top" constant="352" id="z2a-2K-4gN"/>
-                                                </constraints>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sx5-5P-mMz" customClass="LogInView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="82" y="713" width="250" height="50"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoogleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BXV-CH-Ils">
-                                        <rect key="frame" x="10" y="10" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="BXV-CH-Ils" secondAttribute="height" multiplier="1:1" id="8B3-fc-ljr"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-lu-oVc">
-                                        <rect key="frame" x="50" y="10" width="190" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Sx5-5P-mMz" secondAttribute="height" multiplier="5:1" id="HJ8-Uf-kpC"/>
-                                    <constraint firstItem="BXV-CH-Ils" firstAttribute="top" secondItem="Sx5-5P-mMz" secondAttribute="top" constant="10" id="Ifb-v8-MUu"/>
-                                    <constraint firstAttribute="bottom" secondItem="BXV-CH-Ils" secondAttribute="bottom" constant="10" id="JPQ-RC-6Ka"/>
-                                    <constraint firstItem="BXV-CH-Ils" firstAttribute="leading" secondItem="Sx5-5P-mMz" secondAttribute="leading" constant="10" id="KdS-re-XBE"/>
-                                    <constraint firstItem="rEl-lu-oVc" firstAttribute="leading" secondItem="BXV-CH-Ils" secondAttribute="trailing" constant="10" id="MqM-4K-Ycz"/>
-                                    <constraint firstAttribute="trailing" secondItem="rEl-lu-oVc" secondAttribute="trailing" constant="10" id="RcC-ga-4JW"/>
-                                    <constraint firstAttribute="bottom" secondItem="rEl-lu-oVc" secondAttribute="bottom" constant="10" id="T0A-jn-yMr"/>
-                                    <constraint firstItem="rEl-lu-oVc" firstAttribute="top" secondItem="Sx5-5P-mMz" secondAttribute="top" constant="10" id="dAy-l6-qmI"/>
-                                    <constraint firstAttribute="width" constant="250" id="r0z-il-mjD"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Sx5-5P-mMz" firstAttribute="centerX" secondItem="qEv-1E-S6m" secondAttribute="centerX" id="1Vq-m9-1i5"/>
-                            <constraint firstItem="W6m-PG-l5V" firstAttribute="leading" secondItem="NPa-Yo-DWb" secondAttribute="leading" id="QxQ-Ig-avj"/>
-                            <constraint firstItem="bzk-9z-nZF" firstAttribute="top" secondItem="NPa-Yo-DWb" secondAttribute="top" id="Ul1-iB-JBp"/>
-                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="trailing" secondItem="W6m-PG-l5V" secondAttribute="trailing" id="YHb-jz-6AD"/>
-                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="bottom" secondItem="W6m-PG-l5V" secondAttribute="bottom" id="ZMC-RZ-Me9"/>
-                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="bottom" secondItem="Sx5-5P-mMz" secondAttribute="bottom" constant="50" id="hVv-mA-9pL"/>
-                            <constraint firstItem="bzk-9z-nZF" firstAttribute="leading" secondItem="NPa-Yo-DWb" secondAttribute="leading" id="mOR-2g-1bX"/>
-                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="trailing" secondItem="bzk-9z-nZF" secondAttribute="trailing" id="s14-aY-gNZ"/>
-                            <constraint firstItem="W6m-PG-l5V" firstAttribute="top" secondItem="NPa-Yo-DWb" secondAttribute="top" id="z8b-Zs-Pxy"/>
-                            <constraint firstItem="NPa-Yo-DWb" firstAttribute="bottom" secondItem="bzk-9z-nZF" secondAttribute="bottom" id="zn1-2e-tFo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="NPa-Yo-DWb"/>
-                    </view>
-                    <connections>
-                        <outlet property="loggingIn" destination="ShD-Cg-pxR" id="S7h-hC-PiM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uBz-2t-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3488.4057971014495" y="1964.7321428571427"/>
-        </scene>
         <!--Reviews-->
         <scene sceneID="Mej-bV-fOL">
             <objects>
@@ -220,7 +125,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="fw4-4G-IQo"/>
                     <connections>
-                        <segue destination="xMj-P9-QoY" kind="show" identifier="toLoginVC" id="P98-Xo-iPM"/>
                         <segue destination="1t3-C8-niw" kind="show" identifier="toUserProfileVC" id="48f-dX-avF"/>
                     </connections>
                 </tableViewController>
@@ -311,7 +215,7 @@
         <!--Home-->
         <scene sceneID="vjF-gq-HhL">
             <objects>
-                <tableViewController id="gbq-HS-nPN" customClass="DrinkTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="gbq-HS-nPN" customClass="HomeTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="i83-7Z-Bl4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -623,9 +527,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DrinkWallpaper" width="559" height="289"/>
         <image name="GameIcon" width="30" height="30"/>
-        <image name="GoogleIcon" width="409.60000610351562" height="409.60000610351562"/>
         <image name="HomeIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
