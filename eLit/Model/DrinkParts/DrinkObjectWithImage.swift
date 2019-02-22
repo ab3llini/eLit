@@ -13,7 +13,7 @@ import UIImageColors
 class DrinkObjectWithImage: DrinkObject {
     
     internal var image: UIImage?
-    internal var color: UIColor?
+    internal var colors: UIImageColors?
     
     private let animationDuration = 0.5
     
@@ -83,15 +83,15 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setColor (to view : UIView, alpha : CGFloat = 1) {
         
-        if self.color != nil {
+        if self.colors != nil {
             UIView.animate(withDuration: self.animationDuration) {
-                view.backgroundColor = self.color?.withAlphaComponent(alpha)
+                view.backgroundColor = self.colors?.secondary.withAlphaComponent(alpha)
             }
         }
         else {
-            self.getColor { (color) in
+            self.getColors { (colors) in
                 UIView.animate(withDuration: self.animationDuration) {
-                    view.backgroundColor = color.withAlphaComponent(alpha)
+                    view.backgroundColor = colors.secondary.withAlphaComponent(alpha)
                 }
             }
         }
@@ -107,60 +107,60 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setImageAndColor(calling : @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
         
-        if self.color == nil && self.image == nil {
+        if self.colors == nil && self.image == nil {
             
             self.getImage { (image) in
-                self.getColor(completion: { (color) in
-                    calling(image, color)
+                self.getColors(completion: { (colors) in
+                    calling(image, colors.secondary)
                 })
             }
             
         }
-        else if self.color == nil && self.image != nil {
+        else if self.colors == nil && self.image != nil {
             
-            self.getColor(completion: { (color) in
-                calling(self.image, color)
+            self.getColors(completion: { (colors) in
+                calling(self.image, colors.secondary)
             })
             
         }
-        else if self.color != nil && self.image == nil {
+        else if self.colors != nil && self.image == nil {
             
             self.getImage { (image) in
-                calling(image, self.color!)
+                calling(image, self.colors!.secondary)
 
             }
             
         }
         else {
-            calling(self.image, self.color!)
+            calling(self.image, self.colors!.secondary)
 
         }
         
     }
     
-    func getImageAndColor(completion: @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
+    func getImageAndColor(completion: @escaping (_ image : UIImage?, _ colors: UIImageColors) -> Void) {
         
         self.getImage { (image) in
-            self.getColor(completion: { (color) in
-                completion(image, color)
+            self.getColors(completion: { (colors) in
+                completion(image, colors)
             })
         }
         
     }
     
-    func getColor(completion: @escaping (_ color: UIColor) -> Void) {
+    func getColors(completion: @escaping (_ colors: UIImageColors) -> Void) {
         
-        guard self.color == nil else {
-            completion(self.color!)
+        guard self.colors == nil else {
+            completion(self.colors!)
             return
         }
         
         self.getImage { (image) in
             image?.getColors({ (colors) in
                 
-                self.color = colors.secondary.adjust(brightnessBy: 0.5)
+                let result = UIImageColors(background: colors.background, primary: colors.primary, secondary: colors.secondary.adjust(brightnessBy: 0.5), detail: colors.detail)
                 
-                completion(self.color!)
+                completion(result)
             })
         }
         

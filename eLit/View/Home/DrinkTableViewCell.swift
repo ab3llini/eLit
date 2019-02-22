@@ -41,8 +41,11 @@ class DrinkTableViewCell: UITableViewCell {
         // Add blur effect
         _ = self.blurView.addBlurEffect(effect: .extraLight)
         
+        // Fade out a bit the view
         self.blurView.alpha = 0.5
         
+        // Hide the rating until fully loaded
+        self.ratingView.alpha = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -73,24 +76,39 @@ class DrinkTableViewCell: UITableViewCell {
     private func setDegreeRibbon() {
         
         self.degreeLabel.text = String(self.drink.degree) + "%"
-        //self.degreeRibbon.label.textColor = UIColor.black
-        //self.drink.setColor(to: self.degreeRibbon, alpha: 0.2)
 
     }
     
     private func setCategoryRibbon() {
         
         self.categoryLabel.text = (drink.ofCategory?.name)!
-        //self.categoryRibbon.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-        //self.categoryRibbon.label.textColor = UIColor.darkGray
-
 
     }
     
     private func setRating() {
         
         self.drink.getRating { (rating) in
+            
+            print(rating)
+            
             self.ratingView.rating = rating
+            self.drink.getColors(completion: { (colors) in
+                
+                var settings = CosmosSettings()
+                
+                settings.fillMode = .precise
+                settings.emptyBorderColor = colors.primary
+                settings.emptyColor = .clear
+                settings.filledColor = colors.primary
+                settings.filledBorderColor = colors.primary
+                
+                self.ratingView.settings = settings
+                
+                UIView.animate(withDuration: self.animationDuration, animations: {
+                    self.ratingView.alpha = 1
+                })
+            })
+            
         }
     }
     
@@ -110,6 +128,7 @@ class DrinkTableViewCell: UITableViewCell {
         self.setDrinkImage()
         self.setBackgroundColor()
         self.setBackgroundImage()
+        self.setRating()
         
         self.drinkNameLabel.text = drink.name
 

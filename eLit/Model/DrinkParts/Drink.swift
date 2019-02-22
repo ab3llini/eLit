@@ -110,14 +110,19 @@ class Drink: DrinkObjectWithImage {
     
     func getRating (forceReload : Bool = false, completion : @escaping (_ : Double) -> Void) {
         
+        print("GETTING RATING ****")
+
         
         let requestRating = {
+            
+            print("Requesting rating for drink \(self)")
             
             //Sending request for drink rating
             DataBaseManager.shared.requestRating(for: self, completion: { data in
                 if (data["status"] as! String) == "ok" {
                     let ratingData = data["data"] as! [String: Any]
                     let rating = Double(ratingData["rating"] as? String ?? "0.0") ?? 0.0
+                    self.rating = rating
                     completion(rating)
                 }
                 else {
@@ -129,13 +134,14 @@ class Drink: DrinkObjectWithImage {
         
         if forceReload {
             
+            self.rating = -1.0
             requestRating()
             
         }
         
         else{
             
-            if self.degree == -1.0 {
+            if self.rating == -1.0 {
                 requestRating()
             }
             else {

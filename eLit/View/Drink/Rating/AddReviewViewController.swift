@@ -23,7 +23,7 @@ class AddReviewViewController: BlurredBackgroundViewController {
     
     var drink : Drink!
     
-    var delegate : AddReviewDelegate?
+    var delegates : [AddReviewDelegate] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +78,8 @@ class AddReviewViewController: BlurredBackgroundViewController {
         let alert = UIAlertController(title: title, message: content, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
             self.navigationController?.popViewController(animated: true)
-            if let d = self.delegate {
-                d.didSubmitReview()
+           for delegate in self.delegates {
+                delegate.didSubmitReview()
 
             }
         }))

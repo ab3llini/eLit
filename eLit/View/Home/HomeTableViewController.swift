@@ -25,7 +25,6 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     // Storyboard segue
     var segue = Navigation.toDrinkVC
 
-
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -74,7 +73,34 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
 
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.checkRatingDidChange()
+    }
 
+    func checkRatingDidChange() {
+            
+            var willUpdate : [IndexPath] = []
+            
+            for (i, drink) in self.drinks.enumerated() {
+                
+                let ip = IndexPath(row: i, section: 1)
+                
+                let cell : DrinkTableViewCell = self.tableView.cellForRow(at: ip) as! DrinkTableViewCell
+                
+                drink.getRating { (newRating) in
+                    
+                    if cell.ratingView.rating != newRating {
+                        
+                        willUpdate.append(ip)
+                        
+                    }
+                }
+            }
+            
+            self.tableView.reloadRows(at: willUpdate, with: .automatic)
+        
+    }
     
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {

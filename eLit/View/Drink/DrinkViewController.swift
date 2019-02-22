@@ -55,7 +55,16 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
         }
         
-        //self.didSubmitReview()
+        self.updateRating()
+        
+    }
+    
+    func updateRating(reload : Bool = false) {
+        
+        self.drink.getRating(forceReload: reload) { (rating) in
+            self.rating = rating
+            self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
+        }
         
     }
     
@@ -63,9 +72,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     func didSubmitReview() {
         
         //Sending request for drink rating
-        self.drink.getRating(forceReload: true) { (rating) in
-            self.tableView.reloadRows(at: [IndexPath(indexes: [1, 0])], with: .automatic)
-        }
+        self.updateRating(reload: true)
         
     }
     
@@ -257,7 +264,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             let destination : AddReviewViewController = segue.destination as! AddReviewViewController
             
-            destination.delegate = self
+            destination.delegates.append(self)
             destination.drink = self.drink
 
         case Navigation.toDrinkForIngredientVC.rawValue:
