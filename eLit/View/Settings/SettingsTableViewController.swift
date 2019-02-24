@@ -14,16 +14,17 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
     
     let accountNib = "AccountTableViewCell"
 
+    var userSettings : UserSettings!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareForSignIn()
         self.tableView.register(UINib.init(nibName: accountNib, bundle: nil), forCellReuseIdentifier: accountNib)
-        // GIDSignIn.sharedInstance()?.signOut()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.setBackgroundImage(UIImage(named: "settings_bg.png"), withColor: .orange)
+        
+        self.userSettings = Preferences.shared.userSettings()
+        
     }
 
     // MARK: - Table view data source
@@ -39,7 +40,7 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         case 0:
             return 1
         default:
-            return 5
+            return self.userSettings.switches.count
         }
     }
 
@@ -90,13 +91,30 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             return cell
         
         default:
-            return UITableViewCell()
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "onOffSettingCell") {
+                
+                
+                let text = self.userSettings.switches[indexPath.row].text
+                let val = self.userSettings.switches[indexPath.row].value
+                
+                self.prepareOnOffCell(cell, at: indexPath.row, text: text, value: val)
+                
+                return cell
+                
+            }
+            else {
+                
+                return UITableViewCell()
+                
+            }
         }
     }
     
+    
     // MARK: Google Sing in
     func prepareForSignIn() {
-        GIDSignIn.sharedInstance()?.clientID = Preferences.shared.settings.gid
+        GIDSignIn.sharedInstance()?.clientID = Preferences.shared.coreSettings.gid
         if GIDSignIn.sharedInstance()?.uiDelegate == nil {
             GIDSignIn.sharedInstance()?.uiDelegate = self
         }
@@ -139,21 +157,20 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        
+        switch indexPath.section {
+        case 0:
             if (GIDSignIn.sharedInstance()?.hasAuthInKeychain() ?? false) == false {
                 GIDSignIn.sharedInstance()?.signIn()
                 //TODO: manage sign in data
             } else {
                 performSegue(withIdentifier: Navigation.toUserProfileVC.rawValue, sender: self)
             }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
+            
         default:
-            return 30
+            return
         }
+ 
     }
     
     func onLoginEnd() {
@@ -162,56 +179,40 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         self.tableView.reloadRows(at: [IndexPath(indexes: [0, 0])], with: UITableView.RowAnimation.automatic)
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    @objc func didToggleSwitch(sender: SettingsSwitch) {
+        
+        // Toggle
+        Preferences.shared.toggleUserSwitch(at: sender.reference)
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
-    // MARK: - Navigation
-
+    func prepareOnOffCell(_ cell : UITableViewCell, at index : Int, text : String, value : Bool) {
+        
+        let label = cell.contentView.viewWithTag(1) as! UILabel
+        let toggle = cell.contentView.viewWithTag(2) as! SettingsSwitch
+        
+        toggle.reference = index
+        toggle.addTarget(self, action: #selector(didToggleSwitch(sender:)), for: .valueChanged)
+        
+        label.text = text
+        toggle.isOn = value
+        
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch segue.identifier {
-        case Navigation.toUserProfileVC.rawValue:
-            let profileVC = segue.destination as! ProfileTableViewController
-            profileVC.callerVC = self
-        default:
-            return
+            case Navigation.toUserProfileVC.rawValue:
+                let profileVC = segue.destination as! ProfileTableViewController
+                profileVC.callerVC = self
+            default:
+                return
         }
+        
     }
     
 

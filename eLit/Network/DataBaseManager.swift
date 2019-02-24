@@ -63,7 +63,7 @@ class DataBaseManager: NSObject {
     
     //MARK: Initializers
     private override init() {
-        self.defaultURL = URL(string: Preferences.shared.settings.host)!
+        self.defaultURL = URL(string: Preferences.shared.coreSettings.host)!
     }
     
     //MARK: Public methods

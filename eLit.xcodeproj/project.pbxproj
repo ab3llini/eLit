@@ -67,12 +67,14 @@
 		BD613A942209AF1300A5A36E /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A912209AF1200A5A36E /* TimelineTableViewCell.xib */; };
 		BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A922209AF1300A5A36E /* TimelineView.swift */; };
 		BD613A962209AF1300A5A36E /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A932209AF1300A5A36E /* TimelineTableViewCell.swift */; };
+		BD6A48A022231B7D009A835A /* UserSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD6A489F22231B7D009A835A /* UserSettings.plist */; };
 		BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */; };
 		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
 		BD6EE94721FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */; };
-		BD9C195E2214347200E05927 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* Settings.plist */; };
+		BD9C195E2214347200E05927 /* CoreSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* CoreSettings.plist */; };
 		BD9C19612214352200E05927 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Preferences.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
+		BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */; };
 		BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CB22159477002926BE /* AddReviewViewController.swift */; };
 		BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CD22159DE6002926BE /* ReviewTextView.swift */; };
 		BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */; };
@@ -187,12 +189,14 @@
 		BD613A912209AF1200A5A36E /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		BD613A922209AF1300A5A36E /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		BD613A932209AF1300A5A36E /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
+		BD6A489F22231B7D009A835A /* UserSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserSettings.plist; sourceTree = "<group>"; };
 		BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundTableViewController.swift; sourceTree = "<group>"; };
 		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
 		BD6EE94521FCBFFC0034BAE9 /* DrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkImageTableViewCell.xib; sourceTree = "<group>"; };
-		BD9C195D2214347200E05927 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		BD9C195D2214347200E05927 /* CoreSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CoreSettings.plist; sourceTree = "<group>"; };
 		BD9C19602214352200E05927 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
+		BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitch.swift; sourceTree = "<group>"; };
 		BDB310CB22159477002926BE /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		BDB310CD22159DE6002926BE /* ReviewTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextView.swift; sourceTree = "<group>"; };
 		BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				A467347021F37F020061D0D2 /* SettingsTableViewController.swift */,
 				A467347121F37F020061D0D2 /* AccountTableViewCell.swift */,
 				A467347221F37F020061D0D2 /* AccountTableViewCell.xib */,
+				BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -512,7 +517,8 @@
 		BD9C195F2214347E00E05927 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BD9C195D2214347200E05927 /* Settings.plist */,
+				BD9C195D2214347200E05927 /* CoreSettings.plist */,
+				BD6A489F22231B7D009A835A /* UserSettings.plist */,
 				BD9C19602214352200E05927 /* Preferences.swift */,
 			);
 			path = Settings;
@@ -685,11 +691,12 @@
 				A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */,
 				BD613A942209AF1300A5A36E /* TimelineTableViewCell.xib in Resources */,
 				A4D1D96F22099F8800888EAD /* DrinkComponentTableViewCell.xib in Resources */,
+				BD6A48A022231B7D009A835A /* UserSettings.plist in Resources */,
 				A462A19A21F1E7B90041BCB4 /* credentials.plist in Resources */,
 				BD37F4AB21CE4FE70080C0F7 /* Main.storyboard in Resources */,
 				A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */,
 				A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */,
-				BD9C195E2214347200E05927 /* Settings.plist in Resources */,
+				BD9C195E2214347200E05927 /* CoreSettings.plist in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* DrinkTableViewCell.xib in Resources */,
 				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */,
@@ -901,6 +908,7 @@
 				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,
 				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
+				BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */,
 				BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

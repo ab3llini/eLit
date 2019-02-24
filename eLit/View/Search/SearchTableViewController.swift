@@ -32,8 +32,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         super.viewDidLoad()
         
         // Setup bg
-        let image = UIImage(named: "Drink3")!
-        self.setBackgroundImage(image, withColor: UIColor.blue.withAlphaComponent(0.6))
+        let image = UIImage(named: "launchscreen.png")!
+        self.setBackgroundImage(image, withColor: UIColor.red.withAlphaComponent(0.6))
         
         self.backgroundImageSpeedRatio = 0.2
         self.backgroundImageViewHeight = 800
