@@ -27,7 +27,7 @@ class DrinkCategory: DrinkObjectWithImage {
     override func update(with data: [String : Any], savePersistent: Bool) {
         self.name = data["name"] as? String ?? ""
         self.imageURLString = data["image"] as? String ?? ""
-        self.image = UIImage()
+        self.image = nil
         self.imageData = nil
         super.update(with: data, savePersistent: savePersistent)
     }

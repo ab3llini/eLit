@@ -296,3 +296,28 @@ extension NSAttributedString {
         return NSMutableAttributedString(string: text, attributes:attrs)
     }
 }
+
+struct Queue <T> {
+    
+    var items:[T] = []
+    
+    mutating func enqueue(element: T)
+    {
+        items.append(element)
+    }
+    
+    mutating func dequeue() -> T?
+    {
+        
+        if items.isEmpty {
+            return nil
+        }
+        else{
+            
+            let tempElement = items.first
+            items.remove(at: 0)
+            return tempElement
+        }
+    }
+    
+}

@@ -103,7 +103,7 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = Recipe(dict: data["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = data["drink_description"] as? String ?? ""
         self.createdBy = data["created_by"] as? String ?? ""
-        self.image = UIImage()
+        self.image = nil
         self.imageData = nil
         super.update(with: data, savePersistent: savePersistent)
     }
@@ -111,9 +111,7 @@ class Drink: DrinkObjectWithImage {
     func getRating (forceReload : Bool = false, completion : @escaping (_ : Double) -> Void) {
         
         let requestRating = {
-            
-            print("Requesting rating for drink \(self)")
-            
+                        
             //Sending request for drink rating
             DataBaseManager.shared.requestRating(for: self, completion: { data in
                 if (data["status"] as! String) == "ok" {

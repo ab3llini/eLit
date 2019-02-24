@@ -78,7 +78,7 @@ class RecipeStep: DrinkObject {
                     
                         let attachment = NSTextAttachment()
                         
-                        attachment.image = image!
+                        attachment.image = image
                         attachment.bounds = CGRect(x: 0, y: -2, width: 15, height: 15)
                         
                         
