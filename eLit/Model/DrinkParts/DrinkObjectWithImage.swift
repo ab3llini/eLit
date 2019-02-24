@@ -9,6 +9,8 @@
 import UIKit
 import UIImageColors
 
+
+
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
@@ -17,33 +19,34 @@ class DrinkObjectWithImage: DrinkObject {
     
     private let animationDuration = 0.5
     
-    var setImageQueue = DispatchQueue(label: "getImageQueue")
+    var getImageQueue = Queue<((_ image: UIImage) -> Void)?>()
     
-    func getImage(forceReload: Bool = false, completion: ((_ image: UIImage?) -> Void)? = nil) {
+    func getImage(forceReload: Bool = false, completion: ((_ image: UIImage) -> Void)? = nil) {
         
+        if forceReload {
+            self.getImageData(forceReload: true, completion: completion)
+        }
         
-                if forceReload {
-                    getImageData(forceReload: true, completion: completion)
+        // The image is already initialized
+        if let img = self.image, let actualCompletion = completion {
+            DispatchQueue.main.async {
+                actualCompletion(img)
+            }
+            return
+        }
+        // The image is not initialized but is present in the database
+        if let id = self.imageData {
+            self.image = UIImage(data: id) ?? UIImage(named: "drink_placeholder")
+            
+            if let actualCompletion = completion {
+                DispatchQueue.main.async {
+                    actualCompletion(self.image!)
                 }
-                // The image is already initialized
-                if let img = self.image, let actualCompletion = completion {
-                    DispatchQueue.main.async {
-                        actualCompletion(img)
-                    }
-                    return
-                }
-                // The image is not initialized but is present in the database
-                if let id = self.imageData {
-                    self.image = UIImage(data: id) ?? UIImage()
-                    if let actualCompletion = completion {
-                        DispatchQueue.main.async {
-                            actualCompletion(self.image)
-                        }
-                    }
-                } else {
-                    getImageData(forceReload: true, completion: completion)
-
-                }
+            }
+        } else {
+            self.getImageData(forceReload: true, completion: completion)
+        }
+        
     }
     
     
@@ -149,14 +152,15 @@ class DrinkObjectWithImage: DrinkObject {
     }
     
     func getColors(completion: @escaping (_ colors: UIImageColors) -> Void) {
-        
+    
         guard self.colors == nil else {
             completion(self.colors!)
             return
         }
         
         self.getImage { (image) in
-            image?.getColors({ (colors) in
+            
+            image.getColors({ (colors) in
                 
                 let result = UIImageColors(background: colors.background, primary: colors.primary, secondary: colors.secondary.adjust(brightnessBy: 0.5), detail: colors.detail)
                 
@@ -166,7 +170,7 @@ class DrinkObjectWithImage: DrinkObject {
         
     }
     
-    private func getImageData(forceReload: Bool, completion: ((_ image: UIImage?) -> Void)?) {
+    private func getImageData(forceReload: Bool, completion: ((_ image: UIImage) -> Void)?) {
 
         if self.imageData != nil && (!forceReload) {
 
@@ -178,46 +182,74 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
-        print("Requesting asset: \(url)")
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, let actualCompletion = completion, error == nil else {                                                 // check for fundamental networking error
-                NSLog("error=\(String(describing: error))")
-                if let actualCompletion = completion {
+        if (getImageQueue.items.count > 0) {
+            
+            // Already downloading image
+            getImageQueue.enqueue(element: completion)
+            
+        }
+        else {
+            
+            print("Requesting asset: \(url) [force reload = \(forceReload)]")
+            
+            getImageQueue.enqueue(element: completion)
+
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                
+                guard let data = data, let _ = completion, error == nil else {                                                 // check for fundamental networking error
+                    NSLog("error=\(String(describing: error))")
+                    
                     DispatchQueue.main.async {
-                        actualCompletion(UIImage())
+                        self.callCompletions(UIImage(named: "drink_placeholder")!)
                     }
+                    
+                    return
                 }
-
-                return
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    DispatchQueue.main.async {
+                        self.callCompletions(UIImage(named: "drink_placeholder")!)
+                    }
+                    
+                }
+                else {
+                    
+                    DispatchQueue.main.async {
+                        self.imageData = data
+                        self.image = UIImage(data: data)
+                        self.callCompletions(self.image!)
+                        Model.shared.savePersistentModel()
+                    }
+                    
+                }
+                
             }
+
+            task.resume()
+            
+        }
+    }
+    
+    func callCompletions(_ image : UIImage) {
         
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                DispatchQueue.main.async {
-                    actualCompletion(UIImage())
-                }
+        
+        while self.getImageQueue.items.count > 0 {
+            
+            if let completion = self.getImageQueue.dequeue() {
                 
-            }
-            else {
-                
-
-                self.imageData = data
-                self.image = UIImage(data: data)
-                
-                DispatchQueue.main.async {
-                    actualCompletion(self.image)
-                    Model.shared.savePersistentModel()
-                }
+                completion!(image)
                 
             }
         }
-
-        task.resume()
+        
     }
     
     override func update(with data: [String : Any], savePersistent: Bool) {
-        self.getImageData(forceReload: true, completion: { img in super.update(with: data, savePersistent: savePersistent)})
+        
+        self.getImageData(forceReload: false, completion: { img in
+            super.update(with: data, savePersistent: savePersistent)})
     }
 
 }

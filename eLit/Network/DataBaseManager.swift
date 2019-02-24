@@ -216,7 +216,6 @@ class DataBaseManager: NSObject {
                 return
             }
             
-            let responseString = String(data: data, encoding: .utf8)!
             var dict = self.fromJson(data)
             dict["status"] = "ok"
             DispatchQueue.main.async {

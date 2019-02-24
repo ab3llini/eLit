@@ -88,22 +88,27 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
 
     func checkRatingDidChange() {
         
-            for (i, drink) in self.drinks.enumerated() {
+        if let visibles = self.tableView.indexPathsForVisibleRows {
+        
+            for idx in visibles {
                 
-                let ip = IndexPath(row: i, section: 1)
-                
-                let cell : DrinkTableViewCell = self.tableView.cellForRow(at: ip) as! DrinkTableViewCell
-                
-                drink.getRating { (newRating) in
+                if idx.section == 1 {
                     
-                    if cell.ratingView.rating != newRating {
+                    let cell : DrinkTableViewCell = self.tableView.cellForRow(at: idx) as! DrinkTableViewCell
+                    
+                    self.drinks[idx.row].getRating { (newRating) in
                         
-                        cell.setRating()
-
-                        
+                        if cell.ratingView.rating != newRating {
+                            
+                            cell.setRating()
+                            
+                        }
                     }
+                    
                 }
+                
             }
+        }
     }
     
     
