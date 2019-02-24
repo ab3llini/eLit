@@ -103,7 +103,7 @@ class AddReviewViewController: BlurredBackgroundViewController {
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             
             // Set new bottom constraint constant
-            let bottomConstraintConstant = keyboardFrame.size.height
+            let bottomConstraintConstant = keyboardFrame.size.height - 60
             
             // Set animation properties
             let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0

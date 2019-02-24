@@ -177,7 +177,7 @@ class DrinkObjectWithImage: DrinkObject {
             return
         }
         
-        guard let url = URL(string: Preferences.shared.settings.host + self.imageURLString!) else {
+        guard let url = URL(string: Preferences.shared.coreSettings.host + self.imageURLString!) else {
 
             return
         }

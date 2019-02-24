@@ -45,6 +45,7 @@
                         </constraints>
                     </activityIndicatorView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Jvl-W9-aMG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="1Ck-ur-hUT"/>
                     <constraint firstAttribute="bottom" secondItem="3gA-dm-7NI" secondAttribute="bottom" constant="15" id="2Cw-au-yTz"/>
@@ -59,6 +60,7 @@
                     <constraint firstItem="yFV-8J-JPC" firstAttribute="top" secondItem="Jvl-W9-aMG" secondAttribute="bottom" constant="5" id="zIH-hg-5wP"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="emailLabel" destination="yFV-8J-JPC" id="Xg1-ng-6ZX"/>

@@ -98,51 +98,70 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUB-mv-t9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5082" y="1965"/>
+            <point key="canvasLocation" x="-5109" y="970"/>
         </scene>
         <!--Settings-->
-        <scene sceneID="pPT-I1-owS">
+        <scene sceneID="DyS-H3-d79">
             <objects>
-                <tableViewController id="caA-p9-YWe" customClass="SettingsTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a1c-SA-ZtA">
+                <tableViewController id="Yyc-bL-5Ji" customClass="SettingsTableViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="btA-W6-OIh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="uyK-4C-xaM">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="onOffSettingCell" id="os6-Gb-D7J">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyK-4C-xaM" id="YY3-uY-a2k">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="os6-Gb-D7J" id="cUT-C5-CLe">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle this setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eaz-bh-9y4">
+                                            <rect key="frame" x="20" y="11.5" width="317" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdi-lQ-Aw1" customClass="SettingsSwitch" customModule="eLit" customModuleProvider="target">
+                                            <rect key="frame" x="345" y="6.5" width="51" height="31"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tdi-lQ-Aw1" firstAttribute="centerY" secondItem="Eaz-bh-9y4" secondAttribute="centerY" id="4mx-zg-KZJ"/>
+                                        <constraint firstItem="Eaz-bh-9y4" firstAttribute="leading" secondItem="cUT-C5-CLe" secondAttribute="leadingMargin" id="87m-7A-vGB"/>
+                                        <constraint firstAttribute="trailing" secondItem="tdi-lQ-Aw1" secondAttribute="trailing" constant="20" id="Aa4-zV-bcK"/>
+                                        <constraint firstItem="tdi-lQ-Aw1" firstAttribute="leading" secondItem="Eaz-bh-9y4" secondAttribute="trailing" constant="8" id="KWX-3U-Pcn"/>
+                                        <constraint firstItem="Eaz-bh-9y4" firstAttribute="centerY" secondItem="cUT-C5-CLe" secondAttribute="centerY" id="Uoz-2M-Yn7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="caA-p9-YWe" id="0Zf-2K-7fA"/>
-                            <outlet property="delegate" destination="caA-p9-YWe" id="wtH-2y-i1V"/>
+                            <outlet property="dataSource" destination="Yyc-bL-5Ji" id="oKM-YM-k1T"/>
+                            <outlet property="delegate" destination="Yyc-bL-5Ji" id="G7Z-9p-Z0J"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="fw4-4G-IQo"/>
+                    <navigationItem key="navigationItem" title="Settings" id="ixD-4D-5ZD"/>
                     <connections>
-                        <segue destination="1t3-C8-niw" kind="show" identifier="toUserProfileVC" id="48f-dX-avF"/>
+                        <segue destination="1t3-C8-niw" kind="show" identifier="toUserProfileVC" id="gIL-ii-s2O"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2fV-UI-u0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Khn-SL-yVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4210" y="969"/>
+            <point key="canvasLocation" x="-4142.0289855072469" y="968.97321428571422"/>
         </scene>
         <!--Settings-->
         <scene sceneID="C5E-Dq-X0h">
             <objects>
-                <navigationController id="MDl-Ea-nl5" sceneMemberID="viewController">
+                <navigationController id="MDl-Ea-nl5" customClass="LargeVbrantNavigatonController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsIcon" id="w1q-vC-Us1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RRP-75-yEb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="RRP-75-yEb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="caA-p9-YWe" kind="relationship" relationship="rootViewController" id="87X-Tp-alM"/>
+                        <segue destination="Yyc-bL-5Ji" kind="relationship" relationship="rootViewController" id="wh6-gb-XUP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4TO-lS-uDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +326,7 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdT-2G-Un9" customClass="ReviewTextView" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="30" y="314" width="354" height="474"/>
-                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

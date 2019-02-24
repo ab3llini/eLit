@@ -73,6 +73,7 @@ class DrinkTableViewCell: UITableViewCell {
         
     }
     
+    
     private func setDegreeRibbon() {
         
         self.degreeLabel.text = String(self.drink.degree) + "%"
@@ -118,6 +119,7 @@ class DrinkTableViewCell: UITableViewCell {
         
     }
     
+    
     public func setDrink(drink : Drink) {
         
         self.drink = drink
@@ -132,6 +134,7 @@ class DrinkTableViewCell: UITableViewCell {
         
         self.drinkNameLabel.text = drink.name
 
+        self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating) 
         
     }
     

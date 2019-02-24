@@ -146,16 +146,26 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            // Ingredients
-            return self.components.count
-        case 3:
+            case 0:
+                return 1
+            case 1:
+                return 1
+            case 2:
+                // Ingredients
+                if (Preferences.shared.getSwitch(for: .hideIngredients)) {
+                    return 0
+                }
+                else {
+                    return self.components.count
+                }
+            case 3:
             // Steps
-            return self.steps.count
+                if (Preferences.shared.getSwitch(for: .hideRecipe)) {
+                    return 0
+                }
+                else {
+                    return self.steps.count
+                }   
         default:
             return 0
         }

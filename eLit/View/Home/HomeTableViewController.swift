@@ -96,6 +96,8 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
                     
                     let cell : DrinkTableViewCell = self.tableView.cellForRow(at: idx) as! DrinkTableViewCell
                     
+                    cell.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
+
                     self.drinks[idx.row].getRating { (newRating) in
                         
                         if cell.ratingView.rating != newRating {

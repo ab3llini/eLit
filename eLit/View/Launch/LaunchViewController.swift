@@ -22,10 +22,14 @@ class LaunchViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        if (Preferences.shared.getSwitch(for: .updates)) {
 
-        // Setup chain
-        self.launchLabel.startChanging(every: 1, with: self.strings)
-        self.retrieveData()
+            // Setup chain
+            self.launchLabel.startChanging(every: 1, with: self.strings)
+            self.retrieveData()
+            
+        }
         
     }
     
