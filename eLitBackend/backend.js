@@ -14,6 +14,8 @@ let units = [
     'sprig',
     'twist',
     'slice',
+    'tsp',
+    'pieces',
     'cl'
 ]
 

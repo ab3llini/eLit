@@ -21,6 +21,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     //Load drinks
     var drinks : [Drink] = []
     var categories : [DrinkCategory] = []
+    var categoryWheel : FSPagerView!
     
     // Storyboard segue
     var segue = Navigation.toDrinkVC
@@ -63,6 +64,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         
     }
     
+    
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         
         self.categories[targetIndex].setImageAndColor { (image, color) in
@@ -74,14 +76,18 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         
     }
     
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        
+        self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.checkRatingDidChange()
     }
 
     func checkRatingDidChange() {
-            
-            var willUpdate : [IndexPath] = []
-            
+        
             for (i, drink) in self.drinks.enumerated() {
                 
                 let ip = IndexPath(row: i, section: 1)
@@ -92,14 +98,12 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
                     
                     if cell.ratingView.rating != newRating {
                         
-                        willUpdate.append(ip)
+                        cell.setRating()
+
                         
                     }
                 }
             }
-            
-            self.tableView.reloadRows(at: willUpdate, with: .automatic)
-        
     }
     
     
@@ -164,7 +168,9 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
             
             // Register self as header delegate
-            cell.drinkPagerView.delegate = self
+            cell.categoryWheel.delegate = self
+            
+            self.categoryWheel = cell.categoryWheel
             
             return cell
             
@@ -274,6 +280,13 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
                 }
                 
             }
+            
+        case Navigation.toDrinkForIngredientVC.rawValue:
+            let destination : DrinkForIngredientTableViewController = segue.destination as! DrinkForIngredientTableViewController
+            
+            destination.vcForClass = ObjectClass.category
+            destination.category = self.categories[self.categoryWheel.currentIndex]
+            
             
         default:
             return

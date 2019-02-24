@@ -85,11 +85,9 @@ class DrinkTableViewCell: UITableViewCell {
 
     }
     
-    private func setRating() {
+    func setRating() {
         
         self.drink.getRating { (rating) in
-            
-            print(rating)
             
             self.ratingView.rating = rating
             self.drink.getColors(completion: { (colors) in
@@ -104,9 +102,11 @@ class DrinkTableViewCell: UITableViewCell {
                 
                 self.ratingView.settings = settings
                 
-                UIView.animate(withDuration: self.animationDuration, animations: {
-                    self.ratingView.alpha = 1
-                })
+                if (self.ratingView.alpha != 1) {
+                    UIView.animate(withDuration: self.animationDuration, animations: {
+                        self.ratingView.alpha = 1
+                    })
+                }
             })
             
         }
