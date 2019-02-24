@@ -26,12 +26,12 @@ class DrinkForIngredientTableViewController: BlurredBackgroundTableViewControlle
         case .ingredient?:
             self.segue = Navigation.fromDrinkForIngredientToDrinkVC
             withIngredient?.getImageAndColor(completion: { image, colors in
-                self.setBackgroundImage(image, withColor: colors.secondary.withAlphaComponent(0.6))
+                self.setBackgroundImage(image, withColor: colors.secondary)
             })
         case .category?:
             self.segue = Navigation.fromDrinkForIngredientToDrinkVC
             category?.getImageAndColor(completion: { image, colors in
-                self.setBackgroundImage(image, withColor: colors.secondary.withAlphaComponent(0.6))
+                self.setBackgroundImage(image, withColor: colors.secondary)
             })
         default:
             return

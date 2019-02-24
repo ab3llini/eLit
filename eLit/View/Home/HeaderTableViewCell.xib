@@ -44,7 +44,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="drinkPagerView" destination="NqW-1Z-gNh" id="tqB-mm-fmX"/>
+                <outlet property="categoryWheel" destination="NqW-1Z-gNh" id="tqB-mm-fmX"/>
             </connections>
             <point key="canvasLocation" x="62.399999999999999" y="126.83658170914543"/>
         </tableViewCell>

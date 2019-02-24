@@ -22,9 +22,9 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     var categories : [DrinkCategory]!
     
     
-    @IBOutlet weak var drinkPagerView: FSPagerView! {
+    @IBOutlet weak var categoryWheel: FSPagerView! {
         didSet {
-            self.drinkPagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+            self.categoryWheel.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
         }
     }
     
@@ -54,11 +54,11 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         super.awakeFromNib()
         // Initialization code
         
-        drinkPagerView.dataSource = self
+        categoryWheel.dataSource = self
         
-        drinkPagerView.itemSize = CGSize(width: 220, height: 220)
+        categoryWheel.itemSize = CGSize(width: 220, height: 220)
         
-        self.drinkPagerView.transformer = FSPagerViewTransformer(type: .linear)
+        self.categoryWheel.transformer = FSPagerViewTransformer(type: .linear)
     
         self.categories = Model.shared.getCategories()
     

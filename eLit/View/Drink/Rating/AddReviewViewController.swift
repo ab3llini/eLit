@@ -21,6 +21,7 @@ class AddReviewViewController: BlurredBackgroundViewController {
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var reviewTitle: UITextField!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var drink : Drink!
     
     var delegates : [AddReviewDelegate] = []
@@ -51,6 +52,12 @@ class AddReviewViewController: BlurredBackgroundViewController {
             }
             
         })
+        
+        // Subscribe to keyboard notifications
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)        
     }
     
     func setNavButton(to string: String) {
@@ -87,6 +94,29 @@ class AddReviewViewController: BlurredBackgroundViewController {
     
         self.present(alert, animated: true)
         
+    }
+    
+    @objc func keyboardNotification(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            // Get keyboard frame
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            
+            // Set new bottom constraint constant
+            let bottomConstraintConstant = keyboardFrame.size.height
+            
+            // Set animation properties
+            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            
+            // Animate the view you care about
+            UIView.animate(withDuration: duration, delay: 0, options: animationCurve, animations: {
+                self.bottomConstraint.constant = bottomConstraintConstant
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
     }
     
     @objc func submitReview() {

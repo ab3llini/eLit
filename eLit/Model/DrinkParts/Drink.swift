@@ -110,9 +110,6 @@ class Drink: DrinkObjectWithImage {
     
     func getRating (forceReload : Bool = false, completion : @escaping (_ : Double) -> Void) {
         
-        print("GETTING RATING ****")
-
-        
         let requestRating = {
             
             print("Requesting rating for drink \(self)")

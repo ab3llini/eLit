@@ -228,6 +228,7 @@
                     <navigationItem key="navigationItem" title="Home" id="73d-Fc-QuN"/>
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrinkVC" id="QFk-sg-bR1"/>
+                        <segue destination="3XV-ve-yYL" kind="show" identifier="toDrinkForIngredientVC" id="vo8-4H-kr4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOG-Se-86K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,7 +243,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mcE-a8-byM" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="mcE-a8-byM" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="140.5" y="165" width="133" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -306,8 +307,7 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdT-2G-Un9" customClass="ReviewTextView" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="30" y="314" width="354" height="474"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -354,6 +354,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="bottomConstraint" destination="ppc-jH-dyf" id="c0W-jt-rWR"/>
                         <outlet property="ratingView" destination="mcE-a8-byM" id="EEd-W3-Jfn"/>
                         <outlet property="reviewContent" destination="cdT-2G-Un9" id="5ye-d4-9If"/>
                         <outlet property="reviewContentPlaceholder" destination="tXX-6b-q2c" id="F4f-Py-cYg"/>
@@ -534,7 +535,7 @@
         <image name="launchscreen" width="1440" height="2832"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0K5-3g-9Yc"/>
+        <segue reference="vo8-4H-kr4"/>
         <segue reference="QFk-sg-bR1"/>
     </inferredMetricsTieBreakers>
 </document>
