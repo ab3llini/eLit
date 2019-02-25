@@ -67,6 +67,9 @@
 		BD613A942209AF1300A5A36E /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A912209AF1200A5A36E /* TimelineTableViewCell.xib */; };
 		BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A922209AF1300A5A36E /* TimelineView.swift */; };
 		BD613A962209AF1300A5A36E /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A932209AF1300A5A36E /* TimelineTableViewCell.swift */; };
+		BD635DED22241D87000AAC86 /* BlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD635DEC22241D87000AAC86 /* BlurredBackground.swift */; };
+		BD635DEF222421FB000AAC86 /* AdaptiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD635DEE222421FB000AAC86 /* AdaptiveLabel.swift */; };
+		BD635DF122242BFF000AAC86 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD635DF022242BFF000AAC86 /* DarkModeManager.swift */; };
 		BD6A48A022231B7D009A835A /* UserSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD6A489F22231B7D009A835A /* UserSettings.plist */; };
 		BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */; };
 		BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */; };
@@ -189,6 +192,9 @@
 		BD613A912209AF1200A5A36E /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		BD613A922209AF1300A5A36E /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		BD613A932209AF1300A5A36E /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
+		BD635DEC22241D87000AAC86 /* BlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackground.swift; sourceTree = "<group>"; };
+		BD635DEE222421FB000AAC86 /* AdaptiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLabel.swift; sourceTree = "<group>"; };
+		BD635DF022242BFF000AAC86 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
 		BD6A489F22231B7D009A835A /* UserSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserSettings.plist; sourceTree = "<group>"; };
 		BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundTableViewController.swift; sourceTree = "<group>"; };
 		BD6EE94421FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -392,6 +398,9 @@
 			isa = PBXGroup;
 			children = (
 				BD19106221F3A67E00F1B213 /* LargeVbrantNavigatonController.swift */,
+				BD635DEC22241D87000AAC86 /* BlurredBackground.swift */,
+				BD635DF022242BFF000AAC86 /* DarkModeManager.swift */,
+				BD635DEE222421FB000AAC86 /* AdaptiveLabel.swift */,
 				BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */,
 				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 				BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */,
@@ -861,6 +870,7 @@
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
 				A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */,
 				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
+				BD635DF122242BFF000AAC86 /* DarkModeManager.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */,
@@ -899,6 +909,7 @@
 				BD2C651D21E24E7D00EC41C6 /* DrinkTableViewCell.swift in Sources */,
 				BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */,
 				A4386C0221EE020F00275EEC /* RequestType.swift in Sources */,
+				BD635DED22241D87000AAC86 /* BlurredBackground.swift in Sources */,
 				A4D6D00921D8313500469827 /* Recipe.swift in Sources */,
 				BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */,
 				BD0AA95E21F0AA0C00990A32 /* HomeTableViewController.swift in Sources */,
@@ -907,6 +918,7 @@
 				A4E5A75021F3E00E00E60FAF /* User.swift in Sources */,
 				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,
 				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
+				BD635DEF222421FB000AAC86 /* AdaptiveLabel.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
 				BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */,
 				BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */,

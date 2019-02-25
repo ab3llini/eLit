@@ -10,49 +10,51 @@ import UIKit
 import UIImageColors
 import Cosmos
 
-class DrinkTableViewCell: UITableViewCell {
-    
+class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
     
     // Outlets
     @IBOutlet public var drinkImageView : UIImageView!
     @IBOutlet weak var drinkNameLabel: UILabel!
-    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     
     let animationDuration = 0.5
-    
+    var visualEffectView: UIView?
     var drink : Drink!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         //Disable ugly selection effect
         self.selectionStyle = .none;
         
-        // Display default background color?
-        //self.setBackgroundColor(color: .gray)
-        
         // Rotate the image view by 45 degrees
         self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
         
-        // Add blur effect
-        _ = self.blurView.addBlurEffect(effect: .extraLight)
-        
         // Fade out a bit the view
-        self.blurView.alpha = 0.5
+        self.containerView.alpha = 0.5
         
         // Hide the rating until fully loaded
         self.ratingView.alpha = 0
+        
+        // Set default state
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        // Register for dark mode updates
+        DarkModeManager.shared.register(view: self)
+        
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+
     
     private func setDrinkImage() {
         
@@ -64,7 +66,7 @@ class DrinkTableViewCell: UITableViewCell {
         
         guard (color != nil) else {
             self.drink.setColor(to: self.backgroundImageView, alpha: 0.3)
-            self.drink.setColor(to: self.blurView, alpha: 0.2)
+            self.drink.setColor(to: self.containerView, alpha: 0.2)
             
             return
         }

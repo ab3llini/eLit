@@ -30,6 +30,9 @@ class LaunchViewController: UIViewController {
             self.retrieveData()
             
         }
+        else {
+            self.performSegue(withIdentifier: Navigation.toMainVC.rawValue, sender: self)
+        }
         
     }
     

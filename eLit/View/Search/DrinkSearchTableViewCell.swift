@@ -14,12 +14,13 @@ enum ObjectClass: String {
     case category = "Category"
 }
 
-class DrinkSearchTableViewCell: UITableViewCell {
-    
-    
+class DrinkSearchTableViewCell: UITableViewCell, DarkModeBehaviour {
+
+
     @IBOutlet weak var objectImageView: UIImageView!
-    @IBOutlet weak var objectNameLabel: UILabel!
-    @IBOutlet weak var objectClassLabel: UILabel!
+    @IBOutlet weak var objectNameLabel: AdaptiveLabel!
+    @IBOutlet weak var objectClassLabel: AdaptiveLabel!
+    @IBOutlet weak var bgView: UIView!
     
     var current : DrinkObject!
     
@@ -27,6 +28,25 @@ class DrinkSearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        DarkModeManager.shared.register(view: self)
+        
+    }
+    
+    
+    func setDarkMode(enabled: Bool) {
+        
+        if (enabled) {
+            
+            self.bgView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            
+        }
+        else {
+            
+            self.bgView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+            
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
