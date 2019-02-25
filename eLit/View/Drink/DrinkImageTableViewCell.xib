@@ -38,9 +38,9 @@
                             <constraint firstItem="upG-Ir-vmp" firstAttribute="centerX" secondItem="3Do-qH-Ljz" secondAttribute="centerX" id="szz-ZV-6OD"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-aj-acj">
-                        <rect key="frame" x="137.5" y="10.5" width="45" height="24"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-aj-acj" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                        <rect key="frame" x="135.5" y="10.5" width="49" height="24"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

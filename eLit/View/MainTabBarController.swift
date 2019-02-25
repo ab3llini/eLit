@@ -8,11 +8,14 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
-
+class MainTabBarController: UITabBarController, DarkModeBehaviour {
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        DarkModeManager.shared.register(view: self)
 
         
     }
@@ -60,5 +63,15 @@ class MainTabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setDarkMode(enabled: Bool) {
+        if enabled {
+            self.tabBar.barTintColor = UIColor.black
+        } else {
+            self.tabBar.barTintColor = UIColor.white
+        }
+    }
+    
+
 
 }

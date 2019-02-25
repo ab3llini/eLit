@@ -1,29 +1,20 @@
 //
-//  AccountTableViewCell.swift
+//  SettingsTableViewCell.swift
 //  eLit
 //
-//  Created by Gianpaolo Di Pietro on 18/01/2019.
+//  Created by Gianpaolo Di Pietro on 25/02/2019.
 //  Copyright © 2019 eLit.app. All rights reserved.
 //
 
 import UIKit
-import GoogleSignIn
 
-class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
-
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    
-    @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
+class SettingsTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.loginIndicator.hidesWhenStopped = true
-        self.selectionStyle = .none
+        // Initialization code
         self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         DarkModeManager.shared.register(view: self)
-            
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,5 +30,5 @@ class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
             self.backgroundColor = UIColor.white.withAlphaComponent(0.25)
         }
     }
-    
+
 }

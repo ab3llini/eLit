@@ -54,6 +54,14 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.categories = Model.shared.categories
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.searchController.dismiss(animated: false, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
 
     // MARK: - Table view data source
     
@@ -163,6 +171,16 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         searchBar.text = self.searchText
         //self.searchText = nil
         self.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.currentDrinks = []
+        self.currentIngredients = []
+        self.currentCategories = []
+        self.searchText = nil
+        self.reloadData()
+        self.searchController.dismiss(animated: false, completion: nil)
+        self.searchController.searchBar.showsCancelButton = false
     }
     
     func setupSearchBar() {

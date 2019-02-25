@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkComponentTableViewCell: UITableViewCell {
+class DrinkComponentTableViewCell: UITableViewCell{
     
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var qtyLabel: UILabel!
