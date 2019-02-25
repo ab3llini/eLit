@@ -11,7 +11,7 @@ import UIKit
 class LargeVbrantNavigatonController: UINavigationController, UINavigationControllerDelegate {
 
     var initComplete : Bool = false
-    var blurredImageView : UIImageView!
+    var blurredImageView : NavBarImageView!
     var prevVC : UIViewController!
     let color = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
     
@@ -44,11 +44,14 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
             let rect = CGRect(x: 0, y: 0, width: self.navigationBar.bounds.width, height: self.navigationBar.bounds.height - 10)
             
             // Create empty image view
-            self.blurredImageView = UIImageView(frame: rect)
+            self.blurredImageView = NavBarImageView(frame: rect)
             
             // Add blur effect to the image view
-            _ = self.blurredImageView.addBlurEffect(effect: .light)
+            self.blurredImageView.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
             
+            DarkModeManager.shared.register(view: self.blurredImageView)
+
+
             // Insert the image view
             
             self.navigationBar.subviews[0].insertSubview(self.blurredImageView, at: 0)
@@ -71,4 +74,23 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
 
     }
 
+}
+
+class NavBarImageView : UIImageView, DarkModeImageViewBehaviour {
+    
+    var visualEffectView: UIView?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    override init(image: UIImage?) {
+        super.init(image: image)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
 }

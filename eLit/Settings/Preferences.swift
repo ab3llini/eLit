@@ -30,9 +30,10 @@ struct UserSettings {
 
 enum UserSettingsSwitchType : Int {
     case updates = 0
-    case homeRating = 1
-    case hideIngredients = 2
-    case hideRecipe = 3
+    case darkMode
+    case homeRating
+    case hideIngredients
+    case hideRecipe
 }
 
 class Preferences {
@@ -46,33 +47,94 @@ class Preferences {
     }
     
     private var userSettingsDict : Dictionary<String, Any>?
+    private var _userSettings : UserSettings?
     
-    public func userSettings() -> UserSettings {
+    public var userSettings : UserSettings {
         
-        if (self.userSettingsDict == nil) {
+        get {
             
-            if let path = Bundle.main.path(forResource: "UserSettings", ofType: "plist") {
+            if (_userSettings == nil) {
                 
-                let dict = NSMutableDictionary(contentsOfFile: path) as! Dictionary<String, Any>
+                _userSettings = computeUserSettings()
                 
-                self.userSettingsDict = dict
-            }
-            else {
-                self.userSettingsDict = Dictionary<String, Any>()
             }
             
-        }
-       
-        var settings = UserSettings()
-        let switches = self.userSettingsDict!["Switches"] as! Array<Dictionary<String, Any>>
-        
-        for sw in switches {
-            settings.switches.append(Switch(text: sw["Key"] as! String, value: sw["Value"] as! Bool))
+            return _userSettings!
+            
         }
         
-        return settings
+        set (value) {
+            
+            _userSettings = value
+            
+        }
         
     }
+    
+    
+    private func computeUserSettings() -> UserSettings {
+        
+        var settings = UserSettings()
+        
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        
+        let path = documentsDirectory.appendingPathComponent("UserSettings.plist")
+        let fileManager = FileManager.default
+        
+        // Delete plist stored in file manager
+//        do {
+//            try fileManager.removeItem(atPath: path)
+//        }
+//        catch let e {
+//
+//            print(e)
+//
+//        }
+        //Check if file exists, if not copy the plist
+        if !fileManager.fileExists(atPath: path) {
+            
+            guard let bundlePath = Bundle.main.path(forResource: "UserSettings", ofType: "plist") else {
+                return settings
+            }
+            
+            do {
+                try fileManager.copyItem(atPath: bundlePath, toPath: path)
+                
+            } catch let error as NSError {
+                
+                print("Unable to copy file. ERROR: \(error.localizedDescription)")
+                
+            }
+        }
+        
+        
+        
+        let myDict = NSDictionary(contentsOfFile: path)
+        
+        if let dict = myDict {
+            
+            self.userSettingsDict = (dict as! Dictionary<String, Any>)
+            
+            let switches = self.userSettingsDict!["Switches"] as! Array<Dictionary<String, Any>>
+            
+            for sw in switches {
+                settings.switches.append(Switch(text: sw["Key"] as! String, value: sw["Value"] as! Bool))
+            }
+            
+            return settings
+            
+        } else {
+            
+            print("WARNING: Couldn't create dictionary from UserSettings.plist! Default values will be used!")
+            
+            self.userSettingsDict = Dictionary<String, Any>()
+            
+            return settings
+        }
+        
+    }
+    
     
     public func toggleUserSwitch(at index: Int) {
         
@@ -82,20 +144,24 @@ class Preferences {
         
         self.userSettingsDict!["Switches"] = switches
         
-        let savePath = Bundle.main.path(forResource: "UserSettings", ofType: "plist")!
         let data = NSMutableDictionary(dictionary: self.userSettingsDict! as NSDictionary)
         
-        print(data)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        let path = documentsDirectory.appendingPathComponent("UserSettings.plist")
         
-        data.write(toFile: savePath, atomically: true)
+        data.write(toFile: path, atomically: false)
         
+        // Re-compute property
+        self.userSettings = self.computeUserSettings()
     }
     
     public func getSwitch(for type : UserSettingsSwitchType) -> Bool {
     
-        return Preferences.shared.userSettings().switches[type.rawValue].value
+        return Preferences.shared.userSettings.switches[type.rawValue].value
     
     }
+
     
     private func readPlist <T : Codable> (named : String, codable : T.Type) -> T? {
         

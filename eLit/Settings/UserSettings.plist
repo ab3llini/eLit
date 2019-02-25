@@ -12,6 +12,12 @@
 		</dict>
 		<dict>
 			<key>Key</key>
+			<string>Enable dark mode</string>
+			<key>Value</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Key</key>
 			<string>Show rating in homepage</string>
 			<key>Value</key>
 			<true/>

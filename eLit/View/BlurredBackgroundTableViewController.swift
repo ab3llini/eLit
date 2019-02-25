@@ -9,7 +9,12 @@
 import UIKit
 
 
-class BlurredBackgroundTableViewController: UITableViewController {
+class BlurredBackgroundTableViewController: UITableViewController, BlurredBackground, DarkModeViewControllerBehaviour {
+    
+    var visualEffectView: UIView?
+    var backgroundImageSize: CGSize!
+    var containerView: UIView!
+    
     
     @IBInspectable
     var animationDuration : TimeInterval = 0.5
@@ -35,41 +40,21 @@ class BlurredBackgroundTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Adding blurred background
-        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: self.backgroundImageViewHeight))
-        
         // Create a container view to attach image on top
-        let containerView = UIImageView()
+        self.containerView = UIImageView()
         
-        // Setup background color
-        containerView.backgroundColor = UIColor.white
+        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: 400)
+
+        // Empty setup
+        self.initBackgroundImageView()
         
-        // Add image view
-        containerView.addSubview(self.backgroundImageView)
-        
-        // Add blur
-        _ = containerView.addBlurEffect(effect: .extraLight)
-        
-        // Set aspect fit
-        self.backgroundImageView.contentMode = .scaleAspectFit
+        DarkModeManager.shared.register(view: self)
         
         // Assign the container view as background view
         tableView.backgroundView = containerView
-    
         
     }
     
-    // Changes the background image and color
-    public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor) {
-        
-        UIView.transition(with: self.backgroundImageView,  duration: self.animationDuration, options: .transitionCrossDissolve, animations: {
-            
-            self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)
-            
-        }, completion: nil)
-        
-    }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         

@@ -8,15 +8,16 @@
 
 import UIKit
 
-class BlurredBackgroundViewController: UIViewController {
+
+class BlurredBackgroundViewController: UIViewController, BlurredBackground, DarkModeViewBehaviour {
     
+    var containerView: UIView!
+    var backgroundImageSize: CGSize!
+    var visualEffectView: UIView?
     
     @IBInspectable
     var animationDuration : TimeInterval = 0.5
 
-    // Height of the blurred background image view
-    @IBInspectable
-    var backgroundImageViewHeight : CGFloat = 400
     
     @IBInspectable
     var transparentNavBar : Bool = false
@@ -37,25 +38,15 @@ class BlurredBackgroundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Adding blurred background
-        self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: self.backgroundImageViewHeight))
-        
-        // Set aspect fit
-        self.backgroundImageView.contentMode = .scaleAspectFit
+
+        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: 400)
         
         // Create a container view to attach image on top
-        let containerView = UIView(frame: self.view.bounds)
+        self.containerView = UIView(frame: self.view.bounds)
         
-        // Setup background color
-        containerView.backgroundColor = UIColor.clear
+        self.initBackgroundImageView()
         
-        // Add image view
-        containerView.addSubview(self.backgroundImageView)
-        
-        // Add blur
-        _ = containerView.addBlurEffect(effect: .extraLight)
-
+        DarkModeManager.shared.register(view: self)
         
         // Assign the container view as background view
         self.view.insertSubview(containerView, at: 0)
@@ -72,19 +63,6 @@ class BlurredBackgroundViewController: UIViewController {
         
         
         
-    }
-    
-    // Changes the background image and color
-    public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor) {
-        
-        UIView.transition(with: self.backgroundImageView,  duration: self.animationDuration, options: .transitionCrossDissolve, animations: {
-            
-            self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)
-            
-        }, completion: nil)
-        
-    }
-    
+    }    
 
 }

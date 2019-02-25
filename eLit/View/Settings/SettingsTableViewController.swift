@@ -10,10 +10,10 @@ import UIKit
 import GoogleSignIn
 
 
+
 class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     let accountNib = "AccountTableViewCell"
-
     var userSettings : UserSettings!
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         
         self.setBackgroundImage(UIImage(named: "settings_bg.png"), withColor: .orange)
         
-        self.userSettings = Preferences.shared.userSettings()
+        self.userSettings = Preferences.shared.userSettings
         
     }
 
@@ -43,7 +43,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             return self.userSettings.switches.count
         }
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -185,8 +184,13 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         // Toggle
         Preferences.shared.toggleUserSwitch(at: sender.reference)
         
+        if (sender.reference == UserSettingsSwitchType.darkMode.rawValue) {
+            
+            DarkModeManager.shared.triggerNotificationFor(state: sender.isOn)
+            
+        }
+        
     }
-
     
     func prepareOnOffCell(_ cell : UITableViewCell, at index : Int, text : String, value : Bool) {
         

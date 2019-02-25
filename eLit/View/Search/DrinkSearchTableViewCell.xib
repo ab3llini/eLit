@@ -21,20 +21,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT5-aL-1Yo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drink4" translatesAutoresizingMaskIntoConstraints="NO" id="at3-cC-r1f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="at3-cC-r1f">
                                 <rect key="frame" x="10" y="5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="at3-cC-r1f" secondAttribute="height" multiplier="1:1" id="fLA-8r-71H"/>
                                     <constraint firstAttribute="height" constant="50" id="gKJ-nP-Xl7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-RA-3F6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-RA-3F6" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="70" y="13.5" width="39" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-Gm-40X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-Gm-40X" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="70" y="30.5" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,6 +73,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="bgView" destination="gT5-aL-1Yo" id="X2f-Yu-TBj"/>
                 <outlet property="objectClassLabel" destination="bfM-Gm-40X" id="J43-mD-1PX"/>
                 <outlet property="objectImageView" destination="at3-cC-r1f" id="rwe-Hw-uPq"/>
                 <outlet property="objectNameLabel" destination="1iR-RA-3F6" id="Jfz-6L-Stl"/>
@@ -81,7 +82,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Drink4" width="665.5999755859375" height="956.79998779296875"/>
         <image name="right-arrow" width="384" height="384"/>
     </resources>
 </document>

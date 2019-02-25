@@ -44,26 +44,26 @@
                                     <constraint firstAttribute="width" secondItem="i76-HZ-yaz" secondAttribute="height" multiplier="0.9:1" id="buR-fv-anH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuq-bd-8eO">
-                                <rect key="frame" x="88.666666666666671" y="13.333333333333336" width="46.666666666666671" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuq-bd-8eO" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="88.666666666666671" y="13.333333333333336" width="47.000000000000014" height="22"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jS8-zM-nwz">
-                                <rect key="frame" x="88.666666666666671" y="40.333333333333336" width="55.000000000000014" height="16.666666666666664"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jS8-zM-nwz" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="88.666666666666671" y="40.333333333333336" width="55.000000000000014" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-aj-0PD">
-                                <rect key="frame" x="266.66666666666669" y="40" width="20.333333333333314" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-aj-0PD" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="266.66666666666669" y="40.333333333333336" width="20.333333333333314" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-M6-W6n" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="88.666666666666686" y="62" width="79" height="15"/>
+                                <rect key="frame" x="88.666666666666686" y="62.333333333333343" width="79" height="15"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -129,8 +129,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundImageView" destination="pYD-hs-UEH" id="9Ay-Ef-VKg"/>
-                <outlet property="blurView" destination="c9c-dV-Nmx" id="4xs-EI-qMC"/>
                 <outlet property="categoryLabel" destination="jS8-zM-nwz" id="yYb-uX-Ch4"/>
+                <outlet property="containerView" destination="c9c-dV-Nmx" id="4xs-EI-qMC"/>
                 <outlet property="degreeLabel" destination="4r9-aj-0PD" id="H8z-fq-LDn"/>
                 <outlet property="drinkImageView" destination="i76-HZ-yaz" id="ZtY-sa-061"/>
                 <outlet property="drinkNameLabel" destination="Vuq-bd-8eO" id="MML-qV-y7x"/>
