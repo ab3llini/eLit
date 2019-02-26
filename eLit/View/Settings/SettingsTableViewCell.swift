@@ -14,7 +14,7 @@ class SettingsTableViewCell: UITableViewCell, DarkModeBehaviour {
         super.awakeFromNib()
         // Initialization code
         self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        DarkModeManager.shared.register(view: self)
+        DarkModeManager.shared.register(component: self)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

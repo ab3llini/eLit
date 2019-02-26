@@ -9,20 +9,29 @@
 import UIKit
 import Cosmos
 
-class RatingTableViewCell: UITableViewCell {
+class RatingTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     var viewController : UIViewController?
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     
     var hasRecognizer = false
+    var preferredRatingStarColor : UIColor!
+    
     @IBOutlet weak var writeReviewImageView: UIImageView!
+    @IBOutlet weak var showReviewImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         writeReviewImageView.tintColor = UIColor(red: 236/255, green: 69/255, blue: 90/255, alpha: 1)
+        
+        self.preferredRatingStarColor = ratingStars.settings.filledColor
+        
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        DarkModeManager.shared.register(component: self)
         
     }
 
@@ -61,6 +70,33 @@ class RatingTableViewCell: UITableViewCell {
             vc.performSegue(withIdentifier: Navigation.toAddReviewVC.rawValue, sender: vc)
             
         }
+        
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        
+        var settings = CosmosSettings()
+        
+        settings.starMargin = 0
+        
+        if (enabled) {
+            settings.emptyBorderColor = .white
+            settings.filledColor = .white
+            settings.filledBorderColor = .white
+            settings.emptyColor = .clear
+            
+            showReviewImageView.tintColor = .white
+        }
+        else {
+            settings.emptyBorderColor = self.preferredRatingStarColor
+            settings.filledColor = self.preferredRatingStarColor
+            settings.filledBorderColor = self.preferredRatingStarColor
+            settings.emptyColor = .clear
+            
+            showReviewImageView.tintColor = self.preferredRatingStarColor
+        }
+        
+        self.ratingStars.settings = settings
         
     }
 }

@@ -46,7 +46,7 @@ class BlurredBackgroundViewController: UIViewController, BlurredBackground, Dark
         
         self.initBackgroundImageView()
         
-        DarkModeManager.shared.register(view: self)
+        DarkModeManager.shared.register(component: self)
         
         // Assign the container view as background view
         self.view.insertSubview(containerView, at: 0)

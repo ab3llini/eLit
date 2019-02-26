@@ -10,20 +10,22 @@ import UIKit
 import UIImageColors
 import Cosmos
 
-class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
+class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
+    
     
     // Outlets
     @IBOutlet public var drinkImageView : UIImageView!
     @IBOutlet weak var drinkNameLabel: UILabel!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     
     let animationDuration = 0.5
-    var visualEffectView: UIView?
     var drink : Drink!
+    
+    var defaultRatingSettings : CosmosSettings?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,17 +36,20 @@ class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
         // Rotate the image view by 45 degrees
         self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
         
-        // Fade out a bit the view
-        self.containerView.alpha = 0.5
+        // Fade out a bit the view - already done in setDarkMode
+        // self.blurView.alpha = 0.5
         
         // Hide the rating until fully loaded
         self.ratingView.alpha = 0
+        
+        // Add blur effect
+        _ = self.blurView.addBlurEffect(effect: .extraLight)
         
         // Set default state
         self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         
         // Register for dark mode updates
-        DarkModeManager.shared.register(view: self)
+        DarkModeManager.shared.register(component: self)
         
     }
     
@@ -66,7 +71,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
         
         guard (color != nil) else {
             self.drink.setColor(to: self.backgroundImageView, alpha: 0.3)
-            self.drink.setColor(to: self.containerView, alpha: 0.2)
+            self.drink.setColor(to: self.blurView, alpha: 0.2)
             
             return
         }
@@ -102,8 +107,13 @@ class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
                 settings.emptyColor = .clear
                 settings.filledColor = colors.primary
                 settings.filledBorderColor = colors.primary
+                settings.starMargin = 0
                 
-                self.ratingView.settings = settings
+                self.defaultRatingSettings = settings
+                
+                if (!Preferences.shared.getSwitch(for: .darkMode)) {
+                    self.ratingView.settings = settings
+                }
                 
                 if (self.ratingView.alpha != 1) {
                     UIView.animate(withDuration: self.animationDuration, animations: {
@@ -119,6 +129,34 @@ class DrinkTableViewCell: UITableViewCell, DarkModeViewBehaviour {
         
         self.drink.setImage(to: self.backgroundImageView)
         
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        if (enabled) {
+            
+            var settings = CosmosSettings()
+            
+            settings.fillMode = .precise
+            settings.emptyBorderColor = .white
+            settings.emptyColor = .clear
+            settings.filledColor = .white
+            settings.filledBorderColor = .white
+            settings.starMargin = 0
+            
+            self.ratingView.settings = settings
+            
+            self.blurView.alpha = 0
+        }
+        else {
+            self.blurView.alpha = 0.5
+            
+            if self.defaultRatingSettings != nil {
+                
+                self.ratingView.settings = self.defaultRatingSettings!
+                
+            }
+            
+        }
     }
     
     

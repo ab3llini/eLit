@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @objc(RecipeStep)
-class RecipeStep: DrinkObject {
+class RecipeStep: DrinkObject, DarkModeBehaviour {
     
     var attributedString : NSMutableAttributedString?
     
@@ -26,6 +26,7 @@ class RecipeStep: DrinkObject {
         self.init()
         self.stepDescription = description
         self.withComponents = NSOrderedSet(array: drinkComponents)
+        DarkModeManager.shared.register(component: self)
     }
     
     convenience init(drinkComponents: [DrinkComponent]) {
@@ -85,7 +86,14 @@ class RecipeStep: DrinkObject {
                         let iconString = NSMutableAttributedString(attachment: attachment)
                         let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
                         
-                        let color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+                        let color : UIColor
+                        
+                        if (Preferences.shared.getSwitch(for: .darkMode)) {
+                            color = .white
+                        }
+                        else {
+                            color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+                        }
                         
                         
                         iconString.appendWith(" ")
@@ -121,4 +129,10 @@ class RecipeStep: DrinkObject {
         }
     }
 
+    func setDarkMode(enabled: Bool) {
+        
+        // We basically need to recompute the string with the right colors!
+        self.attributedString = nil
+        
+    }
 }

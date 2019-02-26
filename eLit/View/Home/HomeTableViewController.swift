@@ -59,7 +59,6 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             
             self.categories.first!.setImageAndColor(calling: self.setBackgroundImage)
     
-        
         }
         
     }
@@ -234,10 +233,10 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight))
             
-            let label = UILabel()
+            let label = AdaptiveLabel()
             label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight)
             label.text = "Drinks we love"
-            label.textColor = UIColor.darkGray
+            label.preferredColor = UIColor.darkGray
             label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
 
             view.addSubview(label)
@@ -300,6 +299,5 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         }
         
      }
-
 
 }

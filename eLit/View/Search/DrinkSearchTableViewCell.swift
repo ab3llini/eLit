@@ -30,7 +30,7 @@ class DrinkSearchTableViewCell: UITableViewCell, DarkModeBehaviour {
         
         self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         
-        DarkModeManager.shared.register(view: self)
+        DarkModeManager.shared.register(component: self)
         
     }
     

@@ -129,14 +129,14 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundImageView" destination="pYD-hs-UEH" id="9Ay-Ef-VKg"/>
+                <outlet property="blurView" destination="c9c-dV-Nmx" id="Szf-7s-zew"/>
                 <outlet property="categoryLabel" destination="jS8-zM-nwz" id="yYb-uX-Ch4"/>
-                <outlet property="containerView" destination="c9c-dV-Nmx" id="4xs-EI-qMC"/>
                 <outlet property="degreeLabel" destination="4r9-aj-0PD" id="H8z-fq-LDn"/>
                 <outlet property="drinkImageView" destination="i76-HZ-yaz" id="ZtY-sa-061"/>
                 <outlet property="drinkNameLabel" destination="Vuq-bd-8eO" id="MML-qV-y7x"/>
                 <outlet property="ratingView" destination="YhJ-M6-W6n" id="t3N-28-Lcj"/>
             </connections>
-            <point key="canvasLocation" x="-254.40000000000001" y="-71.674876847290648"/>
+            <point key="canvasLocation" x="-272" y="-134"/>
         </tableViewCell>
     </objects>
     <resources>

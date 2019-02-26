@@ -9,7 +9,7 @@
 import UIKit
 
 
-class BlurredBackgroundTableViewController: UITableViewController, BlurredBackground, DarkModeViewControllerBehaviour {
+class BlurredBackgroundTableViewController: UITableViewController, BlurredBackground, DarkModeBehaviour {
     
     var visualEffectView: UIView?
     var backgroundImageSize: CGSize!
@@ -48,7 +48,7 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
         // Empty setup
         self.initBackgroundImageView()
         
-        DarkModeManager.shared.register(view: self)
+        DarkModeManager.shared.register(component: self)
         
         // Assign the container view as background view
         tableView.backgroundView = containerView
@@ -81,6 +81,28 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
         
         // Optimize nav controller
         lvnc.optimize(for: self)
+        
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        
+        if self.visualEffectView != nil && self.visualEffectView!.superview != nil {
+            self.visualEffectView!.removeFromSuperview()
+        }
+        
+        
+        if (self.containerView != nil) {
+            
+            if (enabled) {
+                containerView.backgroundColor = UIColor.black
+                self.visualEffectView = self.containerView!.addBlurEffect(effect: .dark)
+            }
+            else {
+                containerView.backgroundColor = UIColor.clear
+                self.visualEffectView = self.containerView!.addBlurEffect(effect: .extraLight)
+            }
+            
+        }
         
     }
     

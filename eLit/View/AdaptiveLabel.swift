@@ -12,15 +12,25 @@ class AdaptiveLabel: UILabel, DarkModeLabelBehaviour {
     
     
     var preferredColor : UIColor!
-    
-    override func awakeFromNib() {
-        
-        self.preferredColor = self.textColor
-        
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
-        DarkModeManager.shared.register(view: self)
+
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
         
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    private func commonInit() {
+        
+        self.preferredColor = self.textColor
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        DarkModeManager.shared.register(component: self)
+        
+    }
+    
 }

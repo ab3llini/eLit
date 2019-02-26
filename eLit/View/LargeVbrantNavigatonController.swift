@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LargeVbrantNavigatonController: UINavigationController, UINavigationControllerDelegate {
+class LargeVbrantNavigatonController: UINavigationController, UINavigationControllerDelegate, DarkModeBehaviour {
 
     var initComplete : Bool = false
     var blurredImageView : NavBarImageView!
@@ -30,8 +30,11 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
         self.prevVC = self.visibleViewController
         
         self.navigationBar.tintColor = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
-    
         
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        DarkModeManager.shared.register(component: self)
+    
     }
 
     
@@ -49,7 +52,7 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
             // Add blur effect to the image view
             self.blurredImageView.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
             
-            DarkModeManager.shared.register(view: self.blurredImageView)
+            DarkModeManager.shared.register(component: self.blurredImageView)
 
 
             // Insert the image view
@@ -72,6 +75,20 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
         self.navigationBar.prefersLargeTitles = viewController.largeTitles
         self.blurredImageView.isHidden = viewController.transparentNavBar
 
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        
+        let textAttributes : [NSMutableAttributedString.Key : Any]
+        
+        if (enabled) {
+            textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        }
+        else {
+            textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        }
+        self.navigationBar.largeTitleTextAttributes = textAttributes
+        self.navigationBar.titleTextAttributes = textAttributes
     }
 
 }

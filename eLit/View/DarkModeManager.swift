@@ -20,10 +20,6 @@ protocol DarkModeViewBehaviour : DarkModeBehaviour {
     var containerView : UIView! { get set }
 }
 
-protocol DarkModeViewControllerBehaviour : DarkModeViewBehaviour {
-    
-}
-
 protocol DarkModeLabelBehaviour : DarkModeBehaviour {
     
 
@@ -33,31 +29,6 @@ protocol DarkModeImageViewBehaviour : DarkModeBehaviour {
     var visualEffectView : UIView? { get set }
 }
 
-extension DarkModeViewControllerBehaviour {
-    
-    func setDarkMode(enabled: Bool) {
-        
-        if self.visualEffectView != nil && self.visualEffectView!.superview != nil {
-            self.visualEffectView!.removeFromSuperview()
-        }
-    
-        
-        if (self.containerView != nil) {
-            
-            if (enabled) {
-                containerView.backgroundColor = UIColor.black
-                self.visualEffectView = self.containerView!.addBlurEffect(effect: .dark)
-            }
-            else {
-                containerView.backgroundColor = UIColor.clear
-                self.visualEffectView = self.containerView!.addBlurEffect(effect: .extraLight)
-            }
-            
-        }
-        
-    }
-    
-}
 
 extension DarkModeLabelBehaviour where Self : AdaptiveLabel {
     
@@ -120,9 +91,9 @@ class DarkModeManager {
     
     private var observers : [DarkModeBehaviour] = []
     
-    public func register(view : DarkModeBehaviour) {
+    public func register(component : DarkModeBehaviour) {
         
-        self.observers.append(view)
+        self.observers.append(component)
         
     }
     

@@ -17,7 +17,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     
     /// Returns the label used for the main textual content of the pager view cell.
     @objc
-    open var textLabel: UILabel? {
+    var textLabel: AdaptiveLabel? {
         if let _ = _textLabel {
             return _textLabel
         }
@@ -25,8 +25,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         view.isUserInteractionEnabled = false
         view.backgroundColor = .clear
         
-        let textLabel = UILabel(frame: .zero)
-        textLabel.textColor = .black
+        let textLabel = AdaptiveLabel(frame: .zero)
+        //textLabel.textColor = .black
         textLabel.textAlignment = .center
         textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 18)
 
@@ -89,7 +89,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     }
     
     
-    fileprivate weak var _textLabel: UILabel?
+    fileprivate weak var _textLabel: AdaptiveLabel?
     fileprivate weak var _imageView: UIImageView?
     
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
