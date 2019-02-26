@@ -10,7 +10,8 @@ import UIKit
 
 class SearchTableViewController: BlurredBackgroundTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    let searchController = UISearchController(searchResultsController: nil)
+//    let searchController = UISearchController(searchResultsController: nil)
+    var searchController = UISearchController()
     var drinks: [Drink] = []
     var ingredients: [Ingredient] = []
     var currentDrinks: [Drink] = []
@@ -40,13 +41,30 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         
         self.separatorStyle = self.tableView.separatorStyle
         
-        self.setupSearchBar()
-        
-        searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.dimsBackgroundDuringPresentation = false
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.delegate = self
+        self.searchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.searchBar.delegate = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.searchBar.searchBarStyle = .minimal
+            tableView.tableHeaderView = controller.searchBar
+            
+            let textField : UITextField = controller.searchBar.getViewElement(type: UITextField.self)!
+    
+            let blurView = textField.addBlurEffect(effect: .regular)
+    
+            blurView.clipsToBounds = true
+            blurView.layer.cornerRadius = 5
+            
+            return controller
+        })()
+//
+//        searchController.searchResultsUpdater = self
+//        searchController.hidesNavigationBarDuringPresentation = true
+//        searchController.dimsBackgroundDuringPresentation = false
+//        tableView.tableHeaderView = searchController.searchBar
+//        searchController.searchBar.delegate = self
         
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
         self.drinks = Model.shared.getDrinks()
@@ -56,7 +74,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.searchController.dismiss(animated: false, completion: nil)
+        //self.searchController.dismiss(animated: false, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,29 +197,13 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.currentCategories = []
         self.searchText = nil
         self.reloadData()
-        self.searchController.dismiss(animated: false, completion: nil)
-        self.searchController.searchBar.showsCancelButton = false
-    }
-    
-    func setupSearchBar() {
-        
-        let searchBar = self.searchController.searchBar
-        
-        searchBar.searchBarStyle = .minimal
-        
-        let textField : UITextField = searchBar.getViewElement(type: UITextField.self)!
-        
-        //textField.backgroundColor = .darkGray
-        let blurView = textField.addBlurEffect(effect: .regular)
-        
-        blurView.clipsToBounds = true
-        blurView.layer.cornerRadius = 5
     }
     
 
     // MARK: - Navigation
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchController.dismiss(animated: false, completion: nil)
         switch indexPath.section {
         case 0:
             self.selectedCategory = currentCategories[indexPath.row]
@@ -248,6 +250,15 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+    }
+    
+    override func setDarkMode(enabled: Bool) {
+        super.setDarkMode(enabled: enabled)
+        if enabled {
+            self.searchController.searchBar.barStyle = .black
+        } else {
+            self.searchController.searchBar.barStyle = .default
+        }
     }
 
 }
