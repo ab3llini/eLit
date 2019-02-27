@@ -9,8 +9,6 @@
 import UIKit
 
 class SearchTableViewController: BlurredBackgroundTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
-    
-//    let searchController = UISearchController(searchResultsController: nil)
     var searchController = UISearchController()
     var drinks: [Drink] = []
     var ingredients: [Ingredient] = []
@@ -21,9 +19,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var selectedIngredient: Ingredient?
     var selectedCategory: DrinkCategory?
     var separatorStyle: UITableViewCell.SeparatorStyle?
+    var selectedIndexPath: IndexPath?
     
-    var searchText: String?
-        
     let nib = "DrinkSearchTableViewCell"
 
     
@@ -59,12 +56,6 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             
             return controller
         })()
-//
-//        searchController.searchResultsUpdater = self
-//        searchController.hidesNavigationBarDuringPresentation = true
-//        searchController.dimsBackgroundDuringPresentation = false
-//        tableView.tableHeaderView = searchController.searchBar
-//        searchController.searchBar.delegate = self
         
         self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
         self.drinks = Model.shared.getDrinks()
@@ -72,19 +63,10 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.categories = Model.shared.categories
 
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //self.searchController.dismiss(animated: false, completion: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
 
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
@@ -159,15 +141,11 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     
     //MARK: Search result updating protocol
     func updateSearchResults(for searchController: UISearchController) {
-        return
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchText = searchController.searchBar.text ?? ""
         if searchText == "" {
             self.currentDrinks = []
             self.currentIngredients = []
             self.currentCategories = []
-            self.searchText = nil
         } else {
             self.currentDrinks = self.drinks.filter { drink in
                 return drink.name?.lowercased().contains(searchText.lowercased()) ?? false
@@ -180,14 +158,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.currentCategories = self.categories.filter { category in
                 return category.name?.lowercased().contains(searchText.lowercased()) ?? false
             }
-            self.searchText = searchText
         }
-        self.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.text = self.searchText
-        //self.searchText = nil
         self.reloadData()
     }
     
@@ -195,7 +166,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.currentDrinks = []
         self.currentIngredients = []
         self.currentCategories = []
-        self.searchText = nil
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
         self.reloadData()
     }
     
@@ -204,6 +176,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchController.dismiss(animated: false, completion: nil)
+        self.selectedIndexPath = indexPath
         switch indexPath.section {
         case 0:
             self.selectedCategory = currentCategories[indexPath.row]
@@ -222,11 +195,10 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        
         case Navigation.toDrinkForIngredientVC.rawValue:
             let tableVC = segue.destination as! DrinkForIngredientTableViewController
             let currentVC = sender as! SearchTableViewController
-            if let indexPath = self.tableView.indexPathForSelectedRow {
+            if let indexPath = self.selectedIndexPath {
                 switch indexPath.section {
                 case 0:
                     tableVC.vcForClass = .category
@@ -241,7 +213,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         
         case Navigation.toDrink2VC.rawValue:
             let v = segue.destination as! DrinkViewController
-            if let index = self.tableView.indexPathForSelectedRow {
+            if let index = self.selectedIndexPath {
                 v.setDrink(drink: currentDrinks[index.row])
             }
         
