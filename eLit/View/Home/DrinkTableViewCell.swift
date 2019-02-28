@@ -95,6 +95,8 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     func setRating() {
         
+        self.ratingView.alpha = 0
+        
         self.drink.getRating { (rating) in
             
             self.ratingView.rating = rating
@@ -115,11 +117,9 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
                     self.ratingView.settings = settings
                 }
                 
-                if (self.ratingView.alpha != 1) {
-                    UIView.animate(withDuration: self.animationDuration, animations: {
-                        self.ratingView.alpha = 1
-                    })
-                }
+                UIView.animate(withDuration: self.animationDuration, animations: {
+                    self.ratingView.alpha = 1
+                })
             })
             
         }
@@ -163,7 +163,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     public func setDrink(drink : Drink) {
         
         self.drink = drink
-        
+
         self.setCategoryRibbon()
         self.setDegreeRibbon()
         
@@ -173,6 +173,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         self.setRating()
         
         self.drinkNameLabel.text = drink.name
+
 
         self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating) 
         

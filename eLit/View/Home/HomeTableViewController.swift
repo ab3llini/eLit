@@ -186,6 +186,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             //Drinks
             let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
             let drink : Drink = drinks[indexPath.row]
+            
             cell.setDrink(drink: drink)
             
             return cell

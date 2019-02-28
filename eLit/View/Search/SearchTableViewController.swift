@@ -276,9 +276,12 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             
             DataBaseManager.shared.searchIngredient(for: code) { (result) in
                 
-                self.barCodeViewController.reset()
                 
                 self.barCodeViewController.dismiss(animated: true, completion: {
+                    
+                    self.barCodeViewController.reset()
+
+                    
                     if (result == "ERROR") {
                         
                         let alert = UIAlertController(title: "Product not found", message: "We were unable to find a product for the scanned barcode.", preferredStyle: .alert)
