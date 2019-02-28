@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import BarcodeScanner
 
-class SearchTableViewController: BlurredBackgroundTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+
+class SearchTableViewController: BlurredBackgroundTableViewController, UISearchResultsUpdating, UISearchBarDelegate, BarcodeScannerCodeDelegate, BarcodeScannerDismissalDelegate {
+    
     var searchController = UISearchController()
     var drinks: [Drink] = []
     var ingredients: [Ingredient] = []
@@ -20,6 +23,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var selectedCategory: DrinkCategory?
     var separatorStyle: UITableViewCell.SeparatorStyle?
     var selectedIndexPath: IndexPath?
+    
+    var barCodeViewController = BarCodeViewController()
     
     let nib = "DrinkSearchTableViewCell"
     
@@ -62,6 +67,9 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.categories = Model.shared.categories
 
         self.tableView.separatorStyle = .none
+        
+        self.barCodeViewController.codeDelegate = self
+        self.barCodeViewController.dismissalDelegate = self
         
     }
     
@@ -215,7 +223,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         case 2:
             self.performSegue(withIdentifier: Navigation.toDrink2VC.rawValue, sender: self)
         case 3:
-            self.performSegue(withIdentifier: Navigation.toBarCodeVC.rawValue, sender: self)
+            self.present(self.barCodeViewController, animated: true, completion: nil)
         default:
             return
         }
@@ -261,5 +269,51 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.searchController.searchBar.barStyle = .default
         }
     }
+    
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        
+        if (Int(code) != nil) {
+            
+            DataBaseManager.shared.searchIngredient(for: code) { (result) in
+                
+                
+                self.barCodeViewController.dismiss(animated: true, completion: {
+                    
+                    self.barCodeViewController.reset()
+
+                    
+                    if (result == "ERROR") {
+                        
+                        let alert = UIAlertController(title: "Product not found", message: "We were unable to find a product for the scanned barcode.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    else {
+                        self.searchController.searchBar.text = result
+                        self.updateSearchResults(for: self.searchController)
+                    }
+                })
+            }
+        }
+        else {
+            self.barCodeViewController.dismiss(animated: true, completion: {
+                self.barCodeViewController.reset()
+            })
+        }
+        
+        
+        
+    }
+    
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        
+        self.barCodeViewController.dismiss(animated: true, completion: {
+            self.barCodeViewController.reset()
+
+        })
+        
+    }
+    
 
 }
