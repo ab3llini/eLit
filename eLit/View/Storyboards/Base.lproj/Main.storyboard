@@ -501,28 +501,11 @@
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrink2VC" id="mfK-pE-sFH"/>
                         <segue destination="3XV-ve-yYL" kind="show" identifier="toDrinkForIngredientVC" id="1QJ-wl-nhf"/>
-                        <segue destination="qGv-Lj-Frn" kind="show" identifier="toBarCodeVC" id="K7K-eB-hZ5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PA-c7-Ptk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="921.73913043478262" y="447.99107142857139"/>
-        </scene>
-        <!--Barcode Scanner View Controller-->
-        <scene sceneID="hq8-Ae-6p7">
-            <objects>
-                <viewController id="qGv-Lj-Frn" customClass="BarcodeScannerViewController" customModule="BarcodeScanner" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OVM-1Q-Hjg" customClass="Bar">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Bd8-D4-jat"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="v7l-Lw-xeR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RK4-r1-Fqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="922" y="1243"/>
         </scene>
         <!--Drink For Ingredient Table View Controller-->
         <scene sceneID="gjU-xr-KZx">

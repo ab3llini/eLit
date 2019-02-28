@@ -9,7 +9,7 @@
 import UIKit
 import BarcodeScanner
 
-class BarCodeVIewController: BarcodeScannerViewController {
+class BarCodeViewController: BarcodeScannerViewController {
 
     override func viewDidLoad() {
         
