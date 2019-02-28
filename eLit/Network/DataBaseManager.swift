@@ -176,7 +176,7 @@ class DataBaseManager: NSObject {
         self.sendRequest(for: .RATING, with: request, completion: completion)
     }
     
-    func searchIngredient(for barcode: String, completion: @escaping (String) -> Void) {
+    func searchIngredient(for barcode: String, completion: @escaping (String?) -> Void) {
         let baseURL = "https://world.openfoodfacts.org/api/v0/product/"
         let url = URL(string: baseURL + barcode)
         var request = URLRequest(url: url!)
@@ -193,25 +193,64 @@ class DataBaseManager: NSObject {
             
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
-                    completion("ERROR")
+                    completion(nil)
                 }
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 DispatchQueue.main.async {
-                    completion("ERROR")
+                    completion(nil)
                 }
                 return
             }
             
             var dict = self.fromJson(data)
             let product = dict["product"] as? [String: Any] ?? [:]
-            let productName = product["product_name"] as? String ?? "ERROR"
-            DispatchQueue.main.async {
-                completion(productName)
+            let productName = product["product_name"] as? String ?? nil
+            if productName == nil {
+                let url = URL(string: "https://api.upcitemdb.com/prod/trial/lookup?upc=" + barcode)
+                var request = URLRequest(url: url!)
+                request.httpMethod = "GET"
+                print("Sending request to \(url?.absoluteString)")
+                
+                let backupTask = URLSession.shared.dataTask(with: request) { data, response, error in
+                    
+                    guard let _ : HTTPURLResponse = response as? HTTPURLResponse else {
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
+                        return
+                    }
+                    
+                    guard let data = data, error == nil else {
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
+                        return
+                    }
+                    
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
+                        return
+                    }
+                    
+                    var dict = self.fromJson(data)
+                    let product = dict["items"] as? [[String: Any]] ?? []
+                    let productName = product.first!["title"] as? String ?? nil
+                        DispatchQueue.main.async {
+                            completion(productName)
+                        }
+                }
+                backupTask.resume()
+                
+            } else {
+                DispatchQueue.main.async {
+                    completion(productName)
+                }
             }
-            
         }
         task.resume()
     }
