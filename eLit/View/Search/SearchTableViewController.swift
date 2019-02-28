@@ -261,17 +261,41 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         
         if (Int(code) != nil) {
             
-            //DataBaseManager.
-            
+            DataBaseManager.shared.searchIngredient(for: code) { (result) in
+                
+                self.barCodeViewController.reset()
+                
+                self.barCodeViewController.dismiss(animated: true, completion: {
+                    if (result == "ERROR") {
+                        
+                        let alert = UIAlertController(title: "Product not found", message: "We were unable to find a product for the scanned barcode.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    else {
+                        self.searchController.searchBar.text = result
+                        self.updateSearchResults(for: self.searchController)
+                    }
+                })
+            }
         }
+        else {
+            self.barCodeViewController.dismiss(animated: true, completion: {
+                self.barCodeViewController.reset()
+            })
+        }
+        
+        
         
     }
     
     func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
         
-        print("Dismissing scanner")
-        
-        self.barCodeViewController.dismiss(animated: true, completion: nil)
+        self.barCodeViewController.dismiss(animated: true, completion: {
+            self.barCodeViewController.reset()
+
+        })
         
     }
     

@@ -207,7 +207,7 @@ class DataBaseManager: NSObject {
             
             var dict = self.fromJson(data)
             let product = dict["product"] as? [String: Any] ?? [:]
-            let productName = product["product_name"] as? String ?? ""
+            let productName = product["product_name"] as? String ?? "ERROR"
             DispatchQueue.main.async {
                 completion(productName)
             }
