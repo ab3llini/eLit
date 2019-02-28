@@ -425,7 +425,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JYy-Zi-fA2" kind="relationship" relationship="rootViewController" id="Ze3-6h-WmF"/>
+                        <segue destination="JYy-Zi-fA2" kind="relationship" relationship="rootViewController" id="AYg-vc-PdN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTu-Qs-gJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,13 +441,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TQR-Gj-lr3">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="barCodeCell" rowHeight="200" id="TQR-Gj-lr3">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TQR-Gj-lr3" id="kGH-VW-ks1">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="199.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ip5-zb-Szu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="199.5"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bar-code" translatesAutoresizingMaskIntoConstraints="NO" id="E1h-0i-n9E">
+                                                    <rect key="frame" x="157" y="20" width="100" height="100"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.00044488306950000002" blue="0.32852152210000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="mZb-x5-yWZ"/>
+                                                        <constraint firstAttribute="width" secondItem="E1h-0i-n9E" secondAttribute="height" multiplier="1:1" id="wf9-k6-Pd7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan bar code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-3c-MQF" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                                    <rect key="frame" x="142.5" y="148.5" width="129" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="E1h-0i-n9E" firstAttribute="top" secondItem="ip5-zb-Szu" secondAttribute="top" constant="20" id="HeB-Ln-ao0"/>
+                                                <constraint firstAttribute="height" priority="750" constant="200" id="M9h-aA-wKS"/>
+                                                <constraint firstItem="E1h-0i-n9E" firstAttribute="centerX" secondItem="ip5-zb-Szu" secondAttribute="centerX" id="Rf1-81-Fjq"/>
+                                                <constraint firstAttribute="bottom" secondItem="LIs-3c-MQF" secondAttribute="bottom" constant="25" id="Vch-ph-dGx"/>
+                                                <constraint firstItem="LIs-3c-MQF" firstAttribute="centerX" secondItem="ip5-zb-Szu" secondAttribute="centerX" id="Vd2-PV-cMw"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ip5-zb-Szu" secondAttribute="trailing" id="94u-Eg-SBC"/>
+                                        <constraint firstItem="ip5-zb-Szu" firstAttribute="leading" secondItem="kGH-VW-ks1" secondAttribute="leading" id="Jdj-9y-AIL"/>
+                                        <constraint firstAttribute="bottom" secondItem="ip5-zb-Szu" secondAttribute="bottom" id="NCI-nQ-NJj"/>
+                                        <constraint firstItem="ip5-zb-Szu" firstAttribute="top" secondItem="kGH-VW-ks1" secondAttribute="top" id="Ydi-qu-PZJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -463,11 +501,28 @@
                     <connections>
                         <segue destination="gla-hd-7Bp" kind="show" identifier="toDrink2VC" id="mfK-pE-sFH"/>
                         <segue destination="3XV-ve-yYL" kind="show" identifier="toDrinkForIngredientVC" id="1QJ-wl-nhf"/>
+                        <segue destination="qGv-Lj-Frn" kind="show" identifier="toBarCodeVC" id="K7K-eB-hZ5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PA-c7-Ptk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="448"/>
+            <point key="canvasLocation" x="921.73913043478262" y="447.99107142857139"/>
+        </scene>
+        <!--Barcode Scanner View Controller-->
+        <scene sceneID="hq8-Ae-6p7">
+            <objects>
+                <viewController id="qGv-Lj-Frn" customClass="BarcodeScannerViewController" customModule="BarcodeScanner" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OVM-1Q-Hjg" customClass="Bar">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Bd8-D4-jat"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="v7l-Lw-xeR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RK4-r1-Fqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="1243"/>
         </scene>
         <!--Drink For Ingredient Table View Controller-->
         <scene sceneID="gjU-xr-KZx">
@@ -552,6 +607,7 @@
         <image name="HomeIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
+        <image name="bar-code" width="384" height="384"/>
         <image name="launchscreen" width="1440" height="2832"/>
     </resources>
     <inferredMetricsTieBreakers>

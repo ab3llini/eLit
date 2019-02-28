@@ -112,7 +112,6 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         }
     }
     
-    
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         
         show(viewControllerToCommit, sender: self)

@@ -22,7 +22,6 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     var selectedIndexPath: IndexPath?
     
     let nib = "DrinkSearchTableViewCell"
-
     
     override func viewDidLoad() {
     
@@ -62,12 +61,20 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.ingredients = Model.shared.ingredients
         self.categories = Model.shared.categories
 
+        self.tableView.separatorStyle = .none
+        
+    }
+    
+    @objc private func scanBarCode() {
+        
+        self.performSegue(withIdentifier: Navigation.toBarCodeVC.rawValue, sender: self)
+        
     }
 
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     
@@ -79,6 +86,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             return currentIngredients.count
         case 2:
             return currentDrinks.count
+        case 3:
+            return (currentCategories.count + currentIngredients.count + currentDrinks.count) == 0 ? 1 : 0
         default:
             return 0
         }
@@ -98,14 +107,19 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             // drinks
             let drink: Drink = currentDrinks[indexPath.row]
             cell.setDrink(of: .drink, with: drink)
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "barCodeCell", for: indexPath)            
+            let icon = cell.contentView.viewWithTag(1) as! UIImageView
+            icon.tintColor = UIColor(red: 236/255, green: 69/255, blue: 90/255, alpha: 1)
+            
+            
+            return cell
         default:
             return cell
         }
         return cell
     }
-    
-    
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -130,7 +144,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     }
     
     func reloadData() {
-        if self.currentDrinks.count == 0 && self.currentIngredients.count == 0 && self.currentCategories.count == 0{
+        if self.currentDrinks.count == 0 && self.currentIngredients.count == 0 && self.currentCategories.count == 0 {
             self.tableView.separatorStyle = .none
         } else {
             self.tableView.separatorStyle = self.separatorStyle ?? .none
@@ -200,6 +214,8 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
         case 2:
             self.performSegue(withIdentifier: Navigation.toDrink2VC.rawValue, sender: self)
+        case 3:
+            self.performSegue(withIdentifier: Navigation.toBarCodeVC.rawValue, sender: self)
         default:
             return
         }

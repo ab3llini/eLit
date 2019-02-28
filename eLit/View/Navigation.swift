@@ -18,4 +18,5 @@ enum Navigation : String {
     case toReviewsVC = "toReviewsVC"
     case toMainVC = "toMainVC"
     case toAddReviewVC = "toAddReviewVC"
+    case toBarCodeVC = "toBarCodeVC"
 }
