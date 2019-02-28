@@ -11,6 +11,7 @@ target 'eLit' do
   pod "ViewAnimator"
   pod 'Cosmos', '~> 18.0'
   pod 'UIImageColors'
+  pod 'BarcodeScanner'
  target 'eLitTests' do
     inherit! :search_paths
     # Pods for testing

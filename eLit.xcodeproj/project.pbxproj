@@ -45,6 +45,8 @@
 		A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129922200A59E00910834 /* ReviewTableViewController.swift */; };
 		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
 		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
+		BD0840BB2227EEA800027900 /* BarCodeVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0840BA2227EEA800027900 /* BarCodeVIewController.swift */; };
+		BD0840BD2227FC0B00027900 /* CirlceButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0840BC2227FC0B00027900 /* CirlceButtonView.swift */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
 		BD0AA95E21F0AA0C00990A32 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* HomeTableViewController.swift */; };
 		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
@@ -159,6 +161,8 @@
 		A4F1299822021AB900910834 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD0840BA2227EEA800027900 /* BarCodeVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeVIewController.swift; sourceTree = "<group>"; };
+		BD0840BC2227FC0B00027900 /* CirlceButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirlceButtonView.swift; sourceTree = "<group>"; };
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		BD0AA95D21F0AA0C00990A32 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		BD0AA95F21F0B25600990A32 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */,
 				A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */,
 				A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */,
+				BD0840BC2227FC0B00027900 /* CirlceButtonView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				BD37F4A921CE4FE70080C0F7 /* Main.storyboard */,
+				BD0840BA2227EEA800027900 /* BarCodeVIewController.swift */,
 				BD37F4B121CE4FE70080C0F7 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -788,6 +794,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-eLit/Pods-eLit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -798,6 +805,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BarcodeScanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -882,9 +890,11 @@
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */,
 				A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */,
+				BD0840BD2227FC0B00027900 /* CirlceButtonView.swift in Sources */,
 				BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */,
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
+				BD0840BB2227EEA800027900 /* BarCodeVIewController.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
@@ -1104,13 +1114,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -1128,13 +1138,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
