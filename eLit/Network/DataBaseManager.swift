@@ -176,6 +176,46 @@ class DataBaseManager: NSObject {
         self.sendRequest(for: .RATING, with: request, completion: completion)
     }
     
+    func searchIngredient(for barcode: String, completion: @escaping (String) -> Void) {
+        let baseURL = "https://world.openfoodfacts.org/api/v0/product/"
+        let url = URL(string: baseURL + barcode)
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        print("Sending request to \(url?.absoluteString)")
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let _ : HTTPURLResponse = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    
+                }
+                return
+            }
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion("ERROR")
+                }
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion("ERROR")
+                }
+                return
+            }
+            
+            var dict = self.fromJson(data)
+            let product = dict["product"] as? [String: Any] ?? [:]
+            let productName = product["product_name"] as? String ?? ""
+            DispatchQueue.main.async {
+                completion(productName)
+            }
+            
+        }
+        task.resume()
+    }
+    
     
     //MARK: Private methods
     
