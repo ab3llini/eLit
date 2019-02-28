@@ -142,33 +142,46 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     //MARK: Search result updating protocol
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
+        let searchEntries = searchText.lowercased().split(separator: " ")
         if searchText == "" {
             self.currentDrinks = []
             self.currentIngredients = []
             self.currentCategories = []
         } else {
-            self.currentDrinks = self.drinks.filter { drink in
-                return drink.name?.lowercased().contains(searchText.lowercased()) ?? false
+            self.currentIngredients = self.ingredients.filter { ingredient in
+                var condition = false
+                for entry in searchEntries {
+                    condition = condition || ingredient.name?.lowercased().contains(entry) ?? false
+                }
+                return condition
             }
             
-            self.currentIngredients = self.ingredients.filter { ingredient in
-                return ingredient.name?.lowercased().contains(searchText.lowercased()) ?? false
+            self.currentDrinks = self.drinks.filter { drink in
+                var condition = false
+                // Check for name
+                for entry in searchEntries {
+                    condition = condition || drink.name?.lowercased().contains(entry) ?? false
+                }
+                // Check for ingredients in drink
+                for ingredient in drink.ingredients() {
+                    condition = condition || self.currentIngredients.contains(ingredient)
+                }
+                return condition
             }
             
             self.currentCategories = self.categories.filter { category in
-                return category.name?.lowercased().contains(searchText.lowercased()) ?? false
+                var condition = false
+                for entry in searchEntries {
+                    condition = condition || category.name?.lowercased().contains(entry) ?? false
+                }
+                return condition
             }
         }
         self.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.currentDrinks = []
-        self.currentIngredients = []
-        self.currentCategories = []
         searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
-        self.reloadData()
     }
     
 
