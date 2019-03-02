@@ -26,7 +26,6 @@ class ReviewTableViewCell: UITableViewCell {
         
         self.mainView.clipsToBounds = true
         self.mainView.layer.cornerRadius = 5
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

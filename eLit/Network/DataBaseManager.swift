@@ -239,7 +239,7 @@ class DataBaseManager: NSObject {
                     
                     var dict = self.fromJson(data)
                     let product = dict["items"] as? [[String: Any]] ?? []
-                    let productName = product.first!["title"] as? String ?? nil
+                    let productName = product.first?["title"] as? String ?? nil
                         DispatchQueue.main.async {
                             completion(productName)
                         }

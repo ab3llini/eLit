@@ -265,8 +265,10 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         super.setDarkMode(enabled: enabled)
         if enabled {
             self.searchController.searchBar.barStyle = .black
+            self.searchController.searchBar.keyboardAppearance = .dark
         } else {
             self.searchController.searchBar.barStyle = .default
+            self.searchController.searchBar.keyboardAppearance = .default
         }
     }
     
