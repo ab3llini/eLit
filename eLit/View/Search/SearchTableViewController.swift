@@ -71,6 +71,10 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         self.barCodeViewController.codeDelegate = self
         self.barCodeViewController.dismissalDelegate = self
         
+        // DarkMode
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        DarkModeManager.shared.register(component: self)
+        
     }
     
     @objc private func scanBarCode() {
