@@ -64,6 +64,7 @@
 		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
+		BD4F933F222AD63500EC3420 /* BattleQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */; };
 		BD613A822209A5A400A5A36E /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD613A802209A5A400A5A36E /* RatingTableViewCell.swift */; };
 		BD613A832209A5A400A5A36E /* RatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A812209A5A400A5A36E /* RatingTableViewCell.xib */; };
 		BD613A942209AF1300A5A36E /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD613A912209AF1200A5A36E /* TimelineTableViewCell.xib */; };
@@ -188,6 +189,7 @@
 		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleQuizViewController.swift; sourceTree = "<group>"; };
 		BD613A7A22099C8800A5A36E /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		BD613A7B22099C8800A5A36E /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		BD613A7E22099CDA00A5A36E /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
+				BD4F933C222AD4C700EC3420 /* Games */,
 				BD9C195F2214347E00E05927 /* Settings */,
 				A462A19921F1E7B90041BCB4 /* credentials.plist */,
 				BDF964D421ECF98300228EEB /* Network */,
@@ -492,6 +495,22 @@
 				A4E5A74F21F3E00E00E60FAF /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BD4F933C222AD4C700EC3420 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				BD4F933D222AD4D300EC3420 /* Battle Quiz */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		BD4F933D222AD4D300EC3420 /* Battle Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */,
+			);
+			path = "Battle Quiz";
 			sourceTree = "<group>";
 		};
 		BD613A972209AF1600A5A36E /* Recipe */ = {
@@ -930,6 +949,7 @@
 				A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */,
 				BD635DEF222421FB000AAC86 /* AdaptiveLabel.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
+				BD4F933F222AD63500EC3420 /* BattleQuizViewController.swift in Sources */,
 				BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */,
 				BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */,
 			);

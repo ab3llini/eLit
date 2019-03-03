@@ -36,10 +36,16 @@ class BlurredBackgroundViewController: UIViewController, BlurredBackground, Dark
     @IBInspectable
     var backgroundImageColor : UIColor?
     
+    // Height of the blurred background image view
+    var backgroundImageViewHeight : CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: 400)
+        self.backgroundImageViewHeight = self.view.bounds.height / 4 * 3
+
+        
+        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: self.backgroundImageViewHeight)
         
         // Create a container view to attach image on top
         self.containerView = UIView(frame: self.view.bounds)

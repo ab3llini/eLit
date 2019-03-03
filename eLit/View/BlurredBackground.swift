@@ -55,7 +55,7 @@ extension BlurredBackground {
         UIView.transition(with: self.backgroundImageView,  duration: self.animationDuration, options: .transitionCrossDissolve, animations: {
             
             self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.4)
+            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.5)
             
         }, completion: nil)
         

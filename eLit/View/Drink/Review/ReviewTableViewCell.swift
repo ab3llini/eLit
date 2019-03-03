@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 
-class ReviewTableViewCell: UITableViewCell {
+class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,7 +18,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewTextLabel: UILabel!
     @IBOutlet weak var starsView: CosmosView!
     
-    
+    private var preferredBackgroundColor : UIColor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +26,10 @@ class ReviewTableViewCell: UITableViewCell {
         
         self.mainView.clipsToBounds = true
         self.mainView.layer.cornerRadius = 5
+        self.preferredBackgroundColor = self.mainView.backgroundColor
+        
+        DarkModeManager.shared.register(component: self)
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         
     }
     
@@ -33,6 +37,12 @@ class ReviewTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        
+        self.mainView.backgroundColor = enabled ? .darkGray : self.preferredBackgroundColor
+        
     }
     
 }

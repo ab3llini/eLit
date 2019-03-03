@@ -56,9 +56,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         
         // Assign bg
         if (self.categories.count > 0) {
-            
             self.categories.first!.setImageAndColor(calling: self.setBackgroundImage)
-    
         }
         
     }

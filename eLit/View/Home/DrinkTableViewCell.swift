@@ -21,8 +21,9 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet weak var degreeRibbonView: RibbonView!
     
-    let animationDuration = 0.5
+    let animationDuration = 0.2
     var drink : Drink!
     
     var defaultRatingSettings : CosmosSettings?
@@ -50,7 +51,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         
         // Register for dark mode updates
         DarkModeManager.shared.register(component: self)
-        
+                
     }
     
     
@@ -83,7 +84,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     private func setDegreeRibbon() {
         
-        self.degreeLabel.text = String(self.drink.degree) + "%"
+        self.degreeLabel.text = String(self.drink.degree)
 
     }
     
@@ -96,6 +97,7 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     func setRating() {
         
         self.ratingView.alpha = 0
+        self.degreeRibbonView.alpha = 0
         
         self.drink.getRating { (rating) in
             
@@ -116,6 +118,8 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
                 if (!Preferences.shared.getSwitch(for: .darkMode)) {
                     self.ratingView.settings = settings
                 }
+                self.degreeRibbonView.color = colors.primary
+                self.degreeRibbonView.show()
                 
                 UIView.animate(withDuration: self.animationDuration, animations: {
                     self.ratingView.alpha = 1
@@ -144,16 +148,16 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
             settings.starMargin = 0
             
             self.ratingView.settings = settings
-            
             self.blurView.alpha = 0
         }
         else {
             self.blurView.alpha = 0.5
             
+            
+            
             if self.defaultRatingSettings != nil {
                 
                 self.ratingView.settings = self.defaultRatingSettings!
-                
             }
             
         }
@@ -171,10 +175,8 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         self.setBackgroundColor()
         self.setBackgroundImage()
         self.setRating()
-        
+    
         self.drinkNameLabel.text = drink.name
-
-
         self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating) 
         
     }

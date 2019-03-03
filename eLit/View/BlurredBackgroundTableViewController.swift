@@ -20,8 +20,7 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
     var animationDuration : TimeInterval = 0.5
     
     // Height of the blurred background image view
-    @IBInspectable
-    var backgroundImageViewHeight : CGFloat = 400
+    var backgroundImageViewHeight : CGFloat = 0
     
     // Speed ratio at which images slides away while scolling
     @IBInspectable
@@ -39,11 +38,13 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.backgroundImageViewHeight = self.view.bounds.height / 4 * 3
 
         // Create a container view to attach image on top
         self.containerView = UIImageView()
         
-        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: 400)
+        self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: self.backgroundImageViewHeight)
 
         // Empty setup
         self.initBackgroundImageView()
