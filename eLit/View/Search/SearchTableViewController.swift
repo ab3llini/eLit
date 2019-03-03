@@ -164,7 +164,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
     //MARK: Search result updating protocol
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        let searchEntries = searchText.lowercased().split(separator: " ")
+        let searchEntries = searchText.lowercased().split(separator: " ").filter{$0.count > 2}
         if searchText == "" {
             self.currentDrinks = []
             self.currentIngredients = []
@@ -265,8 +265,10 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
         super.setDarkMode(enabled: enabled)
         if enabled {
             self.searchController.searchBar.barStyle = .black
+            self.searchController.searchBar.keyboardAppearance = .dark
         } else {
             self.searchController.searchBar.barStyle = .default
+            self.searchController.searchBar.keyboardAppearance = .default
         }
     }
     
@@ -282,7 +284,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
                     self.barCodeViewController.reset()
 
                     
-                    if (result == "ERROR") {
+                    if (result == nil) {
                         
                         let alert = UIAlertController(title: "Product not found", message: "We were unable to find a product for the scanned barcode.", preferredStyle: .alert)
                         
@@ -290,7 +292,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
                         self.present(alert, animated: true)
                     }
                     else {
-                        self.searchController.searchBar.text = result
+                        self.searchController.searchBar.text = result!
                         self.updateSearchResults(for: self.searchController)
                     }
                 })
