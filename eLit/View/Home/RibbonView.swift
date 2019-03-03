@@ -11,36 +11,36 @@ import UIKit
 @IBDesignable
 class RibbonView: UIView {
     
-    var label : UILabel!
-    
+    @IBInspectable var color : UIColor = UIColor.lightGray
+    @IBInspectable var thinkness : CGFloat = 2
     
     override func awakeFromNib() {
+        self.alpha = 0
+        setup()        
+    }
+    
+    func setup () {
         
-        self.layer.cornerRadius = 5
-        
-        self.backgroundColor = UIColor.clear
-                
-        label = UILabel(frame: self.bounds)
-        label.backgroundColor = UIColor.clear
-        label.font = UIFont(name: "HelveticaNeue", size: 11)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        
-        self.addSubview(label)
+        self.layer.borderWidth = thinkness
+        self.layer.borderColor = color.withAlphaComponent(0.4).cgColor
+        self.layer.cornerRadius = 10
+        self.backgroundColor = color.withAlphaComponent(0.1)
         
     }
     
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
-        self.layer.masksToBounds = true
-        let label = UILabel(frame: self.bounds)
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 8)
-        label.text = "Ribbon"
-        self.addSubview(label)
+        setup()
     }
     
+    func show() {
+        
+        setup()
+        
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1
+        }
+        
+    }
     
 }

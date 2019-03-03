@@ -78,6 +78,8 @@ class RatingTableViewCell: UITableViewCell, DarkModeBehaviour {
         var settings = CosmosSettings()
         
         settings.starMargin = 0
+        settings.fillMode = .precise
+
         
         if (enabled) {
             settings.emptyBorderColor = .white
