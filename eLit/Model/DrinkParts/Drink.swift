@@ -10,11 +10,25 @@ import UIKit
 import CoreData
 
 struct Component {
+    //Attributes
     var qty: Double
-    var unit: String
+    var unit: String {
+        if self.qty == 0 {
+            return "SOME"
+        }
+        return self.unit_
+    }
     var name: String
-    
+    private var unit_ : String
     var ingredient: Ingredient?
+    
+    // Functions
+    init(qty: Double, unit: String, name: String, ingredient: Ingredient?) {
+        self.qty = qty
+        self.unit_ = unit
+        self.name = name
+        self.ingredient = ingredient
+    }
     
     func setImage(completion: @escaping (_ image: UIImage?) -> Void) -> Void {
         self.ingredient?.getImage(completion: completion)
