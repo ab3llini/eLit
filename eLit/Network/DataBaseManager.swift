@@ -49,7 +49,8 @@ class DataBaseManager: NSObject {
             case "Recipe":
                 let _ = Recipe(dict: obj)
             case "DrinkCategory":
-                let _ = DrinkCategory(dict: obj)
+                break
+                //let _ = DrinkCategory(dict: obj)
             default:
                 let _ = Drink(dict: obj)
             }
