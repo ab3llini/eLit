@@ -1,27 +1,26 @@
 //
-//  DrinkTableViewTableViewCell.swift
+//  RGDrinkCollectionViewCell.swift
 //  eLit
 //
-//  Created by Alberto Mario Bellini on 06/01/2019.
-//  Copyright © 2019 Alberto Mario Bellini. All rights reserved.
+//  Created by Alberto Mario Bellini on 18/03/2019.
+//  Copyright © 2019 eLit.app. All rights reserved.
 //
 
 import UIKit
-import UIImageColors
 import Cosmos
 
-class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
-    
-    
+class RGDrinkCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
+
     // Outlets
     @IBOutlet public var drinkImageView : UIImageView!
     @IBOutlet weak var drinkNameLabel: UILabel!
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var degreeRibbonView: RibbonView!
+    @IBOutlet weak var containerView: ContainerView!
     
     let animationDuration = 0.2
     var drink : Drink!
@@ -30,9 +29,6 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //Disable ugly selection effect
-        self.selectionStyle = .none;
         
         // Rotate the image view by 45 degrees
         self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
@@ -51,16 +47,13 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         
         // Register for dark mode updates
         DarkModeManager.shared.register(component: self)
-                
+    
+        // Add a very light border to the cell
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        
     }
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     
     private func setDrinkImage() {
         
@@ -85,13 +78,13 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     private func setDegreeRibbon() {
         
         self.degreeLabel.text = String(self.drink.degree)
-
+        
     }
     
-    private func setCategoryRibbon() {
+    private func setDescription() {
         
-        self.categoryLabel.text = (drink.ofCategory?.name)!
-
+        self.descriptionLabel.text = drink.drinkDescription
+        
     }
     
     func setRating() {
@@ -167,19 +160,18 @@ class DrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     public func setDrink(drink : Drink) {
         
         self.drink = drink
-
-        self.setCategoryRibbon()
+        
+        self.setDescription()
         self.setDegreeRibbon()
         
         self.setDrinkImage()
         self.setBackgroundColor()
         self.setBackgroundImage()
         self.setRating()
-    
+        
         self.drinkNameLabel.text = drink.name
-        self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating) 
+        self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
         
     }
-    
-    
+
 }

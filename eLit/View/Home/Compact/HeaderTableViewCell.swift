@@ -55,13 +55,23 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         // Initialization code
         
         categoryWheel.dataSource = self
-        
-        categoryWheel.itemSize = CGSize(width: 220, height: 220)
+    
         
         self.categoryWheel.transformer = FSPagerViewTransformer(type: .linear)
     
         self.categories = Model.shared.getCategories()
     
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let size = self.bounds.size.height * 0.9
+        
+        print(size)
+        
+        categoryWheel.itemSize = CGSize(width: size, height: size)
         
     }
 

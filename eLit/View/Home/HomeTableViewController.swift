@@ -9,10 +9,12 @@
 import UIKit
 import ViewAnimator
 
-class HomeTableViewController: BlurredBackgroundTableViewController, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate, FSPagerViewDelegate {
+
+
+class HomeTableViewController: BlurredBackgroundTableViewController, UINavigationControllerDelegate, UIViewControllerPreviewingDelegate, FSPagerViewDelegate, RGDrinkTableViewCellDelegate {
     
 
-    let nibs = ["DrinkTableViewCell", "HeaderTableViewCell"]
+    let nibs = ["CPDrinkTableViewCell", "RGDrinkTableViewCell", "HeaderTableViewCell"]
     
     let selection = UISelectionFeedbackGenerator()
     
@@ -25,6 +27,8 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     
     // Storyboard segue
     var segue = Navigation.toDrinkVC
+    
+    var selectedDrink : Drink?
 
     override func viewDidLoad() {
         
@@ -80,7 +84,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.checkRatingDidChange()
+        //self.checkRatingDidChange()
     }
 
     func checkRatingDidChange() {
@@ -91,7 +95,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
                 
                 if idx.section == 1 {
                     
-                    let cell : DrinkTableViewCell = self.tableView.cellForRow(at: idx) as! DrinkTableViewCell
+                    let cell : CPDrinkTableViewCell = self.tableView.cellForRow(at: idx) as! CPDrinkTableViewCell
                     
                     cell.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
 
@@ -144,18 +148,35 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+
+        // On iphone, we want to have two sections: header + drinks
+        // On iPad we want to have multiple collection views
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            return 2
+        case .regular:
+            return self.categories.count
+        default:
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch section {
-        case 0:
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+            case 0:
+                return 1
+            default:
+                return drinks.count
+            }
+        case .regular:
             return 1
         default:
-            return drinks.count
+            return 0
         }
+        
         
     }
     
@@ -163,85 +184,151 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch (indexPath.section) {
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch (indexPath.section) {
+                
+            case 0:
+                
+                //Header
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
+                
+                // Register self as header delegate
+                cell.categoryWheel.delegate = self
+                
+                self.categoryWheel = cell.categoryWheel
+                
+                return cell
+                
+                
+                
+            default:
+                
+                //Drinks
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CPDrinkTableViewCell", for: indexPath) as! CPDrinkTableViewCell
+                let drink : Drink = drinks[indexPath.row]
+                
+                cell.setDrink(drink: drink)
+                
+                return cell
+                
+            }
+        case .regular:
             
-        case 0:
+            //Collection for current category
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RGDrinkTableViewCell", for: indexPath) as! RGDrinkTableViewCell
+            let category : DrinkCategory = self.categories[indexPath.section]
+            cell.setCategory(category)
             
-            //Header
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
-            
-            // Register self as header delegate
-            cell.categoryWheel.delegate = self
-            
-            self.categoryWheel = cell.categoryWheel
+            cell.delegate = self
             
             return cell
-            
-            
             
         default:
-            
-            //Drinks
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
-            let drink : Drink = drinks[indexPath.row]
-            
-            cell.setDrink(drink: drink)
-            
-            return cell
-            
+            return UITableViewCell()
         }
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch indexPath.section {
-        case 0:
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch indexPath.section {
+            case 0:
+                self.selectedDrink = nil
+                return
+            case 1:
+                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    self.selectedDrink = self.drinks[indexPath.row]
+                }
+            
+                self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
+            default:
+                return
+            }
+        case .regular:
             return
-        case 1:
-            self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
         default:
             return
         }
         
+    }
+    
+    
+    // Protcol for collection view
+    func tableCell(_ tableCell: RGDrinkTableViewCell, didSelectDrink drink: Drink, atIndexPath path: IndexPath) {
         
+        self.selectedDrink = drink
         
+        self.performSegue(withIdentifier: self.segue.rawValue, sender: self)
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        switch section {
-        case 0:
-            return 0
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+            case 0:
+                return 0
+            default:
+                return drinkSectionHeight
+            }
+        case .regular:
+            return 50
         default:
-            return drinkSectionHeight
+            return 0
         }
+        
         
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        
-        switch section {
-        case 0:
+     
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+            case 0:
+                
+                return nil
+                
+            default:
+                
+                
+                let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight))
+                
+                let label = AdaptiveLabel()
+                label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight)
+                label.text = "Drinks we love"
+                label.preferredColor = UIColor.darkGray
+                label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+                
+                view.addSubview(label)
+                
+                
+                return view
+            }
+        case .regular:
             
-            return nil
-
-        default:
-            
-            
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 50))
             
             let label = AdaptiveLabel()
-            label.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: drinkSectionHeight)
-            label.text = "Drinks we love"
+            label.frame = CGRect(x: 20, y: 20, width: tableView.bounds.size.width, height: 30)
+            label.text = self.categories[section].name
             label.preferredColor = UIColor.darkGray
             label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-
             view.addSubview(label)
-            
+
             
             return view
+            
+        default:
+            return nil
         }
+        
     }
     
     
@@ -262,26 +349,12 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             
         case self.segue.rawValue:
             
-            if let indexPath = tableView.indexPathForSelectedRow{
+            if let toDisplay = self.selectedDrink {
                 
-                switch indexPath.section {
-                    
-                case 0:
-                        break;
-                case 1:
-                        
-                        // Get VC
-                        let destination : DrinkViewController = segue.destination as! DrinkViewController
-                    
-                        let selectedDrink = self.drinks[indexPath.row]
-                        
-                        destination.setDrink(drink: selectedDrink)
-                    
-                        break;
-                default:
-                    break;
-
-                }
+                // Get VC
+                let destination : DrinkViewController = segue.destination as! DrinkViewController
+                
+                destination.setDrink(drink: toDisplay)
                 
             }
             

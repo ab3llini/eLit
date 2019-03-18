@@ -16,7 +16,7 @@ class DrinkForIngredientTableViewController: BlurredBackgroundTableViewControlle
     var segue: Navigation = .fromDrinkForIngredientToDrinkVC
     var drinks: [Drink] = []
     var categories: [DrinkCategory] = []
-    let nib = "DrinkTableViewCell"
+    let nib = "CPDrinkTableViewCell"
     var coreColors : [String : UIColor] = [:]
 
     override func viewDidLoad() {
@@ -98,7 +98,7 @@ class DrinkForIngredientTableViewController: BlurredBackgroundTableViewControlle
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Drinks
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkTableViewCell", for: indexPath) as! DrinkTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CPDrinkTableViewCell", for: indexPath) as! CPDrinkTableViewCell
         
         let drink : Drink = drinks[indexPath.row]
         
