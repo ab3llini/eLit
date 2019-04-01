@@ -26,6 +26,8 @@ import UIKit
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
         
+        
+        
     }
     
     func textViewDidChange(_ textView: UITextView) {

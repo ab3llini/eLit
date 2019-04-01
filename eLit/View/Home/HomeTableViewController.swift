@@ -84,33 +84,40 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //self.checkRatingDidChange()
+        self.checkRatingDidChange()
     }
 
     func checkRatingDidChange() {
         
         if let visibles = self.tableView.indexPathsForVisibleRows {
-        
-            for idx in visibles {
-                
-                if idx.section == 1 {
+            
+            switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+            case .compact:
+                for idx in visibles {
                     
-                    let cell : CPDrinkTableViewCell = self.tableView.cellForRow(at: idx) as! CPDrinkTableViewCell
-                    
-                    cell.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
-
-                    self.drinks[idx.row].getRating { (newRating) in
+                    if idx.section == 1 {
                         
-                        if cell.ratingView.rating != newRating {
+                        let cell : CPDrinkTableViewCell = self.tableView.cellForRow(at: idx) as! CPDrinkTableViewCell
+                        
+                        cell.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
+                        
+                        self.drinks[idx.row].getRating { (newRating) in
                             
-                            cell.setRating()
-                            
+                            if cell.ratingView.rating != newRating {
+                                
+                                cell.setRating()
+                                
+                            }
                         }
+                        
                     }
                     
                 }
-                
+            default:
+                return
             }
+        
+            
         }
     }
     
@@ -122,26 +129,31 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
+        if (UIScreen.main.traitCollection.horizontalSizeClass == .compact) {
         
-        let indexPath = tableView.indexPathForRow(at: location)!
-        
-        switch indexPath.section {
+            let indexPath = tableView.indexPathForRow(at: location)!
             
-            case 0:
-                // Disable 3D touch for PagerView
-                return nil
-            default:
+            switch indexPath.section {
                 
-                //This will show the cell clearly and blur the rest of the screen for our peek.
-                previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
-                
-                let destination = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
-                
-                let selectedDrink = self.drinks[indexPath.row]
-                
-                destination.setDrink(drink: selectedDrink)
-                
-                return destination
+                case 0:
+                    // Disable 3D touch for PagerView
+                    return nil
+                default:
+                    
+                    //This will show the cell clearly and blur the rest of the screen for our peek.
+                    previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+                    
+                    let destination = storyboard?.instantiateViewController(withIdentifier: "drinkVC") as! DrinkViewController
+                    
+                    let selectedDrink = self.drinks[indexPath.row]
+                    
+                    destination.setDrink(drink: selectedDrink)
+                    
+                    return destination
+            }
+        }
+        else {
+            return nil
         }
     }
 

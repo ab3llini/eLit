@@ -13,18 +13,22 @@ class RibbonView: UIView {
     
     @IBInspectable var color : UIColor = UIColor.lightGray
     @IBInspectable var thinkness : CGFloat = 2
+    @IBInspectable var cornerRadius : CGFloat = 10
+    @IBInspectable var borderAlpha : CGFloat = 0.4
+    @IBInspectable var fillAlpha : CGFloat = 0.1
+    @IBInspectable var initialAlpha : CGFloat = 0.0
     
     override func awakeFromNib() {
-        self.alpha = 0
+        self.alpha = initialAlpha
         setup()        
     }
     
     func setup () {
         
         self.layer.borderWidth = thinkness
-        self.layer.borderColor = color.withAlphaComponent(0.4).cgColor
-        self.layer.cornerRadius = 10
-        self.backgroundColor = color.withAlphaComponent(0.1)
+        self.layer.cornerRadius = self.cornerRadius
+        self.layer.borderColor = color.withAlphaComponent(borderAlpha).cgColor
+        self.backgroundColor = color.withAlphaComponent(fillAlpha)
         
     }
     

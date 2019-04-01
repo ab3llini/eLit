@@ -18,7 +18,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
 
     var didPrepareSteps = false
     
-    let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell"]
+    let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell", "RGDrinkImageTableViewCell", "IngredientsTableViewCell", "StepsTableViewCell"]
     
     override func viewDidLoad() {
         
@@ -39,7 +39,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         
         for (idx, step) in steps.enumerated() {
             
-            step.setAttributedString { (string) in
+            step.setAttributedString(completion: { (string) in
                 
                 ready[idx] = step
                 
@@ -50,8 +50,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 
                 computed = computed + 1
                 
-                
-            }
+            })
             
         }
         
@@ -107,22 +106,45 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            return 4
+        case .regular:
+            return 3
+        default:
+            return 0
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 1:
-            return "Rating"
-        case 2:
-            return "Ingredients"
-        case 3:
-            return "How to mix"
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+            case 1:
+                return "Rating"
+            case 2:
+                return "Ingredients"
+            case 3:
+                return "How to mix"
+            default:
+                return nil
+                
+            }
+        case .regular:
+            switch section {
+            case 1:
+                return "Ingredients"
+            case 2:
+                return "Recipe"
+            default:
+                return nil
+            }
         default:
             return nil
-            
         }
+
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -131,124 +153,205 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 
-        switch section {
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+                case 1:
+                    fallthrough
+                case 2:
+                    fallthrough
+                case 3:
+                    return UITableView.automaticDimension
+                default:
+                    return CGFloat.leastNormalMagnitude
+
+            }
+        case .regular:
+            switch section {
             case 1:
                 fallthrough
             case 2:
-                fallthrough
-            case 3:
                 return UITableView.automaticDimension
             default:
                 return CGFloat.leastNormalMagnitude
-
+            }
+        
+        default:
+            return CGFloat.leastNormalMagnitude
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 1
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch section {
+                case 0:
+                    return 1
+                case 1:
+                    return 1
+                case 2:
+                    // Ingredients
+                    if (Preferences.shared.getSwitch(for: .hideIngredients)) {
+                        return 0
+                    }
+                    else {
+                        return self.components.count
+                    }
+                case 3:
+                // Steps
+                    if (Preferences.shared.getSwitch(for: .hideRecipe)) {
+                        return 0
+                    }
+                    else {
+                        return self.steps.count
+                    }
+            default:
+                return 0
+            }
+        case .regular:
+            switch section {
             case 1:
+                return Int(ceil(Double(self.components.count) / 3.0))
+            default:
                 return 1
-            case 2:
-                // Ingredients
-                if (Preferences.shared.getSwitch(for: .hideIngredients)) {
-                    return 0
-                }
-                else {
-                    return self.components.count
-                }
-            case 3:
-            // Steps
-                if (Preferences.shared.getSwitch(for: .hideRecipe)) {
-                    return 0
-                }
-                else {
-                    return self.steps.count
-                }   
+            }
         default:
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch indexPath.section {
+            case 0:
                 
-        switch indexPath.section {
-        case 0:
+                let cell : DrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkImageTableViewCell") as! DrinkImageTableViewCell
+                
+                drink.setImage(to: cell.imageViewContainer)
             
-            let cell : DrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkImageTableViewCell") as! DrinkImageTableViewCell
+                cell.drinkNameLabel.text = self.drink?.name
+                
+                return cell
+                
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+                
+                let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
+                
+                cell.addGestureRecognizer(tapRecognizer)
+                
+                cell.ratingLabel.text = String(format: "%.1f", self.rating)
+                cell.ratingStars.rating = self.rating
+                cell.viewController = self
+                
+                return cell
+                
+            case 2:
+                
+                let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
+                
+                let component = self.components[indexPath.row]
+                
+                var qty : String
+                if component.qty == 0 {
+                    qty = ""
+                } else if floor(component.qty) == component.qty {
+                    qty = String(format: "%.0f", component.qty)
+                } else if (component.qty * 10) == floor(component.qty * 10) {
+                    qty = String(format: "%.1f", component.qty)
+                } else {
+                    qty = String(format: "%.2f", component.qty)
+                }
+                
+                component.setImage { (image) in
+                    cell.ingredientImageView.image = image
+                }
+                
+                cell.qtyLabel.text = qty
+                cell.unitLabel.text = component.unit.uppercased()
+                cell.ingredientLabel.text = component.name
+                
+                return cell
+                
+            case 3:
+                
+                // Steps
+                let cell : TimelineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell") as! TimelineTableViewCell
+                
+                cell.resetAfterDeque()
+
+                if (indexPath.row == 0) {
+                    
+                    cell.timelineView.isFistCell = true
+                    
+                }
+                
+                if (indexPath.row == self.steps.count - 1) {
+                    
+                    cell.timelineView.isLastCell = true
+                    
+                }
+                
+                cell.stepLabel.text = "Step \(indexPath.row + 1)"
+                cell.preparationLabel.attributedText = self.steps[indexPath.row].attributedString
+                
+
+                return cell
+                
+            default:
+                return UITableViewCell()
+            }
+        case .regular:
+            switch indexPath.section {
+            case 0:
+                let cell : RGDrinkImageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "RGDrinkImageTableViewCell") as! RGDrinkImageTableViewCell
+                
+                cell.setDrink(self.drink)
+                cell.viewController = self
+                
+                let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
+                cell.addGestureRecognizer(tapRecognizer)
+                
+                return cell
+            case 1:
+                let cell : IngredientsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "IngredientsTableViewCell") as! IngredientsTableViewCell
+                
+                let lBound = indexPath.row * 3
+                var rBound = indexPath.row * 3 + 2
+                let c = self.components.count - 1
+                
+                if rBound > c{
+                    rBound = c
+                }
+                
+                // Set left comp [always exists]
+                cell.leftComponent.setComponent(self.components[lBound])
+                
+                if (lBound + 1 <= rBound) {
+                    cell.centerComponent.setComponent(self.components[lBound + 1])
+                    
+                    if (lBound + 2 <= rBound) {
                         
-            drink.setImage(to: cell.imageViewContainer)
-        
-            cell.drinkNameLabel.text = self.drink?.name
-            
-            return cell
-            
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
-            
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.showReviewsViewController))
-            
-            cell.addGestureRecognizer(tapRecognizer)
-            
-            cell.ratingLabel.text = String(format: "%.1f", self.rating)
-            cell.ratingStars.rating = self.rating
-            cell.viewController = self
-            
-            return cell
-            
-        case 2:
-            
-            let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
-            
-            let component = self.components[indexPath.row]
-            
-            var qty : String
-            if component.qty == 0 {
-                qty = ""
-            } else if floor(component.qty) == component.qty {
-                qty = String(format: "%.0f", component.qty)
-            } else if (component.qty * 10) == floor(component.qty * 10) {
-                qty = String(format: "%.1f", component.qty)
-            } else {
-                qty = String(format: "%.2f", component.qty)
-            }
-            
-            component.setImage { (image) in
-                cell.ingredientImageView.image = image
-            }
-            
-            cell.qtyLabel.text = qty
-            cell.unitLabel.text = component.unit.uppercased()
-            cell.ingredientLabel.text = component.name
-            
-            return cell
-            
-        case 3:
-            
-            // Steps
-            let cell : TimelineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell") as! TimelineTableViewCell
-            
-            cell.resetAfterDeque()
-
-            if (indexPath.row == 0) {
+                        cell.rightComponent.setComponent(self.components[rBound])
+                        
+                    }
+                    
+                }
                 
-                cell.timelineView.isFistCell = true
                 
+                return cell
+            case 2:
+                
+                let cell : StepsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "StepsTableViewCell") as! StepsTableViewCell
+                
+                cell.setRecipe(self.drink.drinkRecipe!)
+                
+                return cell
+                
+            default:
+                return UITableViewCell();
             }
-            
-            if (indexPath.row == self.steps.count - 1) {
-                
-                cell.timelineView.isLastCell = true
-                
-            }
-            
-            cell.stepLabel.text = "Step \(indexPath.row + 1)"
-            cell.preparationLabel.attributedText = self.steps[indexPath.row].attributedString
-            
-
-            return cell
-            
         default:
             return UITableViewCell()
         }

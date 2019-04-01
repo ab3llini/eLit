@@ -50,7 +50,6 @@ class RGDrinkCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
     
         // Add a very light border to the cell
         containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
         
     }
     
@@ -142,10 +141,12 @@ class RGDrinkCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
             
             self.ratingView.settings = settings
             self.blurView.alpha = 0
+            containerView.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
         }
         else {
             self.blurView.alpha = 0.5
-            
+            containerView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+
             
             
             if self.defaultRatingSettings != nil {

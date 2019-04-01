@@ -57,6 +57,8 @@ class RecipeStep: DrinkObject, DarkModeBehaviour {
     
     func setAttributedString(completion :@escaping (_ string : NSMutableAttributedString) -> Void) {
         
+        let fontSize : CGFloat = (UIScreen.main.traitCollection.horizontalSizeClass == .compact) ? 16.0 : 24.0
+        
         DispatchQueue.global().async {
         
             let appendQueue = DispatchQueue(label: "appendQueue")
@@ -80,11 +82,13 @@ class RecipeStep: DrinkObject, DarkModeBehaviour {
                         let attachment = NSTextAttachment()
                         
                         attachment.image = image
-                        attachment.bounds = CGRect(x: 0, y: -2, width: 15, height: 15)
+                        attachment.bounds = CGRect(x: 0, y: -2, width: fontSize, height: fontSize)
                         
                         
                         let iconString = NSMutableAttributedString(attachment: attachment)
                         let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
+                        
+
                         
                         let color : UIColor
                         
@@ -97,7 +101,7 @@ class RecipeStep: DrinkObject, DarkModeBehaviour {
                         
                         
                         iconString.appendWith(" ")
-                        iconString.appendWith(color: color, weight: .semibold, ofSize: 16, nameString.string)
+                        iconString.appendWith(color: color, weight: .semibold, ofSize: fontSize, nameString.string)
                         
                         appendQueue.sync {
                             if let range = mString.string.range(of: "{\(index)}") {
