@@ -40,7 +40,7 @@ class DrinkObjectWithImage: DrinkObject {
             
             if let actualCompletion = completion {
                 DispatchQueue.main.async {
-                    actualCompletion(self.image!)
+                    actualCompletion(self.image ?? UIImage(named: "drink_placeholder")!)
                 }
             }
         } else {
@@ -183,7 +183,7 @@ class DrinkObjectWithImage: DrinkObject {
         }
         
         
-        if (getImageQueue.items.count > 0) {
+        if (self.getImageQueue.items.count > 0) {
             
             // Already downloading image
             getImageQueue.enqueue(element: completion)

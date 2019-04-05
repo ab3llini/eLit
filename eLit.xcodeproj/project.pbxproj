@@ -13,6 +13,7 @@
 		A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */; };
 		A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */; };
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
+		A40E0978224E29B700C3F8F9 /* HomeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40E0976224E29B700C3F8F9 /* HomeTest.swift */; };
 		A415435422392A7A007E28B0 /* drinks.txt in Resources */ = {isa = PBXBuildFile; fileRef = A47E5D352230007B00A3A7E6 /* drinks.txt */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
 		A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4548B7921F9D09800549099 /* SearchTableViewController.swift */; };
@@ -140,6 +141,7 @@
 		A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObjectWithImage.swift; sourceTree = "<group>"; };
 		A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkForIngredientTableViewController.swift; sourceTree = "<group>"; };
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
+		A40E0976224E29B700C3F8F9 /* HomeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTest.swift; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		A4548B7921F9D09800549099 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		A45B1CB822393D5A002CF1BB /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 		BD37F4C721CE4FE70080C0F7 /* eLitUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A40E0976224E29B700C3F8F9 /* HomeTest.swift */,
 				BD37F4C821CE4FE70080C0F7 /* eLitUITests.swift */,
 				BD37F4CA21CE4FE70080C0F7 /* Info.plist */,
 			);
@@ -1037,6 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40E0978224E29B700C3F8F9 /* HomeTest.swift in Sources */,
 				BD37F4C921CE4FE70080C0F7 /* eLitUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1288,16 +1292,18 @@
 			baseConfigurationReference = 254302BE180571767677CAFB /* Pods-eLitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLitUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.eLitUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = eLit;
@@ -1309,16 +1315,18 @@
 			baseConfigurationReference = 0BEE5B305EFB8394F805B5DB /* Pods-eLitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLitUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.eLitUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = eLit;

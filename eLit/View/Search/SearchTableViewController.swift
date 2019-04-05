@@ -177,7 +177,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.currentIngredients = self.ingredients.filter { ingredient in
                 var condition = false
                 for entry in searchEntries {
-                    condition = condition || ingredient.name?.lowercased().contains(entry) ?? false
+                    condition = condition || ingredient.name?.lowercased().contains(String(entry)) ?? false
                 }
                 return condition
             }
@@ -186,7 +186,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
                 var condition = false
                 // Check for name
                 for entry in searchEntries {
-                    condition = condition || drink.name?.lowercased().contains(entry) ?? false
+                    condition = condition || drink.name?.lowercased().contains(String(entry)) ?? false
                 }
                 // Check for ingredients in drink
                 for ingredient in drink.ingredients() {
@@ -198,7 +198,7 @@ class SearchTableViewController: BlurredBackgroundTableViewController, UISearchR
             self.currentCategories = self.categories.filter { category in
                 var condition = false
                 for entry in searchEntries {
-                    condition = condition || category.name?.lowercased().contains(entry) ?? false
+                    condition = condition || category.name?.lowercased().contains(String(entry)) ?? false
                 }
                 return condition
             }

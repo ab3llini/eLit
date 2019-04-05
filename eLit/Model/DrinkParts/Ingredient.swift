@@ -13,15 +13,6 @@ import CoreData
 class Ingredient: DrinkObjectWithImage {
     
     //MARK: Initializers
-    convenience init(grade: Double, name: String) {
-        self.init()
-        self.grade = grade
-        self.name = name
-    }
-    
-    convenience init(name: String) {
-        self.init(grade: 0, name: name)
-    }
     
     convenience init(dict: [String: Any]) {
         self.init()

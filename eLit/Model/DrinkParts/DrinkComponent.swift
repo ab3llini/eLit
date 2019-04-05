@@ -11,20 +11,8 @@ import CoreData
 
 @objc(DrinkComponent)
 class DrinkComponent: DrinkObject {
-    //MARK: Attributes
-    public override var description: String {
-        return "\(self.qty) \(String(describing: ((self.unit) != nil) ? self.unit! : "")) " +
-            self.withIngredient!.name!
-    }
     
-    //MARK: Initializers
-    convenience init(ingredient: Ingredient, quantity: Double, unit: Unit) {
-        self.init()
-        self.withIngredient = ingredient
-        self.qty = quantity
-        self.unit = unit.rawValue
-    }
-    
+    //MARK: Initializer
     convenience init(dict: [String: Any]){
         self.init()
         self.id = dict["id"] as? String ?? ""
