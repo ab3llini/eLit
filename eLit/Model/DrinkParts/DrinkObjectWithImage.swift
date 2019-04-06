@@ -10,16 +10,25 @@ import UIKit
 import UIImageColors
 
 
+typealias CompletionHandler  = (_ image: UIImage) -> Void
+
+
+class ImageQueue : NSObject {
+    
+    public static var shared = ImageQueue()
+    var queue : [DrinkObjectWithImage : Queue<CompletionHandler?>] = [:]
+    
+}
+
+
 
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
     internal var image: UIImage?
-    internal var colors: UIImageColors?
+    private var colors: UIImageColors?
     
     private let animationDuration = 0.5
-    
-    var getImageQueue = Queue<((_ image: UIImage) -> Void)?>()
     
     func getImage(forceReload: Bool = false, completion: ((_ image: UIImage) -> Void)? = nil) {
         
@@ -50,7 +59,7 @@ class DrinkObjectWithImage: DrinkObject {
     }
     
     
-
+    
     func setImage (to imageView : UIImageView, condition : () -> Bool) {
         
         if condition() {
@@ -58,7 +67,7 @@ class DrinkObjectWithImage: DrinkObject {
             self.setImage(to: imageView)
             
         }
-    
+        
     }
     
     func setImage (to imageView : UIImageView, then : (() -> Void)? = nil) {
@@ -66,7 +75,7 @@ class DrinkObjectWithImage: DrinkObject {
         if self.image != nil {
             
             imageView.image = self.image
-                        
+            
             if let execute = then {
                 execute()
             }
@@ -75,7 +84,7 @@ class DrinkObjectWithImage: DrinkObject {
             self.getImage() { image in
                 
                 imageView.transitionTo(image: image, duration: self.animationDuration)
-
+                
                 if let execute = then {
                     execute()
                 }
@@ -86,19 +95,11 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setColor (to view : UIView, alpha : CGFloat = 1) {
         
-        if self.colors != nil {
+        self.getColors { (colors) in
             UIView.animate(withDuration: self.animationDuration) {
-                view.backgroundColor = self.colors?.secondary.withAlphaComponent(alpha)
+                view.backgroundColor = colors.secondary.withAlphaComponent(alpha)
             }
         }
-        else {
-            self.getColors { (colors) in
-                UIView.animate(withDuration: self.animationDuration) {
-                    view.backgroundColor = colors.secondary.withAlphaComponent(alpha)
-                }
-            }
-        }
-        
     }
     
     func setImageAndColor(imageFor imageView : UIImageView, colorFor view: UIView, alpha : CGFloat = 1) {
@@ -110,7 +111,7 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setImageAndColor(calling : @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
         
-        if self.colors == nil && self.image == nil {
+        if self.colors?.primary == nil && self.image == nil {
             
             self.getImage { (image) in
                 self.getColors(completion: { (colors) in
@@ -119,7 +120,7 @@ class DrinkObjectWithImage: DrinkObject {
             }
             
         }
-        else if self.colors == nil && self.image != nil {
+        else if self.colors?.primary == nil && self.image != nil {
             
             self.getColors(completion: { (colors) in
                 calling(self.image, colors.secondary)
@@ -130,13 +131,13 @@ class DrinkObjectWithImage: DrinkObject {
             
             self.getImage { (image) in
                 calling(image, self.colors!.secondary)
-
+                
             }
             
         }
         else {
             calling(self.image, self.colors!.secondary)
-
+            
         }
         
     }
@@ -152,8 +153,7 @@ class DrinkObjectWithImage: DrinkObject {
     }
     
     func getColors(completion: @escaping (_ colors: UIImageColors) -> Void) {
-    
-        guard self.colors == nil else {
+        guard self.colors?.primary == nil else {
             completion(self.colors!)
             return
         }
@@ -164,6 +164,8 @@ class DrinkObjectWithImage: DrinkObject {
                 
                 let result = UIImageColors(background: colors.background, primary: colors.primary, secondary: colors.secondary.adjust(brightnessBy: 0.5), detail: colors.detail)
                 
+                self.colors = result
+                
                 completion(result)
             })
         }
@@ -171,30 +173,36 @@ class DrinkObjectWithImage: DrinkObject {
     }
     
     private func getImageData(forceReload: Bool, completion: ((_ image: UIImage) -> Void)?) {
-
+        
+        if (ImageQueue.shared.queue[self] == nil) {
+            
+            ImageQueue.shared.queue[self] = Queue<CompletionHandler?>()
+            
+        }
+        
         if self.imageData != nil && (!forceReload) {
-
+            
             return
         }
         
         guard let url = URL(string: Preferences.shared.coreSettings.host + self.imageURLString!) else {
-
+            
             return
         }
         
         
-        if (getImageQueue.items.count > 0) {
+        if (ImageQueue.shared.queue[self]!.items.count > 0) {
             
             // Already downloading image
-            getImageQueue.enqueue(element: completion)
+            ImageQueue.shared.queue[self]!.enqueue(element: completion)
             
         }
         else {
             
             print("Requesting asset: \(url) [force reload = \(forceReload)]")
             
-            getImageQueue.enqueue(element: completion)
-
+            ImageQueue.shared.queue[self]!.enqueue(element: completion)
+            
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 
                 guard let data = data, let _ = completion, error == nil else {                                                 // check for fundamental networking error
@@ -226,7 +234,7 @@ class DrinkObjectWithImage: DrinkObject {
                 }
                 
             }
-
+            
             task.resume()
             
         }
@@ -235,9 +243,9 @@ class DrinkObjectWithImage: DrinkObject {
     func callCompletions(_ image : UIImage) {
         
         
-        while self.getImageQueue.items.count > 0 {
+        while ImageQueue.shared.queue[self]!.items.count > 0 {
             
-            if let completion = self.getImageQueue.dequeue() {
+            if let completion = ImageQueue.shared.queue[self]!.dequeue() {
                 
                 completion!(image)
                 
@@ -251,5 +259,5 @@ class DrinkObjectWithImage: DrinkObject {
         self.getImageData(forceReload: false, completion: { img in
             super.update(with: data, savePersistent: savePersistent)})
     }
-
+    
 }
