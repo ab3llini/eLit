@@ -86,11 +86,8 @@ class DrinkObjectWithImage: DrinkObject {
                                 handler(self.image ?? ResourceManager.defaultImagePlaceholder)
                             }
                             
-                            DispatchQueue.main.async {
-                                // Step 4, AFTER calling the handler, save the persistent model
-                                Model.shared.savePersistentModel()
-                            }
-                            
+                            // Step 4, AFTER calling the handler, save the persistent model
+                            Model.shared.savePersistentModel()
                         }
                         else {
                             self.log(string: "Data is not consistent")

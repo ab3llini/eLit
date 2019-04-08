@@ -48,8 +48,10 @@ class Model: NSObject {
     }
     
     public func savePersistentModel() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.saveContext()
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+        }
     }
     
     public func reloadDrinks() {
