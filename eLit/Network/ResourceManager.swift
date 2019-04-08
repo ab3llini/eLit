@@ -25,16 +25,55 @@ class ResourceManager: NSObject {
             
             if completions.isEmpty {
                 // I already have the data, just call the completion
-                DispatchQueue.main.async {
-                    handler(self.dataMap[relativeURL]!)
-                }
+                callCompletion(with: self.dataMap[relativeURL]!, handler)
+            } else {
+                completion_map[relativeURL]?.append(handler)
             }
-            completion_map[relativeURL]?.append(handler)
+            
         } else {
             // The image has to be requested
+            guard let url = URL(string: Preferences.shared.coreSettings.host + relativeURL) else {
+                callCompletion(with: nil, handler)
+                return
+            }
+            
+            // Requesting the image...
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                
+                guard let data = data, error == nil else {
+                    // check for fundamental networking error
+                    NSLog("error=\(String(describing: error))")
+                    self.callAllCompletions(with: nil, for: relativeURL)
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    self.callAllCompletions(with: nil, for: relativeURL)
+                }
+                else {
+                    self.callAllCompletions(with: data, for: relativeURL)
+                }
+            }.resume()
         }
+    }
     
-        //URL(string: Preferences.shared.coreSettings.host + self.imageURLString!) else {
-
+    private func callCompletion(with data: Data?, _ completion: @escaping CompletionHandler<Data?>) {
+        DispatchQueue.main.async {
+            completion(data)
+        }
+    }
+    
+    private func callAllCompletions(with data: Data?, for url: String) {
+        guard let d = self.dataMap[url], var completions = self.completion_map[url] else {
+            return
+        }
+        
+        self.completion_map[url] = []
+        
+        while !completions.isEmpty {
+            let completion = completions.remove(at: 0)
+            completion(d)
+        }
     }
 }
