@@ -116,8 +116,6 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
             default:
                 return
             }
-        
-            
         }
     }
     

@@ -99,6 +99,7 @@
 		BDDB5BC02252322A0001EBB6 /* StepCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDB5BBE2252322A0001EBB6 /* StepCollectionViewCell.xib */; };
 		BDDB5BC3225232420001EBB6 /* StepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB5BC1225232420001EBB6 /* StepsTableViewCell.swift */; };
 		BDDB5BC4225232420001EBB6 /* StepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDB5BC2225232420001EBB6 /* StepsTableViewCell.xib */; };
+		BDE40EEC225B8DCD00601845 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE40EEB225B8DCD00601845 /* ResourceManager.swift */; };
 		BDE49CB9223FE9D800F7701C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE49CB8223FE9D800F7701C /* Home.storyboard */; };
 		BDE49CBB223FEA1B00F7701C /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE49CBA223FEA1B00F7701C /* Discover.storyboard */; };
 		BDE49CBD223FEA7700F7701C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE49CBC223FEA7700F7701C /* Settings.storyboard */; };
@@ -246,6 +247,7 @@
 		BDDB5BBE2252322A0001EBB6 /* StepCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepCollectionViewCell.xib; sourceTree = "<group>"; };
 		BDDB5BC1225232420001EBB6 /* StepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTableViewCell.swift; sourceTree = "<group>"; };
 		BDDB5BC2225232420001EBB6 /* StepsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepsTableViewCell.xib; sourceTree = "<group>"; };
+		BDE40EEB225B8DCD00601845 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		BDE49CB8223FE9D800F7701C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		BDE49CBA223FEA1B00F7701C /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		BDE49CBC223FEA7700F7701C /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 			children = (
 				BDF964D521ECF98300228EEB /* DataBaseManager.swift */,
 				A4386C0121EE020F00275EEC /* RequestType.swift */,
+				BDE40EEB225B8DCD00601845 /* ResourceManager.swift */,
 			);
 			name = Network;
 			path = eLit/Network;
@@ -1029,6 +1032,7 @@
 				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
 				BD635DF122242BFF000AAC86 /* DarkModeManager.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
+				BDE40EEC225B8DCD00601845 /* ResourceManager.swift in Sources */,
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				BDDB5BBF2252322A0001EBB6 /* StepCollectionViewCell.swift in Sources */,
 				A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */,

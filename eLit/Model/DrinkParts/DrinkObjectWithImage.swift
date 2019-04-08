@@ -10,54 +10,25 @@ import UIKit
 import UIImageColors
 
 
-typealias CompletionHandler  = (_ image: UIImage) -> Void
-
-
-class ImageQueue : NSObject {
-    
-    public static var shared = ImageQueue()
-    var queue : [DrinkObjectWithImage : Queue<CompletionHandler?>] = [:]
-    
-}
-
-
 
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
     internal var image: UIImage?
-    private var colors: UIImageColors?
+    internal var colors: UIImageColors?
     
     private let animationDuration = 0.5
     
-    func getImage(forceReload: Bool = false, completion: ((_ image: UIImage) -> Void)? = nil) {
+    func getImage(completion: CompletionHandler<UIImage>? = nil) {
         
-        if forceReload {
-            self.getImageData(forceReload: true, completion: completion)
+        // The image has already been downloaded
+        if let theImage = self.image, let theHandler = completion {
+            theHandler(theImage)
         }
         
-        // The image is already initialized
-        if let img = self.image, let actualCompletion = completion {
-            DispatchQueue.main.async {
-                actualCompletion(img)
-            }
-            return
-        }
-        // The image is not initialized but is present in the database
-        if let id = self.imageData {
-            self.image = UIImage(data: id) ?? UIImage(named: "drink_placeholder")
-            
-            if let actualCompletion = completion {
-                DispatchQueue.main.async {
-                    actualCompletion(self.image!)
-                }
-            }
-        } else {
-            self.getImageData(forceReload: true, completion: completion)
-        }
+
         
     }
-    
     
     
     func setImage (to imageView : UIImageView, condition : () -> Bool) {
