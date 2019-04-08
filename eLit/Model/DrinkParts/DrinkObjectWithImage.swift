@@ -10,7 +10,6 @@ import UIKit
 import UIImageColors
 
 
-
 @objc(DrinkObjectWithImage)
 class DrinkObjectWithImage: DrinkObject {
     
@@ -63,35 +62,46 @@ class DrinkObjectWithImage: DrinkObject {
                 ResourceManager.shared.fetchImageData(from: consistentImageURL) { (data) in
                     
                     self.log(string: "ResourceManager returned some data")
-
-                    // The returned data is consistent ?
-                    if let consistentData = data {
-                        self.log(string: "Data is consistent")
-
-                        // Step 1: Save the image data blob
-                        self.imageData = consistentData
+                    
+                    // Avoid multiple assignments due to multiple callbacks on same object
+                    if self.imageData == nil {
                         
-                        // Step 2: Create an image out of it
-                        self.image = UIImage(data: consistentData)
+                        self.log(string: "Saving data and creating image")
+
                         
-                        // Step 3: If present, call the handler. We expect the image to init successfully
-                        // However, we provide a default image in case of failure
-                        if let handler = completion {
-                            self.log(string: "Calling handler (might be default image if image init fails)")
-                            handler(self.image ?? ResourceManager.defaultImagePlaceholder)
+                        // The returned data is consistent ?
+                        if let consistentData = data {
+                            self.log(string: "Data is consistent")
+
+                            // Step 1: Save the image data blob
+                            self.imageData = consistentData
+                            
+                            // Step 2: Create an image out of it
+                            self.image = UIImage(data: consistentData)
+                            
+                            // Step 3: If present, call the handler. We expect the image to init successfully
+                            // However, we provide a default image in case of failure
+                            if let handler = completion {
+                                self.log(string: "Calling handler (might be default image if image init fails)")
+                                handler(self.image ?? ResourceManager.defaultImagePlaceholder)
+                            }
+                            
+                            // Step 4, AFTER calling the handler, save the persistent model
+                            Model.shared.savePersistentModel()
                         }
-                        
-                        // Step 4, AFTER calling the handler, save the persistent model
-                        Model.shared.savePersistentModel()
+                        else {
+                            self.log(string: "Data is not consistent")
+
+                            // We got inconsistent data (aka data = nil). Call the handler with the default image
+                            if let handler = completion {
+                                self.log(string: "Calling handler with default image")
+                                handler(ResourceManager.defaultImagePlaceholder)
+                            }
+                        }
                     }
                     else {
-                        self.log(string: "Data is not consistent")
+                        self.log(string: "Throwing data because it is already cached")
 
-                        // We got inconsistent data (aka data = nil). Call the handler with the default image
-                        if let handler = completion {
-                            self.log(string: "Calling handler with default image")
-                            handler(ResourceManager.defaultImagePlaceholder)
-                        }
                     }
                 }
             }
@@ -168,7 +178,7 @@ class DrinkObjectWithImage: DrinkObject {
     
     func getColors(completion: @escaping CompletionHandler<UIImageColors>) {
         
-        if let cachedImageColors = self.imageColors {
+        if let cachedImageColors = self.imageColors, let _ = self.imageColors?.primary {
             self.log(string: "ImageColors are present in cache")
             completion(cachedImageColors)
         }
@@ -194,8 +204,14 @@ class DrinkObjectWithImage: DrinkObject {
     
     override func update(with data: [String : Any], savePersistent: Bool) {
         
-        self.getImageData(forceReload: false, completion: { img in
-            super.update(with: data, savePersistent: savePersistent)})
+        self.imageData = nil
+        self.imageColors = nil
+        self.image = nil
+        
+        self.getImage { (image) in
+            super.update(with: data, savePersistent: savePersistent)
+        }
+        
     }
     
 }
