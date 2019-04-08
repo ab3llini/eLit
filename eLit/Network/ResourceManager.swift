@@ -14,6 +14,7 @@ class ResourceManager: NSObject {
     
     // MARK: attributes
     public static let shared = ResourceManager()
+    public static let defaultImagePlaceholder = UIImage(named: "drink_placeholder")!
     private var completion_map = Dictionary<String, [CompletionHandler<Data?>]>()
     private var dataMap = Dictionary<String, Data?>()
     
