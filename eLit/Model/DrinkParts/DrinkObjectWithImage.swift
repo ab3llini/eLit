@@ -15,42 +15,92 @@ import UIImageColors
 class DrinkObjectWithImage: DrinkObject {
     
     internal var image: UIImage?
-    internal var colors: UIImageColors?
+    internal var imageColors: UIImageColors?
     
     private let animationDuration = 0.5
+    
+    
+    private func log(string : String) {
+        print("[\(self.imageURLString ?? "Undefined")] -> \(string)")
+    }
     
     public func getImage(completion: CompletionHandler<UIImage>? = nil) {
         
         if let cachedImage = self.image {
-            
+            self.log(string: "Image is present in cache")
             // The image has already been downloaded, call the handler with the cached copy
             if let handler = completion {
+                self.log(string: "Calling handler")
                 handler(cachedImage)
             }
         }
         else {
             
-            if let consistentImageURL = self.imageURLString {
+            self.log(string: "No image in cache")
+            
+            if let cachedImageData = self.imageData {
+                
+                self.log(string: "ImageData is present in cache")
+                
+                // Step 1: Create an image out of the cached data
+                self.image = UIImage(data: cachedImageData)
+                
+                // Step 3: If present, call the handler. We expect the image to init successfully
+                // However, we provide a default image in case of failure
+                if let handler = completion {
+                    self.log(string: "Calling handler (might be default image if image init fails)")
+                    handler(self.image ?? ResourceManager.defaultImagePlaceholder)
+                }
+                
+            }
+            
+            else if let consistentImageURL = self.imageURLString {
+                
+                self.log(string: "URL is consistent")
                 
                 // We have a valid image relative URL, download it
                 // The image needs to be downloaded, use the resource manager to do so
                 ResourceManager.shared.fetchImageData(from: consistentImageURL) { (data) in
                     
-                    // Step 1: Save the image data blob
-                    self.imageData = data
-                    
-                    // Step 2: Create an image out of it
-                    self.image = UIImage(data: self.imageData)
-                    
-                    // Step 3: If present, call the handler
-                    if let
-                    
+                    self.log(string: "ResourceManager returned some data")
+
+                    // The returned data is consistent ?
+                    if let consistentData = data {
+                        self.log(string: "Data is consistent")
+
+                        // Step 1: Save the image data blob
+                        self.imageData = consistentData
+                        
+                        // Step 2: Create an image out of it
+                        self.image = UIImage(data: consistentData)
+                        
+                        // Step 3: If present, call the handler. We expect the image to init successfully
+                        // However, we provide a default image in case of failure
+                        if let handler = completion {
+                            self.log(string: "Calling handler (might be default image if image init fails)")
+                            handler(self.image ?? ResourceManager.defaultImagePlaceholder)
+                        }
+                        
+                        // Step 4, AFTER calling the handler, save the persistent model
+                        Model.shared.savePersistentModel()
+                    }
+                    else {
+                        self.log(string: "Data is not consistent")
+
+                        // We got inconsistent data (aka data = nil). Call the handler with the default image
+                        if let handler = completion {
+                            self.log(string: "Calling handler with default image")
+                            handler(ResourceManager.defaultImagePlaceholder)
+                        }
+                    }
                 }
             }
             else {
+                self.log(string: "URL is NOT consistent")
                 // We dont have a valid URL, notify and load the default image
                 if let handler = completion {
-                    handler(cachedImage)
+                    self.log(string: "Calling handler with default image")
+                    handler(ResourceManager.defaultImagePlaceholder)
                 }
             }
         }
@@ -69,22 +119,12 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setImage (to imageView : UIImageView, then : (() -> Void)? = nil) {
         
-        if self.image != nil {
+        self.getImage() { image in
             
-            imageView.image = self.image
+            imageView.transitionTo(image: image, duration: self.animationDuration)
             
             if let execute = then {
                 execute()
-            }
-        }
-        else {
-            self.getImage() { image in
-                
-                imageView.transitionTo(image: image, duration: self.animationDuration)
-                
-                if let execute = then {
-                    execute()
-                }
             }
         }
         
@@ -108,33 +148,10 @@ class DrinkObjectWithImage: DrinkObject {
     
     func setImageAndColor(calling : @escaping (_ image : UIImage?, _ color: UIColor) -> Void) {
         
-        if self.colors?.primary == nil && self.image == nil {
-            
-            self.getImage { (image) in
-                self.getColors(completion: { (colors) in
-                    calling(image, colors.secondary)
-                })
-            }
-            
-        }
-        else if self.colors?.primary == nil && self.image != nil {
-            
+        self.getImage { (image) in
             self.getColors(completion: { (colors) in
-                calling(self.image, colors.secondary)
+                calling(image, colors.secondary)
             })
-            
-        }
-        else if self.colors != nil && self.image == nil {
-            
-            self.getImage { (image) in
-                calling(image, self.colors!.secondary)
-                
-            }
-            
-        }
-        else {
-            calling(self.image, self.colors!.secondary)
-            
         }
         
     }
@@ -149,106 +166,30 @@ class DrinkObjectWithImage: DrinkObject {
         
     }
     
-    func getColors(completion: @escaping (_ colors: UIImageColors) -> Void) {
-        guard self.colors?.primary == nil else {
-            completion(self.colors!)
-            return
-        }
+    func getColors(completion: @escaping CompletionHandler<UIImageColors>) {
         
-        self.getImage { (image) in
-            
-            image.getColors({ (colors) in
-                
-                let result = UIImageColors(background: colors.background, primary: colors.primary, secondary: colors.secondary.adjust(brightnessBy: 0.5), detail: colors.detail)
-                
-                self.colors = result
-                
-                completion(result)
-            })
-        }
-        
-    }
-    
-    private func getImageData(forceReload: Bool, completion: ((_ image: UIImage) -> Void)?) {
-        
-        if (ImageQueue.shared.queue[self] == nil) {
-            
-            ImageQueue.shared.queue[self] = Queue<CompletionHandler?>()
-            
-        }
-        
-        if self.imageData != nil && (!forceReload) {
-            
-            return
-        }
-        
-        guard let url = URL(string: Preferences.shared.coreSettings.host + self.imageURLString!) else {
-            
-            return
-        }
-        
-        
-        if (ImageQueue.shared.queue[self]!.items.count > 0) {
-            
-            // Already downloading image
-            ImageQueue.shared.queue[self]!.enqueue(element: completion)
-            
+        if let cachedImageColors = self.imageColors {
+            self.log(string: "ImageColors are present in cache")
+            completion(cachedImageColors)
         }
         else {
             
-            print("Requesting asset: \(url) [force reload = \(forceReload)]")
-            
-            ImageQueue.shared.queue[self]!.enqueue(element: completion)
-            
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            self.log(string: "ImageColors NOT present in cache, will compute them")
+
+            self.getImage { (image) in
                 
-                guard let data = data, let _ = completion, error == nil else {                                                 // check for fundamental networking error
-                    NSLog("error=\(String(describing: error))")
+                image.getColors({ (colors) in
                     
-                    DispatchQueue.main.async {
-                        self.callCompletions(UIImage(named: "drink_placeholder")!)
-                    }
+                    let result = UIImageColors(background: colors.background, primary: colors.primary, secondary: colors.secondary.adjust(brightnessBy: 0.5), detail: colors.detail)
                     
-                    return
-                }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    DispatchQueue.main.async {
-                        self.callCompletions(UIImage(named: "drink_placeholder")!)
-                    }
+                    self.imageColors = result
                     
-                }
-                else {
+                    self.log(string: "ImageColors computed. Calling handler")
+                    completion(result)
                     
-                    DispatchQueue.main.async {
-                        self.imageData = data
-                        self.image = UIImage(data: data)
-                        self.callCompletions(self.image!)
-                        Model.shared.savePersistentModel()
-                    }
-                    
-                }
-                
-            }
-            
-            task.resume()
-            
-        }
-    }
-    
-    func callCompletions(_ image : UIImage) {
-        
-        
-        while ImageQueue.shared.queue[self]!.items.count > 0 {
-            
-            if let completion = ImageQueue.shared.queue[self]!.dequeue() {
-                
-                completion!(image)
-                
+                })
             }
         }
-        
     }
     
     override func update(with data: [String : Any], savePersistent: Bool) {
