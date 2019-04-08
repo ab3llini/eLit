@@ -15,8 +15,10 @@ class ResourceManager: NSObject {
     // MARK: attributes
     public static let shared = ResourceManager()
     public static let defaultImagePlaceholder = UIImage(named: "drink_placeholder")!
+    
     private var completion_map = Dictionary<String, [CompletionHandler<Data?>]>()
     private var dataMap = Dictionary<String, Data?>()
+    private let serialQueue = DispatchQueue(label: "completions")
     
     
     public func fetchImageData(from relativeURL : String, onCompletion handler : @escaping CompletionHandler<Data?>) {
@@ -69,7 +71,9 @@ class ResourceManager: NSObject {
             return
         }
         
-        self.completion_map[url] = []
+        self.serialQueue.sync {
+            self.completion_map[url] = []
+        }
         
         while !completions.isEmpty {
             let completion = completions.remove(at: 0)
