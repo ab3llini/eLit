@@ -19,15 +19,41 @@ class DrinkObjectWithImage: DrinkObject {
     
     private let animationDuration = 0.5
     
-    func getImage(completion: CompletionHandler<UIImage>? = nil) {
+    public func getImage(completion: CompletionHandler<UIImage>? = nil) {
         
-        // The image has already been downloaded
-        if let theImage = self.image, let theHandler = completion {
-            theHandler(theImage)
+        if let cachedImage = self.image {
+            
+            // The image has already been downloaded, call the handler with the cached copy
+            if let handler = completion {
+                handler(cachedImage)
+            }
         }
-        
-
-        
+        else {
+            
+            if let consistentImageURL = self.imageURLString {
+                
+                // We have a valid image relative URL, download it
+                // The image needs to be downloaded, use the resource manager to do so
+                ResourceManager.shared.fetchImageData(from: consistentImageURL) { (data) in
+                    
+                    // Step 1: Save the image data blob
+                    self.imageData = data
+                    
+                    // Step 2: Create an image out of it
+                    self.image = UIImage(data: self.imageData)
+                    
+                    // Step 3: If present, call the handler
+                    if let
+                    
+                }
+            }
+            else {
+                // We dont have a valid URL, notify and load the default image
+                if let handler = completion {
+                    handler(cachedImage)
+                }
+            }
+        }
     }
     
     
