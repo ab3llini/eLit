@@ -131,11 +131,21 @@ class DrinkObjectWithImage: DrinkObject {
         
         self.getImage() { image in
             
-            imageView.transitionTo(image: image, duration: self.animationDuration)
-            
-            if let execute = then {
-                execute()
+            DispatchQueue.main.async {
+                if (imageView.image == nil) {
+                    imageView.image = image
+                } else {
+                    
+                    imageView.transitionTo(image: image, duration: self.animationDuration)
+                    
+                }
+                
+                if let execute = then {
+                    execute()
+                }
             }
+            
+            
         }
         
     }

@@ -34,6 +34,8 @@ class ResourceManager: NSObject {
             
         } else {
             // The image has to be requested
+            self.completion_map[relativeURL] = [handler]
+            
             guard let url = URL(string: Preferences.shared.coreSettings.host + relativeURL) else {
                 callCompletion(with: nil, handler)
                 return
