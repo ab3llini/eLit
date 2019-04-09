@@ -91,22 +91,13 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         
         default:
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "onOffSettingCell") {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "onOffSettingCell") as! SettingsTableViewCell
                 
-                
-                let text = self.userSettings.switches[indexPath.row].text
-                let val = self.userSettings.switches[indexPath.row].value
-                
-                self.prepareOnOffCell(cell, at: indexPath.row, text: text, value: val)
-                
-                return cell
-                
-            }
-            else {
-                
-                return UITableViewCell()
-                
-            }
+            cell.settingDescription.text = self.userSettings.switches[indexPath.row].text
+            cell.settingStatus.reference = indexPath.row
+            cell.settingStatus.addTarget(self, action: #selector(didToggleSwitch(sender:)), for: .valueChanged)
+            cell.settingStatus.isOn = self.userSettings.switches[indexPath.row].value
+            return cell
         }
     }
     
@@ -189,19 +180,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             DarkModeManager.shared.triggerNotificationFor(state: sender.isOn)
             
         }
-        
-    }
-    
-    func prepareOnOffCell(_ cell : UITableViewCell, at index : Int, text : String, value : Bool) {
-        
-        let label = cell.contentView.viewWithTag(1) as! UILabel
-        let toggle = cell.contentView.viewWithTag(2) as! SettingsSwitch
-        
-        toggle.reference = index
-        toggle.addTarget(self, action: #selector(didToggleSwitch(sender:)), for: .valueChanged)
-        
-        label.text = text
-        toggle.isOn = value
         
     }
     

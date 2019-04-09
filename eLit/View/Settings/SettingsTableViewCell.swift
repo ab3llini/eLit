@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell, DarkModeBehaviour {
     
+    @IBOutlet weak var settingDescription: AdaptiveLabel!
+    @IBOutlet weak var settingStatus: SettingsSwitch!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
