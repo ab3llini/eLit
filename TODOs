@@ -1,0 +1,46 @@
+--------------------------------
+-------------- UI --------------
+--------------------------------
+
+- (Universal) While searching, if you change tab, search vc goes black!
+- (Universal) In settings pane, ultimate the vc that appears upon click on profile picture. Remove "review test"
+
+
+- (iPad) fix ingredients, step labels in drink vc
+- (iPad) layout search tableview for regular size class
+- (iPad) layout "drinks for ingredient" for regular class -> reuqires a long time
+
+
+--------------------------------
+-------------- Data ------------
+--------------------------------
+
+- Add more drinks
+- Edit descriptions and make them longer for some drinks
+
+--------------------------------
+---------- Controller ----------
+--------------------------------
+
+- Add task error handling -> prevent the app from launching upon error
+
+
+--------------------------------
+---------- GameEngine ----------
+--------------------------------
+
+- Develop flexible UI (iPad / iPhone)
+- Make sure to use GKit for Wifi/Bluetooth <- we need it
+
+
+--------------------------------
+---------- DD Document ---------
+--------------------------------
+
+- Write it
+
+--------------------------------
+------------- Video ------------
+--------------------------------
+
+- Make it (At the end of the dev.)
