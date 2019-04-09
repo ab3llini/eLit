@@ -17,8 +17,10 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     var components : [Component] = []
 
     var didPrepareSteps = false
-    
     var RGSelectedComponent : Component?
+    
+    private let sectionHeaderHeight : CGFloat = 50.0
+
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell", "RGDrinkImageTableViewCell", "IngredientsTableViewCell", "StepsTableViewCell"]
     
@@ -118,6 +120,41 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .regular:
+            
+
+            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 50))
+            
+            let label = AdaptiveLabel()
+            label.frame = CGRect(x: 20, y: 20, width: tableView.bounds.size.width, height: 30)
+            
+            switch section {
+            case 1:
+                label.text = "Ingredients"
+            case 2:
+                label.text = "How to mix"
+            default:
+                return nil
+            }
+            
+            label.preferredColor = UIColor.darkGray
+            label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            view.addSubview(label)
+            
+            
+            return view
+            
+        default:
+            return nil
+        }
+        
+    }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (UIScreen.main.traitCollection.horizontalSizeClass) {
@@ -133,24 +170,11 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 return nil
                 
             }
-        case .regular:
-            switch section {
-            case 1:
-                return "Ingredients"
-            case 2:
-                return "Recipe"
-            default:
-                return nil
-            }
         default:
             return nil
         }
 
         
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -173,7 +197,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             case 1:
                 fallthrough
             case 2:
-                return UITableView.automaticDimension
+                return sectionHeaderHeight
             default:
                 return CGFloat.leastNormalMagnitude
             }
@@ -181,6 +205,10 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         default:
             return CGFloat.leastNormalMagnitude
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

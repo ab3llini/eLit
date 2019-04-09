@@ -2,14 +2,11 @@
 -------------- UI --------------
 --------------------------------
 
-- (Universal) While searching, if you change tab, search vc goes black!
+=> {problems only in simulator} (Universal) While searching, if you change tab, search vc goes black!
+
 - (Universal) In settings pane, ultimate the vc that appears upon click on profile picture. Remove "review test"
-
-
-- (iPad) fix ingredients, step labels in drink vc
-- (iPad) layout search tableview for regular size class
 - (iPad) layout "drinks for ingredient" for regular class -> reuqires a long time
-
+- (iPad) increase cell size for settings
 
 --------------------------------
 -------------- Data ------------
@@ -23,7 +20,7 @@
 --------------------------------
 
 - Add task error handling -> prevent the app from launching upon error
-
+- Fix rating not showing up on first launch.
 
 --------------------------------
 ---------- GameEngine ----------

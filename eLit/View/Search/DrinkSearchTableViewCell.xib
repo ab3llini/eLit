@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="111" id="5UC-Y0-dtF" customClass="DrinkSearchTableViewCell" customModule="eLit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5UC-Y0-dtF" customClass="DrinkSearchTableViewCell" customModule="eLit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="736" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5UC-Y0-dtF" id="OEa-gb-PYA">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="736" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT5-aL-1Yo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="119.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="at3-cC-r1f">
-                                <rect key="frame" x="10" y="5" width="50" height="50"/>
+                                <rect key="frame" x="20" y="22.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="at3-cC-r1f" secondAttribute="height" multiplier="1:1" id="fLA-8r-71H"/>
-                                    <constraint firstAttribute="height" constant="50" id="gKJ-nP-Xl7"/>
+                                    <constraint firstAttribute="height" constant="50" id="gKJ-nP-Xl7">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="75"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-RA-3F6" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="70" y="13.5" width="39" height="17"/>
+                                <rect key="frame" x="120" y="27.5" width="63" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-Gm-40X" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="70" y="30.5" width="31" height="15"/>
+                                <rect key="frame" x="120" y="57" width="43.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="1n4-xF-rDr">
-                                <rect key="frame" x="275" y="17.5" width="25" height="25"/>
+                                <rect key="frame" x="678.5" y="41" width="37.5" height="37.5"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1n4-xF-rDr" secondAttribute="height" multiplier="1:1" id="1KS-cb-3ew"/>
-                                    <constraint firstAttribute="height" constant="25" id="cxv-XZ-tZy"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1n4-xF-rDr" secondAttribute="trailing" constant="20" id="798-Xf-17T"/>
-                            <constraint firstItem="bfM-Gm-40X" firstAttribute="leading" secondItem="at3-cC-r1f" secondAttribute="trailing" constant="10" id="7jH-mb-MHL"/>
-                            <constraint firstAttribute="height" priority="999" constant="60" id="JQI-eo-w14"/>
-                            <constraint firstItem="at3-cC-r1f" firstAttribute="leading" secondItem="gT5-aL-1Yo" secondAttribute="leading" constant="10" id="OKc-PV-vzu"/>
+                            <constraint firstItem="1n4-xF-rDr" firstAttribute="height" secondItem="at3-cC-r1f" secondAttribute="height" multiplier="0.5" id="AiN-is-czK"/>
+                            <constraint firstAttribute="height" priority="999" constant="60" id="JQI-eo-w14">
+                                <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                            </constraint>
+                            <constraint firstItem="at3-cC-r1f" firstAttribute="leading" secondItem="gT5-aL-1Yo" secondAttribute="leading" constant="10" id="OKc-PV-vzu">
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                            </constraint>
                             <constraint firstItem="at3-cC-r1f" firstAttribute="centerY" secondItem="gT5-aL-1Yo" secondAttribute="centerY" id="Ouo-JU-Dc8"/>
                             <constraint firstItem="bfM-Gm-40X" firstAttribute="centerY" secondItem="gT5-aL-1Yo" secondAttribute="centerY" constant="8" id="aHQ-sh-Sxt"/>
-                            <constraint firstItem="1iR-RA-3F6" firstAttribute="leading" secondItem="at3-cC-r1f" secondAttribute="trailing" constant="10" id="jKr-ax-Im5"/>
-                            <constraint firstItem="1iR-RA-3F6" firstAttribute="centerY" secondItem="gT5-aL-1Yo" secondAttribute="centerY" constant="-8" id="jfE-Js-RmB"/>
+                            <constraint firstItem="1iR-RA-3F6" firstAttribute="leading" secondItem="at3-cC-r1f" secondAttribute="trailing" constant="10" id="jKr-ax-Im5">
+                                <variation key="heightClass=regular-widthClass=regular" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="1iR-RA-3F6" firstAttribute="centerY" secondItem="gT5-aL-1Yo" secondAttribute="centerY" constant="-8" id="jfE-Js-RmB">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-18"/>
+                            </constraint>
                             <constraint firstItem="1n4-xF-rDr" firstAttribute="centerY" secondItem="gT5-aL-1Yo" secondAttribute="centerY" id="rfl-td-nmk"/>
+                            <constraint firstItem="1iR-RA-3F6" firstAttribute="leading" secondItem="bfM-Gm-40X" secondAttribute="leading" id="w6a-Pl-13n"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -78,10 +94,10 @@
                 <outlet property="objectImageView" destination="at3-cC-r1f" id="rwe-Hw-uPq"/>
                 <outlet property="objectNameLabel" destination="1iR-RA-3F6" id="Jfz-6L-Stl"/>
             </connections>
-            <point key="canvasLocation" x="221" y="-244"/>
+            <point key="canvasLocation" x="342.7734375" y="-244.21669106881404"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="right-arrow" width="384" height="384"/>
+        <image name="right-arrow" width="512" height="512"/>
     </resources>
 </document>
