@@ -54,6 +54,7 @@ class ResourceManager: NSObject {
                     self.callAllCompletions(with: nil, for: relativeURL)
                 }
                 else {
+                    self.dataMap[relativeURL] = data
                     self.callAllCompletions(with: data, for: relativeURL)
                 }
             }.resume()
