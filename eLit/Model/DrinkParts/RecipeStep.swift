@@ -59,7 +59,7 @@ class RecipeStep: DrinkObject, DarkModeBehaviour {
         
         let fontSize : CGFloat = (UIScreen.main.traitCollection.horizontalSizeClass == .compact) ? 16.0 : 24.0
         
-        DispatchQueue.global().async {
+        DispatchQueue.global().sync {
         
             let appendQueue = DispatchQueue(label: "appendQueue")
 

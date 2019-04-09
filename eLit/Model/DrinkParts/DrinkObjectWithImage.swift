@@ -16,11 +16,11 @@ class DrinkObjectWithImage: DrinkObject {
     internal var image: UIImage?
     internal var imageColors: UIImageColors?
     
-    private let animationDuration = 0.5
-    
-    
     private func log(string : String) {
-        print("[\(self.imageURLString ?? "Undefined")] -> \(string)")
+        
+        let thread = Thread.current.isMainThread ? "Main" : "Background"
+        
+        print("{TH: \(thread)} - [\(self.imageURLString ?? "Undefined")] -> \(string)")
     }
     
     public func getImage(completion: CompletionHandler<UIImage>? = nil) {
@@ -64,7 +64,7 @@ class DrinkObjectWithImage: DrinkObject {
                     self.log(string: "ResourceManager returned some data")
                     
                     // Avoid multiple assignments due to multiple callbacks on same object
-                    if self.imageData == nil {
+                    if self.imageData == nil || self.image == nil {
                         
                         self.log(string: "Saving data and creating image")
 
@@ -100,8 +100,10 @@ class DrinkObjectWithImage: DrinkObject {
                         }
                     }
                     else {
-                        self.log(string: "Throwing data because it is already cached")
-
+                        self.log(string: "Throwing data because it is already cached, calling handler")
+                        if let handler = completion {
+                            handler(self.image ?? ResourceManager.defaultImagePlaceholder)
+                        }
                     }
                 }
             }
@@ -127,17 +129,16 @@ class DrinkObjectWithImage: DrinkObject {
         
     }
     
-    func setImage (to imageView : UIImageView, then : (() -> Void)? = nil) {
+    func setImage (to imageView : UIImageView, transitioning : Bool = true, duration : Double = 0.5, then : (() -> Void)? = nil) {
         
         self.getImage() { image in
             
             DispatchQueue.main.async {
-                if (imageView.image == nil) {
+                if (transitioning) {
+                    imageView.transitionTo(image: image, duration: duration)
+                }
+                else {
                     imageView.image = image
-                } else {
-                    
-                    imageView.transitionTo(image: image, duration: self.animationDuration)
-                    
                 }
                 
                 if let execute = then {
@@ -150,10 +151,10 @@ class DrinkObjectWithImage: DrinkObject {
         
     }
     
-    func setColor (to view : UIView, alpha : CGFloat = 1) {
+    func setColor (to view : UIView, alpha : CGFloat = 1, duration : Double = 0.5) {
         
         self.getColors { (colors) in
-            UIView.animate(withDuration: self.animationDuration) {
+            UIView.animate(withDuration: duration) {
                 view.backgroundColor = colors.secondary.withAlphaComponent(alpha)
             }
         }

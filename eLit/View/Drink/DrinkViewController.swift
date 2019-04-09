@@ -9,7 +9,7 @@
 import UIKit
 
 
-class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelegate {
+class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelegate, IngredientsTableViewCellDelegate {
     
     var drink : Drink!
     var rating: Double = 0
@@ -17,6 +17,8 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     var components : [Component] = []
 
     var didPrepareSteps = false
+    
+    var RGSelectedComponent : Component?
     
     let cell_nibs = ["DrinkImageTableViewCell", "RatingTableViewCell", "DrinkComponentTableViewCell", "TimelineTableViewCell", "RGDrinkImageTableViewCell", "IngredientsTableViewCell", "StepsTableViewCell"]
     
@@ -317,6 +319,8 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             case 1:
                 let cell : IngredientsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "IngredientsTableViewCell") as! IngredientsTableViewCell
                 
+                cell.delegate = self
+                
                 let lBound = indexPath.row * 3
                 var rBound = indexPath.row * 3 + 2
                 let c = self.components.count - 1
@@ -382,16 +386,25 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
 
         case Navigation.toDrinkForIngredientVC.rawValue:
             let tableVC = segue.destination as! DrinkForIngredientTableViewController
-            
-            if let selected = tableView.indexPathForSelectedRow {
-                tableVC.vcForClass = .ingredient
-                tableVC.withIngredient = self.components[selected.row].ingredient
+            tableVC.vcForClass = .ingredient
 
-            }
-            else {
+            switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+            case .compact:
+                if let selected = tableView.indexPathForSelectedRow {
+                    tableVC.withIngredient = self.components[selected.row].ingredient
+                }
+                else {
+                    print("Can't setup ingredient")
+                }
+            case .regular:
                 
-                print("Can't setup ingredient")
+                if let consistentComponent = self.RGSelectedComponent {
+                    tableVC.withIngredient = consistentComponent.ingredient
+                    self.RGSelectedComponent = nil
+                }
                 
+            default:
+                return
             }
             
             
@@ -401,15 +414,25 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 2:
-            
-            self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
-            
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .compact:
+            switch indexPath.section {
+            case 2:
+                self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
+            default:
+                return
+            }
+        case .regular:
+            return
         default:
             return
         }
     }
     
+    // Regular size class delegate
+    func ingredientsTableViewCell(_ cell: IngredientsTableViewCell, didSelectComponent component: Component, for view: ComponentView) {
+        self.RGSelectedComponent = component
+        self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
+    }
 
 }

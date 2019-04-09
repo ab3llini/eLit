@@ -340,14 +340,7 @@ class HomeTableViewController: BlurredBackgroundTableViewController, UINavigatio
         }
         
     }
-    
-    
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        
-    }
-    
 
-    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation

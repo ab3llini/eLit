@@ -64,7 +64,7 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     private func setDrinkImage() {
         
-        self.drink.setImage(to: self.drinkImageView)
+        self.drink.setImage(to: self.drinkImageView, transitioning: false)
         
     }
     

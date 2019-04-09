@@ -36,15 +36,16 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         
-        if cell.imageView?.image == nil {
-            cell.imageView?.image = UIImage(named: "category_placeholder.png")
-        }
+        // Clear image and set the default one
+        cell.imageView?.image = UIImage(named: "category_placeholder.png")
         
-        categories[index].setImage(to: cell.imageView!) {
-            cell.setNeedsLayout()
+        categories[index].getImage { (image) in
+            cell.imageView?.image = image
         }
         
         cell.textLabel?.text = self.categories[index].name
+        cell.setNeedsLayout()
+
         
         return cell
     }
@@ -55,7 +56,6 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
         // Initialization code
         
         categoryWheel.dataSource = self
-    
         
         self.categoryWheel.transformer = FSPagerViewTransformer(type: .linear)
     
@@ -67,9 +67,7 @@ class HeaderTableViewCell: UITableViewCell, FSPagerViewDataSource {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let size = self.bounds.size.height * 0.9
-        
-        print(size)
+        let size = self.bounds.size.height * 0.8
         
         categoryWheel.itemSize = CGSize(width: size, height: size)
         

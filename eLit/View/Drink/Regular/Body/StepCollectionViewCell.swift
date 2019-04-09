@@ -17,10 +17,15 @@ class StepCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     private var step : RecipeStep!
+    private var vc : DrinkViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setVC (_ vc : DrinkViewController) {
+        self.vc = vc
     }
     
     func setStep(_ step : RecipeStep, forIndex index : Int) {

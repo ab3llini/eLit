@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ComponentViewDelegate {
+    
+    func componentView (_ view : ComponentView, didSelectComponent component: Component)
+    
+}
+
 class ComponentView : UIView, DarkModeBehaviour {
     
     @IBOutlet weak var blurView: UIView!
@@ -19,6 +25,7 @@ class ComponentView : UIView, DarkModeBehaviour {
     @IBOutlet weak var ingredientImage: UIImageView!
     
     var component : Component!
+    var delegate : ComponentViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +34,17 @@ class ComponentView : UIView, DarkModeBehaviour {
         // The element is hidden by default
         self.alpha = 0
         
+        // Register to clicks
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.notifyTouchUpInside)))
+        
     }
+    
+    @objc func notifyTouchUpInside() {
+        if let consistentDelegate = delegate {
+            consistentDelegate.componentView(self, didSelectComponent: self.component)
+        }
+    }
+
     
     private func setBackgroundImage() {
         
@@ -52,6 +69,7 @@ class ComponentView : UIView, DarkModeBehaviour {
             
         }
     }
+    
     
     public func setComponent(_ component : Component) {
         
@@ -102,11 +120,28 @@ class ComponentView : UIView, DarkModeBehaviour {
     
 }
 
-class IngredientsTableViewCell: UITableViewCell {
+protocol IngredientsTableViewCellDelegate {
+    func ingredientsTableViewCell(_ cell : IngredientsTableViewCell, didSelectComponent component: Component, for view : ComponentView)
+}
+
+class IngredientsTableViewCell: UITableViewCell, ComponentViewDelegate {
     
     @IBOutlet weak var leftComponent: ComponentView!
     @IBOutlet weak var centerComponent: ComponentView!
     @IBOutlet weak var rightComponent: ComponentView!
-
+    
+    var delegate : IngredientsTableViewCellDelegate?
+    
+    override func awakeFromNib() {
+        leftComponent.delegate = self
+        centerComponent.delegate = self
+        rightComponent.delegate = self
+    }
+    
+    func componentView(_ view: ComponentView, didSelectComponent component: Component) {
+        if let consistentDelegate = self.delegate {
+            consistentDelegate.ingredientsTableViewCell(self, didSelectComponent: component, for: view)
+        }
+    }
 }
 

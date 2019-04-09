@@ -40,7 +40,7 @@ class ResourceManager: NSObject {
                 callCompletion(with: nil, handler)
                 return
             }
-            
+        
             // Requesting the image...
             URLSession.shared.dataTask(with: url) { data, response, error in
                 
