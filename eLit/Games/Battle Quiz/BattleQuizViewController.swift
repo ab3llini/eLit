@@ -7,16 +7,30 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
-class BattleQuizViewController: UIViewController {
-
+class BattleQuizViewController: UITableViewController, MCBrowserViewControllerDelegate {
+    
+    let mpHandler = MPCHandler.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mpHandler.setupPeer(with: UIDevice.current.name)
+        self.mpHandler.setupSession()
+        self.mpHandler.advertiseSelf(advertise: true)
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func connectWithPlayer(_ sender: Any) {
+        if mpHandler.session != nil {
+            mpHandler.setupBrowser()
+            mpHandler.browser.delegate = self
+            
+            self.present(mpHandler.browser, animated: true, completion: nil)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -26,5 +40,13 @@ class BattleQuizViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        self.mpHandler.browser.dismiss(animated: true, completion: nil)
+    }
+    
+    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        self.mpHandler.browser.dismiss(animated: true, completion: nil)
+    }
 
 }
