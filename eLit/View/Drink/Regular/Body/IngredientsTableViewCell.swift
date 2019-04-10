@@ -37,6 +37,22 @@ class ComponentView : UIView, DarkModeBehaviour {
         // Register to clicks
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.notifyTouchUpInside)))
         
+        // Rotate the image view by 45 degrees
+        self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
+        
+        
+        // Add blur effect
+        _ = self.blurView.addBlurEffect(effect: .extraLight)
+        
+        // Set default state
+        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        // Register for dark mode updates
+        DarkModeManager.shared.register(component: self)
+        
+        // Add a very light border to the cell
+        containerView.layer.borderWidth = 1
+        
     }
     
     @objc func notifyTouchUpInside() {
@@ -48,10 +64,11 @@ class ComponentView : UIView, DarkModeBehaviour {
     
     private func setBackgroundImage() {
         
-        self.component.setImage { (image) in
+        self.component.ingredient?.setImageAndColor(calling: { (image, color) in
             self.backgroundImageView.image = image
+            self.backgroundImageView.backgroundColor = color
             self.ingredientImage.image = image
-        }
+        })
         
     }
     
@@ -77,22 +94,6 @@ class ComponentView : UIView, DarkModeBehaviour {
         
         // Enable component
         self.alpha = 1
-        
-        // Rotate the image view by 45 degrees
-        self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
-        
-        
-        // Add blur effect
-        _ = self.blurView.addBlurEffect(effect: .extraLight)
-        
-        // Set default state
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
-        // Register for dark mode updates
-        DarkModeManager.shared.register(component: self)
-        
-        // Add a very light border to the cell
-        containerView.layer.borderWidth = 1
         
         self.setBackgroundImage()
         

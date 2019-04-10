@@ -135,15 +135,16 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             switch section {
             case 1:
-                label.text = "Ingredients"
+                label.text = "Ingredients".uppercased()
             case 2:
-                label.text = "How to mix"
+                label.text = "How to mix".uppercased()
             default:
                 return nil
             }
             
-            label.preferredColor = UIColor.darkGray
-            label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            label.preferredColor = UIColor.gray
+            label.textColor = label.preferredColor
+            label.font = UIFont(name: "HelveticaNeue-Light", size: 20)
             view.addSubview(label)
             
             

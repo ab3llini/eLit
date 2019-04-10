@@ -4,9 +4,10 @@
 
 => {problems only in simulator} (Universal) While searching, if you change tab, search vc goes black!
 
-- (Universal) In settings pane, ultimate the vc that appears upon click on profile picture. Remove "review test"
-- (iPad) layout "drinks for ingredient" for regular class -> reuqires a long time
-- (iPad) increase cell size for settings
+- (Universal) In settings pane, ultimate the vc that appears upon click on profile picture. Remove "review test" and discuss whether or not that vc is worth existing..
+
+- (iPad) fix hide toggles not working
+- (univ) hide Ingredients & steps labels when toggles are on
 
 --------------------------------
 -------------- Data ------------
@@ -14,6 +15,7 @@
 
 - Add more drinks
 - Edit descriptions and make them longer for some drinks
+- Fix step 3 of Bluberry Julep ( {} with no binding )
 
 --------------------------------
 ---------- Controller ----------

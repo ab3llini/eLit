@@ -21,22 +21,6 @@ class StepCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func setVC (_ vc : DrinkViewController) {
-        self.vc = vc
-    }
-    
-    func setStep(_ step : RecipeStep, forIndex index : Int) {
-        
-        self.step = step
-        self.stepNumber.text = "Step \(index + 1)"
-        
-        self.step.setAttributedString(completion: { (string) in
-            self.stepDescription.attributedText = string
-        })
-        
         // Rotate the image view by 45 degrees
         self.backgroundImageView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 10)
         
@@ -52,6 +36,22 @@ class StepCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
         
         // Add a very light border to the cell
         containerView.layer.borderWidth = 1
+    }
+    
+    func setVC (_ vc : DrinkViewController) {
+        self.vc = vc
+    }
+    
+    func setStep(_ step : RecipeStep, forIndex index : Int) {
+        
+        self.step = step
+        self.stepNumber.text = "Step \(index + 1)"
+        
+        self.step.setAttributedString(completion: { (string) in
+            self.stepDescription.attributedText = string
+        })
+        
+        
         
         self.setBackgroundImage()
         
@@ -63,7 +63,7 @@ class StepCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
         if (comps.count > 0) {
             if let ing = comps[0].withIngredient {
                 
-                ing.setImage(to: self.backgroundImageView)
+                ing.setImageAndColor(imageFor: self.backgroundImageView, colorFor: self.backgroundImageView)
                 
             }
         }

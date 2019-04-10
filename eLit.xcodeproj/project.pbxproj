@@ -24,16 +24,11 @@
 		A467347421F37F030061D0D2 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467347121F37F020061D0D2 /* AccountTableViewCell.swift */; };
 		A467347521F37F030061D0D2 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467347221F37F020061D0D2 /* AccountTableViewCell.xib */; };
 		A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A470E54F2211DF65004872A2 /* MainTabBarController.swift */; };
-		A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */; };
-		A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */; };
 		A47E5D31222FF5E900A3A7E6 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47E5D30222FF5E900A3A7E6 /* ModelTest.swift */; };
 		A47E5D362230007B00A3A7E6 /* drinks.txt in Resources */ = {isa = PBXBuildFile; fileRef = A47E5D352230007B00A3A7E6 /* drinks.txt */; };
 		A485FA3D225D3D0D00435B58 /* HomeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A485FA3C225D3D0D00435B58 /* HomeTest.swift */; };
 		A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15221D82A540080B3BF /* DrinkComponent.swift */; };
 		A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486E15421D82B2B0080B3BF /* Ingredient.swift */; };
-		A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E992421F888E3004254E0 /* ProfileHeaderView.swift */; };
-		A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E992621F88923004254E0 /* ProfileHeaderView.xib */; };
-		A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */; };
 		A4A74B0921FA209E00395C2D /* DrinkSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */; };
 		A4A74B0A21FA209E00395C2D /* DrinkSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */; };
 		A4B91EE822245ACB002B4ED2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */; };
@@ -51,6 +46,7 @@
 		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
 		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
 		BD0840BB2227EEA800027900 /* BarCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0840BA2227EEA800027900 /* BarCodeViewController.swift */; };
+		BD08A16F225E189D001F1160 /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD08A16E225E189D001F1160 /* LogoutTableViewCell.swift */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
 		BD0AA95E21F0AA0C00990A32 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95D21F0AA0C00990A32 /* HomeTableViewController.swift */; };
 		BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95F21F0B25600990A32 /* Navigation.swift */; };
@@ -161,16 +157,11 @@
 		A467347121F37F020061D0D2 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		A467347221F37F020061D0D2 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		A470E54F2211DF65004872A2 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		A47E5D30222FF5E900A3A7E6 /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		A47E5D352230007B00A3A7E6 /* drinks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = drinks.txt; sourceTree = "<group>"; };
 		A485FA3C225D3D0D00435B58 /* HomeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTest.swift; sourceTree = "<group>"; };
 		A486E15221D82A540080B3BF /* DrinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponent.swift; sourceTree = "<group>"; };
 		A486E15421D82B2B0080B3BF /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		A48E992421F888E3004254E0 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
-		A48E992621F88923004254E0 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
-		A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A4A74B0721FA209E00395C2D /* DrinkSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSearchTableViewCell.swift; sourceTree = "<group>"; };
 		A4A74B0821FA209E00395C2D /* DrinkSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkSearchTableViewCell.xib; sourceTree = "<group>"; };
 		A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +180,7 @@
 		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0840BA2227EEA800027900 /* BarCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeViewController.swift; sourceTree = "<group>"; };
+		BD08A16E225E189D001F1160 /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		BD0AA95D21F0AA0C00990A32 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		BD0AA95F21F0B25600990A32 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -342,27 +334,15 @@
 		A467346F21F37F020061D0D2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A47ADBCA21F76F7000B5BC83 /* Profile */,
 				A4E5A75121F3E15800E60FAF /* LogIn */,
 				A467347021F37F020061D0D2 /* SettingsTableViewController.swift */,
 				A467347121F37F020061D0D2 /* AccountTableViewCell.swift */,
 				A467347221F37F020061D0D2 /* AccountTableViewCell.xib */,
 				BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */,
 				A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */,
+				BD08A16E225E189D001F1160 /* LogoutTableViewCell.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		A47ADBCA21F76F7000B5BC83 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A491CE9921F77C3700627560 /* ProfileTableViewCell.swift */,
-				A47ADBDA21F7786800B5BC83 /* ProfileTableViewCell.xib */,
-				A47ADBD121F7731E00B5BC83 /* ProfileTableViewController.swift */,
-				A48E992421F888E3004254E0 /* ProfileHeaderView.swift */,
-				A48E992621F88923004254E0 /* ProfileHeaderView.xib */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		A47E5D32222FFFD300A3A7E6 /* Resources */ = {
@@ -864,12 +844,10 @@
 				BD9C195E2214347200E05927 /* CoreSettings.plist in Resources */,
 				BDE49CC9223FF64E00F7701C /* RGDrinkCollectionViewCell.xib in Resources */,
 				BD2C651E21E24E7D00EC41C6 /* CPDrinkTableViewCell.xib in Resources */,
-				A47ADBDC21F7786800B5BC83 /* ProfileTableViewCell.xib in Resources */,
 				BDF2DA4A2203180C0020F62D /* ReviewTableViewCell.xib in Resources */,
 				BDE49CB9223FE9D800F7701C /* Home.storyboard in Resources */,
 				BD3A31FD21E520BC009A135F /* HeaderTableViewCell.xib in Resources */,
 				BDE49CBB223FEA1B00F7701C /* Discover.storyboard in Resources */,
-				A48E992721F88923004254E0 /* ProfileHeaderView.xib in Resources */,
 				BDE49CBF223FEAA100F7701C /* Game.storyboard in Resources */,
 				BD23728021E8D68C007FEFC3 /* Assets.xcassets in Resources */,
 			);
@@ -1033,9 +1011,9 @@
 				BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */,
 				BDDB5BC3225232420001EBB6 /* StepsTableViewCell.swift in Sources */,
 				BDF964D621ECF98300228EEB /* DataBaseManager.swift in Sources */,
+				BD08A16F225E189D001F1160 /* LogoutTableViewCell.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
-				A48E992521F888E3004254E0 /* ProfileHeaderView.swift in Sources */,
 				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
 				BD635DF122242BFF000AAC86 /* DarkModeManager.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
@@ -1044,10 +1022,8 @@
 				BDDB5BBF2252322A0001EBB6 /* StepCollectionViewCell.swift in Sources */,
 				A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */,
 				BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */,
-				A491CE9A21F77C3700627560 /* ProfileTableViewCell.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */,
-				A47ADBD221F7731E00B5BC83 /* ProfileTableViewController.swift in Sources */,
 				BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */,
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,

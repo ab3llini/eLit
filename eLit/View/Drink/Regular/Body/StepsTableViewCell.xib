@@ -20,15 +20,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="GWq-mW-ptM">
-                        <rect key="frame" x="464.5" y="404" width="71" height="37"/>
+                        <rect key="frame" x="464.5" y="355" width="71" height="86"/>
                         <color key="pageIndicatorTintColor" red="0.92549019610000005" green="0.27058823529999998" blue="0.35294117650000001" alpha="0.19833583047945205" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="currentPageIndicatorTintColor" red="0.92549019610000005" green="0.27058823529999998" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </pageControl>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qeW-7v-eug">
-                        <rect key="frame" x="20" y="55" width="960" height="349"/>
+                        <rect key="frame" x="20" y="55" width="960" height="300"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Rxj-nn-MwC"/>
+                            <constraint firstAttribute="height" constant="300" id="Rxj-nn-MwC"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="MLH-r4-sC6">
                             <size key="itemSize" width="400" height="300"/>

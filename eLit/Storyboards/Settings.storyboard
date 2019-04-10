@@ -48,12 +48,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle this setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eaz-bh-9y4" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="149" height="21.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="146.66666666666666" height="21.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                                     </variation>
                                                 </label>
                                                 <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdi-lQ-Aw1" customClass="SettingsSwitch" customModule="eLit" customModuleProvider="target">
@@ -89,6 +89,49 @@
                                     <outlet property="settingDescription" destination="Eaz-bh-9y4" id="qdV-5d-yoM"/>
                                     <outlet property="settingStatus" destination="tdi-lQ-Aw1" id="btc-hF-VgH"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="logoutSettingCell" id="7sB-tZ-xcy" customClass="LogoutTableViewCell" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7sB-tZ-xcy" id="PxV-gB-eQI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kfb-Pf-SRE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JX2-Js-p3U">
+                                                    <rect key="frame" x="179" y="5" width="56" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                    <state key="normal" title="Logout">
+                                                        <color key="titleColor" red="0.92549019610000005" green="0.00044488306950000002" blue="0.32852152210000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="onLogoutAction:" destination="7sB-tZ-xcy" eventType="touchUpInside" id="WqJ-GK-SJ3"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="JX2-Js-p3U" firstAttribute="centerY" secondItem="Kfb-Pf-SRE" secondAttribute="centerY" id="MLK-jx-BKS"/>
+                                                <constraint firstItem="JX2-Js-p3U" firstAttribute="centerX" secondItem="Kfb-Pf-SRE" secondAttribute="centerX" id="gL5-cQ-8Lq"/>
+                                                <constraint firstAttribute="height" priority="999" constant="50" id="l1L-II-jPT">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="75"/>
+                                                </constraint>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Kfb-Pf-SRE" firstAttribute="leading" secondItem="PxV-gB-eQI" secondAttribute="leading" id="9Vj-xr-OHQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Kfb-Pf-SRE" secondAttribute="bottom" id="fju-bH-bde"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kfb-Pf-SRE" secondAttribute="trailing" id="pQ7-tJ-5eW"/>
+                                        <constraint firstItem="Kfb-Pf-SRE" firstAttribute="top" secondItem="PxV-gB-eQI" secondAttribute="top" id="qEc-ed-bfo"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

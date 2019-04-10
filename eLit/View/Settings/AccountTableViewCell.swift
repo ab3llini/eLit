@@ -25,6 +25,23 @@ class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
         DarkModeManager.shared.register(component: self)
             
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard let gid = GIDSignIn.sharedInstance() else {
+            self.profileImageView.roundImage(with: 0, ofColor: .darkGray)
+            return
+        }
+        if gid.hasAuthInKeychain() {
+            self.profileImageView.roundImage(with: 1, ofColor: .darkGray)
+        }
+        else {
+            self.profileImageView.roundImage(with: 0, ofColor: .darkGray)
+
+        }
+
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

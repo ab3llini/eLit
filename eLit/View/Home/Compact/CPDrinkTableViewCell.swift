@@ -54,6 +54,15 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
                 
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        switch (UIScreen.main.traitCollection.horizontalSizeClass) {
+        case .regular:
+            self.ratingView.settings.starSize = 25.0
+        default:
+            return
+        }
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

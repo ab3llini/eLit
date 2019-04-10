@@ -11,7 +11,7 @@ import GoogleSignIn
 
 
 
-class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSignInUIDelegate, GIDSignInDelegate, LogoutDelegate {
     
     let accountNib = "AccountTableViewCell"
     var userSettings : UserSettings!
@@ -27,17 +27,24 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        
+        guard let gid = GIDSignIn.sharedInstance() else { return 2 }
+        
+        if gid.hasAuthInKeychain() {
+            return 3 // account for logout cell if we are logged
+        }
+        else {
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
+            return 1
+        case 2:
             return 1
         default:
             return self.userSettings.switches.count
@@ -60,9 +67,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             
             // Check if the user is logged in
             guard gid.hasAuthInKeychain() else {
-                cell.nameLabel.text = "Login with Google"
-                cell.emailLabel.text = ""
-                cell.profileImageView.image = UIImage(named: "GoogleIcon")
                 cell.loginIndicator.stopAnimating()
                 return cell
             }
@@ -77,7 +81,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             // Filling up the table cell with user information and getting the image
             cell.nameLabel.text = (user.name ?? "") + " " + (user.familyName ?? "")
             cell.emailLabel.text = user.email ?? ""
-            cell.profileImageView.roundImage(with: 1, ofColor: .darkGray)
 
             user.setImage(completion: { image in
                 guard let im = image else {
@@ -88,7 +91,13 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             })
 
             return cell
-        
+            
+        case 2:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "logoutSettingCell") as! LogoutTableViewCell
+            cell.delegate = self
+            return cell
+
         default:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "onOffSettingCell") as! SettingsTableViewCell
@@ -101,6 +110,10 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         }
     }
     
+    func didLogout() {
+        // HANDLE LOGOUT HERE
+        self.tableView.reloadData()
+    }
     
     // MARK: Google Sing in
     func prepareForSignIn() {
@@ -153,8 +166,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
             if (GIDSignIn.sharedInstance()?.hasAuthInKeychain() ?? false) == false {
                 GIDSignIn.sharedInstance()?.signIn()
                 //TODO: manage sign in data
-            } else {
-                performSegue(withIdentifier: Navigation.toUserProfileVC.rawValue, sender: self)
             }
             
         default:
@@ -166,7 +177,7 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
     func onLoginEnd() {
         let cell = self.tableView.cellForRow(at: IndexPath(indexes: [0, 0])) as! AccountTableViewCell
         cell.loginIndicator.stopAnimating()
-        self.tableView.reloadRows(at: [IndexPath(indexes: [0, 0])], with: UITableView.RowAnimation.automatic)
+        self.tableView.reloadData()
     }
     
     
@@ -182,20 +193,6 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         }
         
     }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        switch segue.identifier {
-            case Navigation.toUserProfileVC.rawValue:
-                let profileVC = segue.destination as! ProfileTableViewController
-                profileVC.callerVC = self
-            default:
-                return
-        }
-        
-    }
-    
+
 
 }
