@@ -112,6 +112,11 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
     
     func didLogout() {
         // HANDLE LOGOUT HERE
+        let cell = tableView.cellForRow(at: IndexPath(indexes: [0, 0])) as! AccountTableViewCell
+        cell.signInContainer.isHidden = false
+        cell.emailLabel.text = ""
+        cell.nameLabel.text = ""
+        cell.profileImageView.image = UIImage(named: "user")
         self.tableView.reloadData()
     }
     
@@ -137,6 +142,7 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         let cell = tableView.cellForRow(at: IndexPath(indexes: [0, 0])) as! AccountTableViewCell
         cell.profileImageView.image = nil
         cell.loginIndicator.startAnimating()
+        cell.signInContainer.isHidden = true
         
         if let oldUser = Model.shared.user {
             oldUser.updateUserData(data: user)

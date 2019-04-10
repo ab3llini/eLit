@@ -49,7 +49,7 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3gA-dm-7NI">
                                 <rect key="frame" x="45.5" y="40" width="20" height="20"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hk0-qW-6U1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hk0-qW-6U1" userLabel="SignInContainer">
                                 <rect key="frame" x="491" y="35" width="200" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzp-0Z-ueI" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
@@ -135,6 +135,7 @@
                 <outlet property="loginIndicator" destination="3gA-dm-7NI" id="had-6O-kee"/>
                 <outlet property="nameLabel" destination="Jvl-W9-aMG" id="EyN-Fd-vmj"/>
                 <outlet property="profileImageView" destination="vP7-wr-jCF" id="9vm-ku-lAJ"/>
+                <outlet property="signInContainer" destination="hk0-qW-6U1" id="WsP-wN-zt9"/>
             </connections>
             <point key="canvasLocation" x="-41.30859375" y="-37.335285505124446"/>
         </tableViewCell>

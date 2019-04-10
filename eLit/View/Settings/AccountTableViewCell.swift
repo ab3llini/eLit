@@ -14,6 +14,7 @@ class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var signInContainer: UIView!
     
     @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
     
