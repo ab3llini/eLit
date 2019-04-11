@@ -34,6 +34,7 @@
 		A4B91EE822245ACB002B4ED2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */; };
 		A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BED32421F713EB00C1A31D /* DrinkObject.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
+		A4CFBF25225E41AD00F1750C /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFBF24225E41AD00F1750C /* MPCHandler.swift */; };
 		A4D1D96E22099F8800888EAD /* DrinkComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */; };
 		A4D1D96F22099F8800888EAD /* DrinkComponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
@@ -167,6 +168,7 @@
 		A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A4BED32421F713EB00C1A31D /* DrinkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObject.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A4CFBF24225E41AD00F1750C /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
 		A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponentTableViewCell.swift; sourceTree = "<group>"; };
 		A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkComponentTableViewCell.xib; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -351,6 +353,14 @@
 				A47E5D352230007B00A3A7E6 /* drinks.txt */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A4CFBF23225E3F2300F1750C /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				A4CFBF24225E41AD00F1750C /* MPCHandler.swift */,
+			);
+			path = Connectivity;
 			sourceTree = "<group>";
 		};
 		A4D1D9702209A33200888EAD /* Ingredient */ = {
@@ -582,6 +592,7 @@
 		BD4F933C222AD4C700EC3420 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				A4CFBF23225E3F2300F1750C /* Connectivity */,
 				BD4F933D222AD4D300EC3420 /* Battle Quiz */,
 			);
 			path = Games;
@@ -1001,6 +1012,7 @@
 				BD3985B3224E41050033F25F /* IngredientsTableViewCell.swift in Sources */,
 				BD9C19612214352200E05927 /* Preferences.swift in Sources */,
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
+				A4CFBF25225E41AD00F1750C /* MPCHandler.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */,
 				BDE49CC8223FF64E00F7701C /* RGDrinkCollectionViewCell.swift in Sources */,
@@ -1252,13 +1264,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -1276,13 +1288,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7E7F4Y64R6;
+				DEVELOPMENT_TEAM = BQRSRVURN3;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.alberto.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
