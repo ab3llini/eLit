@@ -80,7 +80,7 @@ class ResourceManager: NSObject {
         
         while !completions.isEmpty {
             let completion = completions.remove(at: 0)
-            completion(d)
+            self.callCompletion(with: data, completion)
         }
     }
 }
