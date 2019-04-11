@@ -127,7 +127,6 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         case .regular:
             
 
-            
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 50))
             
             let label = AdaptiveLabel()
@@ -135,9 +134,17 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             switch section {
             case 1:
+                if Preferences.shared.getSwitch(for: .hideIngredients) {
+                    return nil
+                }
                 label.text = "Ingredients".uppercased()
+
             case 2:
+                if Preferences.shared.getSwitch(for: .hideRecipe) {
+                    return nil
+                }
                 label.text = "How to mix".uppercased()
+
             default:
                 return nil
             }
@@ -164,9 +171,9 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             case 1:
                 return "Rating"
             case 2:
-                return "Ingredients"
+                return (Preferences.shared.getSwitch(for: .hideIngredients)) ? nil : "Ingredients"
             case 3:
-                return "How to mix"
+                return (Preferences.shared.getSwitch(for: .hideRecipe)) ? nil : "How to mix"
             default:
                 return nil
                 
@@ -229,7 +236,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                         return self.components.count
                     }
                 case 3:
-                // Steps
+                    // Steps
                     if (Preferences.shared.getSwitch(for: .hideRecipe)) {
                         return 0
                     }
@@ -242,7 +249,19 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         case .regular:
             switch section {
             case 1:
-                return Int(ceil(Double(self.components.count) / 3.0))
+                if Preferences.shared.getSwitch(for: .hideIngredients) {
+                    return 0
+                }
+                else {
+                    return Int(ceil(Double(self.components.count) / 3.0))
+                }
+            case 2:
+                if Preferences.shared.getSwitch(for: .hideRecipe) {
+                    return 0
+                }
+                else {
+                    return 1
+                }
             default:
                 return 1
             }
