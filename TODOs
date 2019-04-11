@@ -4,10 +4,11 @@
 
 => {problems only in simulator} (Universal) While searching, if you change tab, search vc goes black!
 
-- (Universal) In settings pane, ultimate the vc that appears upon click on profile picture. Remove "review test" and discuss whether or not that vc is worth existing..
 
-- (iPad) fix hide toggles not working
-- (univ) hide Ingredients & steps labels when toggles are on
+- (univ) spinner in reviews should not keep animating 4 ever if no reviews are present
+- (univ) Expand review if longer than max length
+- (univ) add progress bar during launch
+
 
 --------------------------------
 -------------- Data ------------
@@ -22,7 +23,6 @@
 --------------------------------
 
 - Add task error handling -> prevent the app from launching upon error
-- Fix rating not showing up on first launch.
 
 --------------------------------
 ---------- GameEngine ----------

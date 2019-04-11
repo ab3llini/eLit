@@ -1,52 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="KGk-i7-Jjw" customClass="ReviewTableViewCell" customModule="eLit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="232" id="KGk-i7-Jjw" customClass="ReviewTableViewCell" customModule="eLit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="709" height="232"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="709" height="231.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuM-hb-5hL">
-                        <rect key="frame" x="18" y="8" width="284" height="143.5"/>
+                        <rect key="frame" x="18" y="8" width="673" height="215.66666666666666"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Review title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5F-kP-5fo" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="74" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="10 oct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rli-Vz-kbY" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="239.5" y="10" width="34.5" height="14.5"/>
+                                <rect key="frame" x="628.66666666666663" y="11.333333333333332" width="34.333333333333371" height="14.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="ab3llini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmf-cd-nsj" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="234" y="26.5" width="40" height="14.5"/>
+                                <rect key="frame" x="623.33333333333337" y="27.666666666666661" width="39.666666666666629" height="14.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuH-SW-U2k" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="10" y="49" width="264" height="84.5"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuH-SW-U2k" customClass="AdaptiveMultilineLabel" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="10" y="50" width="653" height="131.66666666666666"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                </variation>
                             </label>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOo-m9-78p" customClass="CosmosView" customModule="Cosmos">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOo-m9-78p" customClass="AdaptiveRating" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="10" y="29" width="50" height="10"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -87,23 +99,49 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="regularSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srd-oS-4fp">
+                                <rect key="frame" x="582" y="181.66666666666666" width="81" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Show more..">
+                                    <color key="titleColor" red="0.92549019610000005" green="0.00044488306950000002" blue="0.32852152210000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onShowMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gfP-ht-UQx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="w5F-kP-5fo" firstAttribute="leading" secondItem="tuM-hb-5hL" secondAttribute="leading" constant="10" id="5k9-G3-ups"/>
-                            <constraint firstItem="Rli-Vz-kbY" firstAttribute="top" secondItem="tuM-hb-5hL" secondAttribute="top" constant="10" id="D5G-oH-z4A"/>
-                            <constraint firstAttribute="trailing" secondItem="cmf-cd-nsj" secondAttribute="trailing" constant="10" id="Duf-J7-tkD"/>
+                            <constraint firstItem="w5F-kP-5fo" firstAttribute="leading" secondItem="tuM-hb-5hL" secondAttribute="leading" constant="10" id="5k9-G3-ups">
+                                <variation key="heightClass=regular-widthClass=regular" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="qOo-m9-78p" firstAttribute="leading" secondItem="w5F-kP-5fo" secondAttribute="leading" id="AZ4-2d-a8j"/>
                             <constraint firstItem="GuH-SW-U2k" firstAttribute="top" secondItem="cmf-cd-nsj" secondAttribute="bottom" constant="8" id="EFQ-0L-zNL"/>
-                            <constraint firstAttribute="bottom" secondItem="GuH-SW-U2k" secondAttribute="bottom" constant="10" id="Hb6-Tf-Y68"/>
-                            <constraint firstAttribute="trailing" secondItem="Rli-Vz-kbY" secondAttribute="trailing" constant="10" id="N6e-o8-LcE"/>
+                            <constraint firstItem="cmf-cd-nsj" firstAttribute="trailing" secondItem="Rli-Vz-kbY" secondAttribute="trailing" id="LvF-9P-M4D"/>
+                            <constraint firstAttribute="trailing" secondItem="Rli-Vz-kbY" secondAttribute="trailing" constant="10" id="N6e-o8-LcE">
+                                <variation key="heightClass=regular-widthClass=regular" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="srd-oS-4fp" firstAttribute="top" secondItem="GuH-SW-U2k" secondAttribute="bottom" id="NTZ-wz-Tki"/>
                             <constraint firstItem="qOo-m9-78p" firstAttribute="top" secondItem="w5F-kP-5fo" secondAttribute="bottom" constant="2" id="O26-UW-AkW"/>
+                            <constraint firstItem="GuH-SW-U2k" firstAttribute="leading" secondItem="qOo-m9-78p" secondAttribute="leading" id="QhS-o4-bv2"/>
+                            <constraint firstAttribute="bottom" secondItem="srd-oS-4fp" secondAttribute="bottom" constant="5" id="Vvq-1Y-Ncs">
+                                <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                            </constraint>
+                            <constraint firstItem="Rli-Vz-kbY" firstAttribute="centerY" secondItem="w5F-kP-5fo" secondAttribute="centerY" id="XhE-Wb-M9W"/>
+                            <constraint firstItem="cmf-cd-nsj" firstAttribute="trailing" secondItem="srd-oS-4fp" secondAttribute="trailing" id="Ydn-ig-Nwq"/>
                             <constraint firstItem="cmf-cd-nsj" firstAttribute="top" secondItem="Rli-Vz-kbY" secondAttribute="bottom" constant="2" id="YeW-O6-eZz"/>
-                            <constraint firstItem="GuH-SW-U2k" firstAttribute="leading" secondItem="tuM-hb-5hL" secondAttribute="leading" constant="10" id="auq-9u-M5x"/>
-                            <constraint firstAttribute="trailing" secondItem="GuH-SW-U2k" secondAttribute="trailing" constant="10" id="fgk-t2-lTa"/>
-                            <constraint firstItem="qOo-m9-78p" firstAttribute="leading" secondItem="tuM-hb-5hL" secondAttribute="leading" constant="10" id="pWs-DZ-zd5"/>
-                            <constraint firstItem="w5F-kP-5fo" firstAttribute="top" secondItem="tuM-hb-5hL" secondAttribute="top" constant="10" id="uFe-94-hQ8"/>
+                            <constraint firstItem="w5F-kP-5fo" firstAttribute="top" secondItem="tuM-hb-5hL" secondAttribute="top" constant="10" id="uFe-94-hQ8">
+                                <variation key="heightClass=regular-widthClass=regular" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="cmf-cd-nsj" firstAttribute="trailing" secondItem="GuH-SW-U2k" secondAttribute="trailing" id="w0p-BF-hNX"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -120,12 +158,13 @@
             <connections>
                 <outlet property="mainView" destination="tuM-hb-5hL" id="TWh-QE-qxH"/>
                 <outlet property="reviewTextLabel" destination="GuH-SW-U2k" id="fpp-ML-WP7"/>
+                <outlet property="showMoreButton" destination="srd-oS-4fp" id="zSF-B8-nxW"/>
                 <outlet property="starsView" destination="qOo-m9-78p" id="QGD-L7-1gY"/>
                 <outlet property="timestampLabel" destination="Rli-Vz-kbY" id="fCk-j4-CFg"/>
                 <outlet property="titleLabel" destination="w5F-kP-5fo" id="kRU-JV-p5g"/>
                 <outlet property="userLabel" destination="cmf-cd-nsj" id="CCv-qu-YNg"/>
             </connections>
-            <point key="canvasLocation" x="-82" y="-245"/>
+            <point key="canvasLocation" x="30.761718749999996" y="-230.16105417276719"/>
         </tableViewCell>
     </objects>
 </document>

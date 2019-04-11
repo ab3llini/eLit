@@ -68,6 +68,8 @@
 		BD401C5821D77C1E007496F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5721D77C1E007496F9 /* Drink.swift */; };
 		BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5921D78ECF007496F9 /* CoreDataObject.swift */; };
 		BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD401C5B21D79261007496F9 /* EntityManager.swift */; };
+		BD417F21225FB81C009A5027 /* AdaptiveMultilineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD417F20225FB81C009A5027 /* AdaptiveMultilineLabel.swift */; };
+		BD417F23225FDA05009A5027 /* AdaptiveRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD417F22225FDA04009A5027 /* AdaptiveRating.swift */; };
 		BD4D7EA3224E212200B608EE /* RGDrinkImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4D7EA1224E212200B608EE /* RGDrinkImageTableViewCell.swift */; };
 		BD4D7EA4224E212200B608EE /* RGDrinkImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4D7EA2224E212200B608EE /* RGDrinkImageTableViewCell.xib */; };
 		BD4F933F222AD63500EC3420 /* BattleQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */; };
@@ -212,6 +214,8 @@
 		BD401C5721D77C1E007496F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		BD401C5921D78ECF007496F9 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		BD401C5B21D79261007496F9 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		BD417F20225FB81C009A5027 /* AdaptiveMultilineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveMultilineLabel.swift; sourceTree = "<group>"; };
+		BD417F22225FDA04009A5027 /* AdaptiveRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveRating.swift; sourceTree = "<group>"; };
 		BD4D7EA1224E212200B608EE /* RGDrinkImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGDrinkImageTableViewCell.swift; sourceTree = "<group>"; };
 		BD4D7EA2224E212200B608EE /* RGDrinkImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RGDrinkImageTableViewCell.xib; sourceTree = "<group>"; };
 		BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleQuizViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 				A4F1299922021AB900910834 /* LoadingTableViewCell.xib */,
 				BDF2DA472203180C0020F62D /* ReviewTableViewCell.swift */,
 				BDF2DA482203180C0020F62D /* ReviewTableViewCell.xib */,
+				BD417F20225FB81C009A5027 /* AdaptiveMultilineLabel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				BD635DEC22241D87000AAC86 /* BlurredBackground.swift */,
 				BD635DF022242BFF000AAC86 /* DarkModeManager.swift */,
 				BD635DEE222421FB000AAC86 /* AdaptiveLabel.swift */,
+				BD417F22225FDA04009A5027 /* AdaptiveRating.swift */,
 				BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */,
 				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 				BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */,
@@ -1026,6 +1032,7 @@
 				BD08A16F225E189D001F1160 /* LogoutTableViewCell.swift in Sources */,
 				A4BF368321DFF9D900768BB6 /* Model.swift in Sources */,
 				A467347321F37F030061D0D2 /* SettingsTableViewController.swift in Sources */,
+				BD417F23225FDA05009A5027 /* AdaptiveRating.swift in Sources */,
 				BD6EE94121FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift in Sources */,
 				BD635DF122242BFF000AAC86 /* DarkModeManager.swift in Sources */,
 				BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */,
@@ -1080,6 +1087,7 @@
 				BD635DEF222421FB000AAC86 /* AdaptiveLabel.swift in Sources */,
 				A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */,
 				BD4F933F222AD63500EC3420 /* BattleQuizViewController.swift in Sources */,
+				BD417F21225FB81C009A5027 /* AdaptiveMultilineLabel.swift in Sources */,
 				BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */,
 				BD4D7EA3224E212200B608EE /* RGDrinkImageTableViewCell.swift in Sources */,
 				BD613A952209AF1300A5A36E /* TimelineView.swift in Sources */,

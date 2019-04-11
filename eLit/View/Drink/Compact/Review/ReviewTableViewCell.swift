@@ -15,10 +15,13 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var reviewTextLabel: UILabel!
+    @IBOutlet weak var reviewTextLabel: AdaptiveMultilineLabel!
     @IBOutlet weak var starsView: CosmosView!
+    @IBOutlet weak var showMoreButton: UIButton!
     
     private var preferredBackgroundColor : UIColor!
+    
+    public var container : UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +33,38 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
         
         DarkModeManager.shared.register(component: self)
         self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
+        
+        showMoreButton.isHidden = true
+        
+    }
+    @IBAction func onShowMore(_ sender: UIButton) {
+        
+        if reviewTextLabel.isCollapsed() {
+            sender.setTitle("Show less..", for: .normal)
+            
+        }
+        else {
+            sender.setTitle("Show more..", for: .normal)
+
+        }
+        
+        let originalHeight = reviewTextLabel.frame.size.height
+        let offset =  reviewTextLabel.toggleCollapse() - originalHeight
+        
+        var newFrame = self.frame
+        
+        newFrame.size.height = self.frame.size.height + offset
+        self.frame = newFrame
+        self.container.contentSize.height += offset
+        
+    }
+    
+    override func layoutSubviews() {
+        
+        if reviewTextLabel.isTruncated() {
+            showMoreButton.isHidden = false
+        }
+        super.layoutSubviews()
         
     }
     

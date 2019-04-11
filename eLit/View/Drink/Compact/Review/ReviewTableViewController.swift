@@ -78,6 +78,7 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         cell.reviewTextLabel.text = reviews[indexPath.row].text
         cell.userLabel.text = reviews[indexPath.row].author
         cell.timestampLabel.text = reviews[indexPath.row].timestamp
+        cell.container = self.tableView
 
 
         return cell

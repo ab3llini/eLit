@@ -38,7 +38,7 @@ struct Component {
 @objc(Drink)
 class Drink: DrinkObjectWithImage {
     
-    internal var rating : Double = -1.0
+    private var rating : Double = -1
 
     
     //MARK: Attributes
@@ -51,6 +51,7 @@ class Drink: DrinkObjectWithImage {
         self.init()
         self.name = name
         self.drinkRecipe = recipe
+        self.rating = -1.0
     }
     
     convenience init(name: String, image: String, degree: Double, recipe: Recipe? = nil) {
@@ -58,6 +59,8 @@ class Drink: DrinkObjectWithImage {
         self.name = name
         self.degree = degree
         self.drinkRecipe = recipe
+        self.rating = -1.0
+
     }
     
     convenience init(dict: [String: Any]) {
@@ -70,6 +73,8 @@ class Drink: DrinkObjectWithImage {
         self.drinkRecipe = Recipe(dict: dict["recipe"] as? [String: Any] ?? [:])
         self.drinkDescription = dict["drink_description"] as? String ?? ""
         self.createdBy = dict["created_by"] as? String ?? ""
+        self.rating = -1.0
+
         
         let categoryDict = dict["category"] as? [String: Any] ?? [:]
         let categoryID = categoryDict["id"] as? String ?? ""
@@ -147,8 +152,7 @@ class Drink: DrinkObjectWithImage {
             requestRating()
             
         }
-        
-        else{
+        else {
             
             if self.rating == -1.0 {
                 requestRating()
@@ -156,10 +160,7 @@ class Drink: DrinkObjectWithImage {
             else {
                 completion(self.rating)
             }
-            
         }
-        
     }
-    
 
 }
