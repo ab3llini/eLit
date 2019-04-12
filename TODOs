@@ -6,7 +6,6 @@
 
 
 - (univ) spinner in reviews should not keep animating 4 ever if no reviews are present
-- (univ) Expand review if longer than max length
 - (univ) add progress bar during launch
 
 

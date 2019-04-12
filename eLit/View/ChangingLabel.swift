@@ -14,34 +14,30 @@ class ChangingLabel: UILabel {
     private var displayTime: Double = 0.0
     private var timer: Timer?
     private var textHasToChange: Bool = false
-    
+    private var animateAlpha : Bool = true
     private var currentIndex: Int = 0
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     @objc
     private func changeText() {
         
-        UIView.animate(withDuration: 0.2) {
-            self.alpha = 0
+        if (self.animateAlpha) {
+            UIView.animate(withDuration: 0.2) {
+                self.alpha = 0
+            }
         }
         
         self.text = textList[currentIndex]
         
-        UIView.animate(withDuration: 0.2) {
-            self.alpha = 1
+        if (self.animateAlpha) {
+            UIView.animate(withDuration: 0.2) {
+                self.alpha = 1
+            }
         }
         
         self.currentIndex = (self.currentIndex + 1) % (textList.count)
     }
     
-    func startChanging(every seconds: Double, with strings: [String]?) {
+    func startChanging(every seconds: Double, with strings: [String]?, animatingAlpha : Bool = true) {
         guard seconds > 0 else {
             self.textHasToChange = false
             return
@@ -51,6 +47,7 @@ class ChangingLabel: UILabel {
             self.timer?.invalidate()
         }
         
+        self.animateAlpha = animatingAlpha
         self.textList = strings ?? self.textList
         self.textHasToChange = true
         self.currentIndex = 0

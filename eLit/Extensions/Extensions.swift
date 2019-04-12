@@ -33,9 +33,9 @@ extension UIColor {
 extension UIImageView
 {
     
-    func roundImage(with border: CGFloat, ofColor color : UIColor) {
+    func roundImage(with border: CGFloat, ofColor color : UIColor, clipping : Bool = true) {
         
-        self.clipsToBounds = true
+        self.clipsToBounds = clipping
         self.layer.cornerRadius = self.bounds.size.height / 2.0
         self.layer.borderWidth = border
         self.layer.borderColor = color.cgColor

@@ -16,7 +16,11 @@ class DrinkObjectWithImage: DrinkObject {
     internal var image: UIImage?
     internal var imageColors: UIImageColors?
     
-    private func log(string : String) {
+    private func log(string : String, quiet : Bool = true) {
+        
+        if quiet {
+            return
+        }
         
         let thread = Thread.current.isMainThread ? "Main" : "Background"
         

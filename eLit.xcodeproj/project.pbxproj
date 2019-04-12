@@ -46,6 +46,9 @@
 		A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129922200A59E00910834 /* ReviewTableViewController.swift */; };
 		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
 		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
+		BD030E14226090A800BCEAA1 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030E13226090A800BCEAA1 /* AnswerButton.swift */; };
+		BD030E172260954600BCEAA1 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030E162260954600BCEAA1 /* GameController.swift */; };
+		BD030E192260ABBD00BCEAA1 /* PlayerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030E182260ABBD00BCEAA1 /* PlayerImageView.swift */; };
 		BD0840BB2227EEA800027900 /* BarCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0840BA2227EEA800027900 /* BarCodeViewController.swift */; };
 		BD08A16F225E189D001F1160 /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD08A16E225E189D001F1160 /* LogoutTableViewCell.swift */; };
 		BD0AA95C21F0A52D00990A32 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */; };
@@ -95,6 +98,10 @@
 		BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */; };
 		BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18964221341BF00009A77 /* LaunchViewController.swift */; };
 		BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2F54F21E36B6200D5AB2E /* Extensions.swift */; };
+		BDD17AB62260BE3700A4D271 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD17AB52260BE3700A4D271 /* Player.swift */; };
+		BDD17AB92260C24C00A4D271 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD17AB82260C24C00A4D271 /* Context.swift */; };
+		BDD17ABB2260C46F00A4D271 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD17ABA2260C46E00A4D271 /* GameEngine.swift */; };
+		BDD17ABD2260CA6900A4D271 /* TimeoutLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD17ABC2260CA6900A4D271 /* TimeoutLabel.swift */; };
 		BDD6A02421E2634800470D04 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6A02321E2634800470D04 /* RibbonView.swift */; };
 		BDDB5BBF2252322A0001EBB6 /* StepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB5BBD2252322A0001EBB6 /* StepCollectionViewCell.swift */; };
 		BDDB5BC02252322A0001EBB6 /* StepCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDB5BBE2252322A0001EBB6 /* StepCollectionViewCell.xib */; };
@@ -183,6 +190,9 @@
 		A4F1299822021AB900910834 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		AD518470C1B4CA8F780D59B0 /* Pods_eLit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eLit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD030E13226090A800BCEAA1 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		BD030E162260954600BCEAA1 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		BD030E182260ABBD00BCEAA1 /* PlayerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerImageView.swift; sourceTree = "<group>"; };
 		BD0840BA2227EEA800027900 /* BarCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeViewController.swift; sourceTree = "<group>"; };
 		BD08A16E225E189D001F1160 /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
 		BD0AA95B21F0A52D00990A32 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +254,10 @@
 		BDC1896222130BFC00009A77 /* BlurredBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundViewController.swift; sourceTree = "<group>"; };
 		BDC18964221341BF00009A77 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		BDC2F54F21E36B6200D5AB2E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BDD17AB52260BE3700A4D271 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		BDD17AB82260C24C00A4D271 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		BDD17ABA2260C46E00A4D271 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		BDD17ABC2260CA6900A4D271 /* TimeoutLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutLabel.swift; sourceTree = "<group>"; };
 		BDD6A02321E2634800470D04 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
 		BDDB5BBD2252322A0001EBB6 /* StepCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionViewCell.swift; sourceTree = "<group>"; };
 		BDDB5BBE2252322A0001EBB6 /* StepCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -412,6 +426,16 @@
 				BD417F20225FB81C009A5027 /* AdaptiveMultilineLabel.swift */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		BD030E15226090B100BCEAA1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BD030E13226090A800BCEAA1 /* AnswerButton.swift */,
+				BD030E182260ABBD00BCEAA1 /* PlayerImageView.swift */,
+				BDD17ABC2260CA6900A4D271 /* TimeoutLabel.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		BD0AA95A21F0A51500990A32 /* Drink */ = {
@@ -598,6 +622,8 @@
 		BD4F933C222AD4C700EC3420 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				BDD17AB72260BE3B00A4D271 /* Model */,
+				BD030E15226090B100BCEAA1 /* Components */,
 				A4CFBF23225E3F2300F1750C /* Connectivity */,
 				BD4F933D222AD4D300EC3420 /* Battle Quiz */,
 			);
@@ -608,6 +634,8 @@
 			isa = PBXGroup;
 			children = (
 				BD4F933E222AD63500EC3420 /* BattleQuizViewController.swift */,
+				BD030E162260954600BCEAA1 /* GameController.swift */,
+				BDD17ABA2260C46E00A4D271 /* GameEngine.swift */,
 			);
 			path = "Battle Quiz";
 			sourceTree = "<group>";
@@ -668,6 +696,15 @@
 				BDC2F54F21E36B6200D5AB2E /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BDD17AB72260BE3B00A4D271 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BDD17AB52260BE3700A4D271 /* Player.swift */,
+				BDD17AB82260C24C00A4D271 /* Context.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BDE49CC4223FF5FF00F7701C /* Compact */ = {
@@ -1040,6 +1077,7 @@
 				BD401C5C21D79261007496F9 /* EntityManager.swift in Sources */,
 				BDDB5BBF2252322A0001EBB6 /* StepCollectionViewCell.swift in Sources */,
 				A45B2F082214AB210031B4B1 /* ChangingLabel.swift in Sources */,
+				BD030E172260954600BCEAA1 /* GameController.swift in Sources */,
 				BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */,
@@ -1047,6 +1085,7 @@
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
 				BD0840BB2227EEA800027900 /* BarCodeViewController.swift in Sources */,
+				BDD17ABD2260CA6900A4D271 /* TimeoutLabel.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
 				A486E15521D82B2B0080B3BF /* Ingredient.swift in Sources */,
 				BD401C5821D77C1E007496F9 /* Drink.swift in Sources */,
@@ -1061,6 +1100,8 @@
 				A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */,
 				BDF2DA492203180C0020F62D /* ReviewTableViewCell.swift in Sources */,
 				BDED02FB21E7A2A200503B59 /* FSPagerView.swift in Sources */,
+				BD030E192260ABBD00BCEAA1 /* PlayerImageView.swift in Sources */,
+				BDD17AB92260C24C00A4D271 /* Context.swift in Sources */,
 				A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */,
 				A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */,
 				A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */,
@@ -1071,15 +1112,18 @@
 				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
+				BDD17ABB2260C46F00A4D271 /* GameEngine.swift in Sources */,
 				BD2C651D21E24E7D00EC41C6 /* CPDrinkTableViewCell.swift in Sources */,
 				A4B91EE822245ACB002B4ED2 /* SettingsTableViewCell.swift in Sources */,
 				BD401C5A21D78ECF007496F9 /* CoreDataObject.swift in Sources */,
 				A4386C0221EE020F00275EEC /* RequestType.swift in Sources */,
 				BD635DED22241D87000AAC86 /* BlurredBackground.swift in Sources */,
 				A4D6D00921D8313500469827 /* Recipe.swift in Sources */,
+				BD030E14226090A800BCEAA1 /* AnswerButton.swift in Sources */,
 				BD0AA96021F0B25600990A32 /* Navigation.swift in Sources */,
 				BD0AA95E21F0AA0C00990A32 /* HomeTableViewController.swift in Sources */,
 				BD19106321F3A67E00F1B213 /* LargeVbrantNavigatonController.swift in Sources */,
+				BDD17AB62260BE3700A4D271 /* Player.swift in Sources */,
 				BDED030521E7A2D600503B59 /* FSPagerViewObjcCompat.m in Sources */,
 				A4E5A75021F3E00E00E60FAF /* User.swift in Sources */,
 				BD6EE94621FCBFFC0034BAE9 /* DrinkImageTableViewCell.swift in Sources */,
