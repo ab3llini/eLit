@@ -8,19 +8,26 @@
 
 import UIKit
 
-@IBDesignable class TimeoutLabel: ChangingLabel, CAAnimationDelegate {
+protocol TimeoutLabelDelegate {
+    func timeoutDidExpire()
+}
+
+class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
     
     @IBInspectable var borderWidth : CGFloat = 2
     @IBInspectable var primaryColor : UIColor = .green
-
+    
+    public var delegate : TimeoutLabelDelegate?
+    
     private func createCircleLayer() -> CAShapeLayer {
+        
         let shape = CAShapeLayer()
         let start : CGFloat = -(CGFloat.pi / 2)
         let end : CGFloat = 3 / 2 * CGFloat.pi
         let path = CGMutablePath()
-        let radius : CGFloat = (self.frame.size.height / 2)
-        let center : CGPoint = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
-        
+        let radius : CGFloat = (self.bounds.size.height / 2)
+        let center : CGPoint = CGPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
+
         path.addArc(center: center, radius: radius, startAngle: start, endAngle: end, clockwise: false)
         
         shape.path = path
@@ -28,6 +35,7 @@ import UIKit
         shape.fillColor = UIColor.clear.cgColor
         shape.lineWidth = self.borderWidth
         shape.lineCap = .round
+        shape.frame = self.bounds
         
         return shape
         
@@ -44,6 +52,8 @@ import UIKit
     
     public func startTimeout(duration : Int) {
         
+        self.removeLayer()
+    
         let animStroke = CABasicAnimation(keyPath: "strokeEnd")
         animStroke.fromValue         = 1.0
         animStroke.toValue           = 0.0
@@ -55,20 +65,20 @@ import UIKit
         let shape = self.createCircleLayer()
         
         shape.add(animStroke, forKey: "strokeAnimation")
-        
-        let strings = Array(0...duration - 1).reversed().map(String.init)
+    
+        self.countdown(from: duration, to: 0) {
+            if let callback = self.delegate {
+                callback.timeoutDidExpire()
+            }
+        }
         
         self.layer.addSublayer(shape)
-        
-        self.text = String(duration)
-        self.startChanging(every: 1.0, with: strings, animatingAlpha: false)
+        self.isHidden = false
         
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        self.stopChanging()
-        self.removeLayer()
-        self.text = ""
+        self.isHidden = true
     }
     
 

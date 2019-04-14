@@ -9,16 +9,19 @@
 import UIKit
 
 protocol GameControllerDelegate {
-    func playerDidChooseAnswer(number : Int)
+    func playerDidChoose(answer : String)
+    func timeoutDidExpire()
 }
 
 
-class GameController: UIViewController, GameEngineDelegate, ContextDelegate {
+class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate {
     
     // Game objects
     @IBOutlet var localPlayer: Player!
     @IBOutlet var remotePlayer: Player!
     @IBOutlet var context: Context!
+    
+    private var outcome : GameOutcome?
     
     // Engine
     private var engine : GameEngine!
@@ -78,14 +81,27 @@ class GameController: UIViewController, GameEngineDelegate, ContextDelegate {
     }
     
     func gameDidEnd(outcome : GameOutcome) {
-        
+        self.outcome = outcome
+        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
     }
 
     
-    func playerDidSelect(answer: Int) {
-        self.delegate.playerDidChooseAnswer(number: answer)
+    func playerDidChoose(answer: String) {
+        self.delegate.playerDidChoose(answer: answer)
     }
     
+    func timeoutDidExpire() {
+        self.delegate.timeoutDidExpire()
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case Navigation.toGameOutcomeVC.rawValue:
+            (segue.destination as! OutcomeViewController).outcome = self.outcome
+        default:
+            return
+        }
+    }
 
 }

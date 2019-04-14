@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class PlayerImageView: UIView {
 
     @IBInspectable var steps : Int = 5
@@ -22,13 +21,11 @@ class PlayerImageView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.imageView.roundImage(with: 1, ofColor: .white)
-        
-        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.imageView.roundImage(with: 1, ofColor: .gray)
     }
     
     private var stepAngle : CGFloat {
@@ -55,15 +52,6 @@ class PlayerImageView: UIView {
         
         return shape
         
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        self.layer.addSublayer(self.createStepLayer(at: 0, success: true))
-        self.layer.addSublayer(self.createStepLayer(at: 1, success: false))
-        self.layer.addSublayer(self.createStepLayer(at: 2, success: true))
-        self.layer.addSublayer(self.createStepLayer(at: 3, success: true))
-        self.layer.addSublayer(self.createStepLayer(at: 4, success: false))
-
     }
     
     func clearView () {

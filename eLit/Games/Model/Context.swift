@@ -10,10 +10,11 @@
 import UIKit
 
 protocol ContextDelegate {
-    func playerDidSelect(answer : Int)
+    func playerDidChoose(answer : String)
+    func timeoutDidExpire()
 }
 
-class Context: NSObject {
+class Context: NSObject, TimeoutLabelDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var question: UILabel!
@@ -50,7 +51,7 @@ class Context: NSObject {
     }
     
     func startTimeout(duration : Int) {
-        self.timeoutLabel.isHidden = false
+        self.timeoutLabel.delegate = self
         self.timeoutLabel.startTimeout(duration: duration)
     }
     
@@ -69,9 +70,14 @@ class Context: NSObject {
         }
         
         if let callback = self.delegate {
-            callback.playerDidSelect(answer : sender.tag)
+            callback.playerDidChoose(answer : sender.title(for: .normal)!)
         }
     }
     
+    func timeoutDidExpire() {
+        if let callback = self.delegate {
+            callback.timeoutDidExpire()
+        }
+    }
     
 }

@@ -15,10 +15,10 @@ class ChangingLabel: UILabel {
     private var timer: Timer?
     private var textHasToChange: Bool = false
     private var animateAlpha : Bool = true
-    private var currentIndex: Int = 0
+    internal var currentIndex: Int = 0
     
     @objc
-    private func changeText() {
+    internal func changeText() {
         
         if (self.animateAlpha) {
             UIView.animate(withDuration: 0.2) {
@@ -64,4 +64,29 @@ class ChangingLabel: UILabel {
         self.textHasToChange = false
     }
 
+}
+
+class CountdownLabel : ChangingLabel {
+    
+    private var completionBlock : (() -> Void)?
+    
+    func countdown(from : Int, to: Int, completion : (() -> Void)?) {
+        
+        let values = Array(to...from - 1).reversed().map(String.init)
+        self.text = String(from)
+        self.startChanging(every: 1.0, with: values, animatingAlpha: false)
+        self.completionBlock = completion
+    }
+    
+    @objc
+    override func changeText() {
+        super.changeText()
+        if self.currentIndex == self.textList.count - 1 {
+            self.stopChanging()
+            if let block = self.completionBlock {
+                block()
+            }
+        }
+    }
+    
 }

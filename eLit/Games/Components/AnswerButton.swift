@@ -8,34 +8,16 @@
 
 import UIKit
 
-@IBDesignable class AnswerButton: UIButton {
+@IBDesignable
+class AnswerButton: QuizButton {
     
     private var isCorrectAnswer : Bool = false
     private var hasBeenSelected : Bool = false
     
-    @IBInspectable var neutralColor : UIColor = .blue
     @IBInspectable var selectedColor : UIColor = .yellow
     @IBInspectable var primaryColor : UIColor = .green
     @IBInspectable var secondaryColor : UIColor = .red
-    @IBInspectable var bgAlpha : CGFloat = 0.2
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.prepare()
-    }
-    
-    func prepare() {
-        self.clipsToBounds = true
-        self.layer.borderColor = self.neutralColor.cgColor
-        self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 20
-        self.backgroundColor = self.neutralColor.withAlphaComponent(self.bgAlpha)
-        self.isUserInteractionEnabled = true
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        self.prepare()
-    }
     
     func setIsCorrectAnswer() {
         self.isCorrectAnswer = true

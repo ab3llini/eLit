@@ -8,10 +8,10 @@
 
 import UIKit
 
-enum GameOutcome {
-    case win
-    case loose
-    case tie
+enum GameOutcome : String {
+    case win = "You won!"
+    case loose = "You lost!"
+    case tie = "Tie!"
 }
 
 protocol GameEngineDelegate {
@@ -30,6 +30,8 @@ protocol GameEngineDelegate {
 
 }
 
+
+
 class GameEngine: NSObject, GameControllerDelegate {
     
     // The GameController is gon be the delegate
@@ -40,25 +42,16 @@ class GameEngine: NSObject, GameControllerDelegate {
         super.init()
         
         self.delegate = delegate
-        
-        self.delegate.gameWillStart(rounds: 5, localPlayerImage: UIImage(named: "SearchBackground")!, remotePlayerImage: UIImage(named: "launchscreen")!)
-        
-        Model.shared.getDrinks()[0].getImage { (image) in
-            self.delegate.roundDidStart(
-                withQuestion: "What ingredient is present here?",
-                answers: ["Ice" : true, "Mint" : false, "Vodka" : false, "Lime" : false],
-                image: image,
-                timeout: 10
-            )
-        }
+    
     }
     
-    func playerDidChooseAnswer(number: Int) {
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
-            self.delegate.roundDidEnd(localAnswer: true, remoteAnswer: false)
-        }
+    func playerDidChoose(answer : String) {
+
+        print("This event is raised when the user selects an answer.")
         
     }
 
+    func timeoutDidExpire() {
+        print("This event is raised when the match timeout expires.")
+    }
 }
