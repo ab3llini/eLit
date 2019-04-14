@@ -56,6 +56,20 @@ extension UIImageView
 
 extension UIImage {
     
+    private static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    static func downloadImage(from url: URL, completion : @escaping (_ image : UIImage?) -> Void) {
+        self.getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() {
+                let image = UIImage(data: data)
+                completion(image)
+            }
+        }
+    }
+    
     func resizeImage(targetSize: CGSize) -> UIImage? {
         let size = self.size
         

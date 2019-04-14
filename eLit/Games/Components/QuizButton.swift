@@ -12,7 +12,13 @@ import UIKit
 class QuizButton: UIButton {
 
     @IBInspectable var neutralColor : UIColor = .blue
+    @IBInspectable var selectedColor : UIColor = .yellow
+    @IBInspectable var primaryColor : UIColor = .green
+    @IBInspectable var secondaryColor : UIColor = .red
+    
     @IBInspectable var bgAlpha : CGFloat = 0.5
+    @IBInspectable var borderRadius : CGFloat = 20
+
 
 
     override func awakeFromNib() {
@@ -24,13 +30,18 @@ class QuizButton: UIButton {
         self.clipsToBounds = true
         self.layer.borderColor = self.neutralColor.cgColor
         self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = self.borderRadius
         self.backgroundColor = self.neutralColor.withAlphaComponent(self.bgAlpha)
         self.isUserInteractionEnabled = true
     }
     
     override func prepareForInterfaceBuilder() {
         self.prepare()
+    }
+    
+    func changeTo(color : UIColor) {
+        self.backgroundColor = color.withAlphaComponent(self.bgAlpha)
+        self.layer.borderColor = color.cgColor
     }
     
 }

@@ -20,4 +20,7 @@ enum Navigation : String {
     case toAddReviewVC = "toAddReviewVC"
     case toBarCodeVC = "toBarCodeVC"
     case toGameOutcomeVC = "toGameOutcomeVC"
+    case toInviteVC = "toInviteVC"
+    case toGameVC = "toGameVC"
+    case toBattleQuizVC = "toBattleQuizVC"
 }

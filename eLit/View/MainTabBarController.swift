@@ -24,46 +24,23 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        //TODO: Fix this mess
-        /* Uncomment this if you wanto to not have the searh that keeps the state
-        guard let navVC = self.selectedViewController as? LargeVbrantNavigatonController else {
-            return
-        }
-        for i in navVC.viewControllers {
-            if let searchVC = i as? SearchTableViewController {
-                searchVC.currentDrinks = []
-                searchVC.currentIngredients = []
-                searchVC.reloadData()
-                while true {
-                    if let _ = navVC.topViewController as? SearchTableViewController {
-                        break
-                    } else {
-                        navVC.popViewController(animated: false)
-                    }
-                }
-            } else {
-                
+        switch item.title {
+        case "Play":
+            if (!ConnectionManager.shared.isRunning()) {
+                ConnectionManager.shared.prepareToCommunicate()
+                ConnectionManager.shared.startAdvertising()
+                ConnectionManager.shared.startBrowsing()
             }
-        }
-        guard let searchVC = navVC.topViewController as? SearchTableViewController else {
+        default:
+            if (ConnectionManager.shared.isRunning()) {
+                ConnectionManager.shared.stopAdvertising()
+                ConnectionManager.shared.stopBrowsing()
+            }
             return
         }
-        searchVC.currentDrinks = []
-        searchVC.currentIngredients = []
-        searchVC.reloadData()
- */
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func setDarkMode(enabled: Bool) {
         if enabled {

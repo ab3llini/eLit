@@ -12,12 +12,7 @@ import UIKit
 class AnswerButton: QuizButton {
     
     private var isCorrectAnswer : Bool = false
-    private var hasBeenSelected : Bool = false
-    
-    @IBInspectable var selectedColor : UIColor = .yellow
-    @IBInspectable var primaryColor : UIColor = .green
-    @IBInspectable var secondaryColor : UIColor = .red
-    
+    private var hasBeenSelected : Bool = false    
     
     func setIsCorrectAnswer() {
         self.isCorrectAnswer = true
@@ -25,19 +20,17 @@ class AnswerButton: QuizButton {
     
     func setSelected() {
         self.hasBeenSelected = true
-        self.backgroundColor = self.selectedColor.withAlphaComponent(self.bgAlpha)
-        self.layer.borderColor = self.selectedColor.cgColor
+        self.changeTo(color: self.selectedColor)
     }
     
     func revealAnswer() {
         
         if (self.isCorrectAnswer) {
-            self.backgroundColor = self.primaryColor.withAlphaComponent(self.bgAlpha)
-            self.layer.borderColor = self.primaryColor.cgColor
+            self.changeTo(color: self.primaryColor)
+
         }
         else if (self.hasBeenSelected && !self.isCorrectAnswer) {
-            self.backgroundColor = self.secondaryColor.withAlphaComponent(self.bgAlpha)
-            self.layer.borderColor = self.secondaryColor.cgColor
+            self.changeTo(color: self.secondaryColor)
         }
         
     }

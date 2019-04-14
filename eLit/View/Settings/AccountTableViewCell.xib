@@ -15,15 +15,15 @@
         <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AccountTableViewCell" customModule="eLit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="711" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="711" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-b2-mvF">
-                        <rect key="frame" x="0.0" y="0.0" width="711" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="711" height="149.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvl-W9-aMG" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="106" y="35" width="0.0" height="0.0"/>
+                                <rect key="frame" x="140.5" y="60" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFV-8J-JPC" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="106" y="40" width="0.0" height="0.0"/>
+                                <rect key="frame" x="140.5" y="65" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -41,16 +41,16 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="vP7-wr-jCF">
-                                <rect key="frame" x="20" y="14.5" width="71" height="71"/>
+                                <rect key="frame" x="20" y="22" width="105.5" height="105.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vP7-wr-jCF" secondAttribute="height" multiplier="1:1" id="Zfm-5P-Ntt"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3gA-dm-7NI">
-                                <rect key="frame" x="45.5" y="40" width="20" height="20"/>
+                                <rect key="frame" x="63" y="65" width="20" height="20"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hk0-qW-6U1" userLabel="SignInContainer">
-                                <rect key="frame" x="491" y="35" width="200" height="30"/>
+                                <rect key="frame" x="491" y="60" width="200" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzp-0Z-ueI" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                         <rect key="frame" x="100" y="2.5" width="57.5" height="22.5"/>
@@ -112,7 +112,7 @@
                             <constraint firstAttribute="trailing" secondItem="hk0-qW-6U1" secondAttribute="trailing" constant="20" id="ZZ4-vG-YiX"/>
                             <constraint firstItem="Jvl-W9-aMG" firstAttribute="centerY" secondItem="vP7-wr-jCF" secondAttribute="centerY" constant="-15" id="dCv-wE-b8q"/>
                             <constraint firstItem="yFV-8J-JPC" firstAttribute="top" secondItem="Jvl-W9-aMG" secondAttribute="bottom" constant="5" id="l68-Nl-SOI"/>
-                            <constraint firstAttribute="height" constant="100" id="x3V-AU-ZXy">
+                            <constraint firstAttribute="height" priority="999" constant="100" id="x3V-AU-ZXy">
                                 <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="yFV-8J-JPC" firstAttribute="leading" secondItem="Jvl-W9-aMG" secondAttribute="leading" id="xuk-mG-c6q"/>

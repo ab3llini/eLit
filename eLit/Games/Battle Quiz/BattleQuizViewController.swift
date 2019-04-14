@@ -9,44 +9,68 @@
 import UIKit
 import MultipeerConnectivity
 
-class BattleQuizViewController: UITableViewController, MCBrowserViewControllerDelegate {
+struct InviteContext {
+    var peer : Peer
+    var invite : Invite
+    var manager : ConnectionManager
+}
+
+class BattleQuizViewController: UIViewController, ConnectionManagerUIDelegate {
     
-    let mpHandler = MPCHandler.shared
+    @IBOutlet weak var nearbyBrowserTableView: NearbyBrowserTableView!
+    @IBOutlet weak var statuslabel: UILabel!
+    @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
+    
+    public var currentInviteContext : InviteContext?
+    private var initialized : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mpHandler.setupPeer(with: UIDevice.current.name)
-        self.mpHandler.setupSession()
-        self.mpHandler.advertiseSelf(advertise: true)
-
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func connectWithPlayer(_ sender: Any) {
-        if mpHandler.session != nil {
-            mpHandler.setupBrowser()
-            mpHandler.browser.delegate = self
+    override func viewWillAppear(_ animated: Bool) {
+        
+
+        // Reset ALWAYS the current invitation context
+        self.currentInviteContext = nil
+        
+        // Advertise
+        if !ConnectionManager.shared.isLoggedIn() {
+            self.statuslabel.text = "Please login first!"
+            self.statusIndicator.isHidden = true
+        }
+        else {
+            self.statuslabel.text = "Looking for players.."
+            self.statusIndicator.isHidden = false
             
-            self.present(mpHandler.browser, animated: true, completion: nil)
+            ConnectionManager.shared.uiDelegate = self
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    func connectionManager(_ manager : ConnectionManager, didReceive invite : Invite) {
+        
+        if let inviter = self.nearbyBrowserTableView.getPeer(invite.origin) {
+            self.currentInviteContext = InviteContext(peer: inviter, invite: invite, manager: manager)
+            self.performSegue(withIdentifier: Navigation.toInviteVC.rawValue, sender: self)
+        }
+    }
+    
+    func connectionManager(_ manager: ConnectionManager, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+        self.nearbyBrowserTableView.updatePeers()
+    }
+    
+    func connectionManager(_ manager: ConnectionManager, lostPeer peerID: MCPeerID) {
+        self.nearbyBrowserTableView.updatePeers()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case Navigation.toInviteVC.rawValue:
+            if let context = self.currentInviteContext {
+                (segue.destination as! InvitationViewController).prepareWith(context: context)
+            }
+        default:
+            return
+        }
     }
-    */
-    
-    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
-        self.mpHandler.browser.dismiss(animated: true, completion: nil)
-    }
-    
-    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
-        self.mpHandler.browser.dismiss(animated: true, completion: nil)
-    }
-
 }

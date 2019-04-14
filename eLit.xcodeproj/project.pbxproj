@@ -34,7 +34,7 @@
 		A4B91EE822245ACB002B4ED2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */; };
 		A4BED32521F713EB00C1A31D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BED32421F713EB00C1A31D /* DrinkObject.swift */; };
 		A4BF368321DFF9D900768BB6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF368221DFF9D900768BB6 /* Model.swift */; };
-		A4CFBF25225E41AD00F1750C /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFBF24225E41AD00F1750C /* MPCHandler.swift */; };
+		A4CFBF25225E41AD00F1750C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFBF24225E41AD00F1750C /* ConnectionManager.swift */; };
 		A4D1D96E22099F8800888EAD /* DrinkComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */; };
 		A4D1D96F22099F8800888EAD /* DrinkComponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */; };
 		A4D6D00621D82E1F00469827 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6D00521D82E1F00469827 /* Unit.swift */; };
@@ -93,6 +93,9 @@
 		BD9C195E2214347200E05927 /* CoreSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD9C195D2214347200E05927 /* CoreSettings.plist */; };
 		BD9C19612214352200E05927 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C19602214352200E05927 /* Preferences.swift */; };
 		BDA37C69226361FE0074D956 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA37C68226361FE0074D956 /* QuizButton.swift */; };
+		BDA37C6B226376D60074D956 /* NearbyBrowserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA37C6A226376D60074D956 /* NearbyBrowserTableView.swift */; };
+		BDA37C6D22637A830074D956 /* PeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA37C6C22637A830074D956 /* PeerTableViewCell.swift */; };
+		BDA37C712263A6750074D956 /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA37C702263A6750074D956 /* InvitationViewController.swift */; };
 		BDA466B221FE2217002A8829 /* VibrantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */; };
 		BDACEB2D22233E3B0096FECA /* SettingsSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */; };
 		BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB310CB22159477002926BE /* AddReviewViewController.swift */; };
@@ -179,7 +182,7 @@
 		A4B91EE722245ACB002B4ED2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A4BED32421F713EB00C1A31D /* DrinkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObject.swift; sourceTree = "<group>"; };
 		A4BF368221DFF9D900768BB6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		A4CFBF24225E41AD00F1750C /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		A4CFBF24225E41AD00F1750C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		A4D1D96C22099F8800888EAD /* DrinkComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkComponentTableViewCell.swift; sourceTree = "<group>"; };
 		A4D1D96D22099F8800888EAD /* DrinkComponentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkComponentTableViewCell.xib; sourceTree = "<group>"; };
 		A4D6D00521D82E1F00469827 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -251,6 +254,9 @@
 		BD9C195D2214347200E05927 /* CoreSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CoreSettings.plist; sourceTree = "<group>"; };
 		BD9C19602214352200E05927 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BDA37C68226361FE0074D956 /* QuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizButton.swift; sourceTree = "<group>"; };
+		BDA37C6A226376D60074D956 /* NearbyBrowserTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyBrowserTableView.swift; sourceTree = "<group>"; };
+		BDA37C6C22637A830074D956 /* PeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerTableViewCell.swift; sourceTree = "<group>"; };
+		BDA37C702263A6750074D956 /* InvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantNavigationBar.swift; sourceTree = "<group>"; };
 		BDACEB2C22233E3B0096FECA /* SettingsSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitch.swift; sourceTree = "<group>"; };
 		BDB310CB22159477002926BE /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
@@ -380,7 +386,7 @@
 		A4CFBF23225E3F2300F1750C /* Connectivity */ = {
 			isa = PBXGroup;
 			children = (
-				A4CFBF24225E41AD00F1750C /* MPCHandler.swift */,
+				A4CFBF24225E41AD00F1750C /* ConnectionManager.swift */,
 			);
 			path = Connectivity;
 			sourceTree = "<group>";
@@ -439,6 +445,8 @@
 				BD030E13226090A800BCEAA1 /* AnswerButton.swift */,
 				BD030E182260ABBD00BCEAA1 /* PlayerImageView.swift */,
 				BDD17ABC2260CA6900A4D271 /* TimeoutLabel.swift */,
+				BDA37C6A226376D60074D956 /* NearbyBrowserTableView.swift */,
+				BDA37C6C22637A830074D956 /* PeerTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -642,6 +650,7 @@
 				BD030E162260954600BCEAA1 /* GameViewController.swift */,
 				BDD17ABA2260C46E00A4D271 /* GameEngine.swift */,
 				BD88B58022635C40004FC365 /* OutcomeViewController.swift */,
+				BDA37C702263A6750074D956 /* InvitationViewController.swift */,
 			);
 			path = "Battle Quiz";
 			sourceTree = "<group>";
@@ -1061,9 +1070,10 @@
 				BD3985B3224E41050033F25F /* IngredientsTableViewCell.swift in Sources */,
 				BD9C19612214352200E05927 /* Preferences.swift in Sources */,
 				A4D6D00B21D8318900469827 /* RecipeStep.swift in Sources */,
-				A4CFBF25225E41AD00F1750C /* MPCHandler.swift in Sources */,
+				A4CFBF25225E41AD00F1750C /* ConnectionManager.swift in Sources */,
 				BD2C652121E24FEC00EC41C6 /* ContainerView.swift in Sources */,
 				A470E5502211DF65004872A2 /* MainTabBarController.swift in Sources */,
+				BDA37C6D22637A830074D956 /* PeerTableViewCell.swift in Sources */,
 				BDE49CC8223FF64E00F7701C /* RGDrinkCollectionViewCell.swift in Sources */,
 				A486E15321D82A540080B3BF /* DrinkComponent.swift in Sources */,
 				A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */,
@@ -1086,6 +1096,7 @@
 				BD030E172260954600BCEAA1 /* GameViewController.swift in Sources */,
 				BDC18965221341BF00009A77 /* LaunchViewController.swift in Sources */,
 				BDED030021E7A2A200503B59 /* FSPagerViewLayoutAttributes.swift in Sources */,
+				BDA37C712263A6750074D956 /* InvitationViewController.swift in Sources */,
 				BDB310CC22159477002926BE /* AddReviewViewController.swift in Sources */,
 				BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */,
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
@@ -1119,6 +1130,7 @@
 				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
+				BDA37C6B226376D60074D956 /* NearbyBrowserTableView.swift in Sources */,
 				BDD17ABB2260C46F00A4D271 /* GameEngine.swift in Sources */,
 				BD2C651D21E24E7D00EC41C6 /* CPDrinkTableViewCell.swift in Sources */,
 				A4B91EE822245ACB002B4ED2 /* SettingsTableViewCell.swift in Sources */,

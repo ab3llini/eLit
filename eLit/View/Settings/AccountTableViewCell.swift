@@ -36,10 +36,11 @@ class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
         }
         if gid.hasAuthInKeychain() {
             self.profileImageView.roundImage(with: 1, ofColor: .darkGray)
+            self.signInContainer.isHidden = true
         }
         else {
             self.profileImageView.roundImage(with: 0, ofColor: .darkGray)
-
+            self.signInContainer.isHidden = false
         }
 
     }
