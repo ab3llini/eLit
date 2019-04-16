@@ -43,6 +43,7 @@
 		A4E5A75021F3E00E00E60FAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A74F21F3E00E00E60FAF /* User.swift */; };
 		A4E5A75921F3E9D100E60FAF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75821F3E9D100E60FAF /* LogInView.swift */; };
 		A4E5A75B21F3EDC000E60FAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */; };
+		A4E7A8F5226480AF00890EED /* QuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7A8F4226480AF00890EED /* QuestionGenerator.swift */; };
 		A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F129922200A59E00910834 /* ReviewTableViewController.swift */; };
 		A4F1299A22021AB900910834 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F1299822021AB900910834 /* LoadingTableViewCell.swift */; };
 		A4F1299B22021AB900910834 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F1299922021AB900910834 /* LoadingTableViewCell.xib */; };
@@ -191,6 +192,7 @@
 		A4E5A74F21F3E00E00E60FAF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A4E5A75821F3E9D100E60FAF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		A4E5A75A21F3EDC000E60FAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A4E7A8F4226480AF00890EED /* QuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGenerator.swift; sourceTree = "<group>"; };
 		A4F129922200A59E00910834 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		A4F1299822021AB900910834 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		A4F1299922021AB900910834 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 			children = (
 				BDD17AB52260BE3700A4D271 /* Player.swift */,
 				BDD17AB82260C24C00A4D271 /* Context.swift */,
+				A4E7A8F4226480AF00890EED /* QuestionGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1128,6 +1131,7 @@
 				BDC2F55021E36B6200D5AB2E /* Extensions.swift in Sources */,
 				BDC1896322130BFC00009A77 /* BlurredBackgroundViewController.swift in Sources */,
 				A4F129932200A59E00910834 /* ReviewTableViewController.swift in Sources */,
+				A4E7A8F5226480AF00890EED /* QuestionGenerator.swift in Sources */,
 				BDED02FF21E7A2A200503B59 /* FSPageViewTransformer.swift in Sources */,
 				BD37F4A621CE4FE70080C0F7 /* AppDelegate.swift in Sources */,
 				BDA37C6B226376D60074D956 /* NearbyBrowserTableView.swift in Sources */,
