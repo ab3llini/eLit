@@ -13,7 +13,7 @@ import MultipeerConnectivity
 
 class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    private var discovered : [Peer] = []
+    private var discovered : [MCPeerID] = []
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -56,15 +56,13 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         return cell
     }
     
-   
-    
-    func getPeer(_ id : MCPeerID) -> Peer? {
-        for peer in self.discovered {
-            if id == peer.id {
-                return peer
-            }
-        }
-        return nil
-    }
+//    func getPeer(_ id : MCPeerID) -> Peer? {
+//        for peer in self.discovered {
+//            if id == peer.id {
+//                return peer
+//            }
+//        }
+//        return nil
+//    }
     
 }

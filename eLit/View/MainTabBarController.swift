@@ -18,7 +18,6 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
         
         DarkModeManager.shared.register(component: self)
 
-        
     }
     
     
@@ -26,19 +25,13 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
         
         switch item.title {
         case "Play":
-            if (!ConnectionManager.shared.isRunning()) {
-                ConnectionManager.shared.prepareToCommunicate()
-                ConnectionManager.shared.startAdvertising()
-                ConnectionManager.shared.startBrowsing()
-            }
+            ConnectionManager.shared.startAdvertising()
+            ConnectionManager.shared.startBrowsing()
         default:
-            if (ConnectionManager.shared.isRunning()) {
-                ConnectionManager.shared.stopAdvertising()
-                ConnectionManager.shared.stopBrowsing()
-            }
+            ConnectionManager.shared.stopAdvertising()
+            ConnectionManager.shared.stopBrowsing()
             return
         }
-        
     }
     
     

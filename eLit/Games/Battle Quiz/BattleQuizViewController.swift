@@ -9,65 +9,47 @@
 import UIKit
 import MultipeerConnectivity
 
-struct InviteContext {
-    var peer : Peer
-    var invite : Invite
-    var manager : ConnectionManager
-}
 
 class BattleQuizViewController: UIViewController, ConnectionManagerUIDelegate {
     
     @IBOutlet weak var nearbyBrowserTableView: NearbyBrowserTableView!
     @IBOutlet weak var statuslabel: UILabel!
     @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
-    
-    public var currentInviteContext : InviteContext?
-    private var initialized : Bool = false
+
+    private var invite : Invite?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ConnectionManager.shared.uiDelegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-
-        // Reset ALWAYS the current invitation context
-        self.currentInviteContext = nil
-        
-        // Advertise
-        if !ConnectionManager.shared.isLoggedIn() {
-            self.statuslabel.text = "Please login first!"
-            self.statusIndicator.isHidden = true
-        }
-        else {
-            self.statuslabel.text = "Looking for players.."
-            self.statusIndicator.isHidden = false
-            
-            ConnectionManager.shared.uiDelegate = self
-        }
+    func connectionManager(didReceive invite : Invite) {
+        self.invite = invite
+        self.performSegue(withIdentifier: Navigation.toInviteVC.rawValue, sender: self)
     }
     
-    func connectionManager(_ manager : ConnectionManager, didReceive invite : Invite) {
-        
-        if let inviter = self.nearbyBrowserTableView.getPeer(invite.origin) {
-            self.currentInviteContext = InviteContext(peer: inviter, invite: invite, manager: manager)
-            self.performSegue(withIdentifier: Navigation.toInviteVC.rawValue, sender: self)
-        }
-    }
-    
-    func connectionManager(_ manager: ConnectionManager, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+    func connectionManager(foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         self.nearbyBrowserTableView.updatePeers()
     }
     
-    func connectionManager(_ manager: ConnectionManager, lostPeer peerID: MCPeerID) {
+    func connectionManager(lostPeer peerID: MCPeerID) {
         self.nearbyBrowserTableView.updatePeers()
+    }
+    
+    func connectionManager(peer: MCPeerID, didRefuseInvite: Invite) {
+        
+    }
+    
+    func connectionManager(peer: MCPeerID, didAcceptInvite: Invite) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Navigation.toInviteVC.rawValue:
-            if let context = self.currentInviteContext {
-                (segue.destination as! InvitationViewController).prepareWith(context: context)
+            if let _invite = self.invite {
+                (segue.destination as! InvitationViewController).set(_invite)
             }
         default:
             return

@@ -17,7 +17,7 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     @IBOutlet weak var declineButton: QuizButton!
     @IBOutlet weak var acceptButton: QuizButton!
     
-    private var currentContext : InviteContext!
+    private var invite : Invite!
     private var didChoose = false
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     
     func timeoutDidExpire() {
         if (self.didChoose == false) {
-            self.currentContext.invite.handler(false, self.currentContext!.manager.session)
+            self.invite.handler(false)
             self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
         }
     }
@@ -38,11 +38,9 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         self.didChoose = false
-
         
-        self.playerImage.image = currentContext.peer.image
-        self.playerName.text = currentContext.invite.origin.displayName
-        
+        //self.playerImage.image = currentContext.peer.image
+        self.playerName.text = self.invite.origin.displayName
         
         acceptButton.isUserInteractionEnabled = true
         acceptButton.isHidden = false
@@ -52,14 +50,14 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false
         
-        self.coutdownLabel.startTimeout(duration: Int(currentContext.manager.ACCEPT_TIMEOUT))
+        self.coutdownLabel.startTimeout(duration: Int(ConnectionManager.shared.ACCEPT_TIMEOUT))
 
     }
     
     
     
     @IBAction func onAcceptInvitation(_ sender: QuizButton) {
-        self.currentContext.invite.handler(true, self.currentContext!.manager.session)
+        self.invite.handler(true)
         sender.changeTo(color: sender.primaryColor)
         sender.isUserInteractionEnabled = false
         declineButton.isHidden = true
@@ -68,7 +66,8 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     }
     
     @IBAction func onDeclineInvitation(_ sender: QuizButton) {
-        self.currentContext.invite.handler(false, self.currentContext!.manager.session)
+        self.invite.handler(false)
+
         sender.changeTo(color: sender.secondaryColor)
         sender.isUserInteractionEnabled = false
         acceptButton.isHidden = true
@@ -82,21 +81,11 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         if !accepted {
             self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
         }
-    }
-    
-    func prepareWith(context : InviteContext) {
-        self.currentContext = context
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case Navigation.toBattleQuizVC.rawValue:
-            (segue.destination as! BattleQuizViewController).currentInviteContext = nil
-        default:
-            return
-        }
+    func set(_ invite : Invite) {
+        self.invite = invite
     }
-    
     
 }

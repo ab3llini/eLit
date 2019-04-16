@@ -23,30 +23,33 @@ class PeerTableViewCell: UITableViewCell {
     }
 
     
-    func setPeer(_ peer : Peer) {
-        self.peerID = peer.id
-        self.peerName.text = peer.id.displayName
+    func setPeer(_ peer : MCPeerID) {
         
-        if peer.image == nil {
-            if let url = peer.imageURL {
-                UIImage.downloadImage(from: url) { (image) in
-                    self.peerImageView.image = image
-                    peer.image = image
-                }
-            }
-        }
-        else {
-            self.peerImageView.image = peer.image
-        }
+        
+        self.peerID = peer
+        //self.peerID = peer.id
+        self.peerName.text = peer.displayName
+        
+//        if peer.image == nil {
+//            if let url = peer.imageURL {
+//                UIImage.downloadImage(from: url) { (image) in
+//                    self.peerImageView.image = image
+//                    peer.image = image
+//                }
+//            }
+//        }
+//        else {
+//            self.peerImageView.image = peer.image
+//        }
     }
 
     @IBAction func onChallenge(_ sender: QuizButton) {
         
-        sender.setTitle("Invited", for: .normal)
+        sender.setTitle("Invited \(self.peerID)", for: .normal)
         sender.changeTo(color: sender.primaryColor)
         sender.isUserInteractionEnabled = false
 
-        ConnectionManager.shared.invitePeer(peerID: self.peerID)
+        ConnectionManager.shared.invite(self.peerID)
         
         Timer.scheduledTimer(withTimeInterval: ConnectionManager.shared.ACCEPT_TIMEOUT, repeats: false) { (timer) in
             sender.setTitle("Invite", for: .normal)
