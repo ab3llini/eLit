@@ -70,7 +70,7 @@ class ConnectionManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserD
             info = ["peerImageURL" : Model.shared.user!.imageURLString] as? [String : String]
         }
         self.peerID = MCPeerID(displayName: peerName)
-        self.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .optional)
+        self.session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
         self.advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: info, serviceType: SERVICE_TYPE)
         self.browser = MCNearbyServiceBrowser(peer: peerID, serviceType: SERVICE_TYPE)
         
@@ -96,6 +96,7 @@ class ConnectionManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserD
     func startBrowsing() {
         if !self.isBrowsing {
             self.browser.startBrowsingForPeers()
+            self.discovered = []
             self.isBrowsing = true
         }
     }
