@@ -9,11 +9,14 @@
 import UIKit
 import MultipeerConnectivity
 
+protocol NearbyBrowserTableViewDelegate {
+    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: MCPeerID)
+}
 
-
-class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataSource, PeerTableViewCellDelegate {
     
     private var discovered : [MCPeerID] = []
+    public var browserDelegate : NearbyBrowserTableViewDelegate?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -29,19 +32,11 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         
         self.delegate = self
         self.dataSource = self
-        
-        // Populate discovered players
-        self.discovered = ConnectionManager.shared.discovered
-        
     }
     
-    func updatePeers() {
-        self.discovered = ConnectionManager.shared.discovered
+    func update(peers : [MCPeerID]) {
+        self.discovered = peers
         self.reloadData()
-    }
-    
-    func flush() {
-        self.discovered = []
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,17 +47,15 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "peerCell") as! PeerTableViewCell
         
         cell.setPeer(self.discovered[indexPath.row])
+        cell.delegate = self
         
         return cell
     }
     
-//    func getPeer(_ id : MCPeerID) -> Peer? {
-//        for peer in self.discovered {
-//            if id == peer.id {
-//                return peer
-//            }
-//        }
-//        return nil
-//    }
+    func peerCell(_ cell: PeerTableViewCell, didInvite peer: MCPeerID) {
+        if let _ = self.browserDelegate {
+            self.browserDelegate!.browserTableView(self, cell: cell, didInvite: peer)
+        }
+    }
     
 }

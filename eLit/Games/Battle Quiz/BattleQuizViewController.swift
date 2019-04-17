@@ -10,18 +10,27 @@ import UIKit
 import MultipeerConnectivity
 
 
-class BattleQuizViewController: UIViewController, ConnectionManagerUIDelegate {
+class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate, ConnectionManagerDelegate {
     
     @IBOutlet weak var nearbyBrowserTableView: NearbyBrowserTableView!
     @IBOutlet weak var statuslabel: UILabel!
     @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
 
+    private var connectionManager : ConnectionManager = ConnectionManager.shared
+    
     private var invite : Invite?
     
     override func viewDidLoad() {
+        
+        print("View did load")
+        
         super.viewDidLoad()
         
-        ConnectionManager.shared.uiDelegate = self
+        ConnectionManager.shared.delegate = self
+        ConnectionManager.shared.start()
+        
+        self.nearbyBrowserTableView.browserDelegate = self
+        
     }
     
     func connectionManager(didReceive invite : Invite) {
@@ -30,11 +39,11 @@ class BattleQuizViewController: UIViewController, ConnectionManagerUIDelegate {
     }
     
     func connectionManager(foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        self.nearbyBrowserTableView.updatePeers()
+        self.nearbyBrowserTableView.update(peers: self.connectionManager.discovered)
     }
     
     func connectionManager(lostPeer peerID: MCPeerID) {
-        self.nearbyBrowserTableView.updatePeers()
+        self.nearbyBrowserTableView.update(peers: self.connectionManager.discovered)
     }
     
     func connectionManager(peer: MCPeerID, didRefuseInvite: Invite) {
@@ -43,6 +52,10 @@ class BattleQuizViewController: UIViewController, ConnectionManagerUIDelegate {
     
     func connectionManager(peer: MCPeerID, didAcceptInvite: Invite) {
         
+    }
+    
+    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: MCPeerID) {
+        self.connectionManager.invite(peer)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

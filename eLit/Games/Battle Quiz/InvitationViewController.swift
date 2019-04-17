@@ -50,7 +50,7 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false
         
-        self.coutdownLabel.startTimeout(duration: Int(ConnectionManager.shared.ACCEPT_TIMEOUT))
+        self.coutdownLabel.startTimeout(duration: 99)
 
     }
     

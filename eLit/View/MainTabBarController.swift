@@ -23,15 +23,7 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        switch item.title {
-        case "Play":
-            ConnectionManager.shared.startAdvertising()
-            ConnectionManager.shared.startBrowsing()
-        default:
-            ConnectionManager.shared.stopAdvertising()
-            ConnectionManager.shared.stopBrowsing()
-            return
-        }
+
     }
     
     

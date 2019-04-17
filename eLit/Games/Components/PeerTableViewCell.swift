@@ -9,6 +9,10 @@
 import UIKit
 import MultipeerConnectivity
 
+protocol PeerTableViewCellDelegate {
+    func peerCell(_ cell : PeerTableViewCell, didInvite peer : MCPeerID)
+}
+
 class PeerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var peerName: UILabel!
@@ -16,13 +20,13 @@ class PeerTableViewCell: UITableViewCell {
     @IBOutlet weak var peerImageView: UIImageView!
     
     private var peerID : MCPeerID!
+    public var delegate : PeerTableViewCellDelegate?
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.peerImageView.roundImage(with: 1, ofColor: .gray)
     }
 
-    
     func setPeer(_ peer : MCPeerID) {
         
         
@@ -30,31 +34,16 @@ class PeerTableViewCell: UITableViewCell {
         //self.peerID = peer.id
         self.peerName.text = peer.displayName
         
-//        if peer.image == nil {
-//            if let url = peer.imageURL {
-//                UIImage.downloadImage(from: url) { (image) in
-//                    self.peerImageView.image = image
-//                    peer.image = image
-//                }
-//            }
-//        }
-//        else {
-//            self.peerImageView.image = peer.image
-//        }
     }
 
     @IBAction func onChallenge(_ sender: QuizButton) {
         
-        sender.setTitle("Invited \(self.peerID)", for: .normal)
+        sender.setTitle("Invited", for: .normal)
         sender.changeTo(color: sender.primaryColor)
         sender.isUserInteractionEnabled = false
 
-        ConnectionManager.shared.invite(self.peerID)
-        
-        Timer.scheduledTimer(withTimeInterval: ConnectionManager.shared.ACCEPT_TIMEOUT, repeats: false) { (timer) in
-            sender.setTitle("Invite", for: .normal)
-            sender.changeTo(color: sender.neutralColor)
-            sender.isUserInteractionEnabled = true
+        if let _ = self.delegate {
+            self.delegate!.peerCell(self, didInvite: self.peerID)
         }
     }
 }
