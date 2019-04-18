@@ -18,7 +18,7 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
 
     private var connectionManager : ConnectionManager = ConnectionManager.shared
     
-    private var invite : Invite?
+    private var invite : UIInvite?
     
     override func viewDidLoad() {
         
@@ -33,7 +33,7 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         
     }
     
-    func connectionManager(didReceive invite : Invite) {
+    func connectionManager(didReceive invite : UIInvite) {
         self.invite = invite
         self.performSegue(withIdentifier: Navigation.toInviteVC.rawValue, sender: self)
     }
@@ -46,11 +46,11 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         self.nearbyBrowserTableView.update(peers: self.connectionManager.discovered)
     }
     
-    func connectionManager(peer: MCPeerID, didRefuseInvite: Invite) {
+    func connectionManager(peer: MCPeerID, didRefuseInvite: UIInvite) {
         
     }
     
-    func connectionManager(peer: MCPeerID, didAcceptInvite: Invite) {
+    func connectionManager(peer: MCPeerID, didAcceptInvite: UIInvite) {
         
     }
     
