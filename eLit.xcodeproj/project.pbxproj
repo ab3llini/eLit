@@ -14,6 +14,7 @@
 		A405811921FB2958007C2092 /* DrinkForIngredientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */; };
 		A40B1C2121F5F2F500F6DF35 /* eLit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A40B1C1F21F5F2F400F6DF35 /* eLit.xcdatamodeld */; };
 		A415435422392A7A007E28B0 /* drinks.txt in Resources */ = {isa = PBXBuildFile; fileRef = A47E5D352230007B00A3A7E6 /* drinks.txt */; };
+		A42197E62268CD510044EF5B /* GameComunicationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42197E52268CD510044EF5B /* GameComunicationEngine.swift */; };
 		A4386C0221EE020F00275EEC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4386C0121EE020F00275EEC /* RequestType.swift */; };
 		A4548B7A21F9D09800549099 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4548B7921F9D09800549099 /* SearchTableViewController.swift */; };
 		A45B1CB922393D5A002CF1BB /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B1CB822393D5A002CF1BB /* NetworkTest.swift */; };
@@ -163,6 +164,7 @@
 		A402DDCD220C2540005B7E4B /* DrinkObjectWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkObjectWithImage.swift; sourceTree = "<group>"; };
 		A405811821FB2958007C2092 /* DrinkForIngredientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkForIngredientTableViewController.swift; sourceTree = "<group>"; };
 		A40B1C2021F5F2F400F6DF35 /* eLit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eLit.xcdatamodel; sourceTree = "<group>"; };
+		A42197E52268CD510044EF5B /* GameComunicationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComunicationEngine.swift; sourceTree = "<group>"; };
 		A4386C0121EE020F00275EEC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		A4548B7921F9D09800549099 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		A45B1CB822393D5A002CF1BB /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				BDD17ABA2260C46E00A4D271 /* GameEngine.swift */,
 				BD88B58022635C40004FC365 /* OutcomeViewController.swift */,
 				BDA37C702263A6750074D956 /* InvitationViewController.swift */,
+				A42197E52268CD510044EF5B /* GameComunicationEngine.swift */,
 			);
 			path = "Battle Quiz";
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				BDB310CE22159DE6002926BE /* ReviewTextView.swift in Sources */,
 				A402DDCE220C2540005B7E4B /* DrinkObjectWithImage.swift in Sources */,
 				BDED02FC21E7A2A200503B59 /* FSPageControl.swift in Sources */,
+				A42197E62268CD510044EF5B /* GameComunicationEngine.swift in Sources */,
 				BD0840BB2227EEA800027900 /* BarCodeViewController.swift in Sources */,
 				BDD17ABD2260CA6900A4D271 /* TimeoutLabel.swift in Sources */,
 				A4D6D00621D82E1F00469827 /* Unit.swift in Sources */,
