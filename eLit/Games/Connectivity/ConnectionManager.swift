@@ -15,13 +15,17 @@ struct Invite {
     var handler : (Bool) -> Void
 }
 
+enum OperationMode {
+    case host, client
+}
+
 protocol ConnectionManagerDelegate {
     
     func connectionManager(didReceive invite : Invite)
     func connectionManager(foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?)
     func connectionManager(lostPeer peerID: MCPeerID)
-    func connectionManager(peer: MCPeerID, didRefuseInvite: Invite)
-    func connectionManager(peer: MCPeerID, didAcceptInvite: Invite)
+    func connectionManager(peer: MCPeerID, didAcceptInvite: Bool)
+    func connectionManager(peer: MCPeerID, connectedTo session : MCSession, with operationMode: OperationMode)
     
 }
 
@@ -34,6 +38,9 @@ class ConnectionManager: NSObject {
     private let serviceBrowser : MCNearbyServiceBrowser
     private let serviceAdvertiser : MCNearbyServiceAdvertiser
     public private(set) var discovered : [MCPeerID] = []
+    
+    private var pendingInvites : [MCPeerID] = []
+    private var receivedInvite : MCPeerID?
     
     lazy var session : MCSession = {
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
@@ -68,7 +75,10 @@ class ConnectionManager: NSObject {
     }
     
     func invite(_ peerID : MCPeerID) {
-        self.serviceBrowser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 30.0)
+        if !self.pendingInvites.contains(peerID) {
+            self.pendingInvites.append(peerID)
+            self.serviceBrowser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 60)
+        }
     }
 }
 
@@ -83,14 +93,19 @@ extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
         
-        if let _ = self.delegate {
-            self.delegate!.connectionManager(didReceive: Invite(origin: peerID, handler: { (answer) in
-                invitationHandler(answer, self.session)
-            }))
+        if (self.receivedInvite != nil) || self.session.connectedPeers.count > 1 {
+            // Refuse the invite
+            invitationHandler(false, self.session)
         }
-        
+        else {
+            if let _ = self.delegate {
+                self.receivedInvite = peerID
+                self.delegate!.connectionManager(didReceive: Invite(origin: peerID, handler: { (answer) in
+                    invitationHandler(answer, self.session)
+                }))
+            }
+        }
     }
-    
 }
 
 extension ConnectionManager : MCNearbyServiceBrowserDelegate {
@@ -131,6 +146,85 @@ extension ConnectionManager : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
+        
+        switch state {
+        case .notConnected:
+            if self.receivedInvite == peerID {
+                // Local peer refused invite from remote peer
+                self.receivedInvite = nil
+            }
+            else {
+                if self.pendingInvites.contains(peerID) {
+                    // Remote peer refused local invite
+                    self.pendingInvites.remove(at: self.pendingInvites.index(of: peerID)!)
+                    
+                    if let _ = self.delegate {
+                        self.delegate!.connectionManager(peer: peerID, didAcceptInvite: false)
+                    }
+                }
+                else {
+                    // Remote peer disconnected from local session!
+                }
+            }
+        case .connecting:
+            if self.receivedInvite == peerID {
+                if self.session.connectedPeers.count > 1 {
+                    // We accepted an invitation, but we will end up in a session with more than two players!
+                    // We need to disconnect from it
+                    self.session.disconnect()
+                    self.receivedInvite = nil
+                }
+                else {
+                    // Local peer accepted invite from remote peer, connecting to his session
+                }
+            }
+            else {
+                if self.pendingInvites.contains(peerID) {
+                    // Remote peer accepted local invite, he is connecting to the local session
+                    // Let's check if we our session is full
+                    if self.session.connectedPeers.count == 1 {
+                        // We can proceed and notify local peer about invite accepted
+                        if let _ = self.delegate {
+                            self.delegate!.connectionManager(peer: peerID, didAcceptInvite: true)
+                        }
+                    }
+                }
+            }
+        case .connected:
+            if self.receivedInvite == peerID {
+                // Local peer accepted invite from remote peer and is now connected to his session
+                
+                if self.session.connectedPeers.count > 1 {
+                    // We accepted an invitation, but we ended up in a session with more than two players!
+                    // We need to disconnect from it
+                    self.session.disconnect()
+                    self.receivedInvite = nil
+                }
+                else {
+                    // We can start playing with the remote peer
+                    // We might want to stop advertising and browsing here and transition to the game
+                    // In any case, we need to prevent other peers from inviting us
+                    self.receivedInvite = nil
+                    if let _ = self.delegate {
+                        self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
+                    }
+                }
+            }
+            else {
+                if self.pendingInvites.contains(peerID) {
+                    // Remote peer acceptied local invite and he is now connected to the local session
+                    // We might want to stop advertising and browsing here and transition to the game
+                    // In any case, we need to prevent other peers from inviting us
+                    self.pendingInvites.remove(at: self.pendingInvites.index(of: peerID)!)
+                    if let _ = self.delegate {
+                        self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
+                    }
+                }
+            }
+        default:
+            return
+        }
+        
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
