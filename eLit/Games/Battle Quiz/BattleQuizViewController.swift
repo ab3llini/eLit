@@ -68,4 +68,12 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
             return
         }
     }
+    
+    func connectionManager(peer: MCPeerID, didAcceptInvite: Bool) {
+        
+    }
+    
+    func connectionManager(peer: MCPeerID, connectedTo session: MCSession, with operationMode: OperationMode) {
+        
+    }
 }

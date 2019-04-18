@@ -152,10 +152,12 @@ extension ConnectionManager : MCSessionDelegate {
             if self.receivedInvite == peerID {
                 // Local peer refused invite from remote peer
                 self.receivedInvite = nil
+                print("Local peer refused invite from remote peer")
             }
             else {
                 if self.pendingInvites.contains(peerID) {
                     // Remote peer refused local invite
+                    print("Remote peer refused local invite")
                     self.pendingInvites.remove(at: self.pendingInvites.index(of: peerID)!)
                     
                     if let _ = self.delegate {
@@ -164,6 +166,7 @@ extension ConnectionManager : MCSessionDelegate {
                 }
                 else {
                     // Remote peer disconnected from local session!
+                    print("Remote peer disconnected from local session!")
                 }
             }
         case .connecting:
@@ -171,19 +174,23 @@ extension ConnectionManager : MCSessionDelegate {
                 if self.session.connectedPeers.count > 1 {
                     // We accepted an invitation, but we will end up in a session with more than two players!
                     // We need to disconnect from it
+                    print("We accepted an invitation, but we will end up in a session with more than two players!")
                     self.session.disconnect()
                     self.receivedInvite = nil
                 }
                 else {
                     // Local peer accepted invite from remote peer, connecting to his session
+                    print("Local peer accepted invite from remote peer, connecting to his session")
                 }
             }
             else {
                 if self.pendingInvites.contains(peerID) {
                     // Remote peer accepted local invite, he is connecting to the local session
                     // Let's check if we our session is full
+                    print("Remote peer accepted local invite, he is connecting to the local session")
                     if self.session.connectedPeers.count == 1 {
                         // We can proceed and notify local peer about invite accepted
+                        print("We can proceed and notify local peer about invite accepted")
                         if let _ = self.delegate {
                             self.delegate!.connectionManager(peer: peerID, didAcceptInvite: true)
                         }
@@ -204,6 +211,7 @@ extension ConnectionManager : MCSessionDelegate {
                     // We can start playing with the remote peer
                     // We might want to stop advertising and browsing here and transition to the game
                     // In any case, we need to prevent other peers from inviting us
+                    print("We can start playing with the remote peer")
                     self.receivedInvite = nil
                     if let _ = self.delegate {
                         self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
@@ -212,7 +220,7 @@ extension ConnectionManager : MCSessionDelegate {
             }
             else {
                 if self.pendingInvites.contains(peerID) {
-                    // Remote peer acceptied local invite and he is now connected to the local session
+                    // Remote peer accepted local invite and he is now connected to the local session
                     // We might want to stop advertising and browsing here and transition to the game
                     // In any case, we need to prevent other peers from inviting us
                     self.pendingInvites.remove(at: self.pendingInvites.index(of: peerID)!)
