@@ -20,17 +20,24 @@ struct IncomingInvite {
         self.origin = origin
         self.handler = handler
     }
-    
 }
 
 struct UIInvite  {
     var origin : MCPeerID
     var handler : (Bool) -> Void
-    var imageUrl : String?
     
     init(origin : MCPeerID, handler : @escaping (Bool) -> Void, imageUrl : String? = nil) {
         self.origin = origin
         self.handler = handler
+    }
+}
+
+struct DiscoveredPeer {
+    var peerID : MCPeerID
+    var imageUrl : String?
+    
+    init(_ peerID : MCPeerID, imageUrl : String? = nil) {
+        self.peerID = peerID
         self.imageUrl = imageUrl
     }
 }
@@ -79,6 +86,33 @@ extension Sequence where Iterator.Element == OutgoingInvite {
     }
 }
 
+extension Sequence where Iterator.Element == DiscoveredPeer {
+    func contains(_ peerID : MCPeerID) -> Bool {
+        for e in self {
+            if e.peerID == peerID {
+                return true
+            }
+        }
+        return false
+    }
+    func get(_ peerID : MCPeerID) -> DiscoveredPeer? {
+        for e in self {
+            if e.peerID == peerID {
+                return e
+            }
+        }
+        return nil
+    }
+    func index (of peerID : MCPeerID) -> Int? {
+        for (i, e) in self.enumerated() {
+            if e.peerID == peerID {
+                return i
+            }
+        }
+        return nil
+    }
+}
+
 protocol ConnectionManagerDelegate {
     
     func connectionManager(didReceive invite : UIInvite)
@@ -97,7 +131,7 @@ class ConnectionManager: NSObject {
     private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
     private let serviceBrowser : MCNearbyServiceBrowser
     private let serviceAdvertiser : MCNearbyServiceAdvertiser
-    public private(set) var discovered : [MCPeerID] = []
+    public private(set) var discovered : [DiscoveredPeer] = []
     
     private var outgoingInvites : [OutgoingInvite] = []
     private var incomingInvite : IncomingInvite?
@@ -115,7 +149,13 @@ class ConnectionManager: NSObject {
     
     override init() {
         
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: connectionManagerType)
+        var info : [String : String]? = nil
+        
+        if let gid = GIDSignIn.sharedInstance(), gid.hasAuthInKeychain() {
+            info = ["peerImageURL" : Model.shared.user!.imageURLString] as? [String : String]
+        }
+        
+        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: info, serviceType: connectionManagerType)
         self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: connectionManagerType)
         
         super.init()
@@ -183,6 +223,7 @@ extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
         else {
             if let _ = self.delegate {
                 self.incomingInvite = IncomingInvite(origin: peerID, handler: invitationHandler)
+                
                 self.delegate!.connectionManager(didReceive: UIInvite(origin: peerID, handler: { (answer) in
                     invitationHandler(answer, self.session)
                 }))
@@ -201,7 +242,15 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         NSLog("%@", "foundPeer: \(peerID)")
         
-        self.discovered.append(peerID)
+        let newPeer : DiscoveredPeer!
+        
+        if let _ = info, let imageUrl = info!["peerImageURL"] {
+            newPeer = DiscoveredPeer(peerID, imageUrl: imageUrl)
+        } else {
+            newPeer = DiscoveredPeer(peerID)
+        }
+        
+        self.discovered.append(newPeer)
         
         if let _ = self.delegate {
             self.delegate!.connectionManager(foundPeer: peerID, withDiscoveryInfo: info)
@@ -333,6 +382,12 @@ extension ConnectionManager : MCSessionDelegate {
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         NSLog("%@", "didFinishReceivingResourceWithName")
     }
-    
 }
 
+extension ConnectionManager {
+    
+    func requestQuestion(then : (_ : Question?) -> Void) {
+        
+    }
+    
+}

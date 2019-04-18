@@ -88,6 +88,7 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     
     func set(_ invite : UIInvite) {
         self.invite = invite
+        
     }
     
 }
