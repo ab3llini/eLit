@@ -15,7 +15,7 @@ protocol NearbyBrowserTableViewDelegate {
 
 class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataSource, PeerTableViewCellDelegate {
     
-    private var discovered : [MCPeerID] = []
+    private var discovered : [DiscoveredPeer] = []
     public var browserDelegate : NearbyBrowserTableViewDelegate?
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -34,7 +34,7 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         self.dataSource = self
     }
     
-    func update(peers : [MCPeerID]) {
+    func update(peers : [DiscoveredPeer]) {
         self.discovered = peers
         self.reloadData()
     }

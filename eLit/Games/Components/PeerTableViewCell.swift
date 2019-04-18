@@ -27,12 +27,12 @@ class PeerTableViewCell: UITableViewCell {
         self.peerImageView.roundImage(with: 1, ofColor: .gray)
     }
 
-    func setPeer(_ peer : MCPeerID) {
+    func setPeer(_ peer : DiscoveredPeer) {
         
         
-        self.peerID = peer
+        self.peerID = peer.peerID
         //self.peerID = peer.id
-        self.peerName.text = peer.displayName
+        self.peerName.text = peer.peerID.displayName
         
     }
 

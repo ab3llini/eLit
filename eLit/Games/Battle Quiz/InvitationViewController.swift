@@ -17,7 +17,7 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     @IBOutlet weak var declineButton: QuizButton!
     @IBOutlet weak var acceptButton: QuizButton!
     
-    private var invite : Invite!
+    private var invite : UIInvite!
     private var didChoose = false
     
     override func viewDidLoad() {
@@ -50,7 +50,8 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false
         
-        self.coutdownLabel.startTimeout(duration: 99)
+        self.coutdownLabel.isHidden = false
+        self.coutdownLabel.startTimeout(duration: 30)
 
     }
     
@@ -78,14 +79,16 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     private func handleSelection(accepted : Bool) {
         self.didChoose = true
         self.coutdownLabel.stopChanging()
+        self.coutdownLabel.isHidden = true
         if !accepted {
             self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
         }
         
     }
     
-    func set(_ invite : Invite) {
+    func set(_ invite : UIInvite) {
         self.invite = invite
+        
     }
     
 }
