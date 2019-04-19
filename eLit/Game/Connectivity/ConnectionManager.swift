@@ -147,6 +147,8 @@ class ConnectionManager: NSObject {
     public var delegate : ConnectionManagerDelegate?
     public static let shared = ConnectionManager()
     
+    private var started : Bool = false
+    
     override init() {
         
         var info : [String : String]? = nil
@@ -170,10 +172,18 @@ class ConnectionManager: NSObject {
     }
     
     func start() {
-        
-        self.serviceBrowser.startBrowsingForPeers()
-        self.serviceAdvertiser.startAdvertisingPeer()
-        
+        if !self.started {
+            self.serviceBrowser.startBrowsingForPeers()
+            self.serviceAdvertiser.startAdvertisingPeer()
+            self.started = true
+        }
+    }
+    func stop() {
+        if self.started {
+            self.serviceBrowser.stopBrowsingForPeers()
+            self.serviceAdvertiser.stopAdvertisingPeer()
+            self.started = false
+        }
     }
     
     func invite(_ peerID : MCPeerID) {
@@ -224,9 +234,14 @@ extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
             if let _ = self.delegate {
                 self.incomingInvite = IncomingInvite(origin: peerID, handler: invitationHandler)
                 
-                self.delegate!.connectionManager(didReceive: UIInvite(origin: peerID, handler: { (answer) in
-                    invitationHandler(answer, self.session)
-                }))
+                DispatchQueue.main.async {
+                    self.delegate!.connectionManager(didReceive: UIInvite(origin: peerID, handler: { (answer) in
+                        if !answer {
+                            self.incomingInvite = nil
+                        }
+                        invitationHandler(answer, self.session)
+                    }))
+                }
             }
         }
     }
@@ -253,7 +268,9 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
         self.discovered.append(newPeer)
         
         if let _ = self.delegate {
-            self.delegate!.connectionManager(foundPeer: peerID, withDiscoveryInfo: info)
+            DispatchQueue.main.async {
+                self.delegate!.connectionManager(foundPeer: peerID, withDiscoveryInfo: info)
+            }
         }
         //browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 10)
     }
@@ -266,7 +283,9 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
             self.discovered.remove(at: index)
             
             if let _ = self.delegate {
-                self.delegate!.connectionManager(lostPeer: peerID)
+                DispatchQueue.main.async {
+                    self.delegate!.connectionManager(lostPeer: peerID)
+                }
             }
         }
     }
@@ -284,6 +303,7 @@ extension ConnectionManager : MCSessionDelegate {
                 // Local peer refused invite from remote peer
                 self.incomingInvite = nil
                 print("Local peer refused invite from remote peer")
+                
             }
             else {
                 if self.outgoingInvites.contains(peerID) {
@@ -292,7 +312,9 @@ extension ConnectionManager : MCSessionDelegate {
                     self.outgoingInvites.remove(at: self.outgoingInvites.index(of: peerID)!)
                     
                     if let _ = self.delegate {
-                        self.delegate!.connectionManager(peer: peerID, didAcceptInvite: false)
+                        DispatchQueue.main.async {
+                            self.delegate!.connectionManager(peer: peerID, didAcceptInvite: false)
+                        }
                     }
                 }
                 else {
@@ -321,7 +343,9 @@ extension ConnectionManager : MCSessionDelegate {
                     // Let's check if we our session is full
                     print("Remote peer accepted local invite, he is connecting to the local session")
                     if let _ = self.delegate {
-                        self.delegate!.connectionManager(peer: peerID, didAcceptInvite: true)
+                        DispatchQueue.main.async {
+                            self.delegate!.connectionManager(peer: peerID, didAcceptInvite: true)
+                        }
                     }
                 }
             }
@@ -348,7 +372,9 @@ extension ConnectionManager : MCSessionDelegate {
                     print("We can start playing with the remote peer")
                     self.incomingInvite = nil
                     if let _ = self.delegate {
-                        self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
+                        DispatchQueue.main.async {
+                            self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
+                        }
                     }
                 }
             }
@@ -358,7 +384,9 @@ extension ConnectionManager : MCSessionDelegate {
                 // In any case, we need to prevent other peers from inviting us
                 self.outgoingInvites.remove(at: self.outgoingInvites.index(of: peerID)!)
                 if let _ = self.delegate {
-                    self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
+                    DispatchQueue.main.async {
+                        self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
+                    }
                 }
             }
         default:

@@ -540,7 +540,7 @@
 		BD37F4A421CE4FE70080C0F7 /* eLit */ = {
 			isa = PBXGroup;
 			children = (
-				BD4F933C222AD4C700EC3420 /* Games */,
+				BD4F933C222AD4C700EC3420 /* Game */,
 				BD9C195F2214347E00E05927 /* Settings */,
 				A462A19921F1E7B90041BCB4 /* credentials.plist */,
 				BDF964D421ECF98300228EEB /* Network */,
@@ -634,7 +634,7 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		BD4F933C222AD4C700EC3420 /* Games */ = {
+		BD4F933C222AD4C700EC3420 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				BDD17AB72260BE3B00A4D271 /* Model */,
@@ -642,7 +642,7 @@
 				A4CFBF23225E3F2300F1750C /* Connectivity */,
 				BD4F933D222AD4D300EC3420 /* Battle Quiz */,
 			);
-			path = Games;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		BD4F933D222AD4D300EC3420 /* Battle Quiz */ = {

@@ -10,13 +10,16 @@ import UIKit
 import MultipeerConnectivity
 
 protocol NearbyBrowserTableViewDelegate {
-    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: MCPeerID)
+    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: DiscoveredPeer)
 }
 
 class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataSource, PeerTableViewCellDelegate {
     
     private var discovered : [DiscoveredPeer] = []
     public var browserDelegate : NearbyBrowserTableViewDelegate?
+    
+    public var lastInvited : DiscoveredPeer?
+    public var invitesEnabled = false
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -32,6 +35,8 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         
         self.delegate = self
         self.dataSource = self
+        self.update(peers: ConnectionManager.shared.discovered)
+        
     }
     
     func update(peers : [DiscoveredPeer]) {
@@ -46,16 +51,26 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "peerCell") as! PeerTableViewCell
         
-        cell.setPeer(self.discovered[indexPath.row])
+        cell.setPeer(self.discovered[indexPath.row], lastInvited: self.lastInvited, enabled: self.invitesEnabled)
         cell.delegate = self
         
         return cell
     }
     
-    func peerCell(_ cell: PeerTableViewCell, didInvite peer: MCPeerID) {
+    func peerCell(_ cell: PeerTableViewCell, didInvite peer: DiscoveredPeer) {
         if let _ = self.browserDelegate {
             self.browserDelegate!.browserTableView(self, cell: cell, didInvite: peer)
+            self.setInvitesEnabled(false)
+            self.lastInvited = peer
         }
+    }
+    
+    func setInvitesEnabled(_ value : Bool) {
+        if value {
+            self.lastInvited = nil
+        }
+        self.invitesEnabled = value
+        self.reloadData()
     }
     
 }

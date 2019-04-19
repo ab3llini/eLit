@@ -22,8 +22,6 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
     
     override func viewDidLoad() {
         
-        print("View did load")
-        
         super.viewDidLoad()
         
         ConnectionManager.shared.delegate = self
@@ -31,6 +29,10 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         
         self.nearbyBrowserTableView.browserDelegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.nearbyBrowserTableView.setInvitesEnabled(true)
     }
     
     func connectionManager(didReceive invite : UIInvite) {
@@ -46,16 +48,18 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         self.nearbyBrowserTableView.update(peers: self.connectionManager.discovered)
     }
     
-    func connectionManager(peer: MCPeerID, didRefuseInvite: UIInvite) {
+    func connectionManager(peer: MCPeerID, didAcceptInvite: Bool) {
+        if !didAcceptInvite {
+            self.nearbyBrowserTableView.setInvitesEnabled(true)
+        }
+    }
+    
+    func connectionManager(peer: MCPeerID, connectedTo session: MCSession, with operationMode: OperationMode) {
         
     }
     
-    func connectionManager(peer: MCPeerID, didAcceptInvite: UIInvite) {
-        
-    }
-    
-    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: MCPeerID) {
-        self.connectionManager.invite(peer)
+    func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: DiscoveredPeer) {
+        self.connectionManager.invite(peer.peerID)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,13 +71,5 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         default:
             return
         }
-    }
-    
-    func connectionManager(peer: MCPeerID, didAcceptInvite: Bool) {
-        
-    }
-    
-    func connectionManager(peer: MCPeerID, connectedTo session: MCSession, with operationMode: OperationMode) {
-        
     }
 }
