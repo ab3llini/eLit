@@ -12,12 +12,43 @@ struct Question {
     var question: String?
     var answers: [String: Bool]?
     var image: UIImage?
+    var name: String?
     var timeout: Int = 10
     
     init(question: String?, answers: [String: Bool]?, image: UIImage?) {
         self.question = question
         self.answers = answers
         self.image = image
+    }
+    
+    init(from data: [String: String]) {
+        self.question = data["question"]!
+        let correct = data["answer"]!
+        var answers: [String: Bool] = [:]
+        answers[data["ans1"]!] = data["ans1"]! == correct
+        answers[data["ans2"]!] = data["ans2"]! == correct
+        answers[data["ans3"]!] = data["ans3"]! == correct
+        answers[data["ans4"]!] = data["ans4"]! == correct
+        self.answers = answers
+        self.timeout = Int(data["timeout"]!) ?? 10
+        self.image = Model.shared.getDrinks().filter({$0.name == data["image"]!}).first?.image
+    }
+    
+    func toDict() -> [String: String] {
+        var ans: [String: String] = [:]
+        var i = 0
+        for (answer, correct) in self.answers! {
+            i += 1
+            ans["ans\(i)"] = answer
+            if correct {
+                ans["answer"] = answer
+            }
+        }
+        ans["image"] = self.name!
+        ans["timeout"] = String(self.timeout)
+        ans["question"] = self.question!
+        
+        return ans
     }
 }
 
@@ -35,6 +66,7 @@ class QuestionGenerator: NSObject {
     
     func generateQuestion(for drink: Drink) -> Question {
         var q = Question(question: nil, answers: nil, image: nil)
+        q.name = drink.name
         drink.getImage(completion: { image in
             q.image = image
         })
@@ -59,12 +91,14 @@ class QuestionGenerator: NSObject {
         }
         
         q.question = question
+        q.answers = answers
         
         return q
     }
     
     func generateQuestion(for ingredient: Ingredient) -> Question {
         var q = Question(question: nil, answers: nil, image: nil)
+        q.name = ingredient.name
         ingredient.getImage(completion: {image in
             q.image = image
         })
@@ -89,6 +123,7 @@ class QuestionGenerator: NSObject {
                 answers[d.name!] = false
             }
         } else {
+            // TODO: maybe there is no drink for that ingredient...
             let answer1 = correctAnswers.randomElement()!.name!
             
             answers[answer1] = true
@@ -101,6 +136,7 @@ class QuestionGenerator: NSObject {
         }
         
         q.question = question
+        q.answers = answers
         
         return q
     }

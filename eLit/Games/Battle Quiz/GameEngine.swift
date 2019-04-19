@@ -31,8 +31,7 @@ protocol GameEngineDelegate {
 }
 
 
-class GameEngine: NSObject, GameControllerDelegate {
-    
+class GameEngine: NSObject, GameControllerDelegate, ConnectionManagerGameEngineDelegate {
     // The GameController is gon be the delegate
     // It is even going to hold a reference to this object
     public var delegate : GameEngineDelegate!
@@ -50,6 +49,7 @@ class GameEngine: NSObject, GameControllerDelegate {
         
         super.init()
         self.delegate = delegate
+        ConnectionManager.shared.gameEngineDelegate = self
     }
     
     func start() {
@@ -91,4 +91,14 @@ class GameEngine: NSObject, GameControllerDelegate {
             // TODO: game outcome
         }
     }
+    
+    func connectionManager(didReceive requestType: MPCRequestType) -> Any? {
+        switch requestType {
+        case .requestQuestion:
+            return self.currentQuestion
+        default:
+            return nil
+        }
+    }
+    
 }

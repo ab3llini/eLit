@@ -26,7 +26,7 @@ class GameComunicationEngine: NSObject {
         super.init()
     }
     
-    func getNextQuestion(then completion: (_ question: Question?) -> Void) {
+    func getNextQuestion(then completion: @escaping (_ question: Question?) -> Void) {
         switch self.mode {
         case .host:
             let question = self.questionGenerator?.getQuestion()

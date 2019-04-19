@@ -122,7 +122,10 @@ protocol ConnectionManagerDelegate {
     func connectionManager(lostPeer peerID: MCPeerID)
     func connectionManager(peer: MCPeerID, didAcceptInvite: Bool)
     func connectionManager(peer: MCPeerID, connectedTo session : MCSession, with operationMode: OperationMode)
-    
+}
+
+protocol ConnectionManagerGameEngineDelegate {
+    func connectionManager(didReceive requestType: MPCRequestType) -> Any?
 }
 
 class ConnectionManager: NSObject {
@@ -137,6 +140,8 @@ class ConnectionManager: NSObject {
     
     private var outgoingInvites : [OutgoingInvite] = []
     private var incomingInvite : IncomingInvite?
+    private var completionForQuestion: ((_: Question?) -> Void)? = nil
+    private var completionForAnswer: ((_: String?) -> Void)? = nil
     
     private let timeStarted = Date()
     
@@ -147,6 +152,7 @@ class ConnectionManager: NSObject {
     }()
     
     public var delegate : ConnectionManagerDelegate?
+    public var gameEngineDelegate: ConnectionManagerGameEngineDelegate?
     public static let shared = ConnectionManager()
     public private(set) var operationMode: OperationMode?
     
@@ -211,11 +217,11 @@ class ConnectionManager: NSObject {
 extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
+//        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
+//        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
     
         if self.outgoingInvites.contains(peerID) {
             // Resolve connection races
@@ -256,12 +262,12 @@ extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
 extension ConnectionManager : MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
+//        NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
         
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        NSLog("%@", "foundPeer: \(peerID)")
+//        NSLog("%@", "foundPeer: \(peerID)")
         
         let newPeer : DiscoveredPeer!
         
@@ -282,7 +288,7 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        NSLog("%@", "lostPeer: \(peerID)")
+//        NSLog("%@", "lostPeer: \(peerID)")
         
         if let index = self.discovered.index(of: peerID) {
             
@@ -301,7 +307,7 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
 extension ConnectionManager : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
+//        NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
         
         switch state {
         case .notConnected:
@@ -406,30 +412,99 @@ extension ConnectionManager : MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        NSLog("%@", "didReceiveData: \(data)")
+        DispatchQueue.main.async {
+            let dataDict = self.fromJson(data)
+            let requestType = dataDict["request"]
+            print("********* Received data for request \(String(describing: requestType))")
+            switch requestType {
+            
+            case MPCRequestType.question.rawValue:
+                guard let completion = self.completionForQuestion else {
+                    return
+                }
+                let question = dataDict
+                let q = Question(from: question)
+                completion(q)
+            
+            case MPCRequestType.requestQuestion.rawValue:
+                guard let q = self.gameEngineDelegate?.connectionManager(didReceive: .requestQuestion) as? Question else {
+                    return
+                }
+                
+                var dataDict = q.toDict()
+                dataDict["request"] = MPCRequestType.question.rawValue
+                self.sendData(dataDict)
+            default:
+                return
+            }
+        }
+        
+//        NSLog("%@", "didReceiveData: \(data)")
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        NSLog("%@", "didReceiveStream")
+//        NSLog("%@", "didReceiveStream")
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        NSLog("%@", "didStartReceivingResourceWithName")
+//        NSLog("%@", "didStartReceivingResourceWithName")
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        NSLog("%@", "didFinishReceivingResourceWithName")
+//        NSLog("%@", "didFinishReceivingResourceWithName")
     }
 }
 
-extension ConnectionManager {
+enum MPCRequestType: String {
+    case requestQuestion = "RequestQuestion"
+    case question = "Question"
+    case requestAnswer = "RequestAnswer"
+    case answer = "Answer"
     
-    func requestQuestion(then completion: (_ question: Question?) -> Void) {
-        //        TODO:
+}
+
+extension ConnectionManager {
+    func requestQuestion(then completion: @escaping (_ question: Question?) -> Void) {
+        self.completionForQuestion = completion
+        let data = ["request": MPCRequestType.requestQuestion.rawValue] as [String: String]
+        self.sendData(data)
     }
     
     func askForAnswer(then completion: (_ answer: String?) -> Void) {
         //        TODO:
+    }
+    
+    private func sendData(_ dataDict: [String: String]) {
+        print("******** Sending \(dataDict["request"])")
+        let dataToSend = toJson(dataDict)
+        do {
+            try self.session.send(dataToSend!, toPeers: self.session.connectedPeers, with: .reliable)
+        } catch {
+            print("Error sending data")
+        }
+    }
+    
+    private func toJson(_ data: [String: String]) -> Data? {
+        do {
+            let json = try JSONSerialization.data(withJSONObject: data)
+            return json
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    private func fromJson(_ data: Data) -> [String: String] {
+        guard let stringData = String(data: data, encoding: .utf8) else { return [:] }
+        guard let jsonData = stringData.data(using: .utf8) else { return [:] }
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: jsonData)
+            let dictData = json as? [String: String] ?? [:]
+            return dictData
+        } catch {
+            return [:]
+        }
     }
     
 }
