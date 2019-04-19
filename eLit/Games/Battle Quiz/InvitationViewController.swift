@@ -24,18 +24,8 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        playerImage.roundImage(with: 1, ofColor: .gray)
         coutdownLabel.delegate = self
-    }
-    
-    func timeoutDidExpire() {
-        if (self.didChoose == false) {
-            self.invite.handler(false)
-            self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        playerImage.roundImage(with: 1, ofColor: .gray)
         
         self.didChoose = false
         
@@ -50,12 +40,20 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false
         
-        self.coutdownLabel.isHidden = false
-        self.coutdownLabel.startTimeout(duration: 30)
+    }
 
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.coutdownLabel.startTimeout(duration: 30)
+        
     }
     
-    
+    func timeoutDidExpire() {
+        if (self.didChoose == false) {
+            self.invite.handler(false)
+            self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
+        }
+    }
     
     @IBAction func onAcceptInvitation(_ sender: QuizButton) {
         self.invite.handler(true)
@@ -79,7 +77,6 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     private func handleSelection(accepted : Bool) {
         self.didChoose = true
         self.coutdownLabel.stopChanging()
-        self.coutdownLabel.isHidden = true
         if !accepted {
             self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
         }

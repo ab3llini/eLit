@@ -36,8 +36,10 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
         // Hide the tab bar to make the game go full screen!
         self.tabBarController?.tabBar.isHidden = true
         self.context.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.engine.start()
-        
     }
     
     // Called from parent view controller to init a new game!

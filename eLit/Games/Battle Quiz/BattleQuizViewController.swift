@@ -28,7 +28,10 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         ConnectionManager.shared.start()
         
         self.nearbyBrowserTableView.browserDelegate = self
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.nearbyBrowserTableView.update(peers: ConnectionManager.shared.discovered)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,6 +10,7 @@ import UIKit
 
 protocol TimeoutLabelDelegate {
     func timeoutDidExpire()
+    
 }
 
 class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
@@ -18,6 +19,8 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
     @IBInspectable var primaryColor : UIColor = .green
     
     public var delegate : TimeoutLabelDelegate?
+    
+    private var animation : CABasicAnimation!
     
     private func createCircleLayer() -> CAShapeLayer {
         
@@ -61,6 +64,9 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
         animStroke.repeatCount       = 0;
         animStroke.autoreverses      = false
         animStroke.delegate          = self
+        animStroke.isRemovedOnCompletion = true
+        
+        self.animation = animStroke
         
         let shape = self.createCircleLayer()
         
@@ -73,13 +79,20 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
         }
         
         self.layer.addSublayer(shape)
-        self.isHidden = false
+        self.alpha = 1
         
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        self.isHidden = true
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 0
+        }
     }
     
-
+    override func stopChanging() {
+        super.stopChanging()
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 0
+        }
+    }
 }

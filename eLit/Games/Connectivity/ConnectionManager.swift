@@ -128,6 +128,8 @@ protocol ConnectionManagerGameEngineDelegate {
     func connectionManager(didReceive requestType: MPCRequestType) -> Any?
 }
 
+
+
 class ConnectionManager: NSObject {
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
@@ -277,7 +279,9 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
             newPeer = DiscoveredPeer(peerID)
         }
         
-        self.discovered.append(newPeer)
+        if !self.discovered.contains(peerID) {
+            self.discovered.append(newPeer)
+        }
         
         if let _ = self.delegate {
             DispatchQueue.main.async {
