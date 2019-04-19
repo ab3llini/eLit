@@ -55,7 +55,7 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
     }
     
     func connectionManager(peer: MCPeerID, connectedTo session: MCSession, with operationMode: OperationMode) {
-        
+        self.performSegue(withIdentifier: Navigation.toGameVC.rawValue, sender: self)
     }
     
     func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: DiscoveredPeer) {
@@ -69,7 +69,7 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
                 (segue.destination as! InvitationViewController).set(_invite)
             }
         case Navigation.toGameVC.rawValue:
-            let gameVC = sender as! GameViewController
+            let gameVC = segue.destination as! GameViewController
             gameVC.setupGameController(with: self.connectionManager.operationMode!)
         default:
             return

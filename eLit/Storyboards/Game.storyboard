@@ -170,19 +170,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xjE-3E-ZkN"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="acceptButton" destination="VkG-rx-zYo" id="ujY-pC-vuN"/>
                         <outlet property="coutdownLabel" destination="dbI-VB-MCl" id="uDA-So-13a"/>
                         <outlet property="declineButton" destination="6xq-5T-IzL" id="C8e-cB-dUw"/>
                         <outlet property="playerImage" destination="hog-gX-6FE" id="pYj-By-7kf"/>
                         <outlet property="playerName" destination="zRG-8a-TRE" id="fMA-Na-m3S"/>
-                        <segue destination="71g-Pi-ZJZ" kind="show" identifier="toGameVC" id="sqq-zy-lTv"/>
-                        <segue destination="QUZ-gB-S3Y" kind="show" identifier="toBattleQuizVC" id="m4f-OL-jhG"/>
+                        <segue destination="QUZ-gB-S3Y" kind="show" identifier="toBattleQuizVC" id="YEi-Zv-fT6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVC-Fb-Gvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-140" y="1187"/>
+            <point key="canvasLocation" x="-447" y="1960"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="yXp-ii-zP2">
@@ -548,7 +549,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="642" y="1187"/>
+            <point key="canvasLocation" x="529" y="1187"/>
         </scene>
         <!--Outcome View Controller-->
         <scene sceneID="j4k-bY-n1f">
@@ -760,11 +761,12 @@
                         <outlet property="statusIndicator" destination="51v-0x-1M9" id="bCq-4K-eu1"/>
                         <outlet property="statuslabel" destination="5LD-xq-1qg" id="59L-eB-dyb"/>
                         <segue destination="AvT-qN-3Cg" kind="show" identifier="toInviteVC" id="QiI-vd-Iyo"/>
+                        <segue destination="71g-Pi-ZJZ" kind="show" identifier="toGameVC" id="44E-4t-ooW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vM-2R-HBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-938.39999999999998" y="1186.6995073891626"/>
+            <point key="canvasLocation" x="-446" y="1187"/>
         </scene>
     </scenes>
     <resources>
@@ -774,7 +776,6 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QiI-vd-Iyo"/>
-        <segue reference="m4f-OL-jhG"/>
+        <segue reference="P5M-zu-H0I"/>
     </inferredMetricsTieBreakers>
 </document>

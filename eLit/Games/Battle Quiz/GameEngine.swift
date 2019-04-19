@@ -50,6 +50,9 @@ class GameEngine: NSObject, GameControllerDelegate {
         
         super.init()
         self.delegate = delegate
+    }
+    
+    func start() {
         self.delegate.gameWillStart(rounds: self.rounds, localPlayerImage: UIImage(), remotePlayerImage: UIImage())
         self.nextRound()
     }

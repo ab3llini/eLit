@@ -35,10 +35,8 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
 
         // Hide the tab bar to make the game go full screen!
         self.tabBarController?.tabBar.isHidden = true
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        self.context.delegate = self
+        self.engine.start()
         
     }
     
@@ -46,7 +44,6 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
     func setupGameController(with opMode: OperationMode) {
         self.engine = GameEngine(with: opMode, delegate: self)
         self.delegate = self.engine
-        self.context.delegate = self
     }
     
     func gameWillStart(rounds : Int, localPlayerImage : UIImage, remotePlayerImage : UIImage) {
@@ -69,9 +66,16 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
     }
     
     func roundDidStart(withQuestion question: Question) {
-        self.context.setQuestion(question.question!)
-        self.context.setAnswers(question.answers!)
-        self.context.setImage(question.image!)
+        if let question_ = question.question {
+            self.context.setQuestion(question_)
+        }
+        if let answers_ = question.answers {
+            self.context.setAnswers(answers_)
+        }
+        if let image_ = question.image {
+            self.context.setImage(image_)
+        }
+        
         self.context.startTimeout(duration: question.timeout)
     }
     

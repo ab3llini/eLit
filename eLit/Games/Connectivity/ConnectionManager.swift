@@ -35,10 +35,12 @@ struct UIInvite  {
 struct DiscoveredPeer {
     var peerID : MCPeerID
     var imageUrl : String?
+    var peerName : String?
     
-    init(_ peerID : MCPeerID, imageUrl : String? = nil) {
+    init(_ peerID : MCPeerID, imageUrl : String? = nil, name : String? = nil) {
         self.peerID = peerID
         self.imageUrl = imageUrl
+        self.peerName = name
     }
 }
 
@@ -155,7 +157,10 @@ class ConnectionManager: NSObject {
         var info : [String : String]? = nil
         
         if let gid = GIDSignIn.sharedInstance(), gid.hasAuthInKeychain() {
-            info = ["peerImageURL" : Model.shared.user!.imageURLString] as? [String : String]
+            info = [
+                "peerImageURL" : Model.shared.user!.imageURLString,
+                "peerName" : Model.shared.user!.name
+                ] as? [String : String]
         }
         
         self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: info, serviceType: connectionManagerType)
@@ -260,8 +265,8 @@ extension ConnectionManager : MCNearbyServiceBrowserDelegate {
         
         let newPeer : DiscoveredPeer!
         
-        if let _ = info, let imageUrl = info!["peerImageURL"] {
-            newPeer = DiscoveredPeer(peerID, imageUrl: imageUrl)
+        if let _ = info, let imageUrl = info!["peerImageURL"], let name = info!["peerName"] {
+            newPeer = DiscoveredPeer(peerID, imageUrl: imageUrl, name: name)
         } else {
             newPeer = DiscoveredPeer(peerID)
         }
