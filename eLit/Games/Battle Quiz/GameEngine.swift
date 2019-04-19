@@ -25,7 +25,7 @@ protocol GameEngineDelegate {
     func remotePlayerDidDisconnect()
     
     // Round handling
-    func roundDidStart(withQuestion question : String, answers : [String : Bool], image : UIImage, timeout : Int)
+    func roundDidStart(withQuestion question : Question)
     func roundDidEnd(localAnswer : Bool, remoteAnswer : Bool)
 
 }
@@ -36,21 +36,56 @@ class GameEngine: NSObject, GameControllerDelegate {
     // The GameController is gon be the delegate
     // It is even going to hold a reference to this object
     public var delegate : GameEngineDelegate!
+    private let netMode: OperationMode
+    private let rounds = 5
+    private let comunicationEngine: GameComunicationEngine
+    private var currentQuestion: Question?
+    private var currentAnswer: String?
     
-    init(delegate : GameEngineDelegate) {
-        super.init()
+    private var round = 0
+    
+    init(with mode: OperationMode, delegate : GameEngineDelegate) {
+        self.netMode = mode
+        self.comunicationEngine = GameComunicationEngine(for: mode)
         
+        super.init()
         self.delegate = delegate
-    
+        self.delegate.gameWillStart(rounds: self.rounds, localPlayerImage: UIImage(), remotePlayerImage: UIImage())
+        self.nextRound()
     }
     
     func playerDidChoose(answer : String) {
-
-        print("This event is raised when the user selects an answer.")
-        
+        self.currentAnswer = answer
     }
 
     func timeoutDidExpire() {
-        print("This event is raised when the match timeout expires.")
+        self.comunicationEngine.getRemoteAnswer(then: { answer in
+            var current: Bool = false
+            if self.currentAnswer != nil {
+                current = self.currentQuestion!.answers![self.currentAnswer!]!
+            }
+            var remote: Bool = false
+            if answer != nil {
+                remote = (self.currentQuestion?.answers![answer!])!
+            }
+            self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
+            
+            self.currentQuestion = nil
+            self.currentAnswer = nil
+            
+            self.nextRound()
+        })
+    }
+    
+    private func nextRound() {
+        self.round += 1
+        if self.round <= self.rounds {
+            self.comunicationEngine.getNextQuestion(then: { question in
+                self.currentQuestion = question
+                self.delegate.roundDidStart(withQuestion: question!)
+            })
+        } else {
+            // TODO: game outcome
+        }
     }
 }

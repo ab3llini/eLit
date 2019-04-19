@@ -146,6 +146,7 @@ class ConnectionManager: NSObject {
     
     public var delegate : ConnectionManagerDelegate?
     public static let shared = ConnectionManager()
+    public private(set) var operationMode: OperationMode?
     
     private var started : Bool = false
     
@@ -373,6 +374,7 @@ extension ConnectionManager : MCSessionDelegate {
                     self.incomingInvite = nil
                     if let _ = self.delegate {
                         DispatchQueue.main.async {
+                            self.operationMode = .client
                             self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
                         }
                     }
@@ -385,6 +387,7 @@ extension ConnectionManager : MCSessionDelegate {
                 self.outgoingInvites.remove(at: self.outgoingInvites.index(of: peerID)!)
                 if let _ = self.delegate {
                     DispatchQueue.main.async {
+                        self.operationMode = .host
                         self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
                     }
                 }
@@ -414,8 +417,12 @@ extension ConnectionManager : MCSessionDelegate {
 
 extension ConnectionManager {
     
-    func requestQuestion(then : (_ : Question?) -> Void) {
-        
+    func requestQuestion(then completion: (_ question: Question?) -> Void) {
+        //        TODO:
+    }
+    
+    func askForAnswer(then completion: (_ answer: String?) -> Void) {
+        //        TODO:
     }
     
 }

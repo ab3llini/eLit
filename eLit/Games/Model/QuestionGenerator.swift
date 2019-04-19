@@ -10,9 +10,15 @@ import UIKit
 
 struct Question {
     var question: String?
-    var answers: [String]?
-    var correctAnswer: String?
+    var answers: [String: Bool]?
     var image: UIImage?
+    var timeout: Int = 10
+    
+    init(question: String?, answers: [String: Bool]?, image: UIImage?) {
+        self.question = question
+        self.answers = answers
+        self.image = image
+    }
 }
 
 class QuestionGenerator: NSObject {
@@ -28,16 +34,15 @@ class QuestionGenerator: NSObject {
     }
     
     func generateQuestion(for drink: Drink) -> Question {
-        var q = Question(question: nil, answers: nil, correctAnswer: nil, image: nil)
+        var q = Question(question: nil, answers: nil, image: nil)
         drink.getImage(completion: { image in
             q.image = image
         })
-        var answers: [String] = []
+        var answers: [String: Bool] = [:]
         let drinkIngredients = drink.ingredients().filter({$0.name != "Ice"})
         let question = "Which of the following ingredients is present in \(drink.name!)?"
         let answer1 = drinkIngredients.randomElement()!.name!
-        answers.append(answer1)
-        q.correctAnswer = answer1
+        answers[answer1] = true
         
         let allIngredients = Model.shared.getIngredients()
         var ingrediets = allIngredients.filter({ingredient in
@@ -50,17 +55,16 @@ class QuestionGenerator: NSObject {
         for _ in 0..<3 {
             let ing = ingrediets.randomElement()!
             ingrediets.removeAll(where: {$0.name == ing.name})
-            answers.append(ing.name!)
+            answers[ing.name!] = false
         }
         
         q.question = question
-        q.answers = answers.shuffled()
         
         return q
     }
     
     func generateQuestion(for ingredient: Ingredient) -> Question {
-        var q = Question(question: nil, answers: nil, correctAnswer: nil, image: nil)
+        var q = Question(question: nil, answers: nil, image: nil)
         ingredient.getImage(completion: {image in
             q.image = image
         })
@@ -73,32 +77,30 @@ class QuestionGenerator: NSObject {
         var correctAnswers = allDrinks[idx...]
         var wrongAnswers = allDrinks[..<idx]
         
-        var answers: [String] = []
+        var answers: [String: Bool] = [:]
         
         if idx < 3 {
-            let answer1 = "All of the other"
-            answers.append(answer1)
-            q.correctAnswer = answer1
+            let answer1 = "All of them"
+            answers[answer1] = true
             
             for _ in 0..<3 {
                 let d = correctAnswers.randomElement()!
                 correctAnswers.removeAll(where: {$0.name! == d.name!})
-                answers.append(d.name!)
+                answers[d.name!] = false
             }
         } else {
             let answer1 = correctAnswers.randomElement()!.name!
-            q.correctAnswer = answer1
-            answers.append(answer1)
+            
+            answers[answer1] = true
             
             for _ in 0..<3 {
                 let d = wrongAnswers.randomElement()!
                 wrongAnswers.removeAll(where: {$0.name! == d.name!})
-                answers.append(d.name!)
+                answers[d.name!] = false
             }
         }
         
         q.question = question
-        q.answers = answers.shuffled()
         
         return q
     }
