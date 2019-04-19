@@ -12,7 +12,7 @@ struct Question {
     var question: String?
     var answers: [String: Bool]?
     var image: UIImage?
-    var timeout = 10.0
+    var timeout: Int = 10
     
     init(question: String?, answers: [String: Bool]?, image: UIImage?) {
         self.question = question

@@ -64,6 +64,9 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
             if let _invite = self.invite {
                 (segue.destination as! InvitationViewController).set(_invite)
             }
+        case Navigation.toGameVC.rawValue:
+            let gameVC = sender as! GameViewController
+            gameVC.setupGameController(with: self.connectionManager.operationMode!)
         default:
             return
         }

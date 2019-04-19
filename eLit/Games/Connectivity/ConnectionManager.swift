@@ -146,6 +146,7 @@ class ConnectionManager: NSObject {
     
     public var delegate : ConnectionManagerDelegate?
     public static let shared = ConnectionManager()
+    public private(set) var operationMode: OperationMode?
     
     override init() {
         
@@ -348,6 +349,7 @@ extension ConnectionManager : MCSessionDelegate {
                     print("We can start playing with the remote peer")
                     self.incomingInvite = nil
                     if let _ = self.delegate {
+                        self.operationMode = .client
                         self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
                     }
                 }
@@ -358,6 +360,7 @@ extension ConnectionManager : MCSessionDelegate {
                 // In any case, we need to prevent other peers from inviting us
                 self.outgoingInvites.remove(at: self.outgoingInvites.index(of: peerID)!)
                 if let _ = self.delegate {
+                    self.operationMode = .host
                     self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
                 }
             }
@@ -386,8 +389,12 @@ extension ConnectionManager : MCSessionDelegate {
 
 extension ConnectionManager {
     
-    func requestQuestion(then : (_ : Question?) -> Void) {
-        
+    func requestQuestion(then completion: (_ question: Question?) -> Void) {
+        //        TODO:
+    }
+    
+    func askForAnswer(then completion: (_ answer: String?) -> Void) {
+        //        TODO:
     }
     
 }

@@ -36,5 +36,7 @@ class GameComunicationEngine: NSObject {
         }
     }
     
-
+    func getRemoteAnswer(then completion: (_ answer: String?) -> Void) {
+        self.cm.askForAnswer(then: completion)
+    }
 }

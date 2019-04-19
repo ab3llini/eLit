@@ -16,6 +16,7 @@ protocol GameControllerDelegate {
 
 class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate {
     
+    
     // Game objects
     @IBOutlet var localPlayer: Player!
     @IBOutlet var remotePlayer: Player!
@@ -38,12 +39,12 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.setupGameController()
+        
     }
     
     // Called from parent view controller to init a new game!
-    func setupGameController() {
-        self.engine = GameEngine(delegate: self)
+    func setupGameController(with opMode: OperationMode) {
+        self.engine = GameEngine(with: opMode, delegate: self)
         self.delegate = self.engine
         self.context.delegate = self
     }
@@ -67,11 +68,11 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
         
     }
     
-    func roundDidStart(withQuestion question: String, answers: [String : Bool], image: UIImage, timeout: Int) {
-        self.context.setQuestion(question)
-        self.context.setAnswers(answers)
-        self.context.setImage(image)
-        self.context.startTimeout(duration: timeout)
+    func roundDidStart(withQuestion question: Question) {
+        self.context.setQuestion(question.question!)
+        self.context.setAnswers(question.answers!)
+        self.context.setImage(question.image!)
+        self.context.startTimeout(duration: question.timeout)
     }
     
     func roundDidEnd(localAnswer : Bool, remoteAnswer : Bool) {
