@@ -1344,13 +1344,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaol.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";
@@ -1368,13 +1368,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQRSRVURN3;
+				DEVELOPMENT_TEAM = 7E7F4Y64R6;
 				INFOPLIST_FILE = eLit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaolo.eLit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dima.gianpaol.eLit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eLit/Libraries/FSPagerView/eLit-Bridging-Header.h";

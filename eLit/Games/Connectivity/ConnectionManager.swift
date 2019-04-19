@@ -124,8 +124,10 @@ protocol ConnectionManagerDelegate {
     func connectionManager(peer: MCPeerID, connectedTo session : MCSession, with operationMode: OperationMode)
 }
 
-protocol ConnectionManagerGameEngineDelegate {
-    func connectionManager(didReceive requestType: MPCRequestType) -> Any?
+
+
+protocol ConnectionManagerGameCommunicationDelegate {
+    func connectionManager(didReceive requestType: MPCRequestType, handler : ((_ : Any) -> Void)?)
 }
 
 
@@ -154,7 +156,7 @@ class ConnectionManager: NSObject {
     }()
     
     public var delegate : ConnectionManagerDelegate?
-    public var gameEngineDelegate: ConnectionManagerGameEngineDelegate?
+    public var gameCommunicationDelegate: ConnectionManagerGameCommunicationDelegate?
     public static let shared = ConnectionManager()
     public private(set) var operationMode: OperationMode?
     
@@ -431,13 +433,27 @@ extension ConnectionManager : MCSessionDelegate {
                 completion(q)
             
             case MPCRequestType.requestQuestion.rawValue:
-                guard let q = self.gameEngineDelegate?.connectionManager(didReceive: .requestQuestion) as? Question else {
+                self.gameCommunicationDelegate?.connectionManager(didReceive: .requestQuestion, handler: { (object) in
+                    
+                    var dataDict = (object as! Question).toDict()
+                    dataDict["request"] = MPCRequestType.question.rawValue
+                    self.sendData(dataDict)
+                })
+            case MPCRequestType.answer.rawValue:
+                guard let completion = self.completionForAnswer else {
                     return
                 }
+                let answer = dataDict
+                completion(answer["answer"])
+                return
                 
-                var dataDict = q.toDict()
-                dataDict["request"] = MPCRequestType.question.rawValue
-                self.sendData(dataDict)
+            case MPCRequestType.requestAnswer.rawValue:
+                self.gameCommunicationDelegate?.connectionManager(didReceive: .requestAnswer, handler: { (object) in
+                    var dataDict = ["answer": (object as! String)]
+                    dataDict["request"] = MPCRequestType.answer.rawValue
+                    self.sendData(dataDict)
+                })
+                
             default:
                 return
             }

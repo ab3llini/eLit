@@ -31,15 +31,15 @@ protocol GameEngineDelegate {
 }
 
 
-class GameEngine: NSObject, GameControllerDelegate, ConnectionManagerGameEngineDelegate {
+class GameEngine: NSObject, GameControllerDelegate {
     // The GameController is gon be the delegate
     // It is even going to hold a reference to this object
     public var delegate : GameEngineDelegate!
     private let netMode: OperationMode
     private let rounds = 5
     private let comunicationEngine: GameComunicationEngine
-    private var currentQuestion: Question?
     private var currentAnswer: String?
+    private var currentQuestion: Question?
     
     private var round = 0
     
@@ -49,7 +49,7 @@ class GameEngine: NSObject, GameControllerDelegate, ConnectionManagerGameEngineD
         
         super.init()
         self.delegate = delegate
-        ConnectionManager.shared.gameEngineDelegate = self
+        ConnectionManager.shared.gameCommunicationDelegate = self.comunicationEngine
     }
     
     func start() {
@@ -62,45 +62,49 @@ class GameEngine: NSObject, GameControllerDelegate, ConnectionManagerGameEngineD
     }
 
     func timeoutDidExpire() {
-        self.comunicationEngine.getRemoteAnswer(then: { answer in
-            var current: Bool = false
-            if self.currentAnswer != nil {
-                current = self.currentQuestion!.answers![self.currentAnswer!]!
-            }
-            var remote: Bool = false
-            if answer != nil {
-                remote = (self.currentQuestion?.answers![answer!])!
-            }
-            self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
+        
+        self.nextRound(uponReceivingQuestion: { (question) in
             
-            self.currentQuestion = nil
-            self.currentAnswer = nil
-            
-            self.nextRound()
+            self.comunicationEngine.getRemoteAnswer(then: { answer in
+                
+                var current: Bool = false
+                if self.currentAnswer != nil {
+                    current = self.currentQuestion!.answers![self.currentAnswer!]!
+                }
+                var remote: Bool = false
+                if answer != nil {
+                    if let choice = self.currentQuestion?.answers![answer!] {
+                        remote = choice
+                    }
+                }
+                self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
+                
+                self.currentQuestion = question
+                self.currentAnswer = nil
+                
+                Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+                    // Inception
+                    self.delegate.roundDidStart(withQuestion: self.currentQuestion!)
+                })
+                
+            })
         })
     }
     
-    private func nextRound() {
+    private func nextRound(uponReceivingQuestion call : ((_ question: Question?) -> Void)? = nil) {
         self.round += 1
         if self.round <= self.rounds {
             self.comunicationEngine.getNextQuestion(then: { question in
-                self.currentQuestion = question
-                self.delegate.roundDidStart(withQuestion: question!)
+                if let block = call {
+                    block(question)
+                }
+                else {
+                    self.currentQuestion = question
+                    self.delegate.roundDidStart(withQuestion: question!)
+                }
             })
         } else {
             // TODO: game outcome
         }
     }
-    
-    func connectionManager(didReceive requestType: MPCRequestType) -> Any? {
-        switch requestType {
-        case .requestQuestion:
-            return self.currentQuestion
-        case .requestAnswer:
-            return self.currentAnswer
-        default:
-            return nil
-        }
-    }
-    
 }

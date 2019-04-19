@@ -8,12 +8,17 @@
 
 import UIKit
 
-class GameComunicationEngine: NSObject {
-    
 
+class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelegate {
+    
     private let mode: OperationMode
     private let questionGenerator: QuestionGenerator?
     private let cm = ConnectionManager.shared
+    private var currentQuestion: Question?
+    private var currentAnswer: String = "no-answer"
+
+    
+    private var questionHandlers : [((_ question: Question?) -> Void)] = []
     
     init (for mode: OperationMode) {
         self.mode = mode
@@ -26,17 +31,45 @@ class GameComunicationEngine: NSObject {
         super.init()
     }
     
+    func setLastAnswer(to value : String) {
+        self.currentAnswer = value
+    }
+    
     func getNextQuestion(then completion: @escaping (_ question: Question?) -> Void) {
-        switch self.mode {
-        case .host:
-            let question = self.questionGenerator?.getQuestion()
-            completion(question)
-        case .client:
+        
+        if self.mode == .client {
             self.cm.requestQuestion(then: completion)
+        }
+        else {
+            // I am the ho$t
+            if self.questionHandlers.count == 0 {
+                self.questionHandlers.append(completion)
+                self.currentQuestion = self.questionGenerator?.getQuestion()
+            }
+            else {
+                self.questionHandlers.append(completion)
+                for handler in self.questionHandlers {
+                    handler(self.currentQuestion)
+                }
+                self.currentQuestion = nil
+                self.questionHandlers = []
+            }
         }
     }
     
-    func getRemoteAnswer(then completion: (_ answer: String?) -> Void) {
+    func getRemoteAnswer(then completion: @escaping (_ answer: String?) -> Void) {
         self.cm.askForAnswer(then: completion)
+    }
+    
+    func connectionManager(didReceive requestType: MPCRequestType, handler: ((Any) -> Void)?) {
+        switch requestType {
+        case .requestQuestion:
+            self.getNextQuestion(then: handler!)
+        case .requestAnswer:
+            handler!(self.currentAnswer)
+            self.currentAnswer = "no-answer"
+        default:
+            return
+        }
     }
 }
