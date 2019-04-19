@@ -374,6 +374,7 @@ extension ConnectionManager : MCSessionDelegate {
                     self.incomingInvite = nil
                     if let _ = self.delegate {
                         DispatchQueue.main.async {
+                            
                             self.operationMode = .client
                             self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .client)
                         }
@@ -387,6 +388,7 @@ extension ConnectionManager : MCSessionDelegate {
                 self.outgoingInvites.remove(at: self.outgoingInvites.index(of: peerID)!)
                 if let _ = self.delegate {
                     DispatchQueue.main.async {
+                        
                         self.operationMode = .host
                         self.delegate!.connectionManager(peer: self.myPeerId, connectedTo: self.session, with: .host)
                     }
