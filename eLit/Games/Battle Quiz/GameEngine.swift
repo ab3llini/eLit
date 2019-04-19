@@ -96,6 +96,8 @@ class GameEngine: NSObject, GameControllerDelegate, ConnectionManagerGameEngineD
         switch requestType {
         case .requestQuestion:
             return self.currentQuestion
+        case .requestAnswer:
+            return self.currentAnswer
         default:
             return nil
         }

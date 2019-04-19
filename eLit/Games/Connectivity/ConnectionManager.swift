@@ -474,8 +474,10 @@ extension ConnectionManager {
         self.sendData(data)
     }
     
-    func askForAnswer(then completion: (_ answer: String?) -> Void) {
-        //        TODO:
+    func askForAnswer(then completion: @escaping (_ answer: String?) -> Void) {
+        self.completionForAnswer = completion
+        let data = ["request": MPCRequestType.requestAnswer.rawValue] as [String: String]
+        self.sendData(data)
     }
     
     private func sendData(_ dataDict: [String: String]) {

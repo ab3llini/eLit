@@ -31,7 +31,12 @@ struct Question {
         answers[data["ans4"]!] = data["ans4"]! == correct
         self.answers = answers
         self.timeout = Int(data["timeout"]!) ?? 10
-        self.image = Model.shared.getDrinks().filter({$0.name == data["image"]!}).first?.image
+        let drinks = Model.shared.getDrinks()
+        let ingredients = Model.shared.getIngredients()
+        self.image = drinks.filter({$0.name == data["image"]!}).first?.image
+        if self.image == nil {
+            self.image = ingredients.filter({$0.name == data["image"]!}).first?.image
+        }
     }
     
     func toDict() -> [String: String] {
