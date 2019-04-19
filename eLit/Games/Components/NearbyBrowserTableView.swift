@@ -35,8 +35,6 @@ class NearbyBrowserTableView: UITableView, UITableViewDelegate, UITableViewDataS
         
         self.delegate = self
         self.dataSource = self
-        self.update(peers: ConnectionManager.shared.discovered)
-        
     }
     
     func update(peers : [DiscoveredPeer]) {

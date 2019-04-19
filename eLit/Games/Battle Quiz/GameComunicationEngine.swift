@@ -10,7 +10,7 @@ import UIKit
 
 class GameComunicationEngine: NSObject {
     
-    
+
     private let mode: OperationMode
     private let questionGenerator: QuestionGenerator?
     private let cm = ConnectionManager.shared

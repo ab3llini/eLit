@@ -503,13 +503,13 @@
 				BD6EE94021FCB7B90034BAE9 /* BlurredBackgroundTableViewController.swift */,
 				BDA466B121FE2217002A8829 /* VibrantNavigationBar.swift */,
 				BD0AA95F21F0B25600990A32 /* Navigation.swift */,
+				A45B2F072214AB210031B4B1 /* ChangingLabel.swift */,
 				A4548B7821F9CDBE00549099 /* Search */,
 				A467346F21F37F020061D0D2 /* Settings */,
 				BDC189662213421F00009A77 /* Launch */,
 				BD6EE94221FCBF980034BAE9 /* Home */,
 				BD0AA95A21F0A51500990A32 /* Drink */,
 				A470E54F2211DF65004872A2 /* MainTabBarController.swift */,
-				A45B2F072214AB210031B4B1 /* ChangingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
