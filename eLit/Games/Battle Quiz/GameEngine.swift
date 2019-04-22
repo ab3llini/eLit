@@ -17,7 +17,7 @@ enum GameOutcome : String {
 protocol GameEngineDelegate {
     
     // Errors
-    func gameWillStart(rounds : Int, localPlayerImage : UIImage, remotePlayerImage : UIImage)
+    func gameWillStart(rounds : Int)
     func gameDidAbort(reason value : String)
     func gameDidEnd(outcome : GameOutcome)
     
@@ -53,7 +53,7 @@ class GameEngine: NSObject, GameControllerDelegate {
     }
     
     func start() {
-        self.delegate.gameWillStart(rounds: self.rounds, localPlayerImage: UIImage(), remotePlayerImage: UIImage())
+        self.delegate.gameWillStart(rounds: self.rounds)
         self.nextRound()
     }
     

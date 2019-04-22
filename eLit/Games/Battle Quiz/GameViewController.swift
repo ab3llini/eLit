@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol GameControllerDelegate {
     func playerDidChoose(answer : String)
@@ -48,11 +49,25 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
         self.delegate = self.engine
     }
     
-    func gameWillStart(rounds : Int, localPlayerImage : UIImage, remotePlayerImage : UIImage) {
+    func gameWillStart(rounds : Int) {
         self.localPlayer.setNumberOfRounds(rounds)
         self.remotePlayer.setNumberOfRounds(rounds)
-        self.localPlayer.setPlayerImage(localPlayerImage)
-        self.remotePlayer.setPlayerImage(remotePlayerImage)
+        
+        // Retrieve local player image
+        if let gid = GIDSignIn.sharedInstance(), gid.hasAuthInKeychain() {
+            Model.shared.user?.setImage(completion: { (image) in
+                if let img = image {
+                    self.localPlayer.setPlayerImage(img)
+                }
+            })
+        }
+        if let remoteP = ConnectionManager.shared.session.connectedPeers.first {
+            if let discovered = ConnectionManager.shared.discovered.get(remoteP) {
+                discovered.getImage { (image) in
+                    self.remotePlayer.setPlayerImage(image)
+                }
+            }
+        }
     }
     
     func gameDidAbort(reason value: String) {

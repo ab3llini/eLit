@@ -55,7 +55,6 @@ class PlayerImageView: UIView {
     }
     
     func clearView () {
-        self.imageView.image = nil
    
         for layer in self.addedLayers {
             layer.removeFromSuperlayer()

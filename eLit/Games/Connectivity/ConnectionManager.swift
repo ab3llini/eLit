@@ -23,24 +23,41 @@ struct IncomingInvite {
 }
 
 struct UIInvite  {
-    var origin : MCPeerID
+    var origin : DiscoveredPeer
     var handler : (Bool) -> Void
     
-    init(origin : MCPeerID, handler : @escaping (Bool) -> Void, imageUrl : String? = nil) {
+    init(origin : DiscoveredPeer, handler : @escaping (Bool) -> Void) {
         self.origin = origin
         self.handler = handler
     }
 }
 
-struct DiscoveredPeer {
+class DiscoveredPeer {
     var peerID : MCPeerID
     var imageUrl : String?
     var peerName : String?
+    var cachedImage : UIImage?
     
     init(_ peerID : MCPeerID, imageUrl : String? = nil, name : String? = nil) {
         self.peerID = peerID
         self.imageUrl = imageUrl
         self.peerName = name
+    }
+    
+    func getImage(completion : @escaping (_ : UIImage) -> Void) {
+        if let image = self.cachedImage {
+            completion(image)
+        }
+        else {
+            if let urlstring = self.imageUrl, let url = URL(string: urlstring) {
+                UIImage.downloadImage(from: url) { (image) in
+                    if let img = image {
+                        self.cachedImage = img
+                        completion(img)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -249,15 +266,28 @@ extension ConnectionManager : MCNearbyServiceAdvertiserDelegate {
         }
         else {
             if let _ = self.delegate {
+                
+                
                 self.incomingInvite = IncomingInvite(origin: peerID, handler: invitationHandler)
                 
+                let handler : (_ : Bool) -> Void = { (answer) in
+                    if !answer {
+                        self.incomingInvite = nil
+                    }
+                    invitationHandler(answer, self.session)
+                }
+                
+                let ui_invite : UIInvite!
+                
+                if let discovered = self.discovered.get(peerID) {
+                    ui_invite = UIInvite(origin: discovered, handler: handler)
+                }
+                else {
+                    ui_invite = UIInvite(origin: DiscoveredPeer(peerID), handler: handler)
+                }
+                
                 DispatchQueue.main.async {
-                    self.delegate!.connectionManager(didReceive: UIInvite(origin: peerID, handler: { (answer) in
-                        if !answer {
-                            self.incomingInvite = nil
-                        }
-                        invitationHandler(answer, self.session)
-                    }))
+                    self.delegate!.connectionManager(didReceive: ui_invite)
                 }
             }
         }

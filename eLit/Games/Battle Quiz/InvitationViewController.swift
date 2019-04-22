@@ -29,13 +29,20 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         
         self.didChoose = false
         
-        //self.playerImage.image = currentContext.peer.image
-        self.playerName.text = self.invite.origin.displayName
+        if let name = self.invite.origin.peerName {
+            self.playerName.text = name
+        }
+        else {
+            self.playerName.text = self.invite.origin.peerID.displayName
+        }
+        
+        self.invite.origin.getImage { (image) in
+            self.playerImage.image = image
+        }
         
         acceptButton.isUserInteractionEnabled = true
         acceptButton.isHidden = false
         acceptButton.changeTo(color: acceptButton.neutralColor)
-        
         declineButton.changeTo(color: declineButton.neutralColor)
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false

@@ -38,13 +38,13 @@ class OutcomeViewController: UIViewController {
             self.view.backgroundColor = evenOutcome
         case .loose:
             self.view.backgroundColor = negativeOutcome
-        default:
-            return
         }
         self.outcomeLabel.text = self.outcome!.rawValue
 
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
 }

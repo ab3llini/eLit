@@ -33,13 +33,11 @@ class PeerTableViewCell: UITableViewCell {
         challengeButton.setTitle("Invite", for: .normal)
         self.challengeButton.changeTo(color: self.challengeButton.neutralColor)
         self.challengeButton.isEnabled = enabled
-        self.peerImageView.image = UIImage(named : "user")
         
-        if let urlString = peer.imageUrl, let url = URL(string: urlString) {
-            UIImage.downloadImage(from: url) { (image) in
-                self.peerImageView.image = image
-            }
+        peer.getImage { (image) in
+            self.peerImageView.image = image
         }
+        
         self.peer = peer
         self.peerName.text = (peer.peerName != nil ? peer.peerName! : peer.peerID.displayName)
         

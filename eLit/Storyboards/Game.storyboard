@@ -672,7 +672,7 @@
                                                                 <constraint firstAttribute="width" secondItem="onA-hw-i12" secondAttribute="height" multiplier="1:1" id="0bU-8B-qz5"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yge-1R-A71" customClass="QuizButton" customModule="eLit" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yge-1R-A71" customClass="QuizButton" customModule="eLit" customModuleProvider="target">
                                                             <rect key="frame" x="256" y="5" width="59" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="vux-vm-5nJ">
@@ -712,8 +712,8 @@
                                                                 <action selector="onChallenge:" destination="ASD-VW-eVB" eventType="touchUpInside" id="ApJ-FH-79q"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Player name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-5i-MbU">
-                                                            <rect key="frame" x="44" y="12" width="204" height="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Player name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-5i-MbU">
+                                                            <rect key="frame" x="40" y="10" width="206" height="20"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -732,10 +732,10 @@
                                                             <variation key="heightClass=regular-widthClass=regular" constant="10"/>
                                                         </constraint>
                                                         <constraint firstAttribute="height" constant="40" id="gYS-WJ-veR"/>
-                                                        <constraint firstItem="cf7-5i-MbU" firstAttribute="centerY" secondItem="jFQ-IL-btw" secondAttribute="centerY" id="hQJ-lf-b7W"/>
                                                         <constraint firstItem="onA-hw-i12" firstAttribute="top" secondItem="jFQ-IL-btw" secondAttribute="top" constant="5" id="kdx-0H-mAH">
                                                             <variation key="heightClass=regular-widthClass=regular" constant="10"/>
                                                         </constraint>
+                                                        <constraint firstItem="cf7-5i-MbU" firstAttribute="centerY" secondItem="jFQ-IL-btw" secondAttribute="centerY" id="rAG-1A-p7A"/>
                                                         <constraint firstItem="onA-hw-i12" firstAttribute="leading" secondItem="jFQ-IL-btw" secondAttribute="leading" id="sRb-uj-RgC"/>
                                                         <constraint firstItem="yge-1R-A71" firstAttribute="leading" secondItem="cf7-5i-MbU" secondAttribute="trailing" constant="10" id="x8D-fo-P3M"/>
                                                     </constraints>
@@ -822,6 +822,7 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gXs-D6-l1T"/>
         <segue reference="P5M-zu-H0I"/>
     </inferredMetricsTieBreakers>
 </document>
