@@ -45,6 +45,11 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
         self.navigationController?.navigationBar.isHidden = false
         
         self.nearbyBrowserTableView.setInvitesEnabled(true)
+        ConnectionManager.shared.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ConnectionManager.shared.stop()
     }
     
     func connectionManager(didReceive invite : UIInvite) {
