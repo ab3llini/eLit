@@ -29,13 +29,11 @@
 --------------------------------
 
 - Develop flexible UI (iPad / iPhone)
-- Make sure to use GKit for Wifi/Bluetooth <- we need it
 
 ------ Connectivity ------
 
 - Implement the disconnection among clients
 - Reduce the muber of connection to max 2 clients (1 connected to the other)
-- When a client receives the notification for connection, if he accepts, the vc should change into the game
 
 
 --------------------------------
