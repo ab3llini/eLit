@@ -87,9 +87,10 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
         if let answers_ = question.answers {
             self.context.setAnswers(answers_)
         }
-        if let image_ = question.image {
-            self.context.setImage(image_)
-        }
+        
+        question.getImage(then: { image in
+            self.context.setImage(image)
+        })
         
         self.context.startTimeout(duration: question.timeout)
     }
