@@ -36,6 +36,11 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         self.nearbyBrowserTableView.setInvitesEnabled(true)
+        ConnectionManager.shared.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ConnectionManager.shared.stop()
     }
     
     func connectionManager(didReceive invite : UIInvite) {

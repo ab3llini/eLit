@@ -65,12 +65,18 @@ class QuestionGenerator: NSObject {
     
     let drinks = Model.shared.getDrinks()
     let ingredients = Model.shared.getIngredients()
-    
+    var selectedDrinks: [String] = []
+    var selectedIngredients: [String] = []
+ 
     func getQuestion() -> Question {
         if Float.random(in: 0...1) < 0.5 {
-            return generateQuestion(for: self.drinks.randomElement()!)
+            let drink = self.drinks.filter({!self.selectedDrinks.contains($0.name!)}).randomElement()!
+            self.selectedDrinks.append(drink.name!)
+            return generateQuestion(for: drink)
         }
-        return generateQuestion(for: self.ingredients.randomElement()!)
+        let ingredient = self.ingredients.filter({!self.selectedIngredients.contains($0.name!)}).randomElement()!
+        self.selectedIngredients.append(ingredient.name!)
+        return generateQuestion(for: ingredient)
     }
     
     func generateQuestion(for drink: Drink) -> Question {
@@ -154,6 +160,11 @@ class QuestionGenerator: NSObject {
         q.answers = answers
         
         return q
+    }
+    
+    func reset() {
+        self.selectedIngredients = []
+        self.selectedDrinks = []
     }
 
 }
