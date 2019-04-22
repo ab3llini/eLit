@@ -74,7 +74,7 @@ class InvitationViewController: BlurredBackgroundViewController, TimeoutLabelDel
         sender.isUserInteractionEnabled = false
         declineButton.isHidden = true
         handleSelection(accepted: true)
-
+        ConnectionManager.shared.stop()
     }
     
     @IBAction func onDeclineInvitation(_ sender: QuizButton) {

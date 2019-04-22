@@ -21,6 +21,11 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
         DarkModeManager.shared.requestUpdateFor(self)
     }
 
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.title != "Play" {
+            ConnectionManager.shared.stop()
+        }
+    }
     
     func setDarkMode(enabled: Bool) {
         if enabled {

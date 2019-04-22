@@ -17,6 +17,7 @@ class ChangingLabel: UILabel {
     private var animateAlpha : Bool = true
     internal var currentIndex: Int = 0
     
+    
     @objc
     internal func changeText() {
         

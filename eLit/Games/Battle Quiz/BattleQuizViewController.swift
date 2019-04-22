@@ -26,8 +26,6 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
         super.viewDidLoad()
         
         ConnectionManager.shared.delegate = self
-        ConnectionManager.shared.start()
-        
         self.nearbyBrowserTableView.browserDelegate = self
                 
     }
@@ -46,10 +44,6 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
         
         self.nearbyBrowserTableView.setInvitesEnabled(true)
         ConnectionManager.shared.start()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        ConnectionManager.shared.stop()
     }
     
     func connectionManager(didReceive invite : UIInvite) {

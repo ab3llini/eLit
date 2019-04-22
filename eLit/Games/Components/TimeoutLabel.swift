@@ -13,7 +13,7 @@ protocol TimeoutLabelDelegate {
     
 }
 
-class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
+class TimeoutLabel: CountdownLabel, CAAnimationDelegate, DarkModeBehaviour {
     
     @IBInspectable var borderWidth : CGFloat = 2
     @IBInspectable var primaryColor : UIColor = .green
@@ -21,9 +21,12 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
     public var delegate : TimeoutLabelDelegate?
     
     private var animation : CABasicAnimation!
+    private var preferredColor : UIColor!
     
     override func awakeFromNib() {
         self.alpha = 0
+        self.preferredColor = self.textColor
+        DarkModeManager.shared.register(component: self)
     }
     
     private func createCircleLayer() -> CAShapeLayer {
@@ -98,5 +101,9 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
         UIView.animate(withDuration: 0.5) {
             self.alpha = 0
         }
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        self.textColor = enabled ? .white : self.preferredColor
     }
 }
