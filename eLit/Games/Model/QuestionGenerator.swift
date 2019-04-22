@@ -11,14 +11,12 @@ import UIKit
 struct Question {
     var question: String?
     var answers: [String: Bool]?
-    var image: UIImage?
     var name: String?
     var timeout: Int = 10
     
-    init(question: String?, answers: [String: Bool]?, image: UIImage?) {
+    init(question: String?, answers: [String: Bool]?) {
         self.question = question
         self.answers = answers
-        self.image = image
     }
     
     init(from data: [String: String]) {
@@ -31,12 +29,18 @@ struct Question {
         answers[data["ans4"]!] = data["ans4"]! == correct
         self.answers = answers
         self.timeout = Int(data["timeout"]!) ?? 10
+        self.name = data["image"]
+    }
+    
+    func getImage(then completion: @escaping (_ image: UIImage?) -> Void) {
         let drinks = Model.shared.getDrinks()
         let ingredients = Model.shared.getIngredients()
-        self.image = drinks.filter({$0.name == data["image"]!}).first?.image
-        if self.image == nil {
-            self.image = ingredients.filter({$0.name == data["image"]!}).first?.image
+        var objectWithImage: DrinkObjectWithImage?
+        objectWithImage = drinks.filter({$0.name == self.name}).first
+        if objectWithImage == nil {
+            objectWithImage = ingredients.filter({$0.name == self.name}).first
         }
+        objectWithImage?.getImage(completion: completion)
     }
     
     func toDict() -> [String: String] {
@@ -70,11 +74,8 @@ class QuestionGenerator: NSObject {
     }
     
     func generateQuestion(for drink: Drink) -> Question {
-        var q = Question(question: nil, answers: nil, image: nil)
+        var q = Question(question: nil, answers: nil)
         q.name = drink.name
-        drink.getImage(completion: { image in
-            q.image = image
-        })
         var answers: [String: Bool] = [:]
         let drinkIngredients = drink.ingredients().filter({$0.name != "Ice"})
         let question = "Which of the following ingredients is present in \(drink.name!)?"
@@ -102,11 +103,8 @@ class QuestionGenerator: NSObject {
     }
     
     func generateQuestion(for ingredient: Ingredient) -> Question {
-        var q = Question(question: nil, answers: nil, image: nil)
+        var q = Question(question: nil, answers: nil)
         q.name = ingredient.name
-        ingredient.getImage(completion: {image in
-            q.image = image
-        })
         let question = "In which of the following drinks is \(ingredient.name!) present?"
         var allDrinks = Model.shared.getDrinks()
         let idx = allDrinks.partition(by: {drink in
