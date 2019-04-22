@@ -19,6 +19,7 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     private var correctAnswers : [String : Int] = ["host" : 0, "client" : 0]
     
     private var questionHandlers : [((_ question: Question?) -> Void)] = []
+
     
     init (for mode: OperationMode) {
         self.mode = mode

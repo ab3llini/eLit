@@ -31,9 +31,7 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
         self.mainView.layer.cornerRadius = 5
         self.preferredBackgroundColor = self.mainView.backgroundColor
         
-        DarkModeManager.shared.register(component: self)
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
+        DarkModeManager.shared.register(component: self)        
         showMoreButton.isHidden = true
         
     }

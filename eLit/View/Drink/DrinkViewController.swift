@@ -96,7 +96,6 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         
         //Layout content
         self.layoutContent()
-                
     }
     
     

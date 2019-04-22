@@ -28,9 +28,7 @@ class RatingTableViewCell: UITableViewCell, DarkModeBehaviour {
         writeReviewImageView.tintColor = UIColor(red: 236/255, green: 69/255, blue: 90/255, alpha: 1)
         
         self.preferredRatingStarColor = ratingStars.settings.filledColor
-        
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
+                
         DarkModeManager.shared.register(component: self)
         
     }

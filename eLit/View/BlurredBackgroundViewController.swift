@@ -11,6 +11,7 @@ import UIKit
 
 class BlurredBackgroundViewController: UIViewController, BlurredBackground, DarkModeViewBehaviour {
     
+    var contentModeFit: Bool!
     var containerView: UIView!
     var backgroundImageSize: CGSize!
     var visualEffectView: UIView?
@@ -36,15 +37,19 @@ class BlurredBackgroundViewController: UIViewController, BlurredBackground, Dark
     @IBInspectable
     var backgroundImageColor : UIColor?
     
+    @IBInspectable
+    var modeFit : Bool = true
+    
     // Height of the blurred background image view
     var backgroundImageViewHeight : CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.backgroundImageViewHeight = self.view.bounds.height / 4 * 3
-
         
+        self.contentModeFit = modeFit
+
+        self.backgroundImageViewHeight = (self.modeFit) ? self.view.bounds.height / 4 * 3 : self.view.bounds.height
+
         self.backgroundImageSize = CGSize(width: self.view.bounds.width, height: self.backgroundImageViewHeight)
         
         // Create a container view to attach image on top
@@ -59,16 +64,31 @@ class BlurredBackgroundViewController: UIViewController, BlurredBackground, Dark
                 
         if let img = self.backgroundImage {
             
-            if let color = self.backgroundImageColor {
-                
-                self.setBackgroundImage(img, withColor: color)
-                
+            self.setBackgroundImage(img, withColor: self.backgroundImageColor)
+
+        }    
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        
+        if self.visualEffectView != nil && self.visualEffectView!.superview != nil {
+            self.visualEffectView!.removeFromSuperview()
+        }
+        
+        
+        if (self.containerView != nil) {
+            
+            if (enabled) {
+                containerView.backgroundColor = UIColor.black
+                self.visualEffectView = self.containerView!.addBlurEffect(effect: .dark)
+            }
+            else {
+                containerView.backgroundColor = UIColor.clear
+                self.visualEffectView = self.containerView!.addBlurEffect(effect: .extraLight)
             }
             
         }
         
-        
-        
-    }    
+    }
 
 }

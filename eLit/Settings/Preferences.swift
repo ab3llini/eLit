@@ -121,7 +121,7 @@ class Preferences {
             for sw in switches {
                 settings.switches.append(Switch(text: sw["Key"] as! String, value: sw["Value"] as! Bool))
             }
-            
+                        
             return settings
             
         } else {

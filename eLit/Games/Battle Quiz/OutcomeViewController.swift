@@ -26,6 +26,13 @@ class OutcomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        // Hide the tab bar to make the game go full screen!
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
+        
         guard outcome != nil else {
             self.view.backgroundColor = negativeOutcome
             self.outcomeLabel.text = "An error occured"
@@ -42,9 +49,4 @@ class OutcomeViewController: UIViewController {
         self.outcomeLabel.text = self.outcome!.rawValue
 
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-
 }

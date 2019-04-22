@@ -22,7 +22,6 @@ class AccountTableViewCell: UITableViewCell, DarkModeBehaviour {
         super.awakeFromNib()
         self.loginIndicator.hidesWhenStopped = true
         self.selectionStyle = .none
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         DarkModeManager.shared.register(component: self)
             
     }

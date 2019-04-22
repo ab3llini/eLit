@@ -13,19 +13,14 @@ class MainTabBarController: UITabBarController, DarkModeBehaviour {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
         DarkModeManager.shared.register(component: self)
-
     }
     
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DarkModeManager.shared.requestUpdateFor(self)
     }
-    
+
     
     func setDarkMode(enabled: Bool) {
         if enabled {

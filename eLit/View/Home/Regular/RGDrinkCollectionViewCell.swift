@@ -41,10 +41,7 @@ class RGDrinkCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
         
         // Add blur effect
         _ = self.blurView.addBlurEffect(effect: .extraLight)
-        
-        // Set default state
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
+                
         // Register for dark mode updates
         DarkModeManager.shared.register(component: self)
     

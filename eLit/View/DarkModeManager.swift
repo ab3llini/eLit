@@ -94,7 +94,7 @@ class DarkModeManager {
     public func register(component : DarkModeBehaviour) {
         
         self.observers.append(component)
-        
+        self.requestUpdateFor(component)
     }
     
     public func triggerNotificationFor(state : Bool) {
@@ -104,7 +104,10 @@ class DarkModeManager {
             observer.setDarkMode(enabled: state)
         
         }
-        
+    }
+    
+    public func requestUpdateFor(_ sender : DarkModeBehaviour) {
+        sender.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
     }
     
 }

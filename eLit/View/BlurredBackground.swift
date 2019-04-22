@@ -15,6 +15,7 @@ protocol BlurredBackground : class {
     var backgroundImageView : UIImageView! { get set }
     var containerView : UIView! { get set }
     var visualEffectView : UIView? { get set }
+    var contentModeFit : Bool! { get set }
     
 }
 
@@ -26,7 +27,7 @@ extension BlurredBackground {
         self.backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.backgroundImageSize.width, height: self.backgroundImageSize.height))
     
         // Set aspect fit
-        self.backgroundImageView.contentMode = .scaleAspectFit
+        self.backgroundImageView.contentMode = (contentModeFit) ? UIView.ContentMode.scaleAspectFit : UIView.ContentMode.scaleAspectFill
     
         // Add image view
         containerView.addSubview(self.backgroundImageView)
@@ -44,7 +45,7 @@ extension BlurredBackground {
     }
     
     // Changes the background image and color
-    public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor) {
+    public func setBackgroundImage(_ image : UIImage?, withColor color : UIColor? = nil) {
         
         if (self.backgroundImageView == nil) {
             
@@ -55,8 +56,9 @@ extension BlurredBackground {
         UIView.transition(with: self.backgroundImageView,  duration: self.animationDuration, options: .transitionCrossDissolve, animations: {
             
             self.backgroundImageView.image = image
-            self.backgroundImageView.backgroundColor = color.withAlphaComponent(0.5)
-            
+            if let color_ = color {
+                self.backgroundImageView.backgroundColor = color_.withAlphaComponent(0.5)
+            }
         }, completion: nil)
         
     }

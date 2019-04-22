@@ -27,9 +27,7 @@ class DrinkSearchTableViewCell: UITableViewCell, DarkModeBehaviour {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
+                
         DarkModeManager.shared.register(component: self)
         
     }

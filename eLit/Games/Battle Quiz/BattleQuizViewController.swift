@@ -10,12 +10,13 @@ import UIKit
 import MultipeerConnectivity
 
 
-class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate, ConnectionManagerDelegate {
+class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTableViewDelegate, ConnectionManagerDelegate {
     
     @IBOutlet weak var nearbyBrowserTableView: NearbyBrowserTableView!
     @IBOutlet weak var statuslabel: UILabel!
     @IBOutlet weak var statusIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var quizIcon: UIImageView!
+    
     private var connectionManager : ConnectionManager = ConnectionManager.shared
     
     private var invite : UIInvite?
@@ -28,6 +29,7 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
         ConnectionManager.shared.start()
         
         self.nearbyBrowserTableView.browserDelegate = self
+                
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,6 +37,13 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        // Hide the tab bar to make the game go full screen!
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        
         self.nearbyBrowserTableView.setInvitesEnabled(true)
     }
     
@@ -63,6 +72,16 @@ class BattleQuizViewController: UIViewController, NearbyBrowserTableViewDelegate
     
     func browserTableView(_ browserTableView: NearbyBrowserTableView, cell: PeerTableViewCell, didInvite peer: DiscoveredPeer) {
         self.connectionManager.invite(peer.peerID)
+    }
+    
+    override func setDarkMode(enabled: Bool) {
+        if enabled {
+            self.quizIcon.tintColor = .white
+        }
+        else {
+            self.quizIcon.tintColor = .black
+        }
+        super.setDarkMode(enabled: enabled)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

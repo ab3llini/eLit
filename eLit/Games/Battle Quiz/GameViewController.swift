@@ -15,7 +15,7 @@ protocol GameControllerDelegate {
 }
 
 
-class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate {
+class GameViewController: BlurredBackgroundViewController, GameEngineDelegate, ContextDelegate {
     
     
     // Game objects
@@ -33,14 +33,20 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Hide the tab bar to make the game go full screen!
-        self.tabBarController?.tabBar.isHidden = true
         self.context.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
         self.engine.start()
+        
+        // Hide the tab bar to make the game go full screen!
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     // Called from parent view controller to init a new game!
@@ -90,6 +96,7 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
         
         question.getImage(then: { image in
             self.context.setImage(image)
+            self.setBackgroundImage(image)
         })
         
         self.context.startTimeout(duration: question.timeout)

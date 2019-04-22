@@ -18,19 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRG-8a-TRE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRG-8a-TRE" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="130.33333333333334" y="294" width="114.33333333333334" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wants to play with you!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQx-Ki-oVm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wants to play with you!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQx-Ki-oVm" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="79.666666666666686" y="328" width="216" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
@@ -53,11 +53,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="Decline">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547850000002" green="0.66089111970000003" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="bgAlpha">
                                         <real key="value" value="0.40000000000000002"/>
@@ -90,11 +90,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="Accept">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547850000002" green="0.66089111970000003" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="bgAlpha">
                                         <real key="value" value="0.40000000000000002"/>
@@ -129,7 +129,7 @@
                                             </constraint>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -151,7 +151,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.32445092190000002" green="0.23758930089999999" blue="0.72070604559999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PQx-Ki-oVm" firstAttribute="top" secondItem="zRG-8a-TRE" secondAttribute="bottom" constant="10" id="2hj-RD-0dT"/>
                             <constraint firstItem="xjE-3E-ZkN" firstAttribute="trailing" secondItem="6xq-5T-IzL" secondAttribute="trailing" constant="30" id="3Ka-Qx-lFE"/>
@@ -174,6 +174,14 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="transparentNavBar" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="NO"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundImageColor">
+                            <color key="value" red="0.91749630680000005" green="0.54374212290000001" blue="0.99705451730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="BattleQuiz"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="acceptButton" destination="VkG-rx-zYo" id="ujY-pC-vuN"/>
                         <outlet property="coutdownLabel" destination="dbI-VB-MCl" id="uDA-So-13a"/>
@@ -291,11 +299,11 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jed-LL-LUy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jed-LL-LUy" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                 <rect key="frame" x="30" y="426.66666666666669" width="315" height="95.666666666666686"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla eros, efficitur vel tempus ac, fermentum ac enim. In interdum leo ut ipsum accumsan mollis. A</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -311,11 +319,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="This is an answer">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547853707969" green="0.66089111973174397" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                         <color key="value" red="0.0" green="0.85593944970000002" blue="0.49473746839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -347,11 +355,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="This is an answer">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547853707969" green="0.66089111973174397" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                         <color key="value" red="0.0" green="0.85593944970000002" blue="0.49473746839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -383,11 +391,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="This is an answer">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547853707969" green="0.66089111973174397" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                         <color key="value" red="0.0" green="0.85593944970000002" blue="0.49473746839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -419,11 +427,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="This is an answer">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                        <color key="value" red="0.56647547853707969" green="0.66089111973174397" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                         <color key="value" red="0.0" green="0.85593944970000002" blue="0.49473746839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -451,7 +459,7 @@
                                     <constraint firstAttribute="width" secondItem="Vog-Ys-Dv0" secondAttribute="height" multiplier="1:1" id="yFN-Uk-sQz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -466,7 +474,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.32445092190343011" green="0.2375893009406361" blue="0.72070604562759399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="L61-p9-NCg" firstAttribute="trailing" secondItem="st2-lA-dNj" secondAttribute="trailing" id="0w2-E5-Ed8"/>
                             <constraint firstItem="oE2-a3-85B" firstAttribute="centerY" secondItem="OnU-4b-M6B" secondAttribute="centerY" id="2GV-We-qwB"/>
@@ -521,6 +529,12 @@
                     <navigationItem key="navigationItem" id="vvD-V5-0KA"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="transparentNavBar" value="NO"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="BattleQuiz"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="modeFit" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="context" destination="TZ7-MD-wcP" id="v9M-nM-AxA"/>
                         <outlet property="localPlayer" destination="He9-88-AJJ" id="Wk3-gS-PQZ"/>
@@ -603,11 +617,11 @@
         <!--Play-->
         <scene sceneID="n2z-Ws-rj4">
             <objects>
-                <navigationController navigationBarHidden="YES" id="tSU-i0-kSz" sceneMemberID="viewController">
+                <navigationController id="tSU-i0-kSz" customClass="LargeVbrantNavigatonController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Play" image="GameIcon" id="DfW-ZG-X3U"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h3B-fA-Kvb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="h3B-fA-Kvb">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -618,41 +632,24 @@
             </objects>
             <point key="canvasLocation" x="-1753" y="1187"/>
         </scene>
-        <!--Battle Quiz View Controller-->
+        <!--Battle quiz-->
         <scene sceneID="YaH-cY-ow7">
             <objects>
-                <viewController id="QUZ-gB-S3Y" customClass="BattleQuizViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Battle quiz" id="QUZ-gB-S3Y" customClass="BattleQuizViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chR-Lu-EfQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battle Quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7B-E3-85j">
-                                <rect key="frame" x="106.00000000000001" y="94" width="163.33333333333337" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="65"/>
-                                </variation>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QuizIcon" translatesAutoresizingMaskIntoConstraints="NO" id="K08-sv-8eJ">
-                                <rect key="frame" x="137.66666666666666" y="152.33333333333334" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VqC-Tc-SiV"/>
-                                    <constraint firstAttribute="width" secondItem="K08-sv-8eJ" secondAttribute="height" multiplier="1:1" id="kOY-9O-Lr6"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looking for players.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-xq-1qg">
-                                <rect key="frame" x="91.666666666666671" y="302.33333333333331" width="191.66666666666663" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for players.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-xq-1qg" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                <rect key="frame" x="30" y="164" width="195.66666666666666" height="21.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wF9-68-2bH" customClass="NearbyBrowserTableView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="366.33333333333326" width="315" height="361.66666666666674"/>
+                                <rect key="frame" x="30" y="205.66666666666669" width="315" height="522.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -682,11 +679,11 @@
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                             <state key="normal" title="Invite">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="neutralColor">
-                                                                    <color key="value" red="0.56647547850000002" green="0.66089111970000003" blue="0.92145264149999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="bgAlpha">
                                                                     <real key="value" value="0.40000000000000002"/>
@@ -712,10 +709,9 @@
                                                                 <action selector="onChallenge:" destination="ASD-VW-eVB" eventType="touchUpInside" id="ApJ-FH-79q"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Player name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-5i-MbU">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Player name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-5i-MbU" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
                                                             <rect key="frame" x="40" y="10" width="206" height="20"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=regular">
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -768,42 +764,73 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="51v-0x-1M9">
-                                <rect key="frame" x="177.66666666666666" y="336.33333333333331" width="20" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYD-jf-NSk">
+                                <rect key="frame" x="50.333333333333343" y="84" width="274.66666666666663" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge you friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yTx-yy-VvC" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
+                                        <rect key="frame" x="49.999999999999986" y="6.9999999999999982" width="224.66666666666663" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        </variation>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QuizIcon" translatesAutoresizingMaskIntoConstraints="NO" id="K08-sv-8eJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VqC-Tc-SiV"/>
+                                            <constraint firstAttribute="width" secondItem="K08-sv-8eJ" secondAttribute="height" multiplier="1:1" id="kOY-9O-Lr6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="K08-sv-8eJ" firstAttribute="top" secondItem="jYD-jf-NSk" secondAttribute="top" id="3I3-2y-Uuj"/>
+                                    <constraint firstItem="yTx-yy-VvC" firstAttribute="centerY" secondItem="jYD-jf-NSk" secondAttribute="centerY" id="ObG-T9-qxG"/>
+                                    <constraint firstAttribute="bottom" secondItem="K08-sv-8eJ" secondAttribute="bottom" id="TFR-9t-nEs"/>
+                                    <constraint firstItem="yTx-yy-VvC" firstAttribute="leading" secondItem="K08-sv-8eJ" secondAttribute="trailing" constant="10" id="V2y-qk-7v6"/>
+                                    <constraint firstAttribute="trailing" secondItem="yTx-yy-VvC" secondAttribute="trailing" id="X5W-0Y-5KD"/>
+                                    <constraint firstItem="K08-sv-8eJ" firstAttribute="leading" secondItem="jYD-jf-NSk" secondAttribute="leading" id="oX3-dO-sxM"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-rm-hDK">
+                                <rect key="frame" x="325" y="165" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.32445092190000002" green="0.23758930089999999" blue="0.72070604559999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5LD-xq-1qg" firstAttribute="top" secondItem="K08-sv-8eJ" secondAttribute="bottom" constant="50" id="3rY-r6-5GG"/>
-                            <constraint firstItem="K08-sv-8eJ" firstAttribute="top" secondItem="G7B-E3-85j" secondAttribute="bottom" constant="20" id="6xX-ak-9yd"/>
-                            <constraint firstItem="G7B-E3-85j" firstAttribute="top" secondItem="9zE-6d-e4W" secondAttribute="top" constant="50" id="7LS-gs-vpx"/>
-                            <constraint firstItem="51v-0x-1M9" firstAttribute="centerX" secondItem="chR-Lu-EfQ" secondAttribute="centerX" id="7pu-PK-jSu"/>
+                            <constraint firstItem="wF9-68-2bH" firstAttribute="top" secondItem="5LD-xq-1qg" secondAttribute="bottom" constant="20" id="0Vu-mg-vAV"/>
+                            <constraint firstItem="5LD-xq-1qg" firstAttribute="top" secondItem="jYD-jf-NSk" secondAttribute="bottom" constant="40" id="0kz-le-mUD"/>
+                            <constraint firstItem="jYD-jf-NSk" firstAttribute="top" secondItem="9zE-6d-e4W" secondAttribute="top" constant="40" id="3kA-mX-chg"/>
+                            <constraint firstItem="wF9-68-2bH" firstAttribute="leading" secondItem="5LD-xq-1qg" secondAttribute="leading" id="40u-Hb-5xI"/>
+                            <constraint firstItem="oHZ-rm-hDK" firstAttribute="trailing" secondItem="wF9-68-2bH" secondAttribute="trailing" id="Al2-oq-YoQ"/>
                             <constraint firstItem="9zE-6d-e4W" firstAttribute="trailing" secondItem="wF9-68-2bH" secondAttribute="trailing" constant="30" id="B46-rH-dDx">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="5LD-xq-1qg" firstAttribute="centerX" secondItem="chR-Lu-EfQ" secondAttribute="centerX" id="Ffb-ch-TF6"/>
-                            <constraint firstItem="wF9-68-2bH" firstAttribute="top" secondItem="51v-0x-1M9" secondAttribute="bottom" constant="10" id="Ruy-g2-xHm"/>
-                            <constraint firstItem="K08-sv-8eJ" firstAttribute="centerX" secondItem="chR-Lu-EfQ" secondAttribute="centerX" id="Sb3-92-LDC"/>
+                            <constraint firstItem="jYD-jf-NSk" firstAttribute="centerX" secondItem="chR-Lu-EfQ" secondAttribute="centerX" id="H6J-Ir-QRd"/>
                             <constraint firstItem="wF9-68-2bH" firstAttribute="leading" secondItem="9zE-6d-e4W" secondAttribute="leading" constant="30" id="chp-H5-W0T">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="G7B-E3-85j" firstAttribute="centerX" secondItem="chR-Lu-EfQ" secondAttribute="centerX" id="d1L-hz-Um1"/>
-                            <constraint firstItem="51v-0x-1M9" firstAttribute="top" secondItem="5LD-xq-1qg" secondAttribute="bottom" constant="10" id="glJ-h5-jsd"/>
+                            <constraint firstItem="oHZ-rm-hDK" firstAttribute="centerY" secondItem="5LD-xq-1qg" secondAttribute="centerY" id="ipQ-ne-x1a"/>
                             <constraint firstItem="9zE-6d-e4W" firstAttribute="bottom" secondItem="wF9-68-2bH" secondAttribute="bottom" constant="50" id="mVk-lX-dU6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9zE-6d-e4W"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DnT-nd-90Q"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Battle quiz" id="DnT-nd-90Q"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="gamebg"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="largeTitles" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="transparentNavBar" value="YES"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="BattleQuiz"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="modeFit" value="NO"/>
                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundImageColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="value" red="0.91749630680356586" green="0.54374212285309831" blue="0.99705451726913452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="nearbyBrowserTableView" destination="wF9-68-2bH" id="2RY-n4-1gB"/>
-                        <outlet property="statusIndicator" destination="51v-0x-1M9" id="bCq-4K-eu1"/>
+                        <outlet property="quizIcon" destination="K08-sv-8eJ" id="U6t-An-B0Z"/>
+                        <outlet property="statusIndicator" destination="oHZ-rm-hDK" id="Hha-GN-rzf"/>
                         <outlet property="statuslabel" destination="5LD-xq-1qg" id="59L-eB-dyb"/>
                         <segue destination="AvT-qN-3Cg" kind="show" identifier="toInviteVC" id="QiI-vd-Iyo"/>
                         <segue destination="71g-Pi-ZJZ" kind="show" identifier="toGameVC" id="44E-4t-ooW"/>
@@ -815,14 +842,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BattleQuiz" width="1080" height="1920"/>
         <image name="GameIcon" width="30" height="30"/>
         <image name="QuizIcon" width="512" height="512"/>
         <image name="drink_placeholder" width="1024" height="1024"/>
-        <image name="gamebg" width="1668" height="2388"/>
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gXs-D6-l1T"/>
-        <segue reference="P5M-zu-H0I"/>
+        <segue reference="YEi-Zv-fT6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class InvitationViewController: UIViewController, TimeoutLabelDelegate {
+class InvitationViewController: BlurredBackgroundViewController, TimeoutLabelDelegate {
 
     @IBOutlet weak var playerName: UILabel!
     @IBOutlet weak var coutdownLabel: TimeoutLabel!
@@ -22,10 +22,19 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        coutdownLabel.delegate = self
         playerImage.roundImage(with: 1, ofColor: .gray)
+        coutdownLabel.delegate = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+        
+        // Hide the tab bar to make the game go full screen!
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         
         self.didChoose = false
         
@@ -46,13 +55,10 @@ class InvitationViewController: UIViewController, TimeoutLabelDelegate {
         declineButton.changeTo(color: declineButton.neutralColor)
         declineButton.isUserInteractionEnabled = true
         declineButton.isHidden = false
-        
     }
-
 
     override func viewDidAppear(_ animated: Bool) {
         self.coutdownLabel.startTimeout(duration: 30)
-        
     }
     
     func timeoutDidExpire() {

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class QuizButton: UIButton {
+class QuizButton: UIButton, DarkModeBehaviour {
 
     @IBInspectable var neutralColor : UIColor = .blue
     @IBInspectable var selectedColor : UIColor = .yellow
@@ -18,16 +18,20 @@ class QuizButton: UIButton {
     
     @IBInspectable var bgAlpha : CGFloat = 0.5
     @IBInspectable var borderRadius : CGFloat = 20
+    
+    private var preferredTextColor : UIColor!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepare()
+        self.preferredTextColor = self.titleLabel?.textColor
+        DarkModeManager.shared.register(component: self)
     }
     
     func prepare() {
         self.clipsToBounds = true
         self.layer.borderColor = self.neutralColor.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = self.borderRadius
         self.backgroundColor = self.neutralColor.withAlphaComponent(self.bgAlpha)
         self.isUserInteractionEnabled = true
@@ -40,6 +44,10 @@ class QuizButton: UIButton {
     func changeTo(color : UIColor) {
         self.backgroundColor = color.withAlphaComponent(self.bgAlpha)
         self.layer.borderColor = color.cgColor
+    }
+    
+    func setDarkMode(enabled: Bool) {
+        self.setTitleColor((enabled) ? .white : self.preferredTextColor, for: .normal)
     }
     
 }

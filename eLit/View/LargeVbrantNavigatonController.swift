@@ -30,14 +30,11 @@ class LargeVbrantNavigatonController: UINavigationController, UINavigationContro
         self.prevVC = self.visibleViewController
         
         self.navigationBar.tintColor = UIColor(red: 236/255.0, green: 69/255.0, blue: 90/255.0, alpha: 1)
-        
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
-        
+                
         DarkModeManager.shared.register(component: self)
     
     }
 
-    
     override func viewWillLayoutSubviews() {
     
         

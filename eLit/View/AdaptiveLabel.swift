@@ -9,10 +9,8 @@
 import UIKit
 
 class AdaptiveLabel: UILabel, DarkModeLabelBehaviour {
-    
-    
+        
     var preferredColor : UIColor!
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +26,6 @@ class AdaptiveLabel: UILabel, DarkModeLabelBehaviour {
     private func commonInit() {
         
         self.preferredColor = self.textColor
-        self.setDarkMode(enabled: Preferences.shared.getSwitch(for: .darkMode))
         DarkModeManager.shared.register(component: self)
         
     }

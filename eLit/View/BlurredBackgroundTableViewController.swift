@@ -10,7 +10,8 @@ import UIKit
 
 
 class BlurredBackgroundTableViewController: UITableViewController, BlurredBackground, DarkModeBehaviour {
-    
+        
+    var contentModeFit: Bool!
     var visualEffectView: UIView?
     var backgroundImageSize: CGSize!
     var containerView: UIView!
@@ -39,6 +40,7 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.contentModeFit = true
         self.backgroundImageViewHeight = self.view.bounds.height / 4 * 3
 
         // Create a container view to attach image on top
@@ -72,6 +74,9 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
     
     override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
+
+        
         guard let lvnc : LargeVbrantNavigatonController = self.navigationController as? LargeVbrantNavigatonController else {
             
             print("Warning: Using a Blurred VC without a proper nav controller")
@@ -79,11 +84,12 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
             return
             
         }
-        
+                
         // Optimize nav controller
         lvnc.optimize(for: self)
         
     }
+    
     
     func setDarkMode(enabled: Bool) {
         
