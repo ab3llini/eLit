@@ -129,14 +129,26 @@ class QuestionGenerator: NSObject {
             }
         } else {
             // TODO: maybe there is no drink for that ingredient...
-            let answer1 = correctAnswers.randomElement()!.name!
+            if correctAnswers.count == 0 {
+                let answer1 = "None of the others"
+                answers[answer1] = true
+                
+                for _ in 0..<3 {
+                    let d = wrongAnswers.randomElement()!
+                    wrongAnswers.removeAll(where: {$0.name! == d.name!})
+                    answers[d.name!] = false
+                }
+            }
+            else {
+                let answer1 = correctAnswers.randomElement()!.name!
             
-            answers[answer1] = true
-            
-            for _ in 0..<3 {
-                let d = wrongAnswers.randomElement()!
-                wrongAnswers.removeAll(where: {$0.name! == d.name!})
-                answers[d.name!] = false
+                answers[answer1] = true
+                
+                for _ in 0..<3 {
+                    let d = wrongAnswers.randomElement()!
+                    wrongAnswers.removeAll(where: {$0.name! == d.name!})
+                    answers[d.name!] = false
+                }
             }
         }
         

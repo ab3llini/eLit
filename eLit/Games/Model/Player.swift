@@ -28,7 +28,7 @@ class Player: NSObject {
     }
     
     func setWinCurrentRound(_ success : Bool) {
-        if (self.rounds.count < self.nRounds) {
+        if (self.rounds.count <= self.nRounds) {
             self.playerImageView.addNewArc(at: self.rounds.count, success: success)
             self.rounds.append(success)
         }

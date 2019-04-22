@@ -16,7 +16,7 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     private let cm = ConnectionManager.shared
     private var currentQuestion: Question?
     private var currentAnswer: String = "no-answer"
-
+    private var correctAnswers : [String : Int] = ["host" : 0, "client" : 0]
     
     private var questionHandlers : [((_ question: Question?) -> Void)] = []
     
@@ -33,6 +33,7 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     
     func setLastAnswer(to value : String) {
         self.currentAnswer = value
+        self.checkIsCorrectAnswer(value, for: .host)
     }
     
     func getNextQuestion(then completion: @escaping (_ question: Question?) -> Void) {
@@ -51,14 +52,65 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
                 for handler in self.questionHandlers {
                     handler(self.currentQuestion)
                 }
-                self.currentQuestion = nil
                 self.questionHandlers = []
             }
         }
     }
     
+    private func computeOutcomeFor(_ mode : OperationMode) -> GameOutcome {
+        
+        let lkey = (mode == .host) ? "host" : "client"
+        let rkey = (mode == .host) ? "client" : "host"
+
+        if self.correctAnswers[lkey]! > self.correctAnswers[rkey]! {
+           return .win
+        }
+        else if self.correctAnswers[lkey]! == self.correctAnswers[rkey]! {
+            return .tie
+        }
+        else {
+            return .loose
+        }
+    }
+    
+    func getGameOutcome(completion: @escaping (_ outcome: GameOutcome) -> Void){
+        // Compute the winner, if one exists
+        if self.mode == .host {
+            completion(self.computeOutcomeFor(.host))
+        }
+        else {
+           self.cm.requestOutcome(then: completion)
+        }
+    }
+    
     func getRemoteAnswer(then completion: @escaping (_ answer: String?) -> Void) {
-        self.cm.askForAnswer(then: completion)
+        self.cm.askForAnswer { (remoteAnswer) in
+            if (self.mode == .host) {
+                self.checkIsCorrectAnswer(remoteAnswer, for: .client)
+            }
+            completion(remoteAnswer)
+        }
+    }
+    
+    private func checkIsCorrectAnswer(_ answer : String?, for mode : OperationMode) {
+        
+        let key = (mode == .host) ? "host" : "client"
+        
+        if let question = self.currentQuestion {
+            if let answers = question.answers, let answer_ = answer {
+                if let isCorrect = answers[answer_], isCorrect == true {
+                    
+                    print("\(mode) answer is CORRECT!")
+                    
+                    self.correctAnswers[key] = self.correctAnswers[key]! + 1
+                }
+                else {
+                    print("\(mode) answer is NOT CORRECT!")
+
+                }
+            }
+        }
+        
     }
     
     func connectionManager(didReceive requestType: MPCRequestType, handler: ((Any) -> Void)?) {
@@ -68,6 +120,9 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
         case .requestAnswer:
             handler!(self.currentAnswer)
             self.currentAnswer = "no-answer"
+        case .requestOutcome:
+            let outcome = self.computeOutcomeFor(.client)
+            handler!(outcome)
         default:
             return
         }

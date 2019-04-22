@@ -19,8 +19,6 @@ class QuizButton: UIButton {
     @IBInspectable var bgAlpha : CGFloat = 0.5
     @IBInspectable var borderRadius : CGFloat = 20
 
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepare()

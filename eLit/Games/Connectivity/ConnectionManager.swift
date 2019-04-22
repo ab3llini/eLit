@@ -146,6 +146,7 @@ class ConnectionManager: NSObject {
     private var incomingInvite : IncomingInvite?
     private var completionForQuestion: ((_: Question?) -> Void)? = nil
     private var completionForAnswer: ((_: String?) -> Void)? = nil
+    private var completionForOutcome : ((_ : GameOutcome) -> Void)? = nil
     
     private let timeStarted = Date()
     
@@ -453,6 +454,20 @@ extension ConnectionManager : MCSessionDelegate {
                     dataDict["request"] = MPCRequestType.answer.rawValue
                     self.sendData(dataDict)
                 })
+            case MPCRequestType.outcome.rawValue:
+                guard let completion = self.completionForOutcome else {
+                    return
+                }
+                let outcome = dataDict
+                completion(GameOutcome(rawValue: outcome["outcome"]!)!)
+                return
+                
+            case MPCRequestType.requestOutcome.rawValue:
+                self.gameCommunicationDelegate?.connectionManager(didReceive: .requestOutcome, handler: { (object) in
+                    var dataDict = ["outcome": ((object as! GameOutcome).rawValue)]
+                    dataDict["request"] = MPCRequestType.outcome.rawValue
+                    self.sendData(dataDict)
+                })
                 
             default:
                 return
@@ -480,6 +495,8 @@ enum MPCRequestType: String {
     case question = "Question"
     case requestAnswer = "RequestAnswer"
     case answer = "Answer"
+    case requestOutcome = "RequestOutcome"
+    case outcome = "Outcome"
     
 }
 
@@ -487,6 +504,12 @@ extension ConnectionManager {
     func requestQuestion(then completion: @escaping (_ question: Question?) -> Void) {
         self.completionForQuestion = completion
         let data = ["request": MPCRequestType.requestQuestion.rawValue] as [String: String]
+        self.sendData(data)
+    }
+    
+    func requestOutcome(then completion: @escaping (_ outcome: GameOutcome) -> Void) {
+        self.completionForOutcome = completion
+        let data = ["request": MPCRequestType.requestOutcome.rawValue] as [String: String]
         self.sendData(data)
     }
     

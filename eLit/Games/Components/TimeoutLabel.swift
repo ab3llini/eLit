@@ -22,6 +22,10 @@ class TimeoutLabel: CountdownLabel, CAAnimationDelegate {
     
     private var animation : CABasicAnimation!
     
+    override func awakeFromNib() {
+        self.alpha = 0
+    }
+    
     private func createCircleLayer() -> CAShapeLayer {
         
         let shape = CAShapeLayer()

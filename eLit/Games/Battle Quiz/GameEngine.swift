@@ -37,7 +37,7 @@ class GameEngine: NSObject, GameControllerDelegate {
     public var delegate : GameEngineDelegate!
     private let netMode: OperationMode
     private let rounds = 5
-    private let comunicationEngine: GameComunicationEngine
+    private let communicationEngine: GameComunicationEngine
     private var currentAnswer: String?
     private var currentQuestion: Question?
     
@@ -45,11 +45,11 @@ class GameEngine: NSObject, GameControllerDelegate {
     
     init(with mode: OperationMode, delegate : GameEngineDelegate) {
         self.netMode = mode
-        self.comunicationEngine = GameComunicationEngine(for: mode)
+        self.communicationEngine = GameComunicationEngine(for: mode)
         
         super.init()
         self.delegate = delegate
-        ConnectionManager.shared.gameCommunicationDelegate = self.comunicationEngine
+        ConnectionManager.shared.gameCommunicationDelegate = self.communicationEngine
     }
     
     func start() {
@@ -59,13 +59,14 @@ class GameEngine: NSObject, GameControllerDelegate {
     
     func playerDidChoose(answer : String) {
         self.currentAnswer = answer
+        self.communicationEngine.setLastAnswer(to: answer)
     }
 
     func timeoutDidExpire() {
         
         self.nextRound(uponReceivingQuestion: { (question) in
             
-            self.comunicationEngine.getRemoteAnswer(then: { answer in
+            self.communicationEngine.getRemoteAnswer(then: { answer in
                 
                 var current: Bool = false
                 if self.currentAnswer != nil {
@@ -77,34 +78,38 @@ class GameEngine: NSObject, GameControllerDelegate {
                         remote = choice
                     }
                 }
-                self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
                 
+                self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
                 self.currentQuestion = question
                 self.currentAnswer = nil
                 
-                Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
-                    // Inception
-                    self.delegate.roundDidStart(withQuestion: self.currentQuestion!)
-                })
-                
+                if self.round <= self.rounds {
+                    Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+                        self.delegate.roundDidStart(withQuestion: self.currentQuestion!)
+                    })
+                } else {
+                    self.communicationEngine.getGameOutcome(completion: { (outcome) in
+                        Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+                            self.delegate.gameDidEnd(outcome: outcome)
+                        })
+                    })
+                }
             })
         })
     }
     
     private func nextRound(uponReceivingQuestion call : ((_ question: Question?) -> Void)? = nil) {
+        
         self.round += 1
-        if self.round <= self.rounds {
-            self.comunicationEngine.getNextQuestion(then: { question in
-                if let block = call {
-                    block(question)
-                }
-                else {
-                    self.currentQuestion = question
-                    self.delegate.roundDidStart(withQuestion: question!)
-                }
-            })
-        } else {
-            // TODO: game outcome
-        }
+        
+        self.communicationEngine.getNextQuestion(then: { question in
+            if let block = call {
+                block(question)
+            }
+            else {
+                self.currentQuestion = question
+                self.delegate.roundDidStart(withQuestion: question!)
+            }
+        })
     }
 }

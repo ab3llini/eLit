@@ -33,12 +33,8 @@ class Context: NSObject, TimeoutLabelDelegate {
         for (string, value) in values {
             answerButtons[current].prepare()
             answerButtons[current].setTitle(string, for: .normal)
-            if (value) {
-                answerButtons[current].setIsCorrectAnswer()
-            }
-            answerButtons[current].isHidden = false
+            answerButtons[current].setIsCorrectAnswer(value)
             current += 1
-
         }
     }
     
@@ -62,6 +58,7 @@ class Context: NSObject, TimeoutLabelDelegate {
     }
     
     @IBAction func onAnswerSelection(_ sender: AnswerButton) {
+        
         sender.setSelected()
         
         for button in self.answerButtons {

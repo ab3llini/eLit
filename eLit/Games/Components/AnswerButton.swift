@@ -14,8 +14,9 @@ class AnswerButton: QuizButton {
     private var isCorrectAnswer : Bool = false
     private var hasBeenSelected : Bool = false    
     
-    func setIsCorrectAnswer() {
-        self.isCorrectAnswer = true
+    func setIsCorrectAnswer(_ value : Bool) {
+        self.hasBeenSelected = false
+        self.isCorrectAnswer = value
     }
     
     func setSelected() {

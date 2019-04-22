@@ -56,15 +56,13 @@ class GameViewController: UIViewController, GameEngineDelegate, ContextDelegate 
     }
     
     func gameDidAbort(reason value: String) {
-        
-    }
-    
-    func remotePlayerDidAnswer(_ value: Bool) {
-        
+        self.outcome = nil
+        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
     }
     
     func remotePlayerDidDisconnect() {
-        
+        self.outcome = .win
+        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
     }
     
     func roundDidStart(withQuestion question: Question) {

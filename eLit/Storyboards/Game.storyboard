@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRG-8a-TRE">
-                                <rect key="frame" x="130.33333333333337" y="294" width="114.33333333333334" height="24"/>
+                                <rect key="frame" x="130.33333333333334" y="294" width="114.33333333333334" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                                 <rect key="frame" x="30" y="372" width="315" height="241"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-VB-MCl" customClass="TimeoutLabel" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="117.66666666666663" y="80.666666666666686" width="80" height="80"/>
+                                        <rect key="frame" x="117.66666666666666" y="80.666666666666686" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dbI-VB-MCl" secondAttribute="height" multiplier="1:1" id="a1V-Or-bK9"/>
                                             <constraint firstAttribute="height" constant="80" id="fvC-Qd-n1n">
@@ -230,7 +230,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-a3-85B" userLabel="RemotePlayer" customClass="PlayerImageView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="282.66666666666674" y="64" width="62.333333333333314" height="62.666666666666657"/>
+                                <rect key="frame" x="282.66666666666669" y="64" width="62.333333333333314" height="62.666666666666657"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="wXD-P8-bfN">
                                         <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="62.666666666666664"/>
@@ -446,7 +446,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vog-Ys-Dv0" customClass="TimeoutLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="156.33333333333337" y="64" width="62.333333333333343" height="62.666666666666657"/>
+                                <rect key="frame" x="156.33333333333334" y="64" width="62.333333333333343" height="62.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vog-Ys-Dv0" secondAttribute="height" multiplier="1:1" id="yFN-Uk-sQz"/>
                                 </constraints>
@@ -562,7 +562,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Outcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxv-1z-1pk">
-                                <rect key="frame" x="71.666666666666686" y="387" width="231.66666666666663" height="38.333333333333314"/>
+                                <rect key="frame" x="71.666666666666671" y="387" width="231.66666666666663" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -593,7 +593,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="outcomeLabel" destination="Bxv-1z-1pk" id="Jzo-jB-4zj"/>
-                        <segue destination="QUZ-gB-S3Y" kind="show" id="P5M-zu-H0I"/>
+                        <segue destination="QUZ-gB-S3Y" kind="show" identifier="toBattleQuizVC" id="P5M-zu-H0I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guH-bv-CrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -822,6 +822,6 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eOB-bb-fQk"/>
+        <segue reference="P5M-zu-H0I"/>
     </inferredMetricsTieBreakers>
 </document>
