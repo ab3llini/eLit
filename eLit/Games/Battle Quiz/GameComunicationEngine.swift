@@ -7,16 +7,19 @@
 //
 
 import UIKit
-
+import MultipeerConnectivity
 
 class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelegate {
-    
+
+
     private let mode: OperationMode
     private let questionGenerator: QuestionGenerator?
     private let cm = ConnectionManager.shared
     private var currentQuestion: Question?
     private var currentAnswer: String = "no-answer"
     private var correctAnswers : [String : Int] = ["host" : 0, "client" : 0]
+    public var engine : GameEngine!
+    
     
     private var questionHandlers : [((_ question: Question?) -> Void)] = []
 
@@ -64,7 +67,7 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
         let rkey = (mode == .host) ? "client" : "host"
 
         if self.correctAnswers[lkey]! > self.correctAnswers[rkey]! {
-           return .win
+            return .win
         }
         else if self.correctAnswers[lkey]! == self.correctAnswers[rkey]! {
             return .tie
@@ -100,18 +103,20 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
         if let question = self.currentQuestion {
             if let answers = question.answers, let answer_ = answer {
                 if let isCorrect = answers[answer_], isCorrect == true {
-                    
-                    print("\(mode) answer is CORRECT!")
-                    
                     self.correctAnswers[key] = self.correctAnswers[key]! + 1
-                }
-                else {
-                    print("\(mode) answer is NOT CORRECT!")
-
                 }
             }
         }
         
+    }
+    
+    func connectionManager(remotePeerDidDisconnect peerID: MCPeerID) {
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { (timer) in
+            // We need these secs delay before chekcing!
+            if !self.engine.gameDidEnd {
+                self.engine.delegate.remotePlayerDidDisconnect()
+            }
+        }
     }
     
     func connectionManager(didReceive requestType: MPCRequestType, handler: ((Any) -> Void)?) {

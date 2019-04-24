@@ -30,10 +30,6 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
                 
     }
     
-    override func viewDidLayoutSubviews() {
-        self.nearbyBrowserTableView.update(peers: ConnectionManager.shared.discovered)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -44,6 +40,8 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
         
         self.nearbyBrowserTableView.setInvitesEnabled(true)
         ConnectionManager.shared.start()
+        self.nearbyBrowserTableView.update(peers: ConnectionManager.shared.discovered)
+
     }
     
     func connectionManager(didReceive invite : UIInvite) {

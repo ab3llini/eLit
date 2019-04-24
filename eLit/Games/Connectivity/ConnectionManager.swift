@@ -145,6 +145,7 @@ protocol ConnectionManagerDelegate {
 
 protocol ConnectionManagerGameCommunicationDelegate {
     func connectionManager(didReceive requestType: MPCRequestType, handler : ((_ : Any) -> Void)?)
+    func connectionManager(remotePeerDidDisconnect peerID : MCPeerID)
 }
 
 
@@ -217,6 +218,12 @@ class ConnectionManager: NSObject {
             self.serviceBrowser.stopBrowsingForPeers()
             self.serviceAdvertiser.stopAdvertisingPeer()
             self.started = false
+        }
+    }
+    
+    func disconnect() {
+        if self.session.connectedPeers.count > 0 {
+            self.session.disconnect()
         }
     }
     
@@ -369,6 +376,11 @@ extension ConnectionManager : MCSessionDelegate {
                 else {
                     // Remote peer disconnected from local session!
                     print("Remote peer disconnected from local session!")
+                    if let _ = self.gameCommunicationDelegate {
+                        DispatchQueue.main.async {
+                            self.gameCommunicationDelegate!.connectionManager(remotePeerDidDisconnect: peerID)
+                        }
+                    }
                 }
             }
         case .connecting:
@@ -531,6 +543,7 @@ enum MPCRequestType: String {
 }
 
 extension ConnectionManager {
+    
     func requestQuestion(then completion: @escaping (_ question: Question?) -> Void) {
         self.completionForQuestion = completion
         let data = ["request": MPCRequestType.requestQuestion.rawValue] as [String: String]

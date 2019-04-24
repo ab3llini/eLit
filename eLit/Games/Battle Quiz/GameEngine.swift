@@ -12,6 +12,8 @@ enum GameOutcome : String {
     case win = "You won!"
     case loose = "You lost!"
     case tie = "Tie!"
+    case disconnect = "Other player left"
+    case error = "An error occured.."
 }
 
 protocol GameEngineDelegate {
@@ -36,10 +38,11 @@ class GameEngine: NSObject, GameControllerDelegate {
     // It is even going to hold a reference to this object
     public var delegate : GameEngineDelegate!
     private let netMode: OperationMode
-    private let rounds = 5
+    private let rounds = 2
     private let communicationEngine: GameComunicationEngine
     private var currentAnswer: String?
     private var currentQuestion: Question?
+    public private(set) var gameDidEnd = false
     
     private var round = 0
     
@@ -48,6 +51,7 @@ class GameEngine: NSObject, GameControllerDelegate {
         self.communicationEngine = GameComunicationEngine(for: mode)
         
         super.init()
+        self.communicationEngine.engine = self
         self.delegate = delegate
         ConnectionManager.shared.gameCommunicationDelegate = self.communicationEngine
     }
@@ -88,6 +92,7 @@ class GameEngine: NSObject, GameControllerDelegate {
                         self.delegate.roundDidStart(withQuestion: self.currentQuestion!)
                     })
                 } else {
+                    self.gameDidEnd = true
                     self.communicationEngine.getGameOutcome(completion: { (outcome) in
                         Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
                             self.delegate.gameDidEnd(outcome: outcome)

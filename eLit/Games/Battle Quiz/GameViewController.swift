@@ -77,13 +77,19 @@ class GameViewController: BlurredBackgroundViewController, GameEngineDelegate, C
     }
     
     func gameDidAbort(reason value: String) {
-        self.outcome = nil
-        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        if (self.outcome == nil) {
+            self.outcome = .error
+            ConnectionManager.shared.disconnect()
+            self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        }
     }
     
     func remotePlayerDidDisconnect() {
-        self.outcome = .win
-        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        if (self.outcome == nil) {
+            self.outcome = .disconnect
+            ConnectionManager.shared.disconnect()
+            self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        }
     }
     
     func roundDidStart(withQuestion question: Question) {
@@ -109,8 +115,13 @@ class GameViewController: BlurredBackgroundViewController, GameEngineDelegate, C
     }
     
     func gameDidEnd(outcome : GameOutcome) {
-        self.outcome = outcome
-        self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        
+        // Disconnect from the session
+        ConnectionManager.shared.disconnect()
+        if (self.outcome == nil) {
+            self.outcome = outcome
+            self.performSegue(withIdentifier: Navigation.toGameOutcomeVC.rawValue, sender: self)
+        }
     }
 
     

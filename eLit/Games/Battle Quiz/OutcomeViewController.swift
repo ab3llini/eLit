@@ -20,7 +20,7 @@ class OutcomeViewController: UIViewController {
     public var outcome : GameOutcome?
     
     override func viewDidAppear(_ animated: Bool) {
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in            
             self.performSegue(withIdentifier: Navigation.toBattleQuizVC.rawValue, sender: self)
         }
     }
@@ -35,7 +35,7 @@ class OutcomeViewController: UIViewController {
         
         guard outcome != nil else {
             self.view.backgroundColor = negativeOutcome
-            self.outcomeLabel.text = "An error occured"
+            self.outcomeLabel.text = "An error occured."
             return
         }
         switch outcome! {
@@ -43,6 +43,10 @@ class OutcomeViewController: UIViewController {
             self.view.backgroundColor = positiveOutcome
         case .tie:
             self.view.backgroundColor = evenOutcome
+        case .error:
+            fallthrough
+        case .disconnect:
+            fallthrough
         case .loose:
             self.view.backgroundColor = negativeOutcome
         }
