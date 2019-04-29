@@ -75,13 +75,21 @@ class GameEngine: NSObject, GameControllerDelegate {
                 var current: Bool = false
                 if self.currentAnswer != nil {
                     current = self.currentQuestion!.answers![self.currentAnswer!]!
+                    if current && self.netMode == .host {
+                        self.communicationEngine.correctAnswers["host"] = self.communicationEngine.correctAnswers["host"]! + 1
+                    }
                 }
                 var remote: Bool = false
                 if answer != nil {
                     if let choice = self.currentQuestion?.answers![answer!] {
                         remote = choice
+                        if remote && self.netMode == .host {
+                            self.communicationEngine.correctAnswers["client"] = self.communicationEngine.correctAnswers["client"]! + 1
+                        }
                     }
                 }
+                
+                
                 
                 self.delegate.roundDidEnd(localAnswer: current, remoteAnswer: remote)
                 self.currentQuestion = question

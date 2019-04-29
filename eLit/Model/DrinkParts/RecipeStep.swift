@@ -84,42 +84,24 @@ class RecipeStep: DrinkObject, DarkModeBehaviour {
                         attachment.image = image
                         attachment.bounds = CGRect(x: 0, y: -2, width: fontSize, height: fontSize)
                         
-                        
                         let iconString = NSMutableAttributedString(attachment: attachment)
                         let nameString = NSAttributedString(string: (component.withIngredient?.name)!)
-                        
-
-                        
-                        let color : UIColor
-                        
-                        if (Preferences.shared.getSwitch(for: .darkMode)) {
-                            color = .white
-                        }
-                        else {
-                            color = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
-                        }
-                        
-                        
+                    
                         iconString.appendWith(" ")
-                        iconString.appendWith(color: color, weight: .semibold, ofSize: fontSize, nameString.string)
+                        iconString.appendWith(color: .black, weight: .semibold, ofSize: fontSize, nameString.string)
                         
                         appendQueue.sync {
                             if let range = mString.string.range(of: "{\(index)}") {
                                 let nsRange = NSRange(range, in: mString.string)
                                 mString.replaceCharacters(in: nsRange, with: iconString)
                             }
-                            
                             if (component == components.last) {
                                 self.attributedString = mString
                                 DispatchQueue.main.async {
                                     completion(mString)
                                 }
-                                
                             }
-                            
                         }
-                        
-                        
                     }
                 }
             }

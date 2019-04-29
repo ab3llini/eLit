@@ -181,6 +181,7 @@
                             <color key="value" red="0.91749630680000005" green="0.54374212290000001" blue="0.99705451730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="BattleQuiz"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="modeFit" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="acceptButton" destination="VkG-rx-zYo" id="ujY-pC-vuN"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,17 +16,17 @@
             <rect key="frame" x="0.0" y="0.0" width="708" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="708" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="708" height="149.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-0o-WYw" customClass="ContainerView" customModule="eLit" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="708" height="150.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="708" height="100"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9c-dV-Nmx" userLabel="Blur View">
-                                <rect key="frame" x="0.0" y="0.0" width="708" height="150.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="708" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pYD-hs-UEH">
-                                        <rect key="frame" x="177" y="0.0" width="531" height="150.5"/>
+                                        <rect key="frame" x="177" y="0.0" width="531" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -39,7 +39,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drink_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="i76-HZ-yaz">
-                                <rect key="frame" x="33" y="19" width="112.5" height="112.5"/>
+                                <rect key="frame" x="8" y="8" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i76-HZ-yaz" secondAttribute="height" multiplier="1:1" id="buR-fv-anH"/>
                                 </constraints>
@@ -69,7 +69,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuq-bd-8eO" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="165.5" y="19" width="67" height="31"/>
+                                <rect key="frame" x="97" y="12.999999999999998" width="46.666666666666657" height="21.333333333333329"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jS8-zM-nwz" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="252.5" y="22.5" width="79" height="24"/>
+                                <rect key="frame" x="97" y="39.333333333333329" width="55" height="16.666666666666671"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                                 </variation>
                             </label>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-M6-W6n" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="455.5" y="68" width="79" height="15"/>
+                                <rect key="frame" x="97" y="61" width="79" height="15"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -131,10 +131,10 @@
                                 </variation>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v91-v3-msF" userLabel="DegreeRibbon" customClass="RibbonView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="289.5" y="63" width="50" height="25"/>
+                                <rect key="frame" x="648" y="13.666666666666664" width="70" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-aj-0PD" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="9.5" y="4" width="27.5" height="17"/>
+                                        <rect key="frame" x="15.000000000000002" y="2.6666666666666723" width="23.666666666666671" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -143,7 +143,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3n-eZ-98c" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="37" y="9.5" width="6" height="8"/>
+                                        <rect key="frame" x="39" y="7" width="21" height="8"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="6"/>
                                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -282,12 +282,12 @@
                             <mask key="constraints">
                                 <exclude reference="COG-ky-pM8"/>
                                 <exclude reference="uEQ-lp-vQv"/>
-                                <exclude reference="knF-dK-n5T"/>
-                                <exclude reference="mom-aS-BoB"/>
                                 <exclude reference="Kqm-4H-iW1"/>
                                 <exclude reference="bgE-fv-lfx"/>
                                 <exclude reference="blO-TX-cle"/>
                                 <exclude reference="nLO-7u-9B1"/>
+                                <exclude reference="knF-dK-n5T"/>
+                                <exclude reference="mom-aS-BoB"/>
                                 <exclude reference="LxZ-FI-lQS"/>
                                 <exclude reference="u3v-aU-hJW"/>
                                 <exclude reference="2He-te-85u"/>
@@ -326,13 +326,13 @@
                                 <exclude reference="S4m-Xp-bd3"/>
                                 <exclude reference="SpJ-sH-KJ7"/>
                                 <include reference="uEQ-lp-vQv"/>
-                                <exclude reference="knF-dK-n5T"/>
-                                <include reference="mom-aS-BoB"/>
-                                <exclude reference="nR6-Uo-JQX"/>
                                 <include reference="Kqm-4H-iW1"/>
                                 <include reference="bgE-fv-lfx"/>
                                 <exclude reference="blO-TX-cle"/>
                                 <exclude reference="nLO-7u-9B1"/>
+                                <exclude reference="knF-dK-n5T"/>
+                                <include reference="mom-aS-BoB"/>
+                                <exclude reference="nR6-Uo-JQX"/>
                                 <include reference="LxZ-FI-lQS"/>
                                 <exclude reference="plc-jf-Uk7"/>
                                 <exclude reference="r3O-Uk-SnR"/>

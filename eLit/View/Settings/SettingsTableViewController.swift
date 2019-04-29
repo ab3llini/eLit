@@ -47,7 +47,7 @@ class SettingsTableViewController: BlurredBackgroundTableViewController, GIDSign
         case 2:
             return 1
         default:
-            return self.userSettings.switches.count
+            return (UIScreen.main.traitCollection.horizontalSizeClass == .compact) ? self.userSettings.switches.count : self.userSettings.switches.count - 1
         }
     }
     

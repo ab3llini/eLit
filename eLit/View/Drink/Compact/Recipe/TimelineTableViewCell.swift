@@ -11,14 +11,9 @@ import UIKit
 class TimelineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timelineView: TimelineView!
-    @IBOutlet weak var preparationLabel: UILabel!
+    @IBOutlet weak var preparationLabel: AdaptiveLabel!
     @IBOutlet weak var stepLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -29,6 +24,11 @@ class TimelineTableViewCell: UITableViewCell {
         self.timelineView.isLastCell = false
         self.timelineView.isFistCell = false
         self.timelineView.setNeedsDisplay()
+    }
+    
+    func set(_ prepString: NSAttributedString) {
+        self.preparationLabel.attributedText = prepString
+        DarkModeManager.shared.requestUpdateFor(self.preparationLabel)
     }
     
 }

@@ -31,9 +31,10 @@ struct UserSettings {
 enum UserSettingsSwitchType : Int {
     case updates = 0
     case darkMode
-    case homeRating
     case hideIngredients
     case hideRecipe
+    case homeRating
+
 }
 
 class Preferences {

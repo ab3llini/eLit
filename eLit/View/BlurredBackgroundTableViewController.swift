@@ -87,7 +87,7 @@ class BlurredBackgroundTableViewController: UITableViewController, BlurredBackgr
                 
         // Optimize nav controller
         lvnc.optimize(for: self)
-        
+                
     }
     
     

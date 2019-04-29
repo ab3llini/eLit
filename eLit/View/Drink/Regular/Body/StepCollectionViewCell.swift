@@ -46,9 +46,8 @@ class StepCollectionViewCell: UICollectionViewCell, DarkModeBehaviour {
         
         self.step.setAttributedString(completion: { (string) in
             self.stepDescription.attributedText = string
+            DarkModeManager.shared.requestUpdateFor(self.stepDescription)
         })
-        
-        
         
         self.setBackgroundImage()
         

@@ -8,12 +8,22 @@
 
 import UIKit
 
+class TableStep {
+    var step : RecipeStep
+    var string : NSAttributedString?
+    
+    init(step : RecipeStep) {
+        self.step = step
+        self.string = nil
+    }
+
+}
 
 class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelegate, IngredientsTableViewCellDelegate {
     
     var drink : Drink!
     var rating: Double = 0
-    var steps : [RecipeStep] = []
+    var steps : [TableStep] = []
     var components : [Component] = []
 
     var didPrepareSteps = false
@@ -33,28 +43,6 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             // Register nibs
             self.tableView.register(UINib(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
-            
-        }
-        
-        let steps = drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? []
-        var ready = [RecipeStep?](repeating: nil, count: steps.count)
-        
-        var computed = 0
-        
-        for (idx, step) in steps.enumerated() {
-            
-            step.setAttributedString(completion: { (string) in
-                
-                ready[idx] = step
-                
-                if (computed == steps.count - 1) {
-                    self.steps = ready as! [RecipeStep]
-                    self.tableView.reloadData()
-                }
-                
-                computed = computed + 1
-                
-            })
             
         }
         
@@ -83,10 +71,14 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         
         // Set drink
         self.drink = drink
-        
         self.components = self.drink.components()
-    
+        self.steps = []
         
+        
+        for step in drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? [] {
+            self.steps.append(TableStep(step: step))
+        }
+
     }
 
     
@@ -159,7 +151,6 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         default:
             return nil
         }
-        
     }
     
     
@@ -343,9 +334,19 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 }
                 
                 cell.stepLabel.text = "Step \(indexPath.row + 1)"
-                cell.preparationLabel.attributedText = self.steps[indexPath.row].attributedString
                 
-
+                let tableStep = self.steps[indexPath.row]
+                
+                if let string = tableStep.string {
+                    cell.set(string)
+                }
+                else {
+                    tableStep.step.setAttributedString { (string) in
+                        tableStep.string = string
+                        self.tableView.reloadRows(at: [indexPath], with: .bottom)
+                    }
+                }
+                
                 return cell
                 
             default:

@@ -7,8 +7,6 @@
 
 - (univ) spinner in reviews should not keep animating 4 ever if no reviews are present
 - (univ) add progress bar during launch
-- (iphone) make cells in drink detail autorender their attr string and fix black/white colors
-
 
 --------------------------------
 -------------- Data ------------
@@ -28,12 +26,7 @@
 ---------- GameEngine ----------
 --------------------------------
 
-- Fix wrong outcome (should be inverted IMO )
-
 ------ Connectivity ------
-
-- Implement the disconnection among clients
-
 
 --------------------------------
 ---------- DD Document ---------

@@ -15,11 +15,11 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     // Outlets
     @IBOutlet public var drinkImageView : UIImageView!
-    @IBOutlet weak var drinkNameLabel: UILabel!
+    @IBOutlet weak var drinkNameLabel: AdaptiveLabel!
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var degreeLabel: UILabel!
+    @IBOutlet weak var categoryLabel: AdaptiveLabel!
+    @IBOutlet weak var degreeLabel: AdaptiveLabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var degreeRibbonView: RibbonView!
     
@@ -94,12 +94,6 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
 
     }
     
-    private func setCategoryRibbon() {
-        
-        self.categoryLabel.text = (drink.ofCategory?.name)!
-
-    }
-    
     func setRating() {
         
         self.ratingView.alpha = 0
@@ -158,14 +152,9 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         }
         else {
             self.blurView.alpha = 0.5
-            
-            
-            
             if self.defaultRatingSettings != nil {
-                
                 self.ratingView.settings = self.defaultRatingSettings!
             }
-            
         }
     }
     
@@ -173,9 +162,6 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
     public func setDrink(drink : Drink) {
         
         self.drink = drink
-
-        self.setCategoryRibbon()
-        self.setDegreeRibbon()
         
         self.setDrinkImage()
         self.setBackgroundColor()
@@ -183,8 +169,9 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         self.setRating()
     
         self.drinkNameLabel.text = drink.name
-        self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating) 
-        
+        self.categoryLabel.text = (drink.ofCategory?.name)!
+
+        self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
     }
     
     

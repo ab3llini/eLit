@@ -17,7 +17,7 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     private let cm = ConnectionManager.shared
     private var currentQuestion: Question?
     private var currentAnswer: String = "no-answer"
-    private var correctAnswers : [String : Int] = ["host" : 0, "client" : 0]
+    public var correctAnswers : [String : Int] = ["host" : 0, "client" : 0]
     public var engine : GameEngine!
     
     
@@ -31,13 +31,11 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
         } else {
             self.questionGenerator = nil
         }
-        
         super.init()
     }
     
     func setLastAnswer(to value : String) {
         self.currentAnswer = value
-        self.checkIsCorrectAnswer(value, for: .host)
     }
     
     func getNextQuestion(then completion: @escaping (_ question: Question?) -> Void) {
@@ -62,6 +60,9 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     }
     
     private func computeOutcomeFor(_ mode : OperationMode) -> GameOutcome {
+        
+        print("At time of computing outcome: \(self.correctAnswers)")
+
         
         let lkey = (mode == .host) ? "host" : "client"
         let rkey = (mode == .host) ? "client" : "host"
@@ -89,25 +90,8 @@ class GameComunicationEngine: NSObject, ConnectionManagerGameCommunicationDelega
     
     func getRemoteAnswer(then completion: @escaping (_ answer: String?) -> Void) {
         self.cm.askForAnswer { (remoteAnswer) in
-            if (self.mode == .host) {
-                self.checkIsCorrectAnswer(remoteAnswer, for: .client)
-            }
             completion(remoteAnswer)
         }
-    }
-    
-    private func checkIsCorrectAnswer(_ answer : String?, for mode : OperationMode) {
-        
-        let key = (mode == .host) ? "host" : "client"
-        
-        if let question = self.currentQuestion {
-            if let answers = question.answers, let answer_ = answer {
-                if let isCorrect = answers[answer_], isCorrect == true {
-                    self.correctAnswers[key] = self.correctAnswers[key]! + 1
-                }
-            }
-        }
-        
     }
     
     func connectionManager(remotePeerDidDisconnect peerID: MCPeerID) {

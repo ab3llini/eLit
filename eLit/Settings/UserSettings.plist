@@ -18,12 +18,6 @@
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>Show rating in homepage</string>
-			<key>Value</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Key</key>
 			<string>Hide drink ingredients</string>
 			<key>Value</key>
 			<false/>
@@ -33,6 +27,12 @@
 			<string>Hide drink recipe</string>
 			<key>Value</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>Show rating in homepage</string>
+			<key>Value</key>
+			<true/>
 		</dict>
 	</array>
 </dict>
