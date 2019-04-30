@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tSU-i0-kSz">
-    <device id="retina5_9" orientation="portrait">
+    <device id="ipad12_9rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="AvT-qN-3Cg" customClass="InvitationViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Omt-sW-jmP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRG-8a-TRE" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="130.33333333333334" y="294" width="114.33333333333334" height="24"/>
+                                <rect key="frame" x="433" y="274" width="158.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wants to play with you!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQx-Ki-oVm" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="79.666666666666686" y="328" width="216" height="24"/>
+                                <rect key="frame" x="362.5" y="317.5" width="299" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -37,14 +37,14 @@
                                 </variation>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="hog-gX-6FE">
-                                <rect key="frame" x="112.66666666666669" y="94" width="150" height="150"/>
+                                <rect key="frame" x="437" y="74" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="K9X-Sc-T1Q"/>
                                     <constraint firstAttribute="width" secondItem="hog-gX-6FE" secondAttribute="height" multiplier="1:1" id="WTr-BS-tEF"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xq-5T-IzL" customClass="QuizButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="688" width="315" height="40"/>
+                                <rect key="frame" x="30" y="1236" width="964" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qgq-KM-0f9">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkG-rx-zYo" customClass="QuizButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="633" width="315" height="40"/>
+                                <rect key="frame" x="30" y="1161" width="964" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QcY-1h-qAW">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -118,10 +118,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGR-nP-MbC">
-                                <rect key="frame" x="30" y="372" width="315" height="241"/>
+                                <rect key="frame" x="30" y="371" width="964" height="770"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-VB-MCl" customClass="TimeoutLabel" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="117.66666666666666" y="80.666666666666686" width="80" height="80"/>
+                                        <rect key="frame" x="402" y="305" width="160" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dbI-VB-MCl" secondAttribute="height" multiplier="1:1" id="a1V-Or-bK9"/>
                                             <constraint firstAttribute="height" constant="80" id="fvC-Qd-n1n">
@@ -201,14 +201,14 @@
             <objects>
                 <viewController id="71g-Pi-ZJZ" customClass="GameViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Xn-qO-4iS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-4b-M6B" userLabel="LocalPlayer" customClass="PlayerImageView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="29.999999999999996" y="64" width="62.666666666666657" height="62.666666666666657"/>
+                                <rect key="frame" x="60" y="64" width="100" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="qdN-Cz-Lrt">
-                                        <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -239,10 +239,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-a3-85B" userLabel="RemotePlayer" customClass="PlayerImageView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="282.66666666666669" y="64" width="62.333333333333314" height="62.666666666666657"/>
+                                <rect key="frame" x="864" y="64" width="100" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="wXD-P8-bfN">
-                                        <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="62.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -273,7 +273,7 @@
                                 </connections>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="drink_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="9sN-c1-1P1">
-                                <rect key="frame" x="30" y="156.66666666666663" width="315" height="250"/>
+                                <rect key="frame" x="60" y="194" width="904" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Ovz-hW-Gdz"/>
@@ -301,7 +301,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jed-LL-LUy" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="426.66666666666669" width="315" height="95.666666666666686"/>
+                                <rect key="frame" x="60" y="614" width="904" height="86"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla eros, efficitur vel tempus ac, fermentum ac enim. In interdum leo ut ipsum accumsan mollis. A</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -311,7 +311,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-lA-dNj" customClass="AnswerButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="568" width="315" height="40"/>
+                                <rect key="frame" x="60" y="750" width="904" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="y7P-8r-HA7">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L61-p9-NCg" customClass="AnswerButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="618" width="315" height="40"/>
+                                <rect key="frame" x="60" y="820" width="904" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mGo-Sd-oAJ">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -383,7 +383,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNr-pc-u9L" customClass="AnswerButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="668" width="315" height="40"/>
+                                <rect key="frame" x="60" y="890" width="904" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hJB-7h-jsZ">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -419,7 +419,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nx-75-CLX" customClass="AnswerButton" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="718" width="315" height="40"/>
+                                <rect key="frame" x="60" y="960" width="904" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="coy-rx-nAG">
                                         <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -455,7 +455,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vog-Ys-Dv0" customClass="TimeoutLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="156.33333333333334" y="64" width="62.333333333333343" height="62.666666666666657"/>
+                                <rect key="frame" x="462" y="64" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vog-Ys-Dv0" secondAttribute="height" multiplier="1:1" id="yFN-Uk-sQz"/>
                                 </constraints>
@@ -573,11 +573,11 @@
             <objects>
                 <viewController id="Auq-gI-BXQ" customClass="OutcomeViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="soo-RO-emM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Outcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxv-1z-1pk">
-                                <rect key="frame" x="71.666666666666671" y="387" width="231.66666666666663" height="38.333333333333314"/>
+                                <rect key="frame" x="280.5" y="644" width="463.5" height="78"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -622,7 +622,7 @@
                     <tabBarItem key="tabBarItem" title="Play" image="GameIcon" id="DfW-ZG-X3U"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="h3B-fA-Kvb">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="24" width="1024" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -638,40 +638,40 @@
             <objects>
                 <viewController title="Battle quiz" id="QUZ-gB-S3Y" customClass="BattleQuizViewController" customModule="eLit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chR-Lu-EfQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for players.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-xq-1qg" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="164" width="195.66666666666666" height="21.666666666666657"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <rect key="frame" x="100" y="144" width="261" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wF9-68-2bH" customClass="NearbyBrowserTableView" customModule="eLit" customModuleProvider="target">
-                                <rect key="frame" x="30" y="205.66666666666669" width="315" height="522.33333333333326"/>
+                                <rect key="frame" x="100" y="197.5" width="824" height="1098.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="peerCell" rowHeight="100" id="ASD-VW-eVB" customClass="PeerTableViewCell" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="315" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="824" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ASD-VW-eVB" id="5AW-4v-hzz">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ASD-VW-eVB" id="5AW-4v-hzz">
+                                            <rect key="frame" x="0.0" y="0.0" width="824" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFQ-IL-btw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="onA-hw-i12" userLabel="Image">
-                                                            <rect key="frame" x="0.0" y="5" width="30" height="30"/>
+                                                            <rect key="frame" x="0.0" y="10" width="80" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="onA-hw-i12" secondAttribute="height" multiplier="1:1" id="0bU-8B-qz5"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yge-1R-A71" customClass="QuizButton" customModule="eLit" customModuleProvider="target">
-                                                            <rect key="frame" x="256" y="5" width="59" height="30"/>
+                                                            <rect key="frame" x="232" y="30" width="83" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="vux-vm-5nJ">
                                                                     <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -711,7 +711,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Player name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-5i-MbU" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                                            <rect key="frame" x="40" y="10" width="206" height="20"/>
+                                                            <rect key="frame" x="90" y="35.5" width="132" height="29"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=regular">
@@ -766,14 +766,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYD-jf-NSk">
-                                <rect key="frame" x="50.333333333333343" y="84" width="274.66666666666663" height="40"/>
+                                <rect key="frame" x="352.5" y="64" width="319.5" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge you friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yTx-yy-VvC" customClass="AdaptiveLabel" customModule="eLit" customModuleProvider="target">
-                                        <rect key="frame" x="49.999999999999986" y="6.9999999999999982" width="224.66666666666663" height="26.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <rect key="frame" x="50" y="3.5" width="269.5" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                         </variation>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QuizIcon" translatesAutoresizingMaskIntoConstraints="NO" id="K08-sv-8eJ">
@@ -795,7 +795,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-rm-hDK">
-                                <rect key="frame" x="325" y="165" width="20" height="20"/>
+                                <rect key="frame" x="904" y="151" width="20" height="20"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>

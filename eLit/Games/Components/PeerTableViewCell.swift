@@ -22,10 +22,6 @@ class PeerTableViewCell: UITableViewCell {
     private var peer : DiscoveredPeer!
     public var delegate : PeerTableViewCellDelegate?
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.peerImageView.roundImage(with: 1, ofColor: .gray)
-    }
 
     func setPeer(_ peer : DiscoveredPeer, lastInvited : DiscoveredPeer?, enabled : Bool) {
         
@@ -36,6 +32,8 @@ class PeerTableViewCell: UITableViewCell {
         
         peer.getImage { (image) in
             self.peerImageView.image = image
+            self.peerImageView.roundImage(with: 1, ofColor: .gray)
+
         }
         
         self.peer = peer
