@@ -18,14 +18,24 @@ struct Review {
     let timestamp : String
 }
 
-class ReviewTableViewController: BlurredBackgroundTableViewController {
-    
+class ResizingCell {
+    var cell : ReviewTableViewCell
+    var ip : IndexPath
+    init(cell : ReviewTableViewCell,  ip : IndexPath) {
+        self.cell = cell
+        self.ip = ip
+    }
+}
+
+class ReviewTableViewController: BlurredBackgroundTableViewController, ReviewTableViewCellDelegate {
+
     let nibs = ["ReviewTableViewCell", "LoadingTableViewCell"]
     var endReviews = false
     var requestPending = false
     var error = false
     var drink : Drink!
     var reviews: [Review] = []
+    var resizingCell : ResizingCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +43,7 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         for nib in nibs {
             self.tableView.register(UINib.init(nibName: nib, bundle: nil), forCellReuseIdentifier: nib)
         }
-        // self.loadNextBatch()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
     }
 
 
@@ -57,8 +61,15 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         }
         return reviews.count + 1
     }
-
     
+    func reviewTableViewCell(_ cell: ReviewTableViewCell, didExpand: Bool, with frame: CGRect) {
+        if let ip = self.tableView.indexPath(for: cell) {
+            self.resizingCell = ResizingCell(cell: cell, ip: ip)
+            self.tableView.reloadRows(at: [ip], with: .none)
+        }
+        self.resizingCell = nil
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // if reached last row, load next batch
         if indexPath.row == self.reviews.count {
@@ -71,17 +82,26 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
             return cell
         }
         
-        // else show the cell as usual
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
-        cell.titleLabel.text = reviews[indexPath.row].title
-        cell.starsView.rating = reviews[indexPath.row].rating
-        cell.reviewTextLabel.text = reviews[indexPath.row].text
-        cell.userLabel.text = reviews[indexPath.row].author
-        cell.timestampLabel.text = reviews[indexPath.row].timestamp
-        cell.container = self.tableView
+        if let resizing = self.resizingCell, resizing.ip == indexPath {
+            return resizing.cell
+        }
+        else {
+            // else show the cell as usual
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+            cell.titleLabel.text = reviews[indexPath.row].title
+            cell.starsView.rating = reviews[indexPath.row].rating
+            cell.reviewTextLabel.text = reviews[indexPath.row].text
+            cell.userLabel.text = reviews[indexPath.row].author
+            cell.timestampLabel.text = reviews[indexPath.row].timestamp
+            cell.delegate = self
+            if (!cell.reviewTextLabel.isCollapsed()) {
+                let _ = cell.reviewTextLabel.toggleCollapse()
+                cell.showMoreButton.setTitle("Show more..", for: .normal)
+            }
 
-
-        return cell
+            return cell
+        }
+        
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -147,50 +167,5 @@ class ReviewTableViewController: BlurredBackgroundTableViewController {
         
         DataBaseManager.shared.requestReviews(for: self.drink, from: self.reviews.count, completion: callback)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

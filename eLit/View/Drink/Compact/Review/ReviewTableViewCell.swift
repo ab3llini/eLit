@@ -9,6 +9,10 @@
 import UIKit
 import Cosmos
 
+protocol ReviewTableViewCellDelegate {
+    func reviewTableViewCell(_ cell : ReviewTableViewCell, didExpand : Bool, with frame : CGRect)
+}
+
 class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     @IBOutlet weak var mainView: UIView!
@@ -21,7 +25,7 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     private var preferredBackgroundColor : UIColor!
     
-    public var container : UITableView!
+    public var delegate : ReviewTableViewCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +47,6 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
         }
         else {
             sender.setTitle("Show more..", for: .normal)
-
         }
         
         let originalHeight = reviewTextLabel.frame.size.height
@@ -52,8 +55,9 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
         var newFrame = self.frame
         
         newFrame.size.height = self.frame.size.height + offset
-        self.frame = newFrame
-        self.container.contentSize.height += offset
+        
+        self.delegate.reviewTableViewCell(self, didExpand: !reviewTextLabel.isCollapsed(), with: newFrame)
+        
         
     }
     
@@ -68,7 +72,6 @@ class ReviewTableViewCell: UITableViewCell, DarkModeBehaviour {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     
