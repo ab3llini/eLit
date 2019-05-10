@@ -38,7 +38,7 @@ class GameEngine: NSObject, GameControllerDelegate {
     // It is even going to hold a reference to this object
     public var delegate : GameEngineDelegate!
     private let netMode: OperationMode
-    private let rounds = 2
+    private let rounds = 5
     private let communicationEngine: GameComunicationEngine
     private var currentAnswer: String?
     private var currentQuestion: Question?
