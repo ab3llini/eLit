@@ -103,7 +103,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     override func numberOfSections(in tableView: UITableView) -> Int {
         switch (UIScreen.main.traitCollection.horizontalSizeClass) {
         case .compact:
-            return 4
+            return 5
         case .regular:
             return 3
         default:
@@ -129,8 +129,12 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                     return nil
                 }
                 label.text = "Ingredients".uppercased()
-
+                
             case 2:
+
+                label.text = "Additional Information".uppercased()
+
+            case 3:
                 if Preferences.shared.getSwitch(for: .hideRecipe) {
                     return nil
                 }
@@ -161,8 +165,10 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             case 1:
                 return "Rating"
             case 2:
-                return (Preferences.shared.getSwitch(for: .hideIngredients)) ? nil : "Ingredients"
+                return "Additional Information"
             case 3:
+                return (Preferences.shared.getSwitch(for: .hideIngredients)) ? nil : "Ingredients"
+            case 4:
                 return (Preferences.shared.getSwitch(for: .hideRecipe)) ? nil : "How to mix"
             default:
                 return nil
@@ -185,6 +191,8 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 case 2:
                     fallthrough
                 case 3:
+                    fallthrough
+                case 4:
                     return UITableView.automaticDimension
                 default:
                     return CGFloat.leastNormalMagnitude
@@ -218,14 +226,16 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 case 1:
                     return 1
                 case 2:
+                    return 1
+                case 3:
                     // Ingredients
                     if (Preferences.shared.getSwitch(for: .hideIngredients)) {
                         return 0
                     }
                     else {
                         return self.components.count
-                    }
-                case 3:
+                }
+                case 4:
                     // Steps
                     if (Preferences.shared.getSwitch(for: .hideRecipe)) {
                         return 0
@@ -286,8 +296,18 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 cell.viewController = self
                 
                 return cell
-                
+            
             case 2:
+                
+                let cell : AdditionalInfoViewCell = tableView.dequeueReusableCell(withIdentifier: "AdditionalInfoCell") as! AdditionalInfoViewCell
+                
+                cell.volumeLabel.text = String(format: "%.0f%%", self.drink.degree)
+                cell.descriptionlabel.text = self.drink.drinkDescription
+                
+                return cell
+                
+            
+            case 3:
                 
                 let cell : DrinkComponentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DrinkComponentTableViewCell") as! DrinkComponentTableViewCell
                 
@@ -314,7 +334,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 
                 return cell
                 
-            case 3:
+            case 4:
                 
                 // Steps
                 let cell : TimelineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell") as! TimelineTableViewCell
@@ -388,9 +408,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                         cell.rightComponent.setComponent(self.components[rBound])
                         
                     }
-                    
                 }
-                
                 
                 return cell
             case 2:
