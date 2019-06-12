@@ -1,12 +1,10 @@
-eLit Design Document
-============
-
 
 Authors
 ============
 
 **Gianpaolo Di Pietro**
 **Alberto Mario Bellini**
+
 
 
 Introduction
@@ -388,7 +386,8 @@ the application already responds to these updates as if there was one.
 Product functions {#section:use case}
 -----------------
 
-![eLit - use Case scenario[]{label="UseCase"}](UseCase.png){#UseCase
+![eLit - use Case
+scenario[]{label="UseCase"}](LatexAssets/UseCase.png){#UseCase
 width="\\linewidth"}
 
 We will present here some use case scenario of our application. They are
@@ -471,7 +470,7 @@ to achieve all the goals mentioned in the previous section.
     what's stored on the remote database.
 
 ![Three tier architecture
-design[]{label="Architecture"}](architecture.png){#Architecture
+design[]{label="Architecture"}](LatexAssets/architecture.png){#Architecture
 width="0.8\\linewidth"}
 
 Figure [2](#Architecture){reference-type="ref" reference="Architecture"}
@@ -491,7 +490,7 @@ High Level Component View
 -------------------------
 
 ![High level component
-view[]{label="High Level"}](high_level.png){#High Level
+view[]{label="High Level"}](LatexAssets/high_level.png){#High Level
 width="0.8\\linewidth"}
 
 ### Presentation layer - the app
@@ -618,7 +617,7 @@ application launch and then is updated (if an internet connection is
 present) every time the application opens.
 
 ![Application database
-entities[]{label="Database entities"}](entities.png){#Database entities
+entities[]{label="Database entities"}](LatexAssets/entities.png){#Database entities
 width="\\linewidth"}
 
 ### Server Database {#section:Server DB}
@@ -632,7 +631,8 @@ about the reviews they have written. The User registration is provided
 by Google authentication and once an user has logged in we send the
 information to our server.
 
-![Server database entities[]{label="ServerDB"}](ServerDB.png){#ServerDB
+![Server database
+entities[]{label="ServerDB"}](LatexAssets/ServerDB.png){#ServerDB
 width="\\linewidth"}
 
 ### External services {#section:external services}
@@ -787,7 +787,8 @@ with four different choices. There is only one right choice.
 ![Flow of main events in the play section. From left to right: player
 discovery, incoming invitation, in-game question with selected answer,
 in-game question with correct
-answer[]{label="Play"}](UI/UI-Play.png){#Play width="\\textwidth"}
+answer[]{label="Play"}](LatexAssets/UI-Play.png){#Play
+width="\\textwidth"}
 
 Each player has 10 seconds to answer, otherwise it will be as if he had
 picked the wrong answer.
@@ -803,7 +804,7 @@ the outcome of the match which will result in a *Win, Lost or Tie*.
 
 ![Flow of events in the settings section that allow the user to log-in
 using his Google
-account[]{label="Settings"}](UI/UI-settings.png){#Settings
+account[]{label="Settings"}](LatexAssets/UI-settings.png){#Settings
 width="\\textwidth"}
 
 In the last section (see figure [7](#Settings){reference-type="ref"
@@ -831,7 +832,7 @@ we find a more distributed layout with recipes and ingredients displayed
 differently.
 
 ![Different layout of the drink detail section on iPad and
-iPhone[]{label="Drink detail section"}](UI/UI-Drink.png){#Drink detail section
+iPhone[]{label="Drink detail section"}](LatexAssets/UI-Drink.png){#Drink detail section
 width="\\textwidth"}
 
 We thought that such change in the layout would have benefit the final
@@ -868,7 +869,7 @@ consistency and relational errors or misalignments.
 ### General overview
 
 ![Overview of three drinks on the back-end
-GUI[]{label="Drink backend overview"}](UI/BackendDrinks.png){#Drink backend overview
+GUI[]{label="Drink backend overview"}](LatexAssets/BackendDrinks.png){#Drink backend overview
 width="\\textwidth"}
 
 We came up with a web interface hosted by the remote server and designed
@@ -882,7 +883,7 @@ in the back-end system in a compact way with only the most relevant
 information.
 
 ![Overview of some ingredients on the
-back-end[]{label="Ingredients overview"}](UI/BackendIngr.png){#Ingredients overview
+back-end[]{label="Ingredients overview"}](LatexAssets/BackendIngr.png){#Ingredients overview
 width="\\textwidth"}
 
 Exploiting the responsiveness of the framework we provided the
@@ -901,7 +902,7 @@ is able to map specific keywords in the description to their relative
 ingredients.
 
 ![Overview of the add-drink mechanism with
-placeholders[]{label="Drink-add overview"}](UI/BackendAdd.png){#Drink-add overview
+placeholders[]{label="Drink-add overview"}](LatexAssets/BackendAdd.png){#Drink-add overview
 width="\\textwidth"}
 
 For example in figure [11](#Drink-add overview){reference-type="ref"
@@ -967,7 +968,7 @@ per drink. In the case one review is already present in the DB this one
 is loaded and displayed to the user so that he can edit it.
 
 ![Add review to drink - Run-time
-view[]{label="Add drink rt"}](RunTime/addDrinkReview.png){#Add drink rt
+view[]{label="Add drink rt"}](LatexAssets/addDrinkReview.png){#Add drink rt
 width="\\textwidth"}
 
 Invite friend to play
@@ -1022,7 +1023,7 @@ the component Remote Client inside figure
 reference="Invite friend rt"}
 
 ![Invite friend to play - Run-time
-view[]{label="Invite friend rt"}](RunTime/InviteFriend.png){#Invite friend rt
+view[]{label="Invite friend rt"}](LatexAssets/InviteFriend.png){#Invite friend rt
 width="\\textwidth"}
 
 Scan bar-code + drink search
@@ -1069,7 +1070,7 @@ reference="Scan bar-code rt"} we have the following components:
     from which we fetch the data needed for the search.
 
 ![Scan bar-code and search drinks - Run-time
-view[]{label="Scan bar-code rt"}](RunTime/ScanBarcode.png){#Scan bar-code rt
+view[]{label="Scan bar-code rt"}](LatexAssets/ScanBarcode.png){#Scan bar-code rt
 width="\\textwidth"}
 
 Implementation, integration & test plan
@@ -1138,7 +1139,7 @@ order to achieve more and more requirements and goals that we had at the
 beginning of the project.
 
 ![Software development
-cycle[]{label="implementation"}](Implementation.jpg){#implementation
+cycle[]{label="implementation"}](LatexAssets/Implementation.jpg){#implementation
 width="40%"}
 
 Implementation process {#section: Implementation process}
@@ -1201,8 +1202,8 @@ For the UI design of the application we fully focused on using the Model
     The controller part alto takes care of notifications from the View
     (actions from the user) and animations.
 
-![Model-View-Controller design pattern[]{label="mvc"}](mvc.png){#mvc
-width="70%"}
+![Model-View-Controller design
+pattern[]{label="mvc"}](LatexAssets/mvc.png){#mvc width="70%"}
 
 Test cases {#section:tests}
 ----------
@@ -1295,3 +1296,4 @@ by Swift.
    *Outcome*  All the objects inside the UI have been correctly rendered
               even when the dark mode is enabled from the settings.
   ----------- -----------------------------------------------------------
+
