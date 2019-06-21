@@ -30,6 +30,8 @@ class PeerTableViewCell: UITableViewCell {
         self.challengeButton.changeTo(color: self.challengeButton.neutralColor)
         self.challengeButton.isEnabled = enabled
         
+        self.peerImageView.image = UIImage(named: "user")
+        
         peer.getImage { (image) in
             self.peerImageView.image = image
             self.peerImageView.roundImage(with: 1, ofColor: .gray)
