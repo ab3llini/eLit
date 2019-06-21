@@ -91,7 +91,6 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
             
             ts.step.setAttributedString { (string) in
                 ts.string = string
-                print("Computed!")
                 DispatchQueue.main.async {
                     
                     self.stepsPrepared += 1
