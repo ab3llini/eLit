@@ -64,6 +64,7 @@ class BattleQuizViewController: BlurredBackgroundViewController, NearbyBrowserTa
     }
     
     func connectionManager(peer: MCPeerID, connectedTo session: MCSession, with operationMode: OperationMode) {
+        ConnectionManager.shared.stop()
         self.performSegue(withIdentifier: Navigation.toGameVC.rawValue, sender: self)
     }
     
