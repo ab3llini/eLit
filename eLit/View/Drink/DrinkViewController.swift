@@ -26,8 +26,9 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
     var steps : [TableStep] = []
     var components : [Component] = []
 
-    var didPrepareSteps = false
+    var stepsPrepared = 0
     var RGSelectedComponent : Component?
+
     
     private let sectionHeaderHeight : CGFloat = 50.0
 
@@ -59,6 +60,12 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         
     }
     
+    func checkStepsPrepared() {
+        if self.stepsPrepared == self.steps.count {
+            self.tableView.reloadData()
+        }
+    }
+    
     // Delegate method
     func didSubmitReview() {
         
@@ -76,7 +83,24 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         
         
         for step in drink.drinkRecipe?.steps?.array as? [RecipeStep] ?? [] {
-            self.steps.append(TableStep(step: step))
+            
+            let ts = TableStep(step: step)
+            
+            self.steps.append(ts)
+
+            
+            ts.step.setAttributedString { (string) in
+                ts.string = string
+                print("Computed!")
+                DispatchQueue.main.async {
+                    
+                    self.stepsPrepared += 1
+                    self.checkStepsPrepared()
+                    
+                }
+            }
+            
+
         }
 
     }
@@ -360,13 +384,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
                 if let string = tableStep.string {
                     cell.set(string)
                 }
-                else {
-                    tableStep.step.setAttributedString { (string) in
-                        tableStep.string = string
-                        self.tableView.reloadRows(at: [indexPath], with: .bottom)
-                    }
-                }
-                
+
                 return cell
                 
             default:
@@ -483,7 +501,7 @@ class DrinkViewController: BlurredBackgroundTableViewController, AddReviewDelega
         switch (UIScreen.main.traitCollection.horizontalSizeClass) {
         case .compact:
             switch indexPath.section {
-            case 2:
+            case 3:
                 self.performSegue(withIdentifier: Navigation.toDrinkForIngredientVC.rawValue, sender: self)
             default:
                 return

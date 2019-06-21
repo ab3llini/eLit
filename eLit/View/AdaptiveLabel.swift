@@ -27,7 +27,7 @@ class AdaptiveLabel: UILabel, DarkModeLabelBehaviour {
         
         self.preferredColor = self.textColor
         DarkModeManager.shared.register(component: self)
-        
+
     }
     
 }
