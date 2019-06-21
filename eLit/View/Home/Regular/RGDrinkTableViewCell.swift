@@ -61,6 +61,7 @@ class RGDrinkTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         
         self.currentCategory = category
         self.drinksForCurrentCategory = category.withDrinks?.allObjects as! [Drink]
+        self.categoryCollection.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
