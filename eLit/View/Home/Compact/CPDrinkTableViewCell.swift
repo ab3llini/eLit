@@ -163,6 +163,8 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         
         self.drink = drink
         
+        
+        
         self.setDrinkImage()
         self.setBackgroundColor()
         self.setBackgroundImage()
@@ -172,7 +174,10 @@ class CPDrinkTableViewCell: UITableViewCell, DarkModeBehaviour {
         self.categoryLabel.text = (drink.ofCategory?.name)!
 
         self.ratingView.isHidden = !Preferences.shared.getSwitch(for: .homeRating)
+        
+        self.setDegreeRibbon()
     }
+
     
     
 }
