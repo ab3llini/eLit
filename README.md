@@ -1,5 +1,5 @@
-![](cover.png)
-![](screens.png)
+![](LatexAssets/cover.png)
+![](LatexAssets/screens.png)
 
 
 
